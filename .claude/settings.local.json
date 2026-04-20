@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cmd.exe /c \"start code C:\\\\Users\\\\arslan\\\\Intagleo_2.0\\\\components\\\\HeroSection.tsx\")",
+      "Bash(npx tsc:*)",
+      "Bash(npm run:*)",
+      "Bash(npx next:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(netstat -ano)",
+      "WebFetch(domain:blog.olivierlarose.com)",
+      "Bash(cat /c/Users/arslan/Intagleo_2.0/.env*)",
+      "Bash(npm list:*)",
+      "WebFetch(domain:www.intagleo.com)",
+      "WebFetch(domain:www.intvue.com)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(curl -s \"https://www.intvue.com/\" -A \"Mozilla/5.0\")",
+      "mcp__Claude_Preview__preview_start",
+      "mcp__3693eb44-2345-4cba-aaac-5b7e8e3f4f16__get_screenshot",
+      "Bash(ls /c/Users/arslan/Intagleo_2.0/public/emp*.png)",
+      "mcp__3693eb44-2345-4cba-aaac-5b7e8e3f4f16__get_design_context",
+      "mcp__3693eb44-2345-4cba-aaac-5b7e8e3f4f16__get_metadata",
+      "Bash(node -e ':*)",
+      "Bash(node -e \"const fs=require\\('fs'\\);const c=fs.readFileSync\\('C:/Users/arslan/.claude/projects/C--Users-arslan-Intagleo-2-0/e03c6b4e-a773-4562-a31c-d75cf42d8746/tool-results/mcp-3693eb44-2345-4cba-aaac-5b7e8e3f4f16-get_metadata-1776279225168.txt','utf8'\\);const chunk=c.slice\\(120000,130000\\);const m=[...chunk.matchAll\\(/id[\\\\\"' :]+\\([0-9]+-[0-9]+\\)/g\\)];const seen=new Set\\(\\);m.forEach\\(x=>{if\\(!seen.has\\(x[1]\\)\\){seen.add\\(x[1]\\);console.log\\(x[1]\\)}}\\);\")",
+      "Bash(node -e \"const fs=require\\('fs'\\);const c=fs.readFileSync\\('C:/Users/arslan/.claude/projects/C--Users-arslan-Intagleo-2-0/e03c6b4e-a773-4562-a31c-d75cf42d8746/tool-results/mcp-3693eb44-2345-4cba-aaac-5b7e8e3f4f16-get_metadata-1776279225168.txt','utf8'\\);console.log\\(c.slice\\(123800,126000\\)\\);\")",
+      "Bash(node -e \"const fs=require\\('fs'\\);const c=fs.readFileSync\\('C:/Users/arslan/.claude/projects/C--Users-arslan-Intagleo-2-0/e03c6b4e-a773-4562-a31c-d75cf42d8746/tool-results/mcp-3693eb44-2345-4cba-aaac-5b7e8e3f4f16-get_metadata-1776279225168.txt','utf8'\\);console.log\\(c.slice\\(121500,124000\\)\\);\")",
+      "Bash(node -e \"const fs=require\\('fs'\\);const c=fs.readFileSync\\('C:/Users/arslan/.claude/projects/C--Users-arslan-Intagleo-2-0/e03c6b4e-a773-4562-a31c-d75cf42d8746/tool-results/mcp-3693eb44-2345-4cba-aaac-5b7e8e3f4f16-get_metadata-1776279225168.txt','utf8'\\);console.log\\(c.slice\\(119000,122000\\)\\);\")",
+      "Bash(node -e \"const fs=require\\('fs'\\);const c=fs.readFileSync\\('C:/Users/arslan/.claude/projects/C--Users-arslan-Intagleo-2-0/e03c6b4e-a773-4562-a31c-d75cf42d8746/tool-results/mcp-3693eb44-2345-4cba-aaac-5b7e8e3f4f16-get_metadata-1776279225168.txt','utf8'\\);console.log\\(c.slice\\(126000,130000\\)\\);\")",
+      "Bash(node -e \"const fs=require\\('fs'\\);const c=fs.readFileSync\\('C:/Users/arslan/.claude/projects/C--Users-arslan-Intagleo-2-0/e03c6b4e-a773-4562-a31c-d75cf42d8746/tool-results/mcp-3693eb44-2345-4cba-aaac-5b7e8e3f4f16-get_metadata-1776279225168.txt','utf8'\\);const idx=c.indexOf\\('3406:68558'\\);console.log\\(c.slice\\(idx-500,idx+100\\)\\);\")",
+      "Bash(node -e \"const fs=require\\('fs'\\);const c=fs.readFileSync\\('C:/Users/arslan/.claude/projects/C--Users-arslan-Intagleo-2-0/e03c6b4e-a773-4562-a31c-d75cf42d8746/tool-results/mcp-3693eb44-2345-4cba-aaac-5b7e8e3f4f16-get_metadata-1776279225168.txt','utf8'\\);const idx=c.indexOf\\('3406:68558'\\);console.log\\(c.slice\\(idx-3000,idx-400\\)\\);\")",
+      "Bash(cmd.exe /c \"dir /b /s C:\\\\Users\\\\arslan\\\\Intagleo_2.0\\\\public\")"
+    ]
+  }
+}

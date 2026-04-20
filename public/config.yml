@@ -1,0 +1,73 @@
+# ─────────────────────────────────────────────
+# Decap CMS Configuration — Intagleo
+# ─────────────────────────────────────────────
+#
+# PRODUCTION: set backend name to "git-gateway" and enable
+#             Netlify Identity in your Netlify dashboard.
+#
+# LOCAL DEV:  run `npx decap-server` in the project root
+#             then visit http://localhost:3000/admin
+# ─────────────────────────────────────────────
+
+backend:
+  name: git-gateway
+  branch: main
+
+# Local development enabled
+local_backend: true
+
+media_folder: public/uploads
+public_folder: /uploads
+
+# ─── COLLECTIONS ────────────────────────────
+
+collections:
+  # ── Blog Posts ──────────────────────────────
+  - name: blog
+    label: Blog Posts
+    label_singular: Blog Post
+    folder: content/blog
+    create: true
+    slug: "{{slug}}"
+    preview_path: "blog/{{slug}}"
+    fields:
+      - { label: Title,            name: title,           widget: string }
+      - { label: Date,             name: date,            widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: Author,           name: author,          widget: string }
+      - { label: Cover Image,      name: cover_image,     widget: image, required: false }
+      - { label: Excerpt,          name: excerpt,         widget: text }
+      - { label: Body,             name: body,            widget: markdown }
+      - { label: SEO Meta Description, name: seo_description, widget: text, hint: "Used for search engine snippets. Aim for 150–160 characters." }
+
+  # ── Case Studies ────────────────────────────
+  - name: case_studies
+    label: Case Studies
+    label_singular: Case Study
+    folder: content/case-studies
+    create: true
+    slug: "{{slug}}"
+    preview_path: "case-studies/{{slug}}"
+    fields:
+      - { label: Title,        name: title,        widget: string }
+      - { label: Client Name,  name: client,       widget: string }
+      - { label: Industry,     name: industry,     widget: string }
+      - { label: Cover Image,  name: cover_image,  widget: image, required: false }
+      - { label: Challenge,    name: challenge,    widget: text }
+      - { label: Solution,     name: solution,     widget: text }
+      - { label: Results,      name: results,      widget: text }
+      - { label: Body,         name: body,         widget: markdown }
+      - { label: SEO Meta Description, name: seo_description, widget: text, required: false }
+
+  # ── Testimonials ────────────────────────────
+  - name: testimonials
+    label: Testimonials
+    label_singular: Testimonial
+    folder: content/testimonials
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Name,    name: name,    widget: string }
+      - { label: Title,   name: title,   widget: string, hint: "Job title / role" }
+      - { label: Company, name: company, widget: string }
+      - { label: Quote,   name: quote,   widget: text }
+      - { label: Photo,   name: photo,   widget: image, required: false }

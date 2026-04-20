@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Sunburst Logo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* 3D Perspective Container */
+        .scene {
+            perspective: 1000px;
+            width: 400px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-container {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transform: rotateX(65deg); /* Perspective tilt */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* SVG and Animation */
+        #sunburst-svg {
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: #00bfff; /* Bright Cyan-Blue */
+            stroke-width: 8;
+            stroke-linecap: round;
+            filter: drop-shadow(0 0 8px rgba(0, 191, 255, 0.6));
+            animation: rotateSunburst 8s linear infinite;
+        }
+
+        .center-donut {
+            fill: none;
+            stroke: #00bfff;
+            stroke-width: 10;
+        }
+
+        @keyframes rotateSunburst {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scene">
+        <div class="logo-container">
+            <svg id="sunburst-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="200" cy="200" r="30" class="center-donut" />
+
+                <g id="rays-group"></g>
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        const raysGroup = document.getElementById('rays-group');
+        const numRays = 18;
+        const centerX = 200;
+        const centerY = 200;
+        const innerRadius = 45;
+        const outerRadius = 160;
+
+        for (let i = 0; i < numRays; i++) {
+            const angle = (i * 360 / numRays) * (Math.PI / 180);
+
+            // Calculate points for the curved path
+            const x1 = centerX + Math.cos(angle) * innerRadius;
+            const y1 = centerY + Math.sin(angle) * innerRadius;
+
+            const x2 = centerX + Math.cos(angle) * outerRadius;
+            const y2 = centerY + Math.sin(angle) * outerRadius;
+
+            // Adding a 'hook' effect by offsetting the control point and end point
+            const hookAngle = angle + 0.4; // Slight rotation for the hook
+            const hx = centerX + Math.cos(hookAngle) * (outerRadius + 20);
+            const hy = centerY + Math.sin(hookAngle) * (outerRadius + 20);
+
+            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            // M = Start, Q = Quadratic Curve (Control point, End point)
+            const d = `M ${x1} ${y1} Q ${x2} ${y2}, ${hx} ${hy}`;
+
+            path.setAttribute("d", d);
+            raysGroup.appendChild(path);
+        }
+    </script>
+</body>
+</html>
