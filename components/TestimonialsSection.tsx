@@ -100,7 +100,7 @@ export default function TestimonialsSection() {
 
                   {/* Quote */}
                   <p className="text-white/70 text-sm leading-relaxed italic">
-                    "{testimonial.quote}"
+                    &ldquo;{testimonial.quote}&rdquo;
                   </p>
                 </div>
               ))

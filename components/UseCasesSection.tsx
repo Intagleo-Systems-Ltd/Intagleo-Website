@@ -24,9 +24,9 @@ export default function UseCasesSection() {
       .then((data) => {
         const all = data.caseStudies ?? [];
         const mapped: UseCaseCard[] = all
-          .filter((cs: any) => cs.rive_url)
+          .filter((cs: { rive_url?: string }) => cs.rive_url)
           .slice(0, 4)
-          .map((cs: any, i: number) => ({
+          .map((cs: { title: string; challenge: string; rive_url: string; slug: string }, i: number) => ({
             index: i,
             title: cs.title,
             description: cs.challenge,
@@ -44,15 +44,14 @@ export default function UseCasesSection() {
 
   useEffect(() => {
     if (!cards.length) return;
-    const riveInstances: any[] = [];
-    let STRef: any = null;
-    let stInstance: any = null;
+    const riveInstances: { cleanup?: () => void }[] = [];
+    let stInstance: { kill?: () => void } | null = null;
 
     const init = async () => {
       const { gsap } = await import("gsap");
       const { ScrollTrigger } = await import("gsap/ScrollTrigger");
       gsap.registerPlugin(ScrollTrigger);
-      STRef = ScrollTrigger;
+
 
       // Load Rive animations
       try {
@@ -127,7 +126,7 @@ export default function UseCasesSection() {
         start: "top top",
         end: `+=${(n - 1) * STEP}`,
         scrub: 1,
-        onUpdate: (self: any) => {
+        onUpdate: (self: { progress: number }) => {
           tl.progress(self.progress);
         },
       });
@@ -174,7 +173,7 @@ export default function UseCasesSection() {
               fontSize: "clamp(14px, 1.1vw, 17px)",
             }}
           >
-            See how we've helped businesses turn complex challenges into scalable digital solutions.
+            See how we&apos;ve helped businesses turn complex challenges into scalable digital solutions.
           </p>
         </div>
 
