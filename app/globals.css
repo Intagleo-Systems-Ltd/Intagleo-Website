@@ -10,6 +10,10 @@
   --border: rgba(255, 255, 255, 0.08);
   --card-bg: #111111;
   --muted: #888888;
+  --radius: 0.75rem;
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
 }
 
 * {
@@ -25,7 +29,48 @@ body {
   background: var(--background);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
 }
+
+/* ── Universal interaction standards ─────────────────────────────────────── */
+
+a,
+button,
+[role="button"],
+[tabindex="0"],
+select,
+summary {
+  cursor: pointer;
+}
+
+/* ── Focus accessibility ──────────────────────────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid rgba(232, 52, 28, 0.7);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Reduced motion — respect user OS preference ─────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .marquee-scroll,
+  .marquee-scroll-reverse {
+    animation: none !important;
+  }
+}
+
+/* ── Marquee animations ───────────────────────────────────────────────────── */
 
 @keyframes marquee {
   0%   { transform: translateX(0); }
@@ -47,6 +92,27 @@ body {
   will-change: transform;
 }
 
+/* ── Skeleton shimmer ─────────────────────────────────────────────────────── */
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.04) 25%,
+    rgba(255,255,255,0.08) 50%,
+    rgba(255,255,255,0.04) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+  border-radius: var(--radius);
+}
+
+/* ── Utilities ────────────────────────────────────────────────────────────── */
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -66,9 +132,14 @@ body {
   .border-subtle {
     border-color: rgba(255, 255, 255, 0.08);
   }
+
+  .card-hover {
+    @apply transition-all duration-200 hover:border-white/20 hover:bg-white/[0.03];
+  }
 }
 
-/* Custom scrollbar */
+/* ── Custom scrollbar ─────────────────────────────────────────────────────── */
+
 ::-webkit-scrollbar {
   width: 4px;
 }

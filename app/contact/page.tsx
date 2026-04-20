@@ -11,10 +11,38 @@ export const metadata: Metadata = {
 };
 
 const trustSignals = [
-  { icon: "⚡", label: "Response within 24 hours" },
-  { icon: "🔒", label: "NDA available on request" },
-  { icon: "🎯", label: "Senior engineers only" },
-  { icon: "🤝", label: "No commitment required" },
+  {
+    icon: (
+      <svg className="w-4 h-4 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+      </svg>
+    ),
+    label: "Response within 24 hours",
+  },
+  {
+    icon: (
+      <svg className="w-4 h-4 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+      </svg>
+    ),
+    label: "NDA available on request",
+  },
+  {
+    icon: (
+      <svg className="w-4 h-4 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+      </svg>
+    ),
+    label: "Senior engineers only",
+  },
+  {
+    icon: (
+      <svg className="w-4 h-4 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+      </svg>
+    ),
+    label: "No commitment required",
+  },
 ];
 
 export default function ContactPage({
@@ -69,7 +97,7 @@ export default function ContactPage({
               <ul className="space-y-4">
                 {trustSignals.map((signal) => (
                   <li key={signal.label} className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-sm flex-shrink-0">
+                    <div className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center flex-shrink-0">
                       {signal.icon}
                     </div>
                     <span className="text-white/50 text-sm">{signal.label}</span>

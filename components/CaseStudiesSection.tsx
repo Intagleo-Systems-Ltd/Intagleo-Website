@@ -160,7 +160,7 @@ function Card({
 
             <a
               href={`/case-studies/${card.slug}`}
-              className="inline-flex items-center justify-center border border-white/25 hover:border-white/50 hover:bg-white/5 text-white rounded-full transition-all duration-200"
+              className="inline-flex items-center justify-center border border-white/25 hover:border-white/50 hover:bg-white/5 text-white rounded-full transition-all duration-200 cursor-pointer"
               style={{
                 fontFamily: '"Roobert TRIAL", sans-serif',
                 fontSize: "15px",
@@ -276,7 +276,7 @@ export default function CaseStudiesSection({ pageSlug }: { pageSlug?: string } =
         <div className="flex justify-center py-20">
           <a
             href="/case-studies"
-            className="inline-flex items-center gap-2 border border-white/25 hover:border-white/50 hover:bg-white/5 text-white rounded-full transition-all duration-200"
+            className="inline-flex items-center gap-2 border border-white/25 hover:border-white/50 hover:bg-white/5 text-white rounded-full transition-all duration-200 cursor-pointer"
             style={{
               fontFamily: '"Roobert TRIAL", sans-serif',
               fontSize: "15px",

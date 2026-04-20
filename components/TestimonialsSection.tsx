@@ -73,7 +73,23 @@ export default function TestimonialsSection() {
           {/* Right Column - Testimonials */}
           <div className="space-y-4">
             {loading ? (
-              <div className="text-center text-white/40 py-12">Loading testimonials...</div>
+              <div className="space-y-4">
+                {[0, 1, 2].map((i) => (
+                  <div key={i} className="rounded-2xl border border-white/[0.06] bg-[#0d0d10] p-6">
+                    <div className="flex items-start gap-3 mb-4">
+                      <div className="skeleton w-8 h-8 rounded-full flex-shrink-0" />
+                      <div className="flex-1 space-y-2">
+                        <div className="skeleton h-3 w-32 rounded" />
+                        <div className="skeleton h-2.5 w-20 rounded" />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="skeleton h-3 w-full rounded" />
+                      <div className="skeleton h-3 w-4/5 rounded" />
+                    </div>
+                  </div>
+                ))}
+              </div>
             ) : testimonials.length === 0 ? (
               <div className="text-center text-white/40 py-12">No featured testimonials available.</div>
             ) : (
@@ -93,8 +109,12 @@ export default function TestimonialsSection() {
                         <p className="text-white/50 text-xs">{testimonial.company}</p>
                       </div>
                     </div>
-                    <span className="text-white/40 text-xs whitespace-nowrap ml-2">
-                      📍 London, UK
+                    <span className="text-white/40 text-xs whitespace-nowrap ml-2 flex items-center gap-1">
+                      <svg className="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                      </svg>
+                      London, UK
                     </span>
                   </div>
 

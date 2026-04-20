@@ -47,7 +47,7 @@ export default function AIStrategySection() {
             <img
               src="/AI.gif"
               alt="AI Circuit Chip"
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover grayscale opacity-50"
             />
             {/* Fade blend into left panel */}
             <div className="absolute top-0 bottom-0 bg-gradient-to-r from-[#0E121D] to-transparent" style={{left: '0%', right: '0%'}} />

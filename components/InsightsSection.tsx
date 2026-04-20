@@ -94,7 +94,28 @@ export default function InsightsSection({ pageSlug }: { pageSlug?: string } = {}
         <div className="w-full border-t border-dashed border-white/15 mb-0" />
 
         {loading ? (
-          <p className="text-center text-white/30 py-20">Loading articles…</p>
+          <div className="flex flex-col md:flex-row gap-8 pt-8 pb-8">
+            <div className="flex-1 min-w-0 space-y-4">
+              <div className="skeleton w-full h-[320px] rounded-2xl" />
+              <div className="skeleton h-3 w-24 rounded" />
+              <div className="skeleton h-7 w-3/4 rounded" />
+              <div className="skeleton h-4 w-full rounded" />
+              <div className="skeleton h-4 w-2/3 rounded" />
+            </div>
+            <div className="hidden md:block w-px bg-white/10 self-stretch" />
+            <div className="flex-1 min-w-0 flex flex-col gap-8">
+              {[0, 1].map((i) => (
+                <div key={i} className="flex gap-4">
+                  <div className="skeleton w-[120px] h-[90px] flex-shrink-0 rounded-xl" />
+                  <div className="flex-1 space-y-2">
+                    <div className="skeleton h-3 w-16 rounded" />
+                    <div className="skeleton h-4 w-full rounded" />
+                    <div className="skeleton h-4 w-3/4 rounded" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         ) : articles.length === 0 ? (
           <p className="text-center text-white/30 py-20">No articles available.</p>
         ) : (
