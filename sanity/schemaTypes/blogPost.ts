@@ -1,0 +1,51 @@
+import { defineField, defineType } from "@sanity/types";
+
+export const blogPost = defineType({
+  name: "blogPost",
+  title: "Blog Post",
+  type: "document",
+  fields: [
+    defineField({ name: "title", title: "Title", type: "string", validation: (r) => r.required() }),
+    defineField({ name: "slug", title: "Slug", type: "slug", options: { source: "title" }, validation: (r) => r.required() }),
+    defineField({ name: "date", title: "Date", type: "date", validation: (r) => r.required() }),
+    defineField({ name: "author", title: "Author", type: "string" }),
+    defineField({ name: "coverImage", title: "Cover Image", type: "image", options: { hotspot: true } }),
+    defineField({ name: "excerpt", title: "Excerpt", type: "text", rows: 3 }),
+    defineField({ name: "seo_description", title: "SEO Description", type: "text", rows: 2 }),
+    defineField({ name: "show_on_homepage", title: "Show on Homepage", type: "boolean", initialValue: true }),
+    defineField({
+      name: "pages",
+      title: "Show on Pages",
+      type: "array",
+      of: [{ type: "string" }],
+      options: {
+        list: [
+          { title: "Digital Signage", value: "digital-signage" },
+          { title: "Facilities Management", value: "facilities-management" },
+          { title: "E-Commerce & Retail", value: "ecommerce-retail" },
+          { title: "Healthcare", value: "healthcare" },
+          { title: "Transportation", value: "transportation" },
+          { title: "EdTech", value: "edtech" },
+          { title: "Real Estate", value: "real-estate" },
+          { title: "Travel", value: "travel" },
+          { title: "Smart Cities & IoT", value: "smart-cities" },
+          { title: "Fintech", value: "fintech" },
+          { title: "HR & Recruitment", value: "hr-recruitment" },
+          { title: "AI Transformation", value: "ai-transformation" },
+          { title: "Data & Analytics", value: "data-analytics" },
+          { title: "Custom Software Dev", value: "custom-software" },
+          { title: "Mobile Development", value: "mobile-dev" },
+          { title: "Embedded & IoT", value: "embedded-iot" },
+          { title: "Cloud & DevOps", value: "cloud-devops" },
+          { title: "Legacy Modernisation", value: "legacy-modernization" },
+          { title: "QA & Testing", value: "qa-services" },
+          { title: "Staff Augmentation", value: "staff-augmentation" },
+        ],
+      },
+    }),
+    defineField({ name: "body", title: "Body (Markdown)", type: "text" }),
+  ],
+  preview: {
+    select: { title: "title", subtitle: "date", media: "coverImage" },
+  },
+});

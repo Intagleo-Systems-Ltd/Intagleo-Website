@@ -1,12 +1,8 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
+import filesProvider from "./providers/files";
 
-const contentRoot = path.join(process.cwd(), "content");
-
-// ─── Types ───────────────────────────────────────────────────────────────────
+// ─── Types ────────────────────────────────────────────────────────────────────
 
 export interface BlogPost {
   slug: string;
@@ -47,103 +43,31 @@ export interface Testimonial {
   show_on_homepage?: boolean;
 }
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-
-function readDir(type: string): string[] {
-  const dir = path.join(contentRoot, type);
-  if (!fs.existsSync(dir)) return [];
-  return fs.readdirSync(dir).filter((f) => f.endsWith(".md"));
-}
-
-function parseFile<T>(type: string, slug: string): (T & { body: string }) | null {
-  const fullPath = path.join(contentRoot, type, `${slug}.md`);
-  if (!fs.existsSync(fullPath)) return null;
-  const raw = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(raw);
-
-  // Convert Date objects to strings
-  const processedData = { ...data };
-  if (processedData.date instanceof Date) {
-    processedData.date = processedData.date.toISOString().split('T')[0];
-  }
-
-  return { slug, ...(processedData as Omit<T, "slug" | "body">), body: content } as T & {
-    body: string;
-  };
-}
+// ─── Markdown utility ─────────────────────────────────────────────────────────
 
 export async function markdownToHtml(markdown: string): Promise<string> {
-  const result = await remark()
-    .use(html, { sanitize: false })
-    .process(markdown);
+  const result = await remark().use(html, { sanitize: false }).process(markdown);
   return result.toString();
 }
 
-// ─── Blog ─────────────────────────────────────────────────────────────────────
+// ─── Public API — delegates to active provider ────────────────────────────────
+// Switch provider by setting CONTENT_PROVIDER=sanity in .env.local
+// When using Sanity, import the async functions from lib/providers/sanity.ts
+// directly in your API routes and page components.
 
-export function getAllPosts(): BlogPost[] {
-  return readDir("blog")
-    .map((file) => parseFile<BlogPost>("blog", file.replace(/\.md$/, "")))
-    .filter(Boolean)
-    .sort((a, b) => (a!.date < b!.date ? 1 : -1)) as BlogPost[];
-}
+const p = filesProvider;
 
-export function getFeaturedPosts(): BlogPost[] {
-  return getAllPosts().filter((post) => post.show_on_homepage !== false);
-}
+export const getAllPosts         = () => p.getAllPosts();
+export const getFeaturedPosts    = () => p.getFeaturedPosts();
+export const getPostsByPage      = (slug: string) => p.getPostsByPage(slug);
+export const getPostBySlug       = (slug: string) => p.getPostBySlug(slug);
+export const getBlogSlugs        = () => p.getBlogSlugs();
 
-export function getPostsByPage(pageSlug: string): BlogPost[] {
-  return getAllPosts().filter(
-    (post) => Array.isArray(post.pages) && post.pages.includes(pageSlug)
-  );
-}
+export const getAllCaseStudies      = () => p.getAllCaseStudies();
+export const getFeaturedCaseStudies = () => p.getFeaturedCaseStudies();
+export const getCaseStudiesByPage   = (slug: string) => p.getCaseStudiesByPage(slug);
+export const getCaseStudyBySlug     = (slug: string) => p.getCaseStudyBySlug(slug);
+export const getCaseStudySlugs      = () => p.getCaseStudySlugs();
 
-export function getPostBySlug(slug: string): BlogPost | null {
-  return parseFile<BlogPost>("blog", slug);
-}
-
-export function getBlogSlugs(): string[] {
-  return readDir("blog").map((f) => f.replace(/\.md$/, ""));
-}
-
-// ─── Case Studies ─────────────────────────────────────────────────────────────
-
-export function getAllCaseStudies(): CaseStudy[] {
-  return readDir("case-studies")
-    .map((file) =>
-      parseFile<CaseStudy>("case-studies", file.replace(/\.md$/, ""))
-    )
-    .filter(Boolean) as CaseStudy[];
-}
-
-export function getFeaturedCaseStudies(): CaseStudy[] {
-  return getAllCaseStudies().filter((study) => study.show_on_homepage !== false);
-}
-
-export function getCaseStudiesByPage(pageSlug: string): CaseStudy[] {
-  return getAllCaseStudies().filter(
-    (study) => Array.isArray(study.pages) && study.pages.includes(pageSlug)
-  );
-}
-
-export function getCaseStudyBySlug(slug: string): CaseStudy | null {
-  return parseFile<CaseStudy>("case-studies", slug);
-}
-
-export function getCaseStudySlugs(): string[] {
-  return readDir("case-studies").map((f) => f.replace(/\.md$/, ""));
-}
-
-// ─── Testimonials ─────────────────────────────────────────────────────────────
-
-export function getAllTestimonials(): Testimonial[] {
-  return readDir("testimonials")
-    .map((file) =>
-      parseFile<Testimonial>("testimonials", file.replace(/\.md$/, ""))
-    )
-    .filter(Boolean) as Testimonial[];
-}
-
-export function getFeaturedTestimonials(): Testimonial[] {
-  return getAllTestimonials().filter((testimonial) => testimonial.show_on_homepage !== false);
-}
+export const getAllTestimonials     = () => p.getAllTestimonials();
+export const getFeaturedTestimonials = () => p.getFeaturedTestimonials();
