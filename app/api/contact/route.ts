@@ -2,7 +2,9 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { getContactConfig } from "@/lib/contactConfigs";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY);
+}
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev";
 const NOTIFY_EMAILS = (process.env.CONTACT_NOTIFY_EMAILS ?? "arslan@intagleo.com")
   .split(",")
@@ -226,6 +228,7 @@ export async function POST(request: Request) {
     const badge = config.badge;
 
     // ── 1. Confirmation email → submitter ────────────────────────────────
+    const resend = getResend();
     const { error: confErr } = await resend.emails.send({
       from: `Intagleo <${FROM_EMAIL}>`,
       to: [email],
