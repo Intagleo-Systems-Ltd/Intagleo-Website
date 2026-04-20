@@ -317,7 +317,7 @@ export default function Navbar() {
             Home
           </a>
 
-          {/* AI Transformation — highlighted */}
+          {/* AI Transformation - highlighted */}
           <a
             href="/ai-transformation"
             className="relative flex items-center gap-1.5 text-sm font-medium whitespace-nowrap transition-opacity duration-200 hover:opacity-90"

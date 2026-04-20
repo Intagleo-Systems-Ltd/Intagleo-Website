@@ -23,13 +23,13 @@ Every team says it. Few survive it. The systems that need the most expensive rew
 ## Three Principles We Return to Again and Again
 
 ### 1. Stateless Services
-Design every service to be stateless wherever possible. State lives in your data layer — not in your application tier. This makes horizontal scaling trivial.
+Design every service to be stateless wherever possible. State lives in your data layer - not in your application tier. This makes horizontal scaling trivial.
 
 ### 2. Event-Driven Decoupling
 Tight coupling between services is the enemy of scale. An event-driven architecture lets each component grow independently and fail gracefully without cascading outages.
 
 ### 3. Observability First
-You cannot scale what you cannot see. Before we write a single line of business logic, we instrument the system. Metrics, traces, and logs are first-class citizens — not afterthoughts.
+You cannot scale what you cannot see. Before we write a single line of business logic, we instrument the system. Metrics, traces, and logs are first-class citizens - not afterthoughts.
 
 ## What We Tell Every New Client
 

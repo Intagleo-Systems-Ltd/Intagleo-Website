@@ -171,7 +171,7 @@ export default function HealthcarePage() {
                 </h2>
                 <p className="text-white/40 text-sm leading-relaxed mb-3">
                   Every manual data entry point, every system that doesn&apos;t talk to another, every clinician
-                  workaround — that&apos;s patient risk and operational debt accumulating silently.
+                  workaround - that&apos;s patient risk and operational debt accumulating silently.
                 </p>
                 <p className="text-white/40 text-sm leading-relaxed mb-7">
                   We&apos;ve built compliant healthcare platforms trusted by providers serving millions of patients,
@@ -237,8 +237,8 @@ export default function HealthcarePage() {
               <span className="text-white/30">creating hidden patient risk?</span>
             </h2>
             <p className="text-white/45 leading-relaxed mb-8 max-w-sm">
-              We conduct deep-dive healthcare architecture reviews — examining your EHR integrations,
-              data security posture, and compliance gaps — before a regulatory audit forces the issue.
+              We conduct deep-dive healthcare architecture reviews - examining your EHR integrations,
+              data security posture, and compliance gaps - before a regulatory audit forces the issue.
             </p>
             <Link href="/contact?type=healthcare-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors">
               Book a Clinical System Review
@@ -301,7 +301,7 @@ export default function HealthcarePage() {
             {[
               { num: "01", title: "Clinical Audit", desc: "We map your existing systems, integration gaps, compliance posture, and data flows before any architecture decisions are made.", align: "left" },
               { num: "02", title: "Platform Architecture", desc: "We design for compliance and interoperability: HIPAA controls, FHIR-native data models, and HL7 integration patterns built in from day one.", align: "right" },
-              { num: "03", title: "Build & Validate", desc: "We develop with security, accessibility, and clinical workflow accuracy as primary requirements — not afterthoughts.", align: "left" },
+              { num: "03", title: "Build & Validate", desc: "We develop with security, accessibility, and clinical workflow accuracy as primary requirements - not afterthoughts.", align: "left" },
               { num: "04", title: "Deploy & Monitor", desc: "Staged rollout with clinical workflow validation, staff training support, and continuous monitoring of system performance and data integrity.", align: "right" },
             ].map((step) => (
               <div key={step.num} className={`relative flex mb-16 last:mb-0 ${step.align === "right" ? "justify-end" : "justify-start"}`}>

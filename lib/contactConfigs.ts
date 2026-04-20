@@ -18,15 +18,15 @@ export const contactConfigs: Record<string, ContactConfig> = {
     description:
       "Tell us about your project and we'll get back to you within 24 hours with a clear plan of action.",
     messagePlaceholder:
-      "What are you working on? Share any context — goals, timelines, challenges...",
+      "What are you working on? Share any context - goals, timelines, challenges...",
   },
   "start-project": {
     badge: "New Project",
     heading: "Let's Build\nSomething Great",
     description:
-      "Share your vision and we'll tell you how we can bring it to life — architecture, timeline, and the right team.",
+      "Share your vision and we'll tell you how we can bring it to life - architecture, timeline, and the right team.",
     messagePlaceholder:
-      "Describe your project — what problem it solves, who uses it, and what success looks like...",
+      "Describe your project - what problem it solves, who uses it, and what success looks like...",
     contextLabel: "Estimated Budget",
     contextFieldType: "select",
     contextOptions: [
@@ -70,7 +70,7 @@ export const contactConfigs: Record<string, ContactConfig> = {
     badge: "Staff Augmentation",
     heading: "Embed Expert\nEngineers",
     description:
-      "Pre-vetted, senior engineers embedded directly into your team — on-demand and ready to ship from day one.",
+      "Pre-vetted, senior engineers embedded directly into your team - on-demand and ready to ship from day one.",
     messagePlaceholder:
       "Tell us about your team, what you're building, and the gaps you need to fill...",
     contextLabel: "Skills / Roles Needed",
@@ -127,7 +127,7 @@ export const contactConfigs: Record<string, ContactConfig> = {
     badge: "AI & Machine Learning",
     heading: "Talk to an\nAI Engineer",
     description:
-      "End-to-end ML pipelines, LLM integrations, and intelligent automation — built around your data and workflows.",
+      "End-to-end ML pipelines, LLM integrations, and intelligent automation - built around your data and workflows.",
     messagePlaceholder:
       "Describe the problem you're trying to solve with AI/ML, your data availability, and current system context...",
     contextLabel: "Use Case",
@@ -145,9 +145,9 @@ export const contactConfigs: Record<string, ContactConfig> = {
     badge: "Custom Software",
     heading: "Build\nProduction-Ready\nSoftware",
     description:
-      "Purpose-built software designed around your goals, your users, and your business — from architecture to production.",
+      "Purpose-built software designed around your goals, your users, and your business - from architecture to production.",
     messagePlaceholder:
-      "Describe the software you need — what problem it solves, who uses it, and any technical constraints...",
+      "Describe the software you need - what problem it solves, who uses it, and any technical constraints...",
     contextLabel: "Estimated Budget",
     contextFieldType: "select",
     contextOptions: [

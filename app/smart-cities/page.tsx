@@ -179,7 +179,7 @@ export default function SmartCitiesPage() {
                 </h2>
                 <p className="text-white/40 text-sm leading-relaxed mb-3">
                   Every unmonitored device, every data stream that doesn&apos;t feed the right dashboard,
-                  every infrastructure failure that wasn&apos;t predicted — that&apos;s compounding operational
+                  every infrastructure failure that wasn&apos;t predicted - that&apos;s compounding operational
                   risk and wasted public resource.
                 </p>
                 <p className="text-white/40 text-sm leading-relaxed mb-7">
@@ -246,8 +246,8 @@ export default function SmartCitiesPage() {
               <span className="text-white/30">generating data or generating insight?</span>
             </h2>
             <p className="text-white/45 leading-relaxed mb-8 max-w-sm">
-              We audit your IoT architecture end-to-end — device management, data pipelines, and
-              operational dashboards — to identify the gaps between data collected and decisions made.
+              We audit your IoT architecture end-to-end - device management, data pipelines, and
+              operational dashboards - to identify the gaps between data collected and decisions made.
             </p>
             <Link href="/contact?type=smart-cities-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors">
               Book an IoT Architecture Review
@@ -321,7 +321,7 @@ export default function SmartCitiesPage() {
             {[
               { num: "01", title: "IoT Audit", desc: "We map your existing device estate, data flows, integration gaps, and the operational blind spots that create inefficiency and risk.", align: "left" },
               { num: "02", title: "Platform Architecture", desc: "We design for scale and resilience: edge-first processing, time-series data infrastructure, and real-time control planes that handle millions of events.", align: "right" },
-              { num: "03", title: "Build & Deploy", desc: "We develop with device security, data integrity, and regulatory compliance built in — not bolted on after deployment.", align: "left" },
+              { num: "03", title: "Build & Deploy", desc: "We develop with device security, data integrity, and regulatory compliance built in - not bolted on after deployment.", align: "left" },
               { num: "04", title: "Monitor & Expand", desc: "Phased device onboarding with operational dashboards live from day one, then continuous expansion of the connected infrastructure.", align: "right" },
             ].map((step) => (
               <div key={step.num} className={`relative flex mb-16 last:mb-0 ${step.align === "right" ? "justify-end" : "justify-start"}`}>

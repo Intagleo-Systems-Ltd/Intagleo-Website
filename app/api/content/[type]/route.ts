@@ -7,7 +7,7 @@ import { verifyAuthCookie } from "@/lib/auth";
 const CONTENT_ROOT = path.join(process.cwd(), "content");
 const VALID_TYPES = ["blog", "case-studies", "testimonials"];
 
-// GET /api/content/[type] — list all items
+// GET /api/content/[type] - list all items
 export async function GET(
   request: NextRequest,
   { params }: { params: { type: string } }
@@ -33,7 +33,7 @@ export async function GET(
   return NextResponse.json({ items });
 }
 
-// POST /api/content/[type] — create new item
+// POST /api/content/[type] - create new item
 export async function POST(
   request: NextRequest,
   { params }: { params: { type: string } }

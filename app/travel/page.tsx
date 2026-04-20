@@ -172,7 +172,7 @@ export default function TravelPage() {
                 </h2>
                 <p className="text-white/40 text-sm leading-relaxed mb-3">
                   Every extra second at search, every failed availability check, every upsell opportunity
-                  missed — that&apos;s compounding revenue loss hidden behind your booking funnel.
+                  missed - that&apos;s compounding revenue loss hidden behind your booking funnel.
                 </p>
                 <p className="text-white/40 text-sm leading-relaxed mb-7">
                   We&apos;ve built travel platforms for OTAs, airlines, and tour operators at scale, focused
@@ -238,8 +238,8 @@ export default function TravelPage() {
               <span className="text-white/30">losing travellers mid-journey?</span>
             </h2>
             <p className="text-white/45 leading-relaxed mb-8 max-w-sm">
-              We audit your entire travel tech stack — booking engine latency, GDS connectivity,
-              and supplier fallback logic — to pinpoint exactly where travellers drop off and revenue leaks.
+              We audit your entire travel tech stack - booking engine latency, GDS connectivity,
+              and supplier fallback logic - to pinpoint exactly where travellers drop off and revenue leaks.
             </p>
             <Link href="/contact?type=travel-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors">
               Book a Tech Stack Review

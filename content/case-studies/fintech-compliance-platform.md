@@ -2,7 +2,7 @@
 slug: "fintech-compliance-platform"
 title: "Building a Real-Time Compliance Engine for a Tier-1 Fintech"
 rive_url: "https://cdn.prod.website-files.com/66e53bf67b6fc1646ce0777e/67ed2478edc45f9d6824a0f1_home___stack___customers.riv"
-client: "Confidential — Tier-1 Fintech"
+client: "Confidential - Tier-1 Fintech"
 industry: "Financial Services"
 cover_image: "https://images.unsplash.com/photo-1559526324-593bc073d938?w=1200&q=80&auto=format&fit=crop"
 pages:
@@ -18,7 +18,7 @@ seo_description: "How Intagleo built a real-time compliance engine that reduced 
 
 ![Fintech compliance platform dashboard showing KYC/AML screening workflows](https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=80&auto=format&fit=crop)
 
-In financial services, compliance is not optional — but the processes surrounding it often lag a decade behind the technology they're meant to govern. Our client was losing institutional deals to competitors because their onboarding process was simply too slow.
+In financial services, compliance is not optional - but the processes surrounding it often lag a decade behind the technology they're meant to govern. Our client was losing institutional deals to competitors because their onboarding process was simply too slow.
 
 ## Architecture
 
@@ -35,4 +35,4 @@ Automated generation of STRs, SARs, and internal audit reports. All outputs are 
 
 ## Regulatory Considerations
 
-We worked directly with the client's Chief Compliance Officer and external legal counsel throughout the build. Every design decision was documented against the relevant regulatory requirement — creating a compliance-by-design artefact that has since been shared with regulators as a model implementation.
+We worked directly with the client's Chief Compliance Officer and external legal counsel throughout the build. Every design decision was documented against the relevant regulatory requirement - creating a compliance-by-design artefact that has since been shared with regulators as a model implementation.

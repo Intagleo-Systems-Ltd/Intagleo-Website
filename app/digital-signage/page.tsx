@@ -287,7 +287,7 @@ export default function DigitalSignagePage() {
                 {/* Grid bg */}
                 <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Cpath d='M40 0H0v1h40V0zM0 40V0H1v40H0z' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E\")" }} />
 
-                {/* Mockup — constrained so annotations never overlap */}
+                {/* Mockup - constrained so annotations never overlap */}
                 <div className="relative z-10 w-full" style={{ maxWidth: "calc(100% - 180px)" }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -297,7 +297,7 @@ export default function DigitalSignagePage() {
                   />
                 </div>
 
-                {/* Corner annotations — only top + bottom, no z-fight with items */}
+                {/* Corner annotations - only top + bottom, no z-fight with items */}
                 {techCaps[activeTab].annotations.map((a) => (
                   <div
                     key={a.pos}
@@ -313,7 +313,7 @@ export default function DigitalSignagePage() {
                 ))}
               </div>
 
-              {/* Items strip — completely separate row, zero overlap */}
+              {/* Items strip - completely separate row, zero overlap */}
               <div className="bg-[#13141a] border border-white/[0.07] border-t-0 rounded-b-2xl px-6 py-4 flex flex-wrap gap-x-6 gap-y-2">
                 {techCaps[activeTab].items.map((item) => (
                   <span key={item} className="flex items-center gap-2 text-xs text-white/55">
@@ -355,7 +355,7 @@ export default function DigitalSignagePage() {
           <div className="relative h-72 md:h-96 flex items-center justify-center select-none">
             <div className="relative w-full h-full">
 
-              {/* Large portrait — left-center */}
+              {/* Large portrait - left-center */}
               <div className="absolute overflow-hidden" style={{ left: "12%", top: "4%", width: "28%", height: "72%", border: "2px solid rgba(255,255,255,0.22)", borderRadius: "3px", boxShadow: "0 8px 32px rgba(0,0,0,0.5)" }}>
                 {screenSlides[0].map((src, i) => (
                   // eslint-disable-next-line @next/next/no-img-element
@@ -364,7 +364,7 @@ export default function DigitalSignagePage() {
                 <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.55) 100%)" }} />
               </div>
 
-              {/* Small landscape — far left, lower */}
+              {/* Small landscape - far left, lower */}
               <div className="absolute overflow-hidden" style={{ left: "2%", top: "60%", width: "18%", height: "26%", border: "2px solid rgba(255,255,255,0.18)", borderRadius: "3px", boxShadow: "0 8px 24px rgba(0,0,0,0.5)" }}>
                 {screenSlides[1].map((src, i) => (
                   // eslint-disable-next-line @next/next/no-img-element
@@ -373,7 +373,7 @@ export default function DigitalSignagePage() {
                 <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(0,0,0,0.2)" }} />
               </div>
 
-              {/* Medium square — center, overlapping portrait */}
+              {/* Medium square - center, overlapping portrait */}
               <div className="absolute overflow-hidden" style={{ left: "30%", top: "38%", width: "32%", height: "46%", border: "2px solid rgba(255,255,255,0.22)", borderRadius: "3px", boxShadow: "0 8px 32px rgba(0,0,0,0.6)" }}>
                 {screenSlides[2].map((src, i) => (
                   // eslint-disable-next-line @next/next/no-img-element
@@ -391,7 +391,7 @@ export default function DigitalSignagePage() {
                 <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.4) 100%)" }} />
               </div>
 
-              {/* Wide landscape — right, middle */}
+              {/* Wide landscape - right, middle */}
               <div className="absolute overflow-hidden" style={{ left: "50%", top: "40%", width: "46%", height: "30%", border: "2px solid rgba(255,255,255,0.22)", borderRadius: "3px", boxShadow: "0 8px 32px rgba(0,0,0,0.6)" }}>
                 {screenSlides[4].map((src, i) => (
                   // eslint-disable-next-line @next/next/no-img-element
@@ -439,7 +439,7 @@ export default function DigitalSignagePage() {
 
             {[
               { num: "01", title: "Network Audit",      desc: "We map your existing hardware, player versions, content workflows, and failure points before writing a single line of code.",     align: "left"  },
-              { num: "02", title: "Architecture Design", desc: "We define the CMS structure, device management layer, and data flows — built to scale from hundreds to tens of thousands of screens.", align: "right" },
+              { num: "02", title: "Architecture Design", desc: "We define the CMS structure, device management layer, and data flows - built to scale from hundreds to tens of thousands of screens.", align: "right" },
               { num: "03", title: "Build & Harden",      desc: "We develop with resilience as the baseline: offline-first players, automated recovery, OTA update pipelines, and end-to-end monitoring.", align: "left"  },
               { num: "04", title: "Launch & Operate",    desc: "We migrate your network to the new platform with zero dark screens, then provide ongoing performance oversight and continuous improvement.", align: "right" },
             ].map((step) => (
@@ -543,7 +543,7 @@ export default function DigitalSignagePage() {
           {/* 3-col bento grid */}
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr] md:grid-rows-[1fr_1fr] gap-3">
 
-            {/* Left: large square — "20+" */}
+            {/* Left: large square - "20+" */}
             <div
               className="md:row-span-2 relative rounded-2xl overflow-hidden flex flex-col justify-center items-center p-10 min-h-[200px] md:min-h-0"
               style={{ background: "linear-gradient(135deg, #1c1d24 0%, #13141a 100%)" }}
@@ -567,7 +567,7 @@ export default function DigitalSignagePage() {
               </div>
             </div>
 
-            {/* Right: large square — "4" */}
+            {/* Right: large square - "4" */}
             <div
               className="md:row-span-2 relative rounded-2xl overflow-hidden flex flex-col justify-center items-center p-10 min-h-[200px] md:min-h-0"
               style={{ background: "linear-gradient(135deg, #1c1d24 0%, #13141a 100%)" }}

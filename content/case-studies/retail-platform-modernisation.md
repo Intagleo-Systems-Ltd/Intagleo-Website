@@ -26,15 +26,15 @@ The monolith contained over 1.2 million lines of code with no clear domain bound
 
 ## Our Approach
 
-We applied a strangler-fig pattern — building new services around the legacy core while systematically migrating traffic. This let us ship improvements continuously without a risky big-bang rewrite.
+We applied a strangler-fig pattern - building new services around the legacy core while systematically migrating traffic. This let us ship improvements continuously without a risky big-bang rewrite.
 
-### Phase 1 — Carve Out the Product Catalogue
+### Phase 1 - Carve Out the Product Catalogue
 The product catalogue was the highest-read domain. We extracted it first, built a dedicated service backed by Elasticsearch, and cached aggressively at the edge. This alone reduced database load by 60%.
 
-### Phase 2 — Checkout and Payments
-We rebuilt the checkout flow as a stateless saga — each step emitting events consumed by downstream services. Payments moved to a PCI-compliant microservice with retry logic and idempotency guarantees.
+### Phase 2 - Checkout and Payments
+We rebuilt the checkout flow as a stateless saga - each step emitting events consumed by downstream services. Payments moved to a PCI-compliant microservice with retry logic and idempotency guarantees.
 
-### Phase 3 — Decommission
+### Phase 3 - Decommission
 With all traffic flowing through the new services, we ran both systems in parallel for one trading cycle before decommissioning the legacy infrastructure.
 
 ## Outcome

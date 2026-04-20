@@ -178,7 +178,7 @@ export default function HrRecruitmentPage() {
                 </h2>
                 <p className="text-white/40 text-sm leading-relaxed mb-3">
                   Every CV that falls through the cracks, every interview that takes two weeks to schedule,
-                  every onboarding form still handled over email — that&apos;s compounding talent loss
+                  every onboarding form still handled over email - that&apos;s compounding talent loss
                   and HR overhead that doesn&apos;t show up until retention data does.
                 </p>
                 <p className="text-white/40 text-sm leading-relaxed mb-7">
@@ -245,7 +245,7 @@ export default function HrRecruitmentPage() {
               <span className="text-white/30">losing candidates at every stage?</span>
             </h2>
             <p className="text-white/45 leading-relaxed mb-8 max-w-sm">
-              We conduct deep-dive HR tech reviews — mapping your ATS configuration, HRIS integration
+              We conduct deep-dive HR tech reviews - mapping your ATS configuration, HRIS integration
               gaps, and the hiring workflow friction that&apos;s adding days to your time-to-offer.
             </p>
             <Link href="/contact?type=hr-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors">

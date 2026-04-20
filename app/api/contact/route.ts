@@ -139,7 +139,7 @@ function notificationHtml(fields: {
     ["Type", fields.badge],
     ["Name", fields.name],
     ["Email", `<a href="mailto:${fields.email}" style="color:#e8341c;">${fields.email}</a>`],
-    ["Company", fields.company || "—"],
+    ["Company", fields.company || "-"],
     ...(fields.context ? [["Context", fields.context]] : []),
   ];
 
@@ -182,7 +182,7 @@ function notificationHtml(fields: {
 
               <!-- Reply CTA -->
               <div style="margin-top:24px;">
-                <a href="mailto:${fields.email}?subject=Re: Your inquiry — Intagleo" style="display:inline-block;background:#e8341c;color:white;text-decoration:none;padding:11px 24px;border-radius:100px;font-size:13px;font-weight:500;">
+                <a href="mailto:${fields.email}?subject=Re: Your inquiry - Intagleo" style="display:inline-block;background:#e8341c;color:white;text-decoration:none;padding:11px 24px;border-radius:100px;font-size:13px;font-weight:500;">
                   Reply to ${fields.name}
                 </a>
               </div>
@@ -191,7 +191,7 @@ function notificationHtml(fields: {
           <tr>
             <td style="padding:16px 40px;border-top:1px solid rgba(255,255,255,0.06);">
               <p style="color:rgba(255,255,255,0.20);font-size:12px;margin:0;">
-                Intagleo internal notification — do not forward.
+                Intagleo internal notification - do not forward.
               </p>
             </td>
           </tr>
@@ -232,7 +232,7 @@ export async function POST(request: Request) {
     const { error: confErr } = await resend.emails.send({
       from: `Intagleo <${FROM_EMAIL}>`,
       to: [email],
-      subject: `We've received your request — Intagleo`,
+      subject: `We've received your request - Intagleo`,
       html: confirmationHtml(name, badge),
     });
 
@@ -245,7 +245,7 @@ export async function POST(request: Request) {
       from: `Intagleo Contact <${FROM_EMAIL}>`,
       to: NOTIFY_EMAILS,
       replyTo: email,
-      subject: `New contact: ${badge} — ${name}${company ? ` (${company})` : ""}`,
+      subject: `New contact: ${badge} - ${name}${company ? ` (${company})` : ""}`,
       html: notificationHtml({
         name,
         email,

@@ -24,13 +24,13 @@ When a flight was delayed or a gate changed, operations staff had to log in to t
 
 ## Integration Architecture
 
-**AODB real-time feed** — the Airport Operational Database is the system of record for all flight movements. We implemented an AODB message listener that processes SSIM/AIDX format flight messages and translates them to display update events within 5 seconds.
+**AODB real-time feed** - the Airport Operational Database is the system of record for all flight movements. We implemented an AODB message listener that processes SSIM/AIDX format flight messages and translates them to display update events within 5 seconds.
 
-**Cascade logic** — a gate change triggers a cascade: the original gate's screens update to show the gate change message, the new gate's screens update to add the flight, the departures board updates, and the relevant check-in desk display updates. All in a single atomic operation.
+**Cascade logic** - a gate change triggers a cascade: the original gate's screens update to show the gate change message, the new gate's screens update to add the flight, the departures board updates, and the relevant check-in desk display updates. All in a single atomic operation.
 
-**Passenger wayfinding integration** — screen content adapts to passenger location context: screens near security show queue times; screens at gates show boarding status; screens in baggage reclaim show carousel assignments.
+**Passenger wayfinding integration** - screen content adapts to passenger location context: screens near security show queue times; screens at gates show boarding status; screens in baggage reclaim show carousel assignments.
 
-**Emergency broadcast** — a single-button emergency override broadcasts predefined messages to all screens simultaneously, bypassing normal content scheduling. Required for security alerts and evacuation scenarios.
+**Emergency broadcast** - a single-button emergency override broadcasts predefined messages to all screens simultaneously, bypassing normal content scheduling. Required for security alerts and evacuation scenarios.
 
 ## Operational Impact
 

@@ -154,7 +154,7 @@ Total: 12 weeks to audit-ready. Another 4-6 weeks for actual SOC 2 audit (extern
 
 ## One Surprising Finding
 
-During audit preparation, we found the #1 security risk wasn't technical—it was policy.
+During audit preparation, we found the #1 security risk wasn't technical-it was policy.
 
 Developers had database credentials in their laptops. One stolen laptop = data breach. We fixed this by:
 - Moving all secrets to Vault

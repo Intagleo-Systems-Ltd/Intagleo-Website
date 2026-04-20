@@ -148,7 +148,7 @@ export default function FacilitiesManagementPage() {
                 </h2>
                 <p className="text-white/40 text-sm leading-relaxed mb-3">
                   Every manual override your team has built, every sensor that needs physical inspection,
-                  every maintenance ticket handled by spreadsheet — that&apos;s operational debt compounding.
+                  every maintenance ticket handled by spreadsheet - that&apos;s operational debt compounding.
                 </p>
                 <p className="text-white/40 text-sm leading-relaxed mb-7">
                   We&apos;ve built facilities management software for operators spanning hundreds of buildings,
@@ -215,7 +215,7 @@ export default function FacilitiesManagementPage() {
             </h2>
             <p className="text-white/45 leading-relaxed mb-8 max-w-sm">
               We offer deep-dive platform architecture reviews to identify inefficiencies in your
-              building management stack — from legacy BMS integrations to IoT sensor overload.
+              building management stack - from legacy BMS integrations to IoT sensor overload.
             </p>
             <Link href="/contact?type=facilities-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors">
               Book an Architecture Review

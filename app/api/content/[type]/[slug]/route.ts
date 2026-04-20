@@ -29,7 +29,7 @@ export async function GET(
   return NextResponse.json({ slug, frontmatter: data, content });
 }
 
-// PUT /api/content/[type]/[slug] — update
+// PUT /api/content/[type]/[slug] - update
 export async function PUT(
   request: NextRequest,
   { params }: { params: { type: string; slug: string } }

@@ -146,7 +146,7 @@ export default function TransportationPage() {
                 </h2>
                 <p className="text-white/40 text-sm leading-relaxed mb-3">
                   Every manual dispatch decision, every route that isn&apos;t optimised, every tracking update
-                  that arrives late — that&apos;s operational cost compounding across your fleet.
+                  that arrives late - that&apos;s operational cost compounding across your fleet.
                 </p>
                 <p className="text-white/40 text-sm leading-relaxed mb-7">
                   We&apos;ve built logistics platforms handling millions of shipments, focusing on the real-time
@@ -212,8 +212,8 @@ export default function TransportationPage() {
               <span className="text-white/30">getting lost in transit?</span>
             </h2>
             <p className="text-white/45 leading-relaxed mb-8 max-w-sm">
-              We review your logistics platform end-to-end — from tracking latency to dispatch
-              bottlenecks — and deliver a roadmap to handle the complexity of a growing network.
+              We review your logistics platform end-to-end - from tracking latency to dispatch
+              bottlenecks - and deliver a roadmap to handle the complexity of a growing network.
             </p>
             <Link href="/contact?type=transport-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors">
               Book a Logistics Review

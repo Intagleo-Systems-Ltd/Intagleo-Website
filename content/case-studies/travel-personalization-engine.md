@@ -4,7 +4,7 @@ slug: "travel-personalization-engine"
 client: "Solara Holidays"
 industry: "Travel / Data & AI"
 cover_image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&q=80&auto=format&fit=crop"
-challenge: "Solara, a mid-market package holiday operator, had a 6.3% ancillary attachment rate — far below the industry benchmark of 18–22%. Post-booking upsell emails had a 2.1% click rate. Customer data was held in 4 disconnected systems (booking engine, CRM, email platform, customer service). No personalisation capability."
+challenge: "Solara, a mid-market package holiday operator, had a 6.3% ancillary attachment rate - far below the industry benchmark of 18–22%. Post-booking upsell emails had a 2.1% click rate. Customer data was held in 4 disconnected systems (booking engine, CRM, email platform, customer service). No personalisation capability."
 solution: "We built a customer data platform (CDP) unifying all four data sources, a behaviour-based segmentation model, and a real-time personalisation layer serving individualised upsell recommendations across email, the customer portal, and the mobile app."
 results: "Ancillary attachment rate increased from 6.3% to 16.8% in 9 months. Post-booking email click rate increased from 2.1% to 9.4%. Upsell revenue increased by £2.1M in the first year. Airport transfer attachment rate (the highest-margin ancillary) increased from 11% to 34%."
 seo_description: "How Intagleo built a travel personalisation engine for Solara Holidays, increasing ancillary attachment from 6.3% to 16.8% and generating £2.1M in additional upsell revenue."
@@ -16,7 +16,7 @@ pages:
 
 ## The Ancillary Revenue Gap
 
-In package holiday operations, ancillary revenue — transfers, seat upgrades, travel insurance, excursions, baggage — can represent 30–40% of total gross profit. Solara was leaving significant margin on the table not because customers didn't want these services, but because the recommendations were generic and poorly timed.
+In package holiday operations, ancillary revenue - transfers, seat upgrades, travel insurance, excursions, baggage - can represent 30–40% of total gross profit. Solara was leaving significant margin on the table not because customers didn't want these services, but because the recommendations were generic and poorly timed.
 
 A customer travelling to the Maldives was receiving the same post-booking email as a customer going to Benidorm. Transfer upsells were going to customers who'd already booked transfers at checkout.
 

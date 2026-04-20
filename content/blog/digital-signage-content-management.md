@@ -4,7 +4,7 @@ date: "2026-03-22"
 author: "Intagleo Engineering"
 cover_image: "https://images.unsplash.com/photo-1567361808960-dec9cb578182?w=1200&q=80&auto=format&fit=crop"
 excerpt: "Managing thousands of digital screens across multiple locations requires more than a simple playlist editor. Here's how to architect a CMS that scales."
-seo_description: "Learn how to build a scalable CMS for enterprise digital signage networks — from content scheduling and targeting rules to real-time updates and analytics."
+seo_description: "Learn how to build a scalable CMS for enterprise digital signage networks - from content scheduling and targeting rules to real-time updates and analytics."
 show_on_homepage: false
 pages:
   - digital-signage
@@ -26,9 +26,9 @@ A national retailer with 3,000 screens across 500 locations has fundamentally di
 Centralised push models break down at scale. The right approach uses a publish-subscribe pattern: screens subscribe to content channels, and the CMS publishes content updates as events. Each player maintains a local cache so network disruptions don't black out screens.
 
 Key decisions:
-- **CDN-backed asset delivery** — binary content (video, images) served from edge nodes closest to each screen
-- **Delta synchronisation** — only changed assets are transmitted, not full playlists
-- **Offline-first players** — screens can run autonomously for hours without connectivity
+- **CDN-backed asset delivery** - binary content (video, images) served from edge nodes closest to each screen
+- **Delta synchronisation** - only changed assets are transmitted, not full playlists
+- **Offline-first players** - screens can run autonomously for hours without connectivity
 
 **Scheduling Engine**
 
@@ -40,7 +40,7 @@ Enterprise signage needs rule-based scheduling that goes beyond "play this at 9a
 
 **Multi-tenant Content Governance**
 
-Large networks typically involve multiple content stakeholders — corporate marketing, regional teams, local management. The CMS must enforce a hierarchy: corporate can override everything, regions can override stores, stores can customise within defined bounds.
+Large networks typically involve multiple content stakeholders - corporate marketing, regional teams, local management. The CMS must enforce a hierarchy: corporate can override everything, regions can override stores, stores can customise within defined bounds.
 
 ## Monitoring and Observability
 

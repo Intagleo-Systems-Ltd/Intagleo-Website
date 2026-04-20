@@ -4,7 +4,7 @@ date: "2026-01-08"
 author: "Intagleo Engineering"
 cover_image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&q=80&auto=format&fit=crop"
 excerpt: "A property portal that goes down during a seasonal peak loses listings and user trust permanently. Here's the architecture that keeps real estate platforms available and fast under load."
-seo_description: "Architecture guide for high-availability property portals — search infrastructure, CDN strategy, photo storage, agent CRM integration, and scaling for seasonal traffic peaks."
+seo_description: "Architecture guide for high-availability property portals - search infrastructure, CDN strategy, photo storage, agent CRM integration, and scaling for seasonal traffic peaks."
 show_on_homepage: false
 pages:
   - real-estate
@@ -26,9 +26,9 @@ Property search is the core workload of a portal. It combines full-text search (
 
 **Elasticsearch** is the dominant choice for property search: it handles all three query types, scales horizontally, and supports real-time index updates as listings are added or modified. Key design decisions:
 
-- **Shard count** — size shards to 20–40GB for optimal query performance
-- **Dedicated coordinating nodes** — separate request routing from data nodes under heavy search load
-- **Search templates** — parametrised queries improve security and enable query plan caching
+- **Shard count** - size shards to 20–40GB for optimal query performance
+- **Dedicated coordinating nodes** - separate request routing from data nodes under heavy search load
+- **Search templates** - parametrised queries improve security and enable query plan caching
 
 ## Photo and Media Pipeline
 

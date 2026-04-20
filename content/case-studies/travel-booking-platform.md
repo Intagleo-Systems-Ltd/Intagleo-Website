@@ -24,13 +24,13 @@ Meridiem's specialist focus on long-haul and multi-destination travel made this 
 
 ## Supplier Integration Architecture
 
-**GDS flight integration** — Amadeus Travel APIs for flight search, availability, pricing, and booking. Handles complex multi-city routings, mixed-cabin itineraries, and fare family upsell options. Real-time seat map and ancillary selection (luggage, seats, meals).
+**GDS flight integration** - Amadeus Travel APIs for flight search, availability, pricing, and booking. Handles complex multi-city routings, mixed-cabin itineraries, and fare family upsell options. Real-time seat map and ancillary selection (luggage, seats, meals).
 
-**Hotel aggregation** — Hotelbeds B2B API as primary, with Booking.com Affiliate API as secondary for destinations with limited Hotelbeds coverage. Room-level content normalisation (combining supplier descriptions into a consistent schema).
+**Hotel aggregation** - Hotelbeds B2B API as primary, with Booking.com Affiliate API as secondary for destinations with limited Hotelbeds coverage. Room-level content normalisation (combining supplier descriptions into a consistent schema).
 
-**Tours and experiences** — Viator API for in-destination experiences and excursions. Transfers via Welcome Pickups and HolidayTaxis APIs.
+**Tours and experiences** - Viator API for in-destination experiences and excursions. Transfers via Welcome Pickups and HolidayTaxis APIs.
 
-**Supplier cache layer** — search results cached at 90-second TTL per origin/destination/date combination, reducing GDS query costs by 73% while maintaining acceptable freshness.
+**Supplier cache layer** - search results cached at 90-second TTL per origin/destination/date combination, reducing GDS query costs by 73% while maintaining acceptable freshness.
 
 ## Dynamic Packaging Engine
 

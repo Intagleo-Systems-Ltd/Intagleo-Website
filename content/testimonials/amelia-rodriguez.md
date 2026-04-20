@@ -7,4 +7,4 @@ photo: "/testimonials/amelia.jpg"
 show_on_homepage: true
 ---
 
-We were spending more time fighting infrastructure than building features. Intagleo didn't just fix our systems—they taught us how to think about infrastructure. Six months later, we're 3x faster.
+We were spending more time fighting infrastructure than building features. Intagleo didn't just fix our systems-they taught us how to think about infrastructure. Six months later, we're 3x faster.

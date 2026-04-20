@@ -347,7 +347,7 @@ export default function AITransformationPage() {
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      {/* WHAT CHANGES — before/after scenarios                              */}
+      {/* WHAT CHANGES - before/after scenarios                              */}
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section id="what-changes" className="relative section-padding py-24">
         <div

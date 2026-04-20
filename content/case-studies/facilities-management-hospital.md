@@ -18,17 +18,17 @@ pages:
 
 NHS estates compliance is not optional. HTM 03-01 requires continuous monitoring of airborne contaminants, temperature, humidity, and pressure differentials in critical care areas, operating theatres, isolation rooms, and pharmacies. Manual recording created daily administrative burden and audit risk.
 
-The smart building project was justified on compliance automation alone — energy savings were the bonus.
+The smart building project was justified on compliance automation alone - energy savings were the bonus.
 
 ![Hospital facilities management dashboard showing environmental monitoring and energy consumption by ward](https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80&auto=format&fit=crop)
 
 ## Sensor Infrastructure
 
-**Critical care environmental monitoring** — temperature, humidity, pressure differential, and particulate sensors in all 28 critical areas. Readings recorded every 5 minutes; automatic alert on exceedance; audit-trail stored in tamper-evident log.
+**Critical care environmental monitoring** - temperature, humidity, pressure differential, and particulate sensors in all 28 critical areas. Readings recorded every 5 minutes; automatic alert on exceedance; audit-trail stored in tamper-evident log.
 
-**Energy sub-metering** — 180 smart meters at department and system level. Previously, the hospital had a single utility meter. Sub-metering revealed that the main catering kitchen was consuming 23% of total site electricity — a target for significant reduction.
+**Energy sub-metering** - 180 smart meters at department and system level. Previously, the hospital had a single utility meter. Sub-metering revealed that the main catering kitchen was consuming 23% of total site electricity - a target for significant reduction.
 
-**BMS integration** — the existing Siemens Desigo BMS was integrated via BACnet, exposing setpoint control and equipment status to the central platform. Scheduled setback strategies for nights and weekends, previously requiring manual BMS changes, are now automated.
+**BMS integration** - the existing Siemens Desigo BMS was integrated via BACnet, exposing setpoint control and equipment status to the central platform. Scheduled setback strategies for nights and weekends, previously requiring manual BMS changes, are now automated.
 
 ## Energy Reduction Programme
 

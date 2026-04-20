@@ -16,7 +16,7 @@ pages:
 
 ## The Cost of Slow Hiring in Retail
 
-A vacant sales assistant role in a high-traffic retail environment costs approximately £180 per day in lost revenue and overtime for existing staff. With 600 vacancies during peak periods, Stratton was losing £108,000 per day. The bottleneck was not candidate availability — it was process speed.
+A vacant sales assistant role in a high-traffic retail environment costs approximately £180 per day in lost revenue and overtime for existing staff. With 600 vacancies during peak periods, Stratton was losing £108,000 per day. The bottleneck was not candidate availability - it was process speed.
 
 The previous ATS had been implemented in 2013. It had no mobile application, required candidates to create accounts before applying, and had no integration with modern job boards.
 
@@ -24,13 +24,13 @@ The previous ATS had been implemented in 2013. It had no mobile application, req
 
 ## Platform Architecture
 
-**Candidate application layer** — mobile-first application flow requiring no account creation. One-page application with CV upload (optional — structured questions can substitute). Apply via LinkedIn single sign-on. Average completion time: 4 minutes.
+**Candidate application layer** - mobile-first application flow requiring no account creation. One-page application with CV upload (optional - structured questions can substitute). Apply via LinkedIn single sign-on. Average completion time: 4 minutes.
 
-**Multi-board distribution** — single job posting publishes automatically to Indeed, Reed, Totaljobs, CV-Library, and 10 additional boards via an aggregated posting API. Board performance tracked at vacancy level.
+**Multi-board distribution** - single job posting publishes automatically to Indeed, Reed, Totaljobs, CV-Library, and 10 additional boards via an aggregated posting API. Board performance tracked at vacancy level.
 
-**AI screening engine** — CV and application response analysis against a role profile, scoring candidates on required criteria (availability, location, relevant experience, right-to-work). Configurable threshold score for automatic progression vs. manual review. Screening bias audit: model tested quarterly against demographic distribution of hired candidates.
+**AI screening engine** - CV and application response analysis against a role profile, scoring candidates on required criteria (availability, location, relevant experience, right-to-work). Configurable threshold score for automatic progression vs. manual review. Screening bias audit: model tested quarterly against demographic distribution of hired candidates.
 
-**Video interview integration** — Spark Hire integration for asynchronous video interviews. High-volume roles use a 3-question structured video screen before hiring manager CV review. Reduces live interview volume by 58%.
+**Video interview integration** - Spark Hire integration for asynchronous video interviews. High-volume roles use a 3-question structured video screen before hiring manager CV review. Reduces live interview volume by 58%.
 
 ## Hiring Manager App
 

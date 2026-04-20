@@ -155,7 +155,7 @@ export default function EdtechPage() {
                 </h2>
                 <p className="text-white/40 text-sm leading-relaxed mb-3">
                   Every clunky course upload, every learner who drops off mid-module, every report that
-                  takes a week to generate — that&apos;s educational debt compounding silently.
+                  takes a week to generate - that&apos;s educational debt compounding silently.
                 </p>
                 <p className="text-white/40 text-sm leading-relaxed mb-7">
                   We&apos;ve built learning platforms serving millions of learners, focusing on the engagement
@@ -221,8 +221,8 @@ export default function EdtechPage() {
               <span className="text-white/30">failing to make the grade?</span>
             </h2>
             <p className="text-white/45 leading-relaxed mb-8 max-w-sm">
-              We conduct deep-dive LMS architecture reviews — examining your content delivery
-              performance, learner data pipelines, and scalability limits — to identify what&apos;s
+              We conduct deep-dive LMS architecture reviews - examining your content delivery
+              performance, learner data pipelines, and scalability limits - to identify what&apos;s
               capping your growth.
             </p>
             <Link href="/contact?type=edtech-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors">

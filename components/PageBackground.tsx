@@ -1,6 +1,6 @@
 /**
  * Subtle ambient gradient layer for the homepage.
- * Fixed-position so the orbs stay anchored as you scroll — giving
+ * Fixed-position so the orbs stay anchored as you scroll - giving
  * a sense of depth without overpowering the content.
  * All colours are the existing site blues (#050914 family) at very low opacity.
  */
@@ -10,7 +10,7 @@ export default function PageBackground() {
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
     >
-      {/* Top-right — large cool-blue halo */}
+      {/* Top-right - large cool-blue halo */}
       <div
         className="absolute"
         style={{
@@ -24,7 +24,7 @@ export default function PageBackground() {
         }}
       />
 
-      {/* Mid-left — deep indigo pulse */}
+      {/* Mid-left - deep indigo pulse */}
       <div
         className="absolute"
         style={{
@@ -38,7 +38,7 @@ export default function PageBackground() {
         }}
       />
 
-      {/* Center — very faint wide wash */}
+      {/* Center - very faint wide wash */}
       <div
         className="absolute"
         style={{
@@ -53,7 +53,7 @@ export default function PageBackground() {
         }}
       />
 
-      {/* Bottom-right — soft blue anchor */}
+      {/* Bottom-right - soft blue anchor */}
       <div
         className="absolute"
         style={{

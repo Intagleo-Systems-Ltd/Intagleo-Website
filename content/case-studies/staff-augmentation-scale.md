@@ -5,7 +5,7 @@ client: "Vaultline Financial"
 industry: "Fintech / Staff Augmentation"
 cover_image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80&auto=format&fit=crop"
 challenge: "Vaultline had closed a £14M Series B and needed to triple engineering capacity within 6 months to hit product commitments to investors. Their 8-person core team was fully occupied on existing features. Traditional hiring would take 8–12 months to yield productive engineers. Their tech stack (Go microservices, React, AWS) required specific expertise that was scarce in their local hiring market."
-solution: "We embedded a team of 14 engineers — 8 senior backend (Go), 4 frontend (React/TypeScript), and 2 DevOps/SRE — alongside Vaultline's core team. Structured onboarding protocol, code review integration, shared sprint ceremonies, and a 90-day knowledge transfer plan ensuring sustainable handover."
+solution: "We embedded a team of 14 engineers - 8 senior backend (Go), 4 frontend (React/TypeScript), and 2 DevOps/SRE - alongside Vaultline's core team. Structured onboarding protocol, code review integration, shared sprint ceremonies, and a 90-day knowledge transfer plan ensuring sustainable handover."
 results: "Team scaled from 8 to 34 engineers (including 12 Intagleo embedded + 14 permanent hires we supported recruiting) within 5 months. Sprint velocity increased 3.1x. 4 major product features delivered on investor-committed timelines. Zero production incidents attributable to team expansion. 8 of 12 embedded engineers offered and accepted permanent roles."
 seo_description: "How Intagleo scaled Vaultline Financial's engineering team from 8 to 34 engineers in 5 months, tripling sprint velocity while maintaining zero production incidents."
 show_on_homepage: false
@@ -34,7 +34,7 @@ This protocol means embedded engineers become productive more slowly initially b
 
 ## Go Microservices at Scale
 
-Vaultline's backend comprised 23 Go microservices with event-driven communication via Apache Kafka. Our backend engineers were selected specifically for Go expertise and financial services domain experience — regulatory reporting patterns, double-entry bookkeeping invariants, and PCI-DSS compliance requirements are not skills that generalise from other stacks.
+Vaultline's backend comprised 23 Go microservices with event-driven communication via Apache Kafka. Our backend engineers were selected specifically for Go expertise and financial services domain experience - regulatory reporting patterns, double-entry bookkeeping invariants, and PCI-DSS compliance requirements are not skills that generalise from other stacks.
 
 New microservices were built following Vaultline's existing patterns (service templates, observability integration, deployment pipeline standards) rather than introducing new approaches, keeping the codebase coherent.
 

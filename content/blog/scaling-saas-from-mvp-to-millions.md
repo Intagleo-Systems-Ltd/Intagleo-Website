@@ -19,7 +19,7 @@ pages:
 
 Most founders ship an MVP that works for 100 users. Then they hit 1,000 concurrent users and everything breaks. We've seen it dozens of times.
 
-The problem isn't the MVP—it's that nobody planned for scale. Code written for 100 users has very different constraints than code written for 100,000.
+The problem isn't the MVP-it's that nobody planned for scale. Code written for 100 users has very different constraints than code written for 100,000.
 
 ## Architecture Decisions That Matter
 

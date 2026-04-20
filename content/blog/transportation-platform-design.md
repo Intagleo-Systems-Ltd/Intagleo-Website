@@ -4,7 +4,7 @@ date: "2026-01-28"
 author: "Intagleo Engineering"
 cover_image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1200&q=80&auto=format&fit=crop"
 excerpt: "A fleet tracking platform that updates every 30 seconds is not real-time. Here's how to architect systems that process thousands of location events per second with sub-second latency."
-seo_description: "Architecture guide for real-time fleet tracking platforms — GPS ingestion at scale, geofencing, ETA calculation, driver apps, and the infrastructure that handles thousands of vehicles."
+seo_description: "Architecture guide for real-time fleet tracking platforms - GPS ingestion at scale, geofencing, ETA calculation, driver apps, and the infrastructure that handles thousands of vehicles."
 show_on_homepage: false
 pages:
   - transportation
@@ -33,11 +33,11 @@ A message queue (Kafka or similar) between the ingestion API and the processing 
 
 ## Geospatial Processing
 
-Real-time geofencing — detecting when a vehicle enters or exits a defined zone — requires efficient spatial indexing. Approaches include:
+Real-time geofencing - detecting when a vehicle enters or exits a defined zone - requires efficient spatial indexing. Approaches include:
 
-- **H3 hexagonal grid indexing** — Uber's open-source library, excellent for fleet-scale geospatial queries
-- **PostGIS** — mature, powerful spatial extension for PostgreSQL; suitable for complex polygon geofencing
-- **Redis Geo** — in-memory geospatial operations for sub-millisecond proximity queries
+- **H3 hexagonal grid indexing** - Uber's open-source library, excellent for fleet-scale geospatial queries
+- **PostGIS** - mature, powerful spatial extension for PostgreSQL; suitable for complex polygon geofencing
+- **Redis Geo** - in-memory geospatial operations for sub-millisecond proximity queries
 
 ETA calculation is computationally intensive: it requires real-time traffic data, historical speed profiles by road segment, and route optimisation. This is typically delegated to a routing engine (OSRM, Valhalla, or a commercial provider) rather than implemented from scratch.
 

@@ -3,8 +3,8 @@ title: "Hyper-Personalised Travel: Using AI to Predict and Serve What Travellers
 date: "2026-02-18"
 author: "Intagleo Engineering"
 cover_image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80&auto=format&fit=crop"
-excerpt: "The best travel platforms don't just respond to searches — they anticipate them. Here's how AI-driven personalisation turns one-time bookers into loyal, high-value travellers."
-seo_description: "How AI personalisation works in travel technology — collaborative filtering, intent prediction, dynamic packaging, loyalty-aware recommendations, and the data infrastructure behind it."
+excerpt: "The best travel platforms don't just respond to searches - they anticipate them. Here's how AI-driven personalisation turns one-time bookers into loyal, high-value travellers."
+seo_description: "How AI personalisation works in travel technology - collaborative filtering, intent prediction, dynamic packaging, loyalty-aware recommendations, and the data infrastructure behind it."
 show_on_homepage: false
 pages:
   - travel
@@ -12,7 +12,7 @@ pages:
   - data-analytics
 ---
 
-The best travel platforms don't just respond to searches — they anticipate them. Here's how AI-driven personalisation turns one-time bookers into loyal, high-value travellers.
+The best travel platforms don't just respond to searches - they anticipate them. Here's how AI-driven personalisation turns one-time bookers into loyal, high-value travellers.
 
 ## The Personalisation Opportunity in Travel
 

@@ -24,22 +24,22 @@ The strategic goal was clear: own the buyer relationship from first search to co
 
 ## Platform Architecture
 
-**Property data layer** — a central property API syncing listings from Hargreaves' back-office in real-time. All listing data (photos, floorplans, EPCs, title information) normalised and served via a GraphQL API consumed by web and mobile frontends.
+**Property data layer** - a central property API syncing listings from Hargreaves' back-office in real-time. All listing data (photos, floorplans, EPCs, title information) normalised and served via a GraphQL API consumed by web and mobile frontends.
 
-**Consumer portal** — Next.js frontend with server-side rendering for SEO. Property search with map-based interface, saved searches with email/push alerts, and virtual viewing scheduling directly from listing pages.
+**Consumer portal** - Next.js frontend with server-side rendering for SEO. Property search with map-based interface, saved searches with email/push alerts, and virtual viewing scheduling directly from listing pages.
 
-**React Native app** — iOS and Android app for buyers and vendors. Buyers receive push notifications for new matching listings. Vendors track their listing views, saved counts, and offer pipeline in real-time.
+**React Native app** - iOS and Android app for buyers and vendors. Buyers receive push notifications for new matching listings. Vendors track their listing views, saved counts, and offer pipeline in real-time.
 
-**Virtual viewing integration** — Matterport 3D scan integration for all properties above £300K. Video viewing scheduling via Calendly integration for live agent-hosted remote viewings.
+**Virtual viewing integration** - Matterport 3D scan integration for all properties above £300K. Video viewing scheduling via Calendly integration for live agent-hosted remote viewings.
 
 ## Digital Offer Management
 
-The offer workflow was the highest-impact feature. Previously, offers were taken by phone and communicated by email — slow, undocumented, and creating disputes about what was agreed.
+The offer workflow was the highest-impact feature. Previously, offers were taken by phone and communicated by email - slow, undocumented, and creating disputes about what was agreed.
 
 The digital offer flow:
 1. Buyer submits offer via app or portal with supporting documents (mortgage AIP, chain status)
 2. Vendor receives push notification with full offer details
-3. Vendor accepts, counters, or declines via app — with audit trail
+3. Vendor accepts, counters, or declines via app - with audit trail
 4. Accepted offer triggers automatic progression into the conveyancing workflow
 
 ## Legacy PMS Migration

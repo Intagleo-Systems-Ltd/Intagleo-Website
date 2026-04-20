@@ -24,13 +24,13 @@ Peak periods meant a queue. Brokers who received terms in 72+ hours often placed
 
 ## What We Built
 
-**Data ingestion pipeline** — API integrations with Dun & Bradstreet, Experian Commercial, OS AddressBase, and the client's claims history database. All data normalised to a canonical risk feature set.
+**Data ingestion pipeline** - API integrations with Dun & Bradstreet, Experian Commercial, OS AddressBase, and the client's claims history database. All data normalised to a canonical risk feature set.
 
-**Risk scoring model** — gradient boosting model trained on 8 years of policy and claims data. Features: industry sector, geographic risk, financials, claims history, property characteristics. Model performance: AUC 0.87 vs. 0.71 for the previous actuarial tables.
+**Risk scoring model** - gradient boosting model trained on 8 years of policy and claims data. Features: industry sector, geographic risk, financials, claims history, property characteristics. Model performance: AUC 0.87 vs. 0.71 for the previous actuarial tables.
 
-**Underwriting recommendation engine** — the model output feeds a rule engine that applies product guidelines, regulatory constraints, and capacity limits to produce a recommendation: approve, refer, or decline, with suggested terms.
+**Underwriting recommendation engine** - the model output feeds a rule engine that applies product guidelines, regulatory constraints, and capacity limits to produce a recommendation: approve, refer, or decline, with suggested terms.
 
-**Referral workflow** — the 22% of cases not approved straight-through are routed to underwriters with a pre-populated review pack: the model's score, the key risk factors flagged, and the relevant reference data. Review time for referred cases: 35 minutes (down from 2.4 days).
+**Referral workflow** - the 22% of cases not approved straight-through are routed to underwriters with a pre-populated review pack: the model's score, the key risk factors flagged, and the relevant reference data. Review time for referred cases: 35 minutes (down from 2.4 days).
 
 ## Outcomes
 

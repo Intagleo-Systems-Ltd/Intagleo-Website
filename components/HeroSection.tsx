@@ -14,7 +14,7 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex flex-col overflow-hidden bg-[#000000]">
 
-      {/* GIF background — full cover */}
+      {/* GIF background - full cover */}
       <div className="absolute inset-0 z-0">
         <img
           src="/hero.gif"
@@ -22,7 +22,7 @@ export default function HeroSection() {
           aria-hidden="true"
           className="w-full h-full object-cover object-center"
         />
-        {/* Overlay — subtle fade at bottom only, GIF fully visible above */}
+        {/* Overlay - subtle fade at bottom only, GIF fully visible above */}
         <div
           className="absolute inset-0"
           style={{
@@ -31,7 +31,7 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* Main content — sits in the upper sky area of the GIF */}
+      {/* Main content - sits in the upper sky area of the GIF */}
       <div className="relative z-10 flex flex-col items-center justify-center flex-1 px-6 text-center pt-28 pb-0">
         <h1
           className="text-white leading-[1.1] tracking-tight mb-6 max-w-4xl drop-shadow-lg font-medium"
@@ -84,7 +84,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Stats — positioned over the dune terrain in the GIF */}
+      {/* Stats - positioned over the dune terrain in the GIF */}
       <div className="relative z-10 mt-auto pb-12 pt-12">
         <div className="flex items-center justify-evenly w-full px-8">
           {stats.flatMap((stat, i) => [

@@ -16,7 +16,7 @@ pages:
 
 ## The Compliance Risk
 
-Kellbridge's compliance training failure was not a learning quality problem — it was a tracking and reporting problem. Completions were happening, but the records were in 7 incompatible systems. When regulators requested evidence that employees had completed specific training, compiling the response required weeks of manual work.
+Kellbridge's compliance training failure was not a learning quality problem - it was a tracking and reporting problem. Completions were happening, but the records were in 7 incompatible systems. When regulators requested evidence that employees had completed specific training, compiling the response required weeks of manual work.
 
 A regulatory fine in one jurisdiction had already cost £340K. The board approved the platform investment to eliminate that risk.
 
@@ -31,7 +31,7 @@ The most technically complex element was the compliance matrix: different regula
 - Generates jurisdiction-specific reports in the format required by each regulator (FCA, BaFin, AMF, MAS, ASIC, etc.)
 - Escalates incomplete mandatory training through the management chain automatically
 
-**xAPI (Tin Can)** replaces SCORM for learning activity tracking, enabling granular completion data beyond simple pass/fail — including time-per-module, answer patterns, and assessment attempts.
+**xAPI (Tin Can)** replaces SCORM for learning activity tracking, enabling granular completion data beyond simple pass/fail - including time-per-module, answer patterns, and assessment attempts.
 
 ## Localisation at Scale
 

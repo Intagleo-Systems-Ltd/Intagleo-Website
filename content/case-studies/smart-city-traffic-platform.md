@@ -24,13 +24,13 @@ The political imperative was air quality compliance. Legal notices from the Envi
 
 ## Sensor Infrastructure
 
-**Inductive loop counters** — installed at 890 approach lanes across 340 junctions, providing per-lane vehicle counts and occupancy at 1-second resolution. Data transmitted via 4G to the central traffic management system.
+**Inductive loop counters** - installed at 890 approach lanes across 340 junctions, providing per-lane vehicle counts and occupancy at 1-second resolution. Data transmitted via 4G to the central traffic management system.
 
-**ANPR cameras** — 186 cameras at key network entry points providing origin-destination data and journey time measurement between camera pairs. Data anonymised at point of capture; only vehicle class and timestamp retained.
+**ANPR cameras** - 186 cameras at key network entry points providing origin-destination data and journey time measurement between camera pairs. Data anonymised at point of capture; only vehicle class and timestamp retained.
 
-**Bus AVL integration** — real-time bus position data from the regional bus operator's AVL system, used to calculate bus delay relative to timetable and trigger priority signal phases.
+**Bus AVL integration** - real-time bus position data from the regional bus operator's AVL system, used to calculate bus delay relative to timetable and trigger priority signal phases.
 
-**Environmental sensors** — NO₂ and particulate sensors at 24 roadside locations, feeding into a real-time air quality index used to trigger low-emission signal strategies during high-pollution episodes.
+**Environmental sensors** - NO₂ and particulate sensors at 24 roadside locations, feeding into a real-time air quality index used to trigger low-emission signal strategies during high-pollution episodes.
 
 ## Adaptive Signal Control
 

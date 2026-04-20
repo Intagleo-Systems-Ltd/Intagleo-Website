@@ -72,13 +72,13 @@ If a $50/month model gets you 90% of the way there, why build a $5000/month neur
 
 ## The Framework We Use
 
-**Stage 1: Discovery (2 weeks)** — Define the problem, validate data availability, quantify ROI.
+**Stage 1: Discovery (2 weeks)** - Define the problem, validate data availability, quantify ROI.
 
-**Stage 2: Prototype (4 weeks)** — Build a baseline model, test against the metric, decide if it's worth pursuing.
+**Stage 2: Prototype (4 weeks)** - Build a baseline model, test against the metric, decide if it's worth pursuing.
 
-**Stage 3: Production (8–12 weeks)** — Build a production-worthy model with monitoring and retraining pipelines.
+**Stage 3: Production (8–12 weeks)** - Build a production-worthy model with monitoring and retraining pipelines.
 
-**Stage 4: Iteration (Ongoing)** — Monitor performance, retrain as data changes, A/B test against previous versions.
+**Stage 4: Iteration (Ongoing)** - Monitor performance, retrain as data changes, A/B test against previous versions.
 
 ---
 

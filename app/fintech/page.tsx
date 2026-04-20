@@ -172,7 +172,7 @@ export default function FintechPage() {
                 </h2>
                 <p className="text-white/40 text-sm leading-relaxed mb-3">
                   Every manual reconciliation step, every KYC bottleneck, every payment failure that
-                  can&apos;t be traced — that&apos;s regulatory risk and operational cost accumulating in the dark.
+                  can&apos;t be traced - that&apos;s regulatory risk and operational cost accumulating in the dark.
                 </p>
                 <p className="text-white/40 text-sm leading-relaxed mb-7">
                   We&apos;ve built financial platforms trusted by institutions processing billions in transactions,
@@ -238,8 +238,8 @@ export default function FintechPage() {
               <span className="text-white/30">inside your payment stack?</span>
             </h2>
             <p className="text-white/45 leading-relaxed mb-8 max-w-sm">
-              We conduct deep-dive fintech architecture reviews — examining your payment rails,
-              KYC/AML workflows, and audit trail integrity — before a regulator or incident forces
+              We conduct deep-dive fintech architecture reviews - examining your payment rails,
+              KYC/AML workflows, and audit trail integrity - before a regulator or incident forces
               the conversation.
             </p>
             <Link href="/contact?type=fintech-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors">
@@ -317,7 +317,7 @@ export default function FintechPage() {
             {[
               { num: "01", title: "Compliance & Tech Audit", desc: "We map your payment architecture, KYC/AML workflows, data residency requirements, and the compliance gaps your current setup creates.", align: "left" },
               { num: "02", title: "Architecture Design", desc: "We design for regulatory confidence: immutable audit trails, real-time transaction monitoring, and payment infrastructure that survives scrutiny.", align: "right" },
-              { num: "03", title: "Build & Certify", desc: "We develop with PCI DSS, SOC 2, and regional financial regulations as primary design constraints — not afterthoughts.", align: "left" },
+              { num: "03", title: "Build & Certify", desc: "We develop with PCI DSS, SOC 2, and regional financial regulations as primary design constraints - not afterthoughts.", align: "left" },
               { num: "04", title: "Deploy & Monitor", desc: "Staged go-live with compliance monitoring live from day one, then continuous improvement of fraud detection and operational efficiency.", align: "right" },
             ].map((step) => (
               <div key={step.num} className={`relative flex mb-16 last:mb-0 ${step.align === "right" ? "justify-end" : "justify-start"}`}>

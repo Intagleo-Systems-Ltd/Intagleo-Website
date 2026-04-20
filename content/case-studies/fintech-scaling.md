@@ -20,7 +20,7 @@ pages:
 
 ![Fintech infrastructure scaling showing transaction volume growth charts](https://images.unsplash.com/photo-1559526324-593bc073d938?w=1200&q=80&auto=format&fit=crop)
 
-FinFlow Systems was a 20-person fintech startup doing everything right—except infrastructure. They were growing fast (100K to 500K daily transactions in 6 months) but their database was struggling.
+FinFlow Systems was a 20-person fintech startup doing everything right-except infrastructure. They were growing fast (100K to 500K daily transactions in 6 months) but their database was struggling.
 
 Key issues:
 - Database timeouts during peak hours (2-3 times daily)

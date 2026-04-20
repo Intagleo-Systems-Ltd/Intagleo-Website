@@ -143,7 +143,7 @@ export default function RealEstatePage() {
                   <span className="text-white/35">Most agencies only realise when a competitor closes first.</span>
                 </h2>
                 <p className="text-white/40 text-sm leading-relaxed mb-3">
-                  Every slow listing update, every missed follow-up, every document chased over email — that&apos;s
+                  Every slow listing update, every missed follow-up, every document chased over email - that&apos;s
                   compounding deal-cycle drag that doesn&apos;t show up until a client walks away.
                 </p>
                 <p className="text-white/40 text-sm leading-relaxed mb-7">
@@ -210,8 +210,8 @@ export default function RealEstatePage() {
               <span className="text-white/30">built on a cracking foundation?</span>
             </h2>
             <p className="text-white/45 leading-relaxed mb-8 max-w-sm">
-              We conduct deep-dive PropTech architecture reviews — examining your listing pipelines,
-              CRM integrations, and transaction workflows — to identify what&apos;s slowing deals down.
+              We conduct deep-dive PropTech architecture reviews - examining your listing pipelines,
+              CRM integrations, and transaction workflows - to identify what&apos;s slowing deals down.
             </p>
             <Link href="/contact?type=real-estate-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors">
               Book a Platform Review
@@ -285,7 +285,7 @@ export default function RealEstatePage() {
             {[
               { num: "01", title: "Platform Audit", desc: "We map your current tech stack, integration points, manual workflow gaps, and the data quality issues that slow your pipeline.", align: "left" },
               { num: "02", title: "Architecture Design", desc: "We design for transaction velocity: real-time listing sync, automated follow-up infrastructure, and document management that removes friction from every close.", align: "right" },
-              { num: "03", title: "Build & Integrate", desc: "We develop against your MLS feed, CRM data model, and compliance requirements — with performance and search UX as primary deliverables.", align: "left" },
+              { num: "03", title: "Build & Integrate", desc: "We develop against your MLS feed, CRM data model, and compliance requirements - with performance and search UX as primary deliverables.", align: "left" },
               { num: "04", title: "Launch & Expand", desc: "Phased rollout to your agent network with training support, then expansion of features driven by real deal-cycle bottlenecks.", align: "right" },
             ].map((step) => (
               <div key={step.num} className={`relative flex mb-16 last:mb-0 ${step.align === "right" ? "justify-end" : "justify-start"}`}>

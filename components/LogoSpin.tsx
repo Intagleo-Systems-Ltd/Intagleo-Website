@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * LogoSpin — continuous 3D Y-axis rotation with X-axis tilt
+ * LogoSpin - continuous 3D Y-axis rotation with X-axis tilt
  * Transparent background, linear/seamless, dome perspective feel.
  */
 export default function LogoSpin({

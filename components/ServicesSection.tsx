@@ -263,7 +263,7 @@ export default function ServicesSection() {
 
         {/* Two-column */}
         <div className="grid lg:grid-cols-[1fr_1.1fr] gap-6 items-stretch">
-          {/* Left — service list */}
+          {/* Left - service list */}
           <div className="flex flex-col gap-2">
             {services.map((s, i) => (
               <button
@@ -280,7 +280,7 @@ export default function ServicesSection() {
             ))}
           </div>
 
-          {/* Right — detail panel */}
+          {/* Right - detail panel */}
           <div className="bg-[#0d0f12] border border-white/[0.06] rounded-2xl p-8 flex flex-col">
             {/* Title */}
             <h3 className="text-2xl font-bold text-white mb-3">

@@ -149,7 +149,7 @@ export default function UseCasesSection() {
       className="relative bg-[#0a0a0a]"
       style={{ height: `${totalScrollHeight}px` }}
     >
-      {/* CSS sticky — stays pinned while wrapper provides scroll distance */}
+      {/* CSS sticky - stays pinned while wrapper provides scroll distance */}
       <div
         className="sticky top-0 w-full flex flex-col items-center justify-center overflow-hidden"
         style={{ height: "100vh" }}

@@ -103,7 +103,7 @@ const socials = [
   },
 ];
 
-/* shared link className — contrast-safe, focus ring, smooth transition */
+/* shared link className - contrast-safe, focus ring, smooth transition */
 const linkCls =
   "text-white/50 hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8341c]/60 rounded-sm";
 
@@ -234,7 +234,7 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
       <div className="section-padding py-12 border-b border-white/[0.06]">
         <div className="mx-auto max-w-[1400px] flex flex-col md:flex-row gap-10 justify-between">
 
-          {/* Left — logo + contact */}
+          {/* Left - logo + contact */}
           <address className="not-italic flex-shrink-0 max-w-[260px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo-nav.png" alt="Intagleo Systems" className="h-10 w-auto mb-5" />
@@ -263,7 +263,7 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
             </p>
           </address>
 
-          {/* Right — social + newsletter */}
+          {/* Right - social + newsletter */}
           <div className="flex flex-col gap-8 flex-shrink-0">
 
             {/* Social */}
@@ -297,7 +297,7 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
                   <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
-                  You&apos;re subscribed — thanks!
+                  You&apos;re subscribed - thanks!
                 </div>
               ) : (
                 <form
@@ -338,7 +338,7 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
                     </button>
                   </div>
                   {status === "error" && (
-                    <p role="alert" className="text-xs text-red-400">Something went wrong — please try again.</p>
+                    <p role="alert" className="text-xs text-red-400">Something went wrong - please try again.</p>
                   )}
                 </form>
               )}

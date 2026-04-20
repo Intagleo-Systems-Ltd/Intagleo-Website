@@ -16,7 +16,7 @@ pages:
 
 ## The Valuation Funnel Problem
 
-Most vendors begin their selling journey with a price question, not a readiness to instruct. The traditional estate agency funnel — requiring an appointment before giving any estimate — filtered out the majority of early-stage vendors who weren't yet ready to commit.
+Most vendors begin their selling journey with a price question, not a readiness to instruct. The traditional estate agency funnel - requiring an appointment before giving any estimate - filtered out the majority of early-stage vendors who weren't yet ready to commit.
 
 Online valuations from aggregators (Zoopla estimates, Rightmove valuations) were filling this gap, but driving vendor relationships to those platforms rather than to Pinnacle.
 
@@ -26,13 +26,13 @@ Online valuations from aggregators (Zoopla estimates, Rightmove valuations) were
 
 The valuation model combines seven data sources:
 
-- **Land Registry Price Paid Data** — 10 years of historical sold prices, refreshed monthly
-- **HM Land Registry title boundaries** — property size and plot area
-- **EPC register** — energy efficiency ratings and floor area
-- **Ofsted school ratings** — primary and secondary school proximity scoring
-- **TfL/National Rail commute times** — journey time to major employment centres
-- **Planning application history** — nearby development applications that affect value
-- **Pinnacle transaction data** — 6 years of Pinnacle's own sales with agent-assessed condition modifiers
+- **Land Registry Price Paid Data** - 10 years of historical sold prices, refreshed monthly
+- **HM Land Registry title boundaries** - property size and plot area
+- **EPC register** - energy efficiency ratings and floor area
+- **Ofsted school ratings** - primary and secondary school proximity scoring
+- **TfL/National Rail commute times** - journey time to major employment centres
+- **Planning application history** - nearby development applications that affect value
+- **Pinnacle transaction data** - 6 years of Pinnacle's own sales with agent-assessed condition modifiers
 
 The model outputs a confidence-adjusted price range rather than a single point estimate, with a confidence score that reflects comparables availability and market activity in the postcode sector.
 
@@ -49,4 +49,4 @@ The sequence is personalised by estimated property value, indicating likely time
 
 ## Accuracy and Trust
 
-AVM accuracy is critical to conversion — if the estimate is significantly wrong, it erodes trust. We validated the model against 18 months of actual Pinnacle sale prices: 78% of properties sold within ±5% of the AVM mid-point, 94% within ±10%. These accuracy metrics are displayed transparently within the valuation tool.
+AVM accuracy is critical to conversion - if the estimate is significantly wrong, it erodes trust. We validated the model against 18 months of actual Pinnacle sale prices: 78% of properties sold within ±5% of the AVM mid-point, 94% within ±10%. These accuracy metrics are displayed transparently within the valuation tool.

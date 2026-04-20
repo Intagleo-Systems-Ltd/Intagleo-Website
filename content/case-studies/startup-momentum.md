@@ -20,7 +20,7 @@ pages:
 
 ![Startup engineering team working on AI product architecture](https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80&auto=format&fit=crop)
 
-Momentum AI had an incredible ML breakthrough—a model that could predict customer churn with 92% accuracy (vs. industry standard of 65%).
+Momentum AI had an incredible ML breakthrough-a model that could predict customer churn with 92% accuracy (vs. industry standard of 65%).
 
 But there was a problem: it existed as a 2000-line Python script in a Jupyter notebook.
 

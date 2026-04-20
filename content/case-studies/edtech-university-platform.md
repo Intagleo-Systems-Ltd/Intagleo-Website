@@ -18,19 +18,19 @@ pages:
 
 Blackboard had served Meridian since 2008. In that time, student expectations had been set by consumer apps. The LMS felt like a file repository from another era: no notifications, poor mobile experience, no way to discover content organically.
 
-Faculty had adapted by duplicating content across Teams, email, and physical handouts — creating information fragmentation that students found exhausting to navigate.
+Faculty had adapted by duplicating content across Teams, email, and physical handouts - creating information fragmentation that students found exhausting to navigate.
 
 ![Modern university learning platform showing mobile-first course interface with video integration and analytics](https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200&q=80&auto=format&fit=crop)
 
 ## Platform Architecture
 
-**Modern LMS core** — built on an open-source LMS foundation (Moodle 4.x) with extensive customisation for Meridian's brand and workflow. Integration with Meridian's SSO (Azure AD) for frictionless login. Progressive Web App for cross-platform mobile without separate app stores.
+**Modern LMS core** - built on an open-source LMS foundation (Moodle 4.x) with extensive customisation for Meridian's brand and workflow. Integration with Meridian's SSO (Azure AD) for frictionless login. Progressive Web App for cross-platform mobile without separate app stores.
 
-**Lecture capture integration** — Panopto integration with AI-powered transcript generation in 12 languages, automatic chapter markers based on slide transitions, full-text search across all recorded content. Students can search "Keynesian multiplier" and jump directly to the relevant lecture segment.
+**Lecture capture integration** - Panopto integration with AI-powered transcript generation in 12 languages, automatic chapter markers based on slide transitions, full-text search across all recorded content. Students can search "Keynesian multiplier" and jump directly to the relevant lecture segment.
 
-**At-risk analytics** — student engagement data (login frequency, content access, assessment submission pattern) feeds a risk model that generates weekly alerts for personal tutors. Students flagged as at-risk receive a tutor outreach within 3 working days.
+**At-risk analytics** - student engagement data (login frequency, content access, assessment submission pattern) feeds a risk model that generates weekly alerts for personal tutors. Students flagged as at-risk receive a tutor outreach within 3 working days.
 
-**Content authoring tools** — a simplified H5P-based authoring environment reduces average course content preparation time from 4 hours to 90 minutes per module.
+**Content authoring tools** - a simplified H5P-based authoring environment reduces average course content preparation time from 4 hours to 90 minutes per module.
 
 ## Change Management
 

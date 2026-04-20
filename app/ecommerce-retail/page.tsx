@@ -105,7 +105,7 @@ export default function EcommerceRetailPage() {
           </h1>
           <p className="text-white/45 text-base md:text-lg max-w-xl mx-auto mb-9">
             From headless storefronts to AI-driven merchandising, we build the retail software
-            that turns browsers into buyers — and buyers into loyal customers.
+            that turns browsers into buyers - and buyers into loyal customers.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Link href="/contact?type=ecommerce" className="px-6 py-3 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors">
@@ -148,7 +148,7 @@ export default function EcommerceRetailPage() {
                   <span className="text-white/35">Most retailers only notice when CAC spikes.</span>
                 </h2>
                 <p className="text-white/40 text-sm leading-relaxed mb-3">
-                  Every abandoned cart, every out-of-stock error, every page that takes 4 seconds to load — that&apos;s
+                  Every abandoned cart, every out-of-stock error, every page that takes 4 seconds to load - that&apos;s
                   compounding revenue loss that doesn&apos;t show up cleanly in your dashboard.
                 </p>
                 <p className="text-white/40 text-sm leading-relaxed mb-7">
@@ -215,8 +215,8 @@ export default function EcommerceRetailPage() {
               <span className="text-white/30">leaking revenue at every layer?</span>
             </h2>
             <p className="text-white/45 leading-relaxed mb-8 max-w-sm">
-              We audit your entire commerce infrastructure — from storefront performance
-              to order pipeline bottlenecks — and map the exact points where revenue
+              We audit your entire commerce infrastructure - from storefront performance
+              to order pipeline bottlenecks - and map the exact points where revenue
               is being left on the table.
             </p>
             <Link href="/contact?type=ecommerce-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors">

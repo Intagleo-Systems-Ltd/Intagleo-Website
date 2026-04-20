@@ -16,7 +16,7 @@ pages:
 
 ## The Clinical Problem
 
-A patient arriving at a Trust hospital via emergency transfer had, on average, previously attended 2.3 other Trust sites. Clinicians had no way to access records from other sites without telephoning the records department — a process that took hours or was impossible outside business hours.
+A patient arriving at a Trust hospital via emergency transfer had, on average, previously attended 2.3 other Trust sites. Clinicians had no way to access records from other sites without telephoning the records department - a process that took hours or was impossible outside business hours.
 
 The result: repeat blood tests, repeat imaging, medication errors from incomplete drug history, and delayed treatment decisions.
 
@@ -24,13 +24,13 @@ The result: repeat blood tests, repeat imaging, medication errors from incomplet
 
 ## Technical Architecture
 
-**FHIR R4 as the canonical model** — all six source EHR systems (Cerner, EMIS, SystemOne, Meditech, Lorenzo, an in-house legacy system) expose data through custom adapters that translate to FHIR R4 resources: Patient, Encounter, Observation, MedicationRequest, DiagnosticReport, AllergyIntolerance.
+**FHIR R4 as the canonical model** - all six source EHR systems (Cerner, EMIS, SystemOne, Meditech, Lorenzo, an in-house legacy system) expose data through custom adapters that translate to FHIR R4 resources: Patient, Encounter, Observation, MedicationRequest, DiagnosticReport, AllergyIntolerance.
 
-**Identity resolution** — patients appear under different NHS numbers or with name variations across systems. A probabilistic matching algorithm (Jaro-Winkler on names, NHS number cross-reference, date of birth) achieves 99.2% correct patient matching with a manual review queue for low-confidence matches.
+**Identity resolution** - patients appear under different NHS numbers or with name variations across systems. A probabilistic matching algorithm (Jaro-Winkler on names, NHS number cross-reference, date of birth) achieves 99.2% correct patient matching with a manual review queue for low-confidence matches.
 
-**Real-time sync with event-driven architecture** — rather than nightly batch synchronisation, the platform uses HL7 v2 ADT feeds from each EHR for real-time patient events (admissions, transfers, discharges). New observations and results sync within 60 seconds of creation in the source system.
+**Real-time sync with event-driven architecture** - rather than nightly batch synchronisation, the platform uses HL7 v2 ADT feeds from each EHR for real-time patient events (admissions, transfers, discharges). New observations and results sync within 60 seconds of creation in the source system.
 
-**Clinical portal and API** — a purpose-built clinical interface provides a chronological patient timeline with source system attribution. A SMART-on-FHIR API allows authorised clinical applications to query the unified record programmatically.
+**Clinical portal and API** - a purpose-built clinical interface provides a chronological patient timeline with source system attribution. A SMART-on-FHIR API allows authorised clinical applications to query the unified record programmatically.
 
 ## Compliance and Security
 

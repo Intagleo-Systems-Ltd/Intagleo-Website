@@ -7,7 +7,7 @@ export default function DifferenceSection() {
   return (
     <section id="about" className="relative overflow-hidden" style={{ background: "#050914", marginTop: "-120px", zIndex: 1 }}>
 
-      {/* ── Wave — pulled up behind IndustriesSection (z-index lower) ── */}
+      {/* ── Wave - pulled up behind IndustriesSection (z-index lower) ── */}
       <div
         className="relative w-full pointer-events-none"
         style={{ height: "503px" }}

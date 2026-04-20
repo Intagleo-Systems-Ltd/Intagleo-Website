@@ -18,20 +18,20 @@ pages:
 
 FreshMart's marketing team had three problems: campaigns took too long to launch, printed materials were wasteful, and there was no way to respond dynamically to competitor activity or supply chain events. When a competitor cut prices on a key product line, FreshMart couldn't respond in-store for two weeks.
 
-Digital signage would solve all three — but executing a 240-store rollout was beyond the team's internal capability.
+Digital signage would solve all three - but executing a 240-store rollout was beyond the team's internal capability.
 
 ![Central CMS dashboard showing content management for 2,400 screens across 240 retail locations](https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80&auto=format&fit=crop)
 
 ## Technical Solution
 
-**Hardware standardisation** — a single approved player specification across all stores simplified deployment, support, and firmware management. BrightSign XT244 units selected for their reliability in retail environments and robust OTA management capabilities.
+**Hardware standardisation** - a single approved player specification across all stores simplified deployment, support, and firmware management. BrightSign XT244 units selected for their reliability in retail environments and robust OTA management capabilities.
 
-**CMS with content governance** — the platform supports three content levels: Corporate (nationwide campaigns, mandatory displays), Regional (regional offers and events, overrides within bounds), and Store (local notices within defined template constraints). Content managers at each level can only affect their scope.
+**CMS with content governance** - the platform supports three content levels: Corporate (nationwide campaigns, mandatory displays), Regional (regional offers and events, overrides within bounds), and Store (local notices within defined template constraints). Content managers at each level can only affect their scope.
 
-**ERP price feed integration** — a real-time feed from the SAP ERP system pushes price changes to relevant screens automatically. When a shelf price changes in the ERP, the corresponding digital shelf-edge label updates within 90 seconds nationwide.
+**ERP price feed integration** - a real-time feed from the SAP ERP system pushes price changes to relevant screens automatically. When a shelf price changes in the ERP, the corresponding digital shelf-edge label updates within 90 seconds nationwide.
 
-**Monitoring and alerting** — every player sends a heartbeat every 60 seconds. A screenshot verification pipeline confirms content is rendering correctly. Stores with offline or misbehaving screens appear on an operations dashboard; repeat offenders trigger automatic engineer dispatch.
+**Monitoring and alerting** - every player sends a heartbeat every 60 seconds. A screenshot verification pipeline confirms content is rendering correctly. Stores with offline or misbehaving screens appear on an operations dashboard; repeat offenders trigger automatic engineer dispatch.
 
 ## Results at Scale
 
-In the first 6 months of full operation, the marketing team ran 47 dynamic campaigns — responding to competitor activity, weather events, and supply chain changes in real time. None of these campaigns would have been financially viable on a printed basis.
+In the first 6 months of full operation, the marketing team ran 47 dynamic campaigns - responding to competitor activity, weather events, and supply chain changes in real time. None of these campaigns would have been financially viable on a printed basis.

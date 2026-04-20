@@ -167,7 +167,7 @@ export default function QAServicesPage() {
           <div className="rounded-t-2xl bg-[#0e0f18] border border-white/[0.07] border-b-0 overflow-hidden">
             <div className="grid md:grid-cols-[1fr_1.1fr]">
 
-              {/* Left — photo collage */}
+              {/* Left - photo collage */}
               <div className="grid grid-cols-2 grid-rows-2 gap-1.5 p-4 bg-[#0b0c15]">
                 <div className="col-span-1 row-span-2 rounded-xl overflow-hidden" style={{ minHeight: "220px" }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -183,7 +183,7 @@ export default function QAServicesPage() {
                 </div>
               </div>
 
-              {/* Right — text */}
+              {/* Right - text */}
               <div className="flex flex-col items-center justify-center text-center p-8 md:p-10">
                 <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight mb-4">
                   Untested code is<br />
@@ -262,7 +262,7 @@ export default function QAServicesPage() {
       <section className="relative overflow-hidden section-padding py-6">
         <div className="mx-auto max-w-6xl grid md:grid-cols-2 min-h-[280px] rounded-2xl border border-white/[0.10] overflow-hidden">
 
-          {/* Left — text */}
+          {/* Left - text */}
           <div className="flex flex-col justify-center px-8 py-16 md:px-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-1 leading-tight">
               <span className="text-[#e8341c]">Do you know</span>
@@ -282,7 +282,7 @@ export default function QAServicesPage() {
             </Link>
           </div>
 
-          {/* Right — GIF */}
+          {/* Right - GIF */}
           <div className="relative overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
