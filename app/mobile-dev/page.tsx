@@ -219,7 +219,7 @@ export default function MobileDevPage() {
           </div>
           <div className="relative overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/hero.gif" alt="" className="absolute inset-0 w-full h-full object-cover object-center grayscale opacity-50" />
+            <img src="/hero.gif" alt="" className="absolute inset-0 w-full h-full object-cover object-center grayscale-[20%] opacity-50" />
             <div className="absolute inset-y-0 left-0 w-24 pointer-events-none" style={{ background: "linear-gradient(to right, #06080f, transparent)" }} />
           </div>
         </div>
@@ -376,7 +376,7 @@ export default function MobileDevPage() {
       {/* FINAL CTA */}
       <section className="relative overflow-hidden py-24 px-6 text-center">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/footer_CTA.gif" alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale-[10%] opacity-50" />
+        <img src="/footer_CTA.gif" alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale-[20%] opacity-50" />
         <div className="absolute inset-0 bg-[#06080f]/65 pointer-events-none" />
         <div className="relative z-10 mx-auto max-w-2xl">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-5">

@@ -604,7 +604,7 @@ export default function DigitalSignagePage() {
         <img
           src="/footer_CTA.gif"
           alt=""
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale opacity-50"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale-[20%] opacity-50"
         />
         <div className="absolute inset-0 bg-[#0a0a0a]/65 pointer-events-none" />
 

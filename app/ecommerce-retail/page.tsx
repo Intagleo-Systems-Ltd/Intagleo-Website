@@ -379,7 +379,7 @@ export default function EcommerceRetailPage() {
       {/* FINAL CTA */}
       <section className="relative overflow-hidden py-24 px-6 text-center">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/footer_CTA.gif" alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale opacity-50" />
+        <img src="/footer_CTA.gif" alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale-[20%] opacity-50" />
         <div className="absolute inset-0 bg-[#0a0a0a]/65 pointer-events-none" />
         <div className="relative z-10 mx-auto max-w-2xl">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-5">

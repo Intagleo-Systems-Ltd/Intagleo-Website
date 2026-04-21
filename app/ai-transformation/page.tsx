@@ -526,7 +526,7 @@ export default function AITransformationPage() {
             <img
               src="/staffaug1.gif"
               alt=""
-              className="absolute inset-0 w-full h-full object-cover object-center grayscale opacity-50"
+              className="absolute inset-0 w-full h-full object-cover object-center grayscale-[20%] opacity-50"
             />
             <div
               className="absolute inset-y-0 left-0 w-28 pointer-events-none"
@@ -852,7 +852,7 @@ export default function AITransformationPage() {
         <img
           src="/footer_CTA.gif"
           alt=""
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale opacity-50"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale-[20%] opacity-50"
         />
         {/* Purple-tinted dark overlay */}
         <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(5,9,20,0.82) 0%, rgba(15,7,40,0.72) 50%, rgba(5,9,20,0.82) 100%)" }} />

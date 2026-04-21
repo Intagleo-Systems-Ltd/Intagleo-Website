@@ -545,7 +545,7 @@ export default function DataAnalyticsPage() {
             <img
               src="/staffaug1.gif"
               alt=""
-              className="absolute inset-0 w-full h-full object-cover object-center grayscale opacity-50"
+              className="absolute inset-0 w-full h-full object-cover object-center grayscale-[20%] opacity-50"
             />
             <div
               className="absolute inset-y-0 left-0 w-24 pointer-events-none"
@@ -810,7 +810,7 @@ export default function DataAnalyticsPage() {
         <img
           src="/footer_CTA.gif"
           alt=""
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale-[10%] opacity-50"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale-[20%] opacity-50"
         />
         <div className="absolute inset-0 bg-[#06080f]/65 pointer-events-none" />
 

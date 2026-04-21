@@ -46,7 +46,7 @@ export default function CTABanner({
             <img
               src="/cta-bg.gif"
               alt=""
-              className="absolute inset-0 w-full h-full object-cover grayscale opacity-50"
+              className="absolute inset-0 w-full h-full object-cover grayscale-[20%] opacity-50"
             />
             {/* Fade blend into left panel */}
             <div className="absolute top-0 bottom-0 bg-gradient-to-r from-[#0E121D] to-transparent" style={{left: '0%', right: '0%'}} />

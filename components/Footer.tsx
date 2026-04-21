@@ -130,7 +130,7 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
       {showCTA && (
         <div className="relative border-b border-white/[0.06] overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/footer_CTA.gif" alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale opacity-50" aria-hidden="true" />
+          <img src="/footer_CTA.gif" alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale-[20%] opacity-50" aria-hidden="true" />
           <div className="absolute inset-0 bg-[#080808]/70 pointer-events-none" aria-hidden="true" />
           <div className="relative z-10 section-padding py-24">
             <div className="mx-auto max-w-[1400px] text-center">
