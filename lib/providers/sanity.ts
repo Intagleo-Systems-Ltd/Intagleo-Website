@@ -15,7 +15,7 @@ const client = createClient({
 const blogFields = `
   "slug": slug.current,
   title, date, author,
-  "cover_image": coverImage.asset->url,
+  cover_image,
   excerpt, seo_description,
   show_on_homepage,
   pages,
@@ -25,7 +25,7 @@ const blogFields = `
 const caseStudyFields = `
   "slug": slug.current,
   title, client, industry,
-  "cover_image": coverImage.asset->url,
+  cover_image,
   rive_url, challenge, solution, results,
   seo_description, show_on_homepage, pages,
   body
@@ -121,11 +121,11 @@ export async function getPostsByPageAsync(pageSlug: string): Promise<BlogPost[]>
 }
 
 export async function getPostBySlugAsync(slug: string): Promise<BlogPost | null> {
-  const results = await client.fetch<BlogPost[]>(
+  const result = await client.fetch<BlogPost>(
     `*[_type == "blogPost" && slug.current == $slug][0] { ${blogFields} }`,
     { slug }
   );
-  return results ?? null;
+  return result ?? null;
 }
 
 export async function getBlogSlugsAsync(): Promise<string[]> {

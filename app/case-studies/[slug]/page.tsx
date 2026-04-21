@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getCaseStudySlugs, getCaseStudyBySlug, markdownToHtml } from "@/lib/content";
+import { getCaseStudySlugsAsync, getCaseStudyBySlugAsync } from "@/lib/providers/sanity";
+import { markdownToHtml } from "@/lib/content";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+
+export const revalidate = 60;
 
 interface Props {
   params: { slug: string };
@@ -10,14 +13,15 @@ interface Props {
 
 // ─── Static paths ──────────────────────────────────────────────────────────────
 
-export function generateStaticParams() {
-  return getCaseStudySlugs().map((slug) => ({ slug }));
+export async function generateStaticParams() {
+  const slugs = await getCaseStudySlugsAsync();
+  return slugs.map((slug) => ({ slug }));
 }
 
 // ─── SEO metadata ──────────────────────────────────────────────────────────────
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const study = getCaseStudyBySlug(params.slug);
+  const study = await getCaseStudyBySlugAsync(params.slug);
   if (!study) return {};
 
   const description =
@@ -44,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default async function CaseStudyPage({ params }: Props) {
-  const study = getCaseStudyBySlug(params.slug);
+  const study = await getCaseStudyBySlugAsync(params.slug);
   if (!study) notFound();
 
   const contentHtml = await markdownToHtml(study.body);

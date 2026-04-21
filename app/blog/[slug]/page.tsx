@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getBlogSlugs, getPostBySlug, markdownToHtml } from "@/lib/content";
+import { getBlogSlugsAsync, getPostBySlugAsync } from "@/lib/providers/sanity";
+import { markdownToHtml } from "@/lib/content";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+
+export const revalidate = 60;
 
 interface Props {
   params: { slug: string };
@@ -10,14 +13,15 @@ interface Props {
 
 // ─── Static paths ──────────────────────────────────────────────────────────────
 
-export function generateStaticParams() {
-  return getBlogSlugs().map((slug) => ({ slug }));
+export async function generateStaticParams() {
+  const slugs = await getBlogSlugsAsync();
+  return slugs.map((slug) => ({ slug }));
 }
 
 // ─── SEO metadata ──────────────────────────────────────────────────────────────
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = getPostBySlug(params.slug);
+  const post = await getPostBySlugAsync(params.slug);
   if (!post) return {};
 
   return {
@@ -43,7 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default async function BlogPostPage({ params }: Props) {
-  const post = getPostBySlug(params.slug);
+  const post = await getPostBySlugAsync(params.slug);
   if (!post) notFound();
 
   const contentHtml = await markdownToHtml(post.body);

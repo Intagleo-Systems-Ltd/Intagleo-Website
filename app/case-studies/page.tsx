@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getAllCaseStudies } from "@/lib/content";
+import { getAllCaseStudiesAsync } from "@/lib/providers/sanity";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Case Studies , Intagleo",
@@ -10,8 +12,8 @@ export const metadata: Metadata = {
     "Real-world engineering outcomes. See how Intagleo has helped enterprises and product teams solve complex technical challenges.",
 };
 
-export default function CaseStudiesPage() {
-  const studies = getAllCaseStudies();
+export default async function CaseStudiesPage() {
+  const studies = await getAllCaseStudiesAsync();
 
   return (
     <main className="bg-[#0a0a0a] min-h-screen">

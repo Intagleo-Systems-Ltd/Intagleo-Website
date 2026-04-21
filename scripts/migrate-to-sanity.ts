@@ -59,10 +59,8 @@ async function migrateBlogPosts() {
       seo_description: post.frontmatter.seo_description ?? "",
       show_on_homepage: post.frontmatter.show_on_homepage ?? true,
       pages: post.frontmatter.pages ?? [],
+      cover_image: post.frontmatter.cover_image ?? "",
       body: post.body,
-      ...(post.frontmatter.cover_image
-        ? { coverImage: { _type: "image", asset: { _type: "reference", _ref: post.frontmatter.cover_image } } }
-        : {}),
     };
     await client.createOrReplace(doc);
     console.log(`  ✓ ${post.slug}`);
@@ -88,6 +86,7 @@ async function migrateCaseStudies() {
       seo_description: study.frontmatter.seo_description ?? "",
       show_on_homepage: study.frontmatter.show_on_homepage ?? true,
       pages: study.frontmatter.pages ?? [],
+      cover_image: study.frontmatter.cover_image ?? "",
       body: study.body,
     };
     await client.createOrReplace(doc);

@@ -1,8 +1,10 @@
-import { getFeaturedPosts } from "@/lib/content";
+import { getFeaturedPostsAsync } from "@/lib/providers/sanity";
+
+export const revalidate = 60;
 
 export async function GET() {
   try {
-    const posts = getFeaturedPosts();
+    const posts = await getFeaturedPostsAsync();
     return Response.json({ posts });
   } catch (error) {
     console.error("Error fetching featured posts:", error);

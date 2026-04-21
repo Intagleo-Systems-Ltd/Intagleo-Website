@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getAllPosts } from "@/lib/content";
+import { getAllPostsAsync } from "@/lib/providers/sanity";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Blog , Intagleo",
@@ -10,8 +12,8 @@ export const metadata: Metadata = {
     "Engineering insights, technical deep-dives, and perspectives on software development from the Intagleo team.",
 };
 
-export default function BlogPage() {
-  const posts = getAllPosts();
+export default async function BlogPage() {
+  const posts = await getAllPostsAsync();
 
   return (
     <main className="bg-[#0a0a0a] min-h-screen">

@@ -1,8 +1,10 @@
-import { getFeaturedCaseStudies } from "@/lib/content";
+import { getFeaturedCaseStudiesAsync } from "@/lib/providers/sanity";
+
+export const revalidate = 60;
 
 export async function GET() {
   try {
-    const caseStudies = getFeaturedCaseStudies();
+    const caseStudies = await getFeaturedCaseStudiesAsync();
     return Response.json({ caseStudies });
   } catch (error) {
     console.error("Error fetching featured case studies:", error);

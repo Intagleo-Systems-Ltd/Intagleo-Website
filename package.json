@@ -9,7 +9,8 @@
     "lint": "next lint",
     "postbuild": "next-sitemap",
     "cms:migrate": "tsx scripts/migrate-to-sanity.ts",
-    "cms:revert": "tsx scripts/revert-to-files.ts"
+    "cms:revert": "tsx scripts/revert-to-files.ts",
+    "cms:studio": "sanity dev --port 3333"
   },
   "dependencies": {
     "@rive-app/canvas": "^2.37.1",
@@ -25,17 +26,20 @@
     "lenis": "^1.3.21",
     "next": "14.2.35",
     "next-sitemap": "^4.2.3",
+    "nodemailer": "^8.0.5",
     "react": "^18",
     "react-dom": "^18",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
     "resend": "^6.11.0",
+    "sanity": "^5.21.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^20",
+    "@types/nodemailer": "^8.0.0",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/uuid": "^10.0.0",

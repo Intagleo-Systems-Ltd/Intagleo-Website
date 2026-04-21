@@ -1,5 +1,4 @@
 import { defineField, defineType } from "sanity";
-import { markdownSchema } from "sanity-plugin-markdown";
 
 export const caseStudy = defineType({
   name: "caseStudy",
@@ -10,7 +9,7 @@ export const caseStudy = defineType({
     defineField({ name: "slug", title: "Slug", type: "slug", options: { source: "title" }, validation: (r) => r.required() }),
     defineField({ name: "client", title: "Client Name", type: "string" }),
     defineField({ name: "industry", title: "Industry", type: "string" }),
-    defineField({ name: "coverImage", title: "Cover Image", type: "image", options: { hotspot: true } }),
+    defineField({ name: "cover_image", title: "Cover Image URL", type: "url" }),
     defineField({ name: "rive_url", title: "Rive Animation URL", type: "url" }),
     defineField({ name: "challenge", title: "Challenge", type: "text", rows: 4 }),
     defineField({ name: "solution", title: "Solution", type: "text", rows: 4 }),
@@ -47,9 +46,9 @@ export const caseStudy = defineType({
         ],
       },
     }),
-    defineField({ ...markdownSchema, name: "body", title: "Body (Markdown)" }),
+    defineField({ name: "body", title: "Body (Markdown)", type: "text" }),
   ],
   preview: {
-    select: { title: "title", subtitle: "client", media: "coverImage" },
+    select: { title: "title", subtitle: "client" },
   },
 });

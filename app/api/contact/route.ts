@@ -1,11 +1,20 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 import { getContactConfig } from "@/lib/contactConfigs";
 
-function getResend() {
-  return new Resend(process.env.RESEND_API_KEY);
+function getTransporter() {
+  return nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: Number(process.env.SMTP_PORT ?? 587),
+    secure: process.env.SMTP_SECURE === "true",
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+  });
 }
-const FROM_EMAIL = process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev";
+
+const FROM_EMAIL = process.env.SMTP_FROM ?? process.env.SMTP_USER ?? "noreply@intagleo.com";
 const NOTIFY_EMAILS = (process.env.CONTACT_NOTIFY_EMAILS ?? "arslan@intagleo.com")
   .split(",")
   .map((e) => e.trim())
@@ -227,21 +236,18 @@ export async function POST(request: Request) {
     const config = getContactConfig(type);
     const badge = config.badge;
 
+    const transporter = getTransporter();
+
     // ── 1. Confirmation email → submitter ────────────────────────────────
-    const resend = getResend();
-    const { error: confErr } = await resend.emails.send({
+    await transporter.sendMail({
       from: `Intagleo <${FROM_EMAIL}>`,
-      to: [email],
+      to: email,
       subject: `We've received your request - Intagleo`,
       html: confirmationHtml(name, badge),
     });
 
-    if (confErr) {
-      console.error("Resend confirmation error:", confErr);
-    }
-
     // ── 2. Notification email → internal team ────────────────────────────
-    const { error: notifErr } = await resend.emails.send({
+    await transporter.sendMail({
       from: `Intagleo Contact <${FROM_EMAIL}>`,
       to: NOTIFY_EMAILS,
       replyTo: email,
@@ -256,10 +262,6 @@ export async function POST(request: Request) {
         badge,
       }),
     });
-
-    if (notifErr) {
-      console.error("Resend notification error:", notifErr);
-    }
 
     return NextResponse.json({ success: true });
   } catch (err) {

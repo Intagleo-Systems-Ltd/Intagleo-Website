@@ -57,7 +57,7 @@ async function revertBlogPosts() {
 
   const posts = await client.fetch(`*[_type == "blogPost"] {
     "slug": slug.current, title, date, author,
-    "cover_image": coverImage.asset->url,
+    cover_image,
     excerpt, seo_description, show_on_homepage, pages, body
   }`);
 
@@ -77,7 +77,7 @@ async function revertCaseStudies() {
 
   const studies = await client.fetch(`*[_type == "caseStudy"] {
     "slug": slug.current, title, client, industry,
-    "cover_image": coverImage.asset->url,
+    cover_image,
     rive_url, challenge, solution, results,
     seo_description, show_on_homepage, pages, body
   }`);

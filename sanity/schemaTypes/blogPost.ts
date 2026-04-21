@@ -1,4 +1,4 @@
-import { defineField, defineType } from "@sanity/types";
+import { defineField, defineType } from "sanity";
 
 export const blogPost = defineType({
   name: "blogPost",
@@ -9,7 +9,7 @@ export const blogPost = defineType({
     defineField({ name: "slug", title: "Slug", type: "slug", options: { source: "title" }, validation: (r) => r.required() }),
     defineField({ name: "date", title: "Date", type: "date", validation: (r) => r.required() }),
     defineField({ name: "author", title: "Author", type: "string" }),
-    defineField({ name: "coverImage", title: "Cover Image", type: "image", options: { hotspot: true } }),
+    defineField({ name: "cover_image", title: "Cover Image URL", type: "url" }),
     defineField({ name: "excerpt", title: "Excerpt", type: "text", rows: 3 }),
     defineField({ name: "seo_description", title: "SEO Description", type: "text", rows: 2 }),
     defineField({ name: "show_on_homepage", title: "Show on Homepage", type: "boolean", initialValue: true }),
@@ -46,6 +46,6 @@ export const blogPost = defineType({
     defineField({ name: "body", title: "Body (Markdown)", type: "text" }),
   ],
   preview: {
-    select: { title: "title", subtitle: "date", media: "coverImage" },
+    select: { title: "title", subtitle: "date" },
   },
 });
