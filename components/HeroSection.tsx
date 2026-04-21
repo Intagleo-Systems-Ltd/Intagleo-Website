@@ -70,7 +70,7 @@ export default function HeroSection() {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center gap-3">
           <Link
-            href="#work"
+            href="/case-studies"
             className="bg-[#e8341c] hover:bg-[#c02a16] text-white px-7 py-3 rounded-full text-sm font-medium transition-colors duration-200 w-full sm:w-auto text-center shadow-lg"
           >
             View Our Portfolio

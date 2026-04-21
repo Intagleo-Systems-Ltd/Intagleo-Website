@@ -53,11 +53,11 @@ const industryLinks = [
 ];
 
 const companyLinks = [
-  { label: "About Us", href: "/about" },
+  { label: "About Us", href: "/contact" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Our Products", href: "/our-products" },
   { label: "Blog", href: "/blog" },
-  { label: "Careers", href: "/careers" },
+  { label: "Careers", href: "/contact?type=careers" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -378,7 +378,7 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
           </p>
           <nav aria-label="Legal and secondary navigation" className="flex items-center gap-5 flex-wrap justify-center">
             {[
-              { label: "Company", href: "/about" },
+              { label: "Company", href: "/contact" },
               { label: "Case Studies", href: "/case-studies" },
               { label: "Blog", href: "/blog" },
               { label: "Privacy", href: "/privacy-policy" },
