@@ -182,6 +182,11 @@ const industryLinks: { label: string; href: string; desc: string; icon: React.Re
 
 const companyLinks = [
   {
+    label: "About Us", href: "/about",
+    desc: "Who we are, how we work, and what we stand for.",
+    icon: <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4 flex-shrink-0"><circle cx="10" cy="7" r="3" stroke="currentColor" strokeWidth="1.5"/><path d="M4 17c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>,
+  },
+  {
     label: "Blog", href: "/blog",
     desc: "Insights, guides, and technical articles from our engineering team.",
     icon: <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4 flex-shrink-0"><path d="M4 4h12M4 8h12M4 12h8M4 16h5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>,
