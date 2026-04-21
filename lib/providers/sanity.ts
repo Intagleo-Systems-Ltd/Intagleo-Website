@@ -2,13 +2,19 @@ import { createClient } from "@sanity/client";
 import type { BlogPost, CaseStudy, Testimonial } from "@/lib/content";
 import type { ContentProvider } from "./interface";
 
-const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET ?? "production",
-  apiVersion: "2024-01-01",
-  useCdn: process.env.NODE_ENV === "production",
-  token: process.env.SANITY_API_TOKEN,
-});
+let _client: ReturnType<typeof createClient> | null = null;
+function getClient() {
+  if (!_client) {
+    _client = createClient({
+      projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+      dataset: process.env.NEXT_PUBLIC_SANITY_DATASET ?? "production",
+      apiVersion: "2024-01-01",
+      useCdn: process.env.NODE_ENV === "production",
+      token: process.env.SANITY_API_TOKEN,
+    });
+  }
+  return _client;
+}
 
 // ── GROQ query fragments ──────────────────────────────────────────────────────
 
@@ -105,23 +111,23 @@ const sanityProvider: ContentProvider = {
 // ── Async API (Sanity requires async fetching) ────────────────────────────────
 
 export async function getAllPostsAsync(): Promise<BlogPost[]> {
-  const posts = await client.fetch<BlogPost[]>(`*[_type == "blogPost"] | order(date desc) { ${blogFields} }`);
+  const posts = await getClient().fetch<BlogPost[]>(`*[_type == "blogPost"] | order(date desc) { ${blogFields} }`);
   return sortByDate(posts);
 }
 
 export async function getFeaturedPostsAsync(): Promise<BlogPost[]> {
-  return client.fetch<BlogPost[]>(`*[_type == "blogPost" && show_on_homepage != false] | order(date desc) { ${blogFields} }`);
+  return getClient().fetch<BlogPost[]>(`*[_type == "blogPost" && show_on_homepage != false] | order(date desc) { ${blogFields} }`);
 }
 
 export async function getPostsByPageAsync(pageSlug: string): Promise<BlogPost[]> {
-  return client.fetch<BlogPost[]>(
+  return getClient().fetch<BlogPost[]>(
     `*[_type == "blogPost" && $pageSlug in pages] | order(date desc) { ${blogFields} }`,
     { pageSlug }
   );
 }
 
 export async function getPostBySlugAsync(slug: string): Promise<BlogPost | null> {
-  const result = await client.fetch<BlogPost>(
+  const result = await getClient().fetch<BlogPost>(
     `*[_type == "blogPost" && slug.current == $slug][0] { ${blogFields} }`,
     { slug }
   );
@@ -129,27 +135,27 @@ export async function getPostBySlugAsync(slug: string): Promise<BlogPost | null>
 }
 
 export async function getBlogSlugsAsync(): Promise<string[]> {
-  const results = await client.fetch<{ slug: string }[]>(`*[_type == "blogPost"] { "slug": slug.current }`);
+  const results = await getClient().fetch<{ slug: string }[]>(`*[_type == "blogPost"] { "slug": slug.current }`);
   return results.map((r) => r.slug);
 }
 
 export async function getAllCaseStudiesAsync(): Promise<CaseStudy[]> {
-  return client.fetch<CaseStudy[]>(`*[_type == "caseStudy"] { ${caseStudyFields} }`);
+  return getClient().fetch<CaseStudy[]>(`*[_type == "caseStudy"] { ${caseStudyFields} }`);
 }
 
 export async function getFeaturedCaseStudiesAsync(): Promise<CaseStudy[]> {
-  return client.fetch<CaseStudy[]>(`*[_type == "caseStudy" && show_on_homepage != false] { ${caseStudyFields} }`);
+  return getClient().fetch<CaseStudy[]>(`*[_type == "caseStudy" && show_on_homepage != false] { ${caseStudyFields} }`);
 }
 
 export async function getCaseStudiesByPageAsync(pageSlug: string): Promise<CaseStudy[]> {
-  return client.fetch<CaseStudy[]>(
+  return getClient().fetch<CaseStudy[]>(
     `*[_type == "caseStudy" && $pageSlug in pages] { ${caseStudyFields} }`,
     { pageSlug }
   );
 }
 
 export async function getCaseStudyBySlugAsync(slug: string): Promise<CaseStudy | null> {
-  const result = await client.fetch<CaseStudy>(
+  const result = await getClient().fetch<CaseStudy>(
     `*[_type == "caseStudy" && slug.current == $slug][0] { ${caseStudyFields} }`,
     { slug }
   );
@@ -157,17 +163,17 @@ export async function getCaseStudyBySlugAsync(slug: string): Promise<CaseStudy |
 }
 
 export async function getCaseStudySlugsAsync(): Promise<string[]> {
-  const results = await client.fetch<{ slug: string }[]>(`*[_type == "caseStudy"] { "slug": slug.current }`);
+  const results = await getClient().fetch<{ slug: string }[]>(`*[_type == "caseStudy"] { "slug": slug.current }`);
   return results.map((r) => r.slug);
 }
 
 export async function getAllTestimonialsAsync(): Promise<Testimonial[]> {
-  return client.fetch<Testimonial[]>(`*[_type == "testimonial"] { ${testimonialFields} }`);
+  return getClient().fetch<Testimonial[]>(`*[_type == "testimonial"] { ${testimonialFields} }`);
 }
 
 export async function getFeaturedTestimonialsAsync(): Promise<Testimonial[]> {
-  return client.fetch<Testimonial[]>(`*[_type == "testimonial" && show_on_homepage != false] { ${testimonialFields} }`);
+  return getClient().fetch<Testimonial[]>(`*[_type == "testimonial" && show_on_homepage != false] { ${testimonialFields} }`);
 }
 
-export { client as sanityClient };
+export { getClient as sanityClient };
 export default sanityProvider;
