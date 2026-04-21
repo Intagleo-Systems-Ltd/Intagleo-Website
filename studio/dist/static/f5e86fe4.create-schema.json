@@ -1,0 +1,504 @@
+[
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "options": {
+          "source": "title"
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "date",
+        "type": "date"
+      },
+      {
+        "name": "author",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "name": "cover_image",
+        "type": "url",
+        "title": "Cover Image URL"
+      },
+      {
+        "rows": 3,
+        "name": "excerpt",
+        "type": "text"
+      },
+      {
+        "rows": 2,
+        "name": "seo_description",
+        "type": "text",
+        "title": "SEO Description"
+      },
+      {
+        "initialValue": true,
+        "name": "show_on_homepage",
+        "type": "boolean",
+        "title": "Show on Homepage"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Digital Signage",
+              "value": "digital-signage"
+            },
+            {
+              "title": "Facilities Management",
+              "value": "facilities-management"
+            },
+            {
+              "title": "E-Commerce & Retail",
+              "value": "ecommerce-retail"
+            },
+            {
+              "title": "Healthcare",
+              "value": "healthcare"
+            },
+            {
+              "title": "Transportation",
+              "value": "transportation"
+            },
+            {
+              "title": "EdTech",
+              "value": "edtech"
+            },
+            {
+              "title": "Real Estate",
+              "value": "real-estate"
+            },
+            {
+              "title": "Travel",
+              "value": "travel"
+            },
+            {
+              "title": "Smart Cities & IoT",
+              "value": "smart-cities"
+            },
+            {
+              "title": "Fintech",
+              "value": "fintech"
+            },
+            {
+              "title": "HR & Recruitment",
+              "value": "hr-recruitment"
+            },
+            {
+              "title": "AI Transformation",
+              "value": "ai-transformation"
+            },
+            {
+              "title": "Data & Analytics",
+              "value": "data-analytics"
+            },
+            {
+              "title": "Custom Software Dev",
+              "value": "custom-software"
+            },
+            {
+              "title": "Mobile Development",
+              "value": "mobile-dev"
+            },
+            {
+              "title": "Embedded & IoT",
+              "value": "embedded-iot"
+            },
+            {
+              "title": "Cloud & DevOps",
+              "value": "cloud-devops"
+            },
+            {
+              "title": "Legacy Modernisation",
+              "value": "legacy-modernization"
+            },
+            {
+              "title": "QA & Testing",
+              "value": "qa-services"
+            },
+            {
+              "title": "Staff Augmentation",
+              "value": "staff-augmentation"
+            }
+          ]
+        },
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "pages",
+        "type": "array",
+        "title": "Show on Pages"
+      },
+      {
+        "name": "body",
+        "type": "text",
+        "title": "Body (Markdown)"
+      }
+    ],
+    "name": "blogPost",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "options": {
+          "source": "title"
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "name": "client",
+        "type": "string",
+        "title": "Client Name"
+      },
+      {
+        "name": "industry",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "name": "cover_image",
+        "type": "url",
+        "title": "Cover Image URL"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "name": "rive_url",
+        "type": "url",
+        "title": "Rive Animation URL"
+      },
+      {
+        "rows": 4,
+        "name": "challenge",
+        "type": "text"
+      },
+      {
+        "rows": 4,
+        "name": "solution",
+        "type": "text"
+      },
+      {
+        "rows": 4,
+        "name": "results",
+        "type": "text"
+      },
+      {
+        "rows": 2,
+        "name": "seo_description",
+        "type": "text",
+        "title": "SEO Description"
+      },
+      {
+        "initialValue": true,
+        "name": "show_on_homepage",
+        "type": "boolean",
+        "title": "Show on Homepage"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Digital Signage",
+              "value": "digital-signage"
+            },
+            {
+              "title": "Facilities Management",
+              "value": "facilities-management"
+            },
+            {
+              "title": "E-Commerce & Retail",
+              "value": "ecommerce-retail"
+            },
+            {
+              "title": "Healthcare",
+              "value": "healthcare"
+            },
+            {
+              "title": "Transportation",
+              "value": "transportation"
+            },
+            {
+              "title": "EdTech",
+              "value": "edtech"
+            },
+            {
+              "title": "Real Estate",
+              "value": "real-estate"
+            },
+            {
+              "title": "Travel",
+              "value": "travel"
+            },
+            {
+              "title": "Smart Cities & IoT",
+              "value": "smart-cities"
+            },
+            {
+              "title": "Fintech",
+              "value": "fintech"
+            },
+            {
+              "title": "HR & Recruitment",
+              "value": "hr-recruitment"
+            },
+            {
+              "title": "AI Transformation",
+              "value": "ai-transformation"
+            },
+            {
+              "title": "Data & Analytics",
+              "value": "data-analytics"
+            },
+            {
+              "title": "Custom Software Dev",
+              "value": "custom-software"
+            },
+            {
+              "title": "Mobile Development",
+              "value": "mobile-dev"
+            },
+            {
+              "title": "Embedded & IoT",
+              "value": "embedded-iot"
+            },
+            {
+              "title": "Cloud & DevOps",
+              "value": "cloud-devops"
+            },
+            {
+              "title": "Legacy Modernisation",
+              "value": "legacy-modernization"
+            },
+            {
+              "title": "QA & Testing",
+              "value": "qa-services"
+            },
+            {
+              "title": "Staff Augmentation",
+              "value": "staff-augmentation"
+            }
+          ]
+        },
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "pages",
+        "type": "array",
+        "title": "Show on Pages"
+      },
+      {
+        "name": "body",
+        "type": "text",
+        "title": "Body (Markdown)"
+      }
+    ],
+    "name": "caseStudy",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "name",
+        "type": "string",
+        "title": "Full Name"
+      },
+      {
+        "options": {
+          "source": "name"
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "title": "Job Title / Role"
+      },
+      {
+        "name": "company",
+        "type": "string"
+      },
+      {
+        "rows": 4,
+        "name": "quote",
+        "type": "text"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "photo",
+        "type": "image"
+      },
+      {
+        "initialValue": true,
+        "name": "show_on_homepage",
+        "type": "boolean",
+        "title": "Show on Homepage"
+      }
+    ],
+    "name": "testimonial",
+    "type": "document"
+  }
+]
