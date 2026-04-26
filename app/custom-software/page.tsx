@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
+import ScrollTimeline from "@/components/ScrollTimeline";
 
 /* ── Dot grid ──────────────────────────────────────────────────────────── */
 const dotGrid =
@@ -523,43 +524,7 @@ export default function CustomSoftwarePage() {
             </p>
           </div>
 
-          {/* Zigzag timeline */}
-          <div className="relative">
-            {/* Vertical center line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/[0.07] -translate-x-1/2" />
-
-            {processSteps.map((step, i) => {
-              const isLeft = i % 2 === 0;
-              return (
-                <div key={step.num} className="relative flex items-start mb-16 last:mb-0">
-                  {/* Center dot */}
-                  <div className="absolute left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-white/20 border border-white/10 z-10 mt-3" />
-
-                  {isLeft ? (
-                    <>
-                      {/* Left content */}
-                      <div className="w-1/2 pr-12 text-right">
-                        <div className="text-5xl font-extrabold text-[#6366f1] leading-none mb-2">{step.num}</div>
-                        <h3 className="text-white font-bold text-base mb-1">{step.title}</h3>
-                        <p className="text-white/35 text-xs leading-relaxed">{step.desc}</p>
-                      </div>
-                      <div className="w-1/2" />
-                    </>
-                  ) : (
-                    <>
-                      <div className="w-1/2" />
-                      {/* Right content */}
-                      <div className="w-1/2 pl-12">
-                        <div className="text-5xl font-extrabold text-[#6366f1] leading-none mb-2">{step.num}</div>
-                        <h3 className="text-white font-bold text-base mb-1">{step.title}</h3>
-                        <p className="text-white/35 text-xs leading-relaxed">{step.desc}</p>
-                      </div>
-                    </>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+          <ScrollTimeline steps={processSteps} />
         </div>
       </section>
 
