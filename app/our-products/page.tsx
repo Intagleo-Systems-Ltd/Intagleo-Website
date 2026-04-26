@@ -33,7 +33,7 @@ export default function OurProductsPage() {
 
         <div className="relative z-10 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 border border-white/[0.08] rounded-full px-4 py-1.5 mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#e8341c]" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1]" />
             <span className="text-white/50 text-xs tracking-widest uppercase">
               Our Software Solutions
             </span>
@@ -50,7 +50,7 @@ export default function OurProductsPage() {
             Built In-House.{" "}
             <span
               style={{
-                background: "linear-gradient(90deg, #e8341c 0%, #ff6b4a 100%)",
+                background: "linear-gradient(90deg, #6366f1 0%, #ff6b4a 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -100,7 +100,7 @@ export default function OurProductsPage() {
               className="absolute inset-0 pointer-events-none"
               style={{
                 background:
-                  "radial-gradient(ellipse at 80% 50%, rgba(232,52,28,0.06) 0%, transparent 55%), radial-gradient(ellipse at 10% 80%, rgba(20,60,180,0.07) 0%, transparent 50%)",
+                  "radial-gradient(ellipse at 80% 50%, rgba(99,102,241,0.06) 0%, transparent 55%), radial-gradient(ellipse at 10% 80%, rgba(20,60,180,0.07) 0%, transparent 50%)",
               }}
             />
 
@@ -130,7 +130,7 @@ export default function OurProductsPage() {
                       Int
                       <span
                         style={{
-                          background: "linear-gradient(90deg, #e8341c, #ff6b4a)",
+                          background: "linear-gradient(90deg, #6366f1, #ff6b4a)",
                           WebkitBackgroundClip: "text",
                           WebkitTextFillColor: "transparent",
                           backgroundClip: "text",
@@ -193,7 +193,7 @@ export default function OurProductsPage() {
                     href="https://www.intvue.com/Home/app"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-[#e8341c] hover:bg-[#c02a16] text-white px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200"
+                    className="inline-flex items-center gap-2 bg-[#6366f1] hover:bg-[#4f46e5] text-white px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200"
                   >
                     Discover IntVue
                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -233,7 +233,7 @@ export default function OurProductsPage() {
 
                 {/* Caption row */}
                 <div className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#e8341c]" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#6366f1]" />
                   <span className="text-white/25 text-xs">
                     Schedule, record &amp; review , all in one place
                   </span>
@@ -287,7 +287,7 @@ export default function OurProductsPage() {
                 key={f.num}
                 className="relative rounded-2xl border border-white/[0.06] p-7 flex flex-col justify-between overflow-hidden"
                 style={{
-                  background: f.accent ? "linear-gradient(135deg, rgba(232,52,28,0.08) 0%, #0d0d10 60%)" : "#0d0d10",
+                  background: f.accent ? "linear-gradient(135deg, rgba(99,102,241,0.08) 0%, #0d0d10 60%)" : "#0d0d10",
                   backgroundImage: f.accent ? undefined : dotGrid,
                 }}
               >
@@ -296,12 +296,12 @@ export default function OurProductsPage() {
                     <div
                       className={`w-10 h-10 rounded-xl flex items-center justify-center ${
                         f.accent
-                          ? "bg-[#e8341c]/15 border border-[#e8341c]/20"
+                          ? "bg-[#6366f1]/15 border border-[#6366f1]/20"
                           : "bg-white/[0.04] border border-white/[0.06]"
                       }`}
                     >
                       <svg
-                        className={`w-4 h-4 ${f.accent ? "text-[#e8341c]" : "text-white/40"}`}
+                        className={`w-4 h-4 ${f.accent ? "text-[#6366f1]" : "text-white/40"}`}
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -382,7 +382,7 @@ export default function OurProductsPage() {
                     className="text-3xl font-bold flex-shrink-0 w-10"
                     style={{
                       fontFamily: '"Roobert TRIAL", sans-serif',
-                      color: i === 0 ? "#e8341c" : "rgba(255,255,255,0.08)",
+                      color: i === 0 ? "#6366f1" : "rgba(255,255,255,0.08)",
                     }}
                   >
                     {s.step}

@@ -5,8 +5,8 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ffffff;
-  --accent: #e8341c;
-  --accent-hover: #c02a16;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
   --border: rgba(255, 255, 255, 0.08);
   --card-bg: #111111;
   --muted: #888888;
@@ -47,7 +47,7 @@ summary {
 /* ── Focus accessibility ──────────────────────────────────────────────────── */
 
 :focus-visible {
-  outline: 2px solid rgba(232, 52, 28, 0.7);
+  outline: 2px solid rgba(99, 102, 241, 0.7);
   outline-offset: 3px;
   border-radius: 4px;
 }

@@ -38,7 +38,7 @@ export default function DifferenceSection() {
                 Engineering tomorrow.<br />Delivering today.
               </h2>
               <a
-                href="/contact"
+                href="/about"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/20 text-white/70 text-sm hover:border-white/50 hover:text-white transition-all"
               >
                 More About Intagleo

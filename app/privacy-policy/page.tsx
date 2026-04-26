@@ -24,11 +24,11 @@ export default function PrivacyPolicyPage() {
             <p>
               Intagleo Systems UK Limited (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;) is the data controller responsible for your personal data.
               We are registered at 268 Bath Road, Slough, SL1 4DX, United Kingdom, and operate the website at{" "}
-              <a href="https://www.intagleo.com" className="text-[#e8341c] hover:text-[#ff5540] transition-colors">www.intagleo.com</a>.
+              <a href="https://www.intagleo.com" className="text-[#6366f1] hover:text-[#4f46e5] transition-colors">www.intagleo.com</a>.
             </p>
             <p className="mt-3">
               If you have any questions about this policy or how we handle your data, please contact our Data Protection Officer
-              at <a href="mailto:dpo@intagleo.com" className="text-[#e8341c] hover:text-[#ff5540] transition-colors">dpo@intagleo.com</a>.
+              at <a href="mailto:dpo@intagleo.com" className="text-[#6366f1] hover:text-[#4f46e5] transition-colors">dpo@intagleo.com</a>.
             </p>
           </section>
 
@@ -65,7 +65,7 @@ export default function PrivacyPolicyPage() {
             <p>We collect data through:</p>
             <ul className="list-disc pl-5 mt-3 space-y-1.5">
               <li><span className="text-white/80">Direct interactions:</span> information you provide by filling in forms, corresponding with us by email or phone, or otherwise contacting us.</li>
-              <li><span className="text-white/80">Automated technologies:</span> as you interact with our website, we may automatically collect technical data using cookies, server logs, and similar technologies. Please see our <a href="/cookie-policy" className="text-[#e8341c] hover:text-[#ff5540] transition-colors">Cookie Policy</a> for further details.</li>
+              <li><span className="text-white/80">Automated technologies:</span> as you interact with our website, we may automatically collect technical data using cookies, server logs, and similar technologies. Please see our <a href="/cookie-policy" className="text-[#6366f1] hover:text-[#4f46e5] transition-colors">Cookie Policy</a> for further details.</li>
               <li><span className="text-white/80">Publicly available sources:</span> such as Companies House, credit reference agencies, and publicly accessible social media profiles.</li>
             </ul>
           </section>
@@ -118,7 +118,7 @@ export default function PrivacyPolicyPage() {
             </ul>
             <p className="mt-4">
               All requests are free of charge and will be fulfilled within 30 days. To exercise any of these rights, please contact us at{" "}
-              <a href="mailto:dpo@intagleo.com" className="text-[#e8341c] hover:text-[#ff5540] transition-colors">dpo@intagleo.com</a>.
+              <a href="mailto:dpo@intagleo.com" className="text-[#6366f1] hover:text-[#4f46e5] transition-colors">dpo@intagleo.com</a>.
             </p>
           </section>
 
@@ -126,7 +126,7 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-xl font-semibold text-white mb-3">9. Cookies</h2>
             <p>
               Our website uses cookies to distinguish you from other users. This helps us provide a good experience and allows us to improve our site. For full details of every cookie we use, please see our{" "}
-              <a href="/cookie-policy" className="text-[#e8341c] hover:text-[#ff5540] transition-colors">Cookie Policy</a>.
+              <a href="/cookie-policy" className="text-[#6366f1] hover:text-[#4f46e5] transition-colors">Cookie Policy</a>.
             </p>
           </section>
 
@@ -148,12 +148,12 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-xl font-semibold text-white mb-3">12. Contact & Complaints</h2>
             <p>If you have any questions about this privacy policy or our privacy practices, please contact us:</p>
             <div className="mt-4 p-5 rounded-xl bg-white/[0.03] border border-white/[0.07] space-y-1.5">
-              <p><span className="text-white/80">Email:</span>{" "}<a href="mailto:dpo@intagleo.com" className="text-[#e8341c] hover:text-[#ff5540] transition-colors">dpo@intagleo.com</a></p>
+              <p><span className="text-white/80">Email:</span>{" "}<a href="mailto:dpo@intagleo.com" className="text-[#6366f1] hover:text-[#4f46e5] transition-colors">dpo@intagleo.com</a></p>
               <p><span className="text-white/80">Post:</span> Data Protection Officer, Intagleo Systems UK Limited, 268 Bath Road, Slough, SL1 4DX, United Kingdom</p>
             </div>
             <p className="mt-4">
               You have the right to make a complaint at any time to the Information Commissioner&apos;s Office (ICO), the UK supervisory authority for data protection issues at{" "}
-              <a href="https://www.ico.org.uk" target="_blank" rel="noopener noreferrer" className="text-[#e8341c] hover:text-[#ff5540] transition-colors">www.ico.org.uk</a>.
+              <a href="https://www.ico.org.uk" target="_blank" rel="noopener noreferrer" className="text-[#6366f1] hover:text-[#4f46e5] transition-colors">www.ico.org.uk</a>.
             </p>
           </section>
 

@@ -102,7 +102,7 @@ export default function LegacyModernizationPage() {
             your operations to a halt, using incremental patterns that keep the lights on throughout.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 mb-14">
-            <Link href="/contact?type=legacy-modernization" className="px-6 py-3 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors">
+            <Link href="/contact?type=legacy-modernization" className="px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
               Start a conversation
             </Link>
             <Link href="#how-it-works" className="px-6 py-3 rounded-full border border-white/[0.14] text-white/65 text-sm font-medium hover:text-white hover:border-white/30 transition-colors">
@@ -158,7 +158,7 @@ export default function LegacyModernizationPage() {
                   and Oracle databases with no documentation. Our structured approach reduces risk while
                   delivering value incrementally, so your business keeps running throughout.
                 </p>
-                <Link href="/contact?type=legacy-modernization" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors">
+                <Link href="/contact?type=legacy-modernization" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
                   Talk to a modernisation engineer
                 </Link>
               </div>
@@ -205,7 +205,7 @@ export default function LegacyModernizationPage() {
         <div className="mx-auto max-w-6xl grid md:grid-cols-2 min-h-[280px] rounded-2xl border border-white/[0.10] overflow-hidden">
           <div className="flex flex-col justify-center px-8 py-16 md:px-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-1 leading-tight">
-              <span className="text-[#e8341c]">Do you know</span>
+              <span className="text-[#6366f1]">Do you know</span>
             </h2>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               how much your legacy system costs you every month in lost velocity?
@@ -214,7 +214,7 @@ export default function LegacyModernizationPage() {
               Slow deploys, developer fear, and outage risk compound silently. Most teams underestimate
               the cost of doing nothing by 3×.
             </p>
-            <Link href="/contact?type=legacy-modernization" className="w-fit px-6 py-3 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors">
+            <Link href="/contact?type=legacy-modernization" className="w-fit px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
               Book a free system audit
             </Link>
           </div>
@@ -242,7 +242,7 @@ export default function LegacyModernizationPage() {
               {steps.map((step) => (
                 <div key={step.num} className={`relative flex items-start gap-8 ${step.align === "right" ? "flex-row-reverse" : ""}`}>
                   <div className={`flex-1 ${step.align === "right" ? "text-left" : "text-right"}`}>
-                    <span className="text-7xl font-bold leading-none text-[#e8341c]">{step.num}</span>
+                    <span className="text-7xl font-bold leading-none text-[#6366f1]">{step.num}</span>
                     <h3 className="text-white font-bold text-xl mt-3 mb-3">{step.title}</h3>
                     <p className="text-white/45 text-sm leading-relaxed">{step.desc}</p>
                   </div>
@@ -387,7 +387,7 @@ export default function LegacyModernizationPage() {
             Let&apos;s map out a path to modern architecture without the big-bang risk.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
-            <Link href="/contact?type=legacy-modernization" className="px-7 py-3 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors">Start a conversation</Link>
+            <Link href="/contact?type=legacy-modernization" className="px-7 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">Start a conversation</Link>
             <Link href="/contact?type=technical-call" className="px-7 py-3 rounded-full border border-white/25 text-white/80 text-sm font-medium hover:text-white hover:border-white/45 transition-colors">Schedule a technical call</Link>
           </div>
           <p className="text-white/25 text-xs tracking-wide">Direct Engineer Access · Response within 1 business day</p>

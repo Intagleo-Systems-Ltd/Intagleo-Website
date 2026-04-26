@@ -169,7 +169,7 @@ export default function StaffAugmentationPage() {
           <div className="flex flex-wrap items-center justify-center gap-3 mb-14">
             <Link
               href="/contact?type=staff-augmentation"
-              className="px-6 py-3 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors"
+              className="px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
             >
               Start a conversation
             </Link>
@@ -248,7 +248,7 @@ export default function StaffAugmentationPage() {
                 </p>
                 <Link
                   href="/contact?type=staff-augmentation"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
                 >
                   Talk to an expert
                 </Link>
@@ -322,7 +322,7 @@ export default function StaffAugmentationPage() {
           {/* Left , text */}
           <div className="flex flex-col justify-center px-8 py-16 md:px-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-1">
-              <span className="text-[#e8341c]">Not sure</span>
+              <span className="text-[#6366f1]">Not sure</span>
             </h2>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               What role you need?
@@ -332,7 +332,7 @@ export default function StaffAugmentationPage() {
             </p>
             <Link
               href="/contact?type=staff-augmentation"
-              className="w-fit px-6 py-3 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors"
+              className="w-fit px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
             >
               Request a team assessment
             </Link>
@@ -386,7 +386,7 @@ export default function StaffAugmentationPage() {
                 >
                   {/* Content */}
                   <div className={`flex-1 ${step.align === "right" ? "text-left" : "text-right"}`}>
-                    <span className="text-7xl font-bold leading-none text-[#e8341c]">
+                    <span className="text-7xl font-bold leading-none text-[#6366f1]">
                       {step.num}
                     </span>
                     <h3 className="text-white font-bold text-xl mt-3 mb-3">{step.title}</h3>
@@ -658,7 +658,7 @@ export default function StaffAugmentationPage() {
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
             <Link
               href="/contact?type=start-project"
-              className="px-7 py-3 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors"
+              className="px-7 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
             >
               Start a conversation
             </Link>

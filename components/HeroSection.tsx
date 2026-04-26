@@ -44,7 +44,7 @@ export default function HeroSection() {
         >
           We Build Production-Ready<br />
           <span style={{
-            background: 'linear-gradient(90deg, #e8341c 0%, #ff6b4a 100%)',
+            background: 'linear-gradient(90deg, #6366f1 0%, #ff6b4a 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text'
@@ -71,7 +71,7 @@ export default function HeroSection() {
         <div className="flex flex-col sm:flex-row items-center gap-3">
           <Link
             href="/case-studies"
-            className="bg-[#e8341c] hover:bg-[#c02a16] text-white px-7 py-3 rounded-full text-sm font-medium transition-colors duration-200 w-full sm:w-auto text-center shadow-lg"
+            className="bg-[#6366f1] hover:bg-[#4f46e5] text-white px-7 py-3 rounded-full text-sm font-medium transition-colors duration-200 w-full sm:w-auto text-center shadow-lg"
           >
             View Our Portfolio
           </Link>

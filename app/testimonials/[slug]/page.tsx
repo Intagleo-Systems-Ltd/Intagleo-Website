@@ -61,7 +61,7 @@ export default function TestimonialPage({ params }: Props) {
                 className="w-full h-full object-cover"
               />
             ) : (
-              <div className="w-full h-full bg-gradient-to-br from-[#e8341c]/30 to-transparent flex items-center justify-center">
+              <div className="w-full h-full bg-gradient-to-br from-[#6366f1]/30 to-transparent flex items-center justify-center">
                 <span className="text-white/40 text-4xl font-bold">
                   {testimonial.name[0]}
                 </span>
@@ -82,7 +82,7 @@ export default function TestimonialPage({ params }: Props) {
               {testimonial.name}
             </p>
             <p className="text-white/50 text-sm mb-1">{testimonial.title}</p>
-            <p className="text-[#e8341c] text-sm font-medium">
+            <p className="text-[#6366f1] text-sm font-medium">
               {testimonial.company}
             </p>
           </div>

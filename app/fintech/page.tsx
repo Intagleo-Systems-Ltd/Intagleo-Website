@@ -131,7 +131,7 @@ export default function FintechPage() {
             we build the fintech software that moves money safely and scales without friction.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link href="/contact?type=fintech" className="px-6 py-3 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors">
+            <Link href="/contact?type=fintech" className="px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
               Talk to a Fintech Engineer
             </Link>
             <a href="#process" className="px-6 py-3 rounded-full border border-white/[0.14] text-white/65 text-sm font-medium hover:text-white hover:border-white/30 transition-colors">
@@ -219,7 +219,7 @@ export default function FintechPage() {
               <div className="bg-[#13141a] border border-white/[0.07] border-t-0 rounded-b-2xl px-6 py-4 flex flex-wrap gap-x-6 gap-y-2">
                 {techCaps[activeTab].items.map((item) => (
                   <span key={item} className="flex items-center gap-2 text-xs text-white/55">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#e8341c]/70 flex-shrink-0" />{item}
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1]/70 flex-shrink-0" />{item}
                   </span>
                 ))}
               </div>
@@ -242,7 +242,7 @@ export default function FintechPage() {
               KYC/AML workflows, and audit trail integrity - before a regulator or incident forces
               the conversation.
             </p>
-            <Link href="/contact?type=fintech-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors">
+            <Link href="/contact?type=fintech-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
               Book a Fintech Architecture Review
             </Link>
           </div>
@@ -259,7 +259,7 @@ export default function FintechPage() {
                   <div key={i} className="flex items-center gap-2 px-4 border-r border-white/[0.05]" style={{ width: `${TICKER_WIDTH}px` }}>
                     <span className="text-[10px] font-mono text-white/40">{item.symbol}</span>
                     <span className="text-[10px] font-mono text-white/70">{item.price}</span>
-                    <span className={`text-[9px] font-mono ${item.up ? "text-green-400" : "text-[#e8341c]"}`}>{item.change}</span>
+                    <span className={`text-[9px] font-mono ${item.up ? "text-green-400" : "text-[#6366f1]"}`}>{item.change}</span>
                   </div>
                 ))}
               </div>
@@ -287,8 +287,8 @@ export default function FintechPage() {
                     <div key={row.id} className={`grid grid-cols-[80px_60px_100px_70px_70px] gap-2 items-center px-2 py-1.5 rounded-lg font-mono text-[11px] transition-all duration-200
                       ${isActive ? "bg-white/[0.05] border border-white/[0.09]" : "border border-transparent"}`}>
                       <span className="text-white/30 truncate">{row.id}</span>
-                      <span className={row.type === "Credit" ? "text-green-400/70" : "text-[#e8341c]/70"}>{row.type}</span>
-                      <span className={`font-medium ${row.type === "Credit" ? "text-green-400" : "text-[#e8341c]"}`}>{row.amount}</span>
+                      <span className={row.type === "Credit" ? "text-green-400/70" : "text-[#6366f1]/70"}>{row.type}</span>
+                      <span className={`font-medium ${row.type === "Credit" ? "text-green-400" : "text-[#6366f1]"}`}>{row.amount}</span>
                       <span className={`text-[9px] px-1.5 py-0.5 rounded text-center ${row.status === "Settled" ? "bg-green-500/10 text-green-400/70" : "bg-yellow-500/10 text-yellow-400/70"}`}>{row.status}</span>
                       <span className="text-white/25">{row.time}</span>
                     </div>
@@ -323,7 +323,7 @@ export default function FintechPage() {
               <div key={step.num} className={`relative flex mb-16 last:mb-0 ${step.align === "right" ? "justify-end" : "justify-start"}`}>
                 <div className="absolute left-1/2 top-2 -translate-x-1/2 w-3 h-3 rounded-full bg-white/20 border border-white/30 z-10" />
                 <div className={`w-[44%] ${step.align === "right" ? "text-left pl-8" : "text-right pr-8"}`}>
-                  <span className="text-[#e8341c] text-4xl font-bold leading-none block mb-2">{step.num}</span>
+                  <span className="text-[#6366f1] text-4xl font-bold leading-none block mb-2">{step.num}</span>
                   <h3 className="text-white font-bold text-lg mb-1">{step.title}</h3>
                   <p className="text-white/40 text-sm leading-relaxed">{step.desc}</p>
                 </div>
@@ -339,7 +339,7 @@ export default function FintechPage() {
           <div className="relative rounded-2xl overflow-hidden" style={{ minHeight: "480px", background: "#13141a" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/hex-mesh-bg.png" alt="" className="absolute inset-0 w-full h-full object-cover object-center opacity-35" />
-            <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 70% at 40% 70%, rgba(232,52,28,0.09) 0%, transparent 65%)" }} />
+            <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 70% at 40% 70%, rgba(99,102,241,0.09) 0%, transparent 65%)" }} />
             <div className="absolute inset-0 flex flex-col justify-between p-10">
               <div>
                 <p className="text-xs text-white/40 uppercase tracking-widest mb-5">Fintech Impact</p>
@@ -351,7 +351,7 @@ export default function FintechPage() {
                   gaps that create risk and slow growth. Here&apos;s what changes.
                 </p>
               </div>
-              <Link href="/contact?type=fintech" className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors cursor-pointer">
+              <Link href="/contact?type=fintech" className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors cursor-pointer">
                 See results in action
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </Link>
@@ -365,7 +365,7 @@ export default function FintechPage() {
               { num: "04", title: "Operational Efficiency", desc: "Automated reconciliation, exception handling, and reporting eliminate the manual back-office work that consumes finance teams." },
             ].map((item) => (
               <div key={item.title} className="flex-1 flex items-start gap-5 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-200">
-                <span className="text-xs font-mono text-[#e8341c]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
+                <span className="text-xs font-mono text-[#6366f1]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
                 <div>
                   <h3 className="text-white font-semibold text-[15px] mb-1.5 leading-snug">{item.title}</h3>
                   <p className="text-white/55 text-sm leading-relaxed">{item.desc}</p>
@@ -431,7 +431,7 @@ export default function FintechPage() {
             that keeps every transaction compliant, secure, and on time.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
-            <Link href="/contact?type=fintech" className="px-7 py-3 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors">
+            <Link href="/contact?type=fintech" className="px-7 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
               Talk to a fintech engineer
             </Link>
             <Link href="/contact?type=fintech-review" className="px-7 py-3 rounded-full border border-white/25 text-white/80 text-sm font-medium hover:text-white hover:border-white/45 transition-colors">

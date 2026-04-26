@@ -1,5 +1,5 @@
 import { createClient } from "@sanity/client";
-import type { BlogPost, CaseStudy, Testimonial } from "@/lib/content";
+import type { BlogPost, CaseStudy, Testimonial, Vacancy } from "@/lib/content";
 import type { ContentProvider } from "./interface";
 
 let _client: ReturnType<typeof createClient> | null = null;
@@ -173,6 +173,19 @@ export async function getAllTestimonialsAsync(): Promise<Testimonial[]> {
 
 export async function getFeaturedTestimonialsAsync(): Promise<Testimonial[]> {
   return getClient().fetch<Testimonial[]>(`*[_type == "testimonial" && show_on_homepage != false] { ${testimonialFields} }`);
+}
+
+export async function getVacanciesAsync(): Promise<Vacancy[]> {
+  return getClient().fetch<Vacancy[]>(
+    `*[_type == "vacancy" && isOpen != false] | order(postedAt desc) {
+      "_id": _id,
+      title,
+      "slug": slug.current,
+      department, location, type, experience, salary,
+      shortDescription, responsibilities, requirements, niceToHave,
+      isOpen, postedAt
+    }`
+  );
 }
 
 export { getClient as sanityClient };

@@ -1,14 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import type { ContactConfig } from "@/lib/contactConfigs";
+
+const ReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
+
+const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? "";
 
 interface Props {
   config: ContactConfig;
   type: string;
 }
 
-interface FormData {
+interface FormState {
   name: string;
   email: string;
   company: string;
@@ -22,21 +27,17 @@ const inputBase =
 const labelBase = "block text-xs text-white/40 uppercase tracking-widest mb-2";
 
 export default function ContactForm({ config, type }: Props) {
-  const [form, setForm] = useState<FormData>({
-    name: "",
-    email: "",
-    company: "",
-    context: "",
-    message: "",
+  const [form, setForm] = useState<FormState>({
+    name: "", email: "", company: "", context: "", message: "",
   });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [captchaKey, setCaptchaKey] = useState(0);
 
   const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     if (error) setError("");
@@ -44,8 +45,13 @@ export default function ContactForm({ config, type }: Props) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
       setError("Please fill in your name, email, and message.");
+      return;
+    }
+    if (SITE_KEY && !captchaToken) {
+      setError("Please complete the CAPTCHA.");
       return;
     }
 
@@ -56,18 +62,21 @@ export default function ContactForm({ config, type }: Props) {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, type }),
+        body: JSON.stringify({ ...form, type, captchaToken }),
       });
 
       const data = await res.json();
-
       if (!res.ok) {
         setError(data.error || "Something went wrong. Please try again.");
+        setCaptchaToken(null);
+        setCaptchaKey((k) => k + 1);
       } else {
         setSuccess(true);
       }
     } catch {
       setError("Network error. Please try again.");
+      setCaptchaToken(null);
+      setCaptchaKey((k) => k + 1);
     } finally {
       setLoading(false);
     }
@@ -77,45 +86,21 @@ export default function ContactForm({ config, type }: Props) {
   if (success) {
     return (
       <div className="flex flex-col items-center justify-center text-center py-16 px-8 h-full min-h-[480px]">
-        {/* Animated checkmark */}
-        <div className="w-16 h-16 rounded-full bg-[#e8341c]/10 border border-[#e8341c]/20 flex items-center justify-center mb-6">
-          <svg
-            className="w-7 h-7 text-[#e8341c]"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M5 13l4 4L19 7"
-            />
+        <div className="w-16 h-16 rounded-full bg-[#6366f1]/10 border border-[#6366f1]/20 flex items-center justify-center mb-6">
+          <svg className="w-7 h-7 text-[#6366f1]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-2xl font-semibold text-white mb-3">
-          Request received.
-        </h3>
+        <h3 className="text-2xl font-semibold text-white mb-3">Request received.</h3>
         <p className="text-white/45 text-sm leading-relaxed max-w-xs">
-          We&apos;ve sent a confirmation to your email. Expect to hear from us
-          within 24 hours.
+          We&apos;ve sent a confirmation to your email. Expect to hear from us within 24 hours.
         </p>
         <a
           href="/"
           className="mt-8 inline-flex items-center gap-2 text-white/40 text-sm hover:text-white/70 transition-colors"
         >
-          <svg
-            className="w-4 h-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={1.5}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
-            />
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
           </svg>
           Back to home
         </a>
@@ -126,49 +111,25 @@ export default function ContactForm({ config, type }: Props) {
   /* ── Form ────────────────────────────────────────────────────── */
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
-      {/* Name + Email row */}
       <div className="grid sm:grid-cols-2 gap-4">
         <div>
           <label className={labelBase}>Full Name *</label>
-          <input
-            type="text"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            placeholder="Jane Smith"
-            className={inputBase}
-            autoComplete="name"
-          />
+          <input type="text" name="name" value={form.name} onChange={handleChange}
+            placeholder="Jane Smith" className={inputBase} autoComplete="name" />
         </div>
         <div>
           <label className={labelBase}>Work Email *</label>
-          <input
-            type="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            placeholder="jane@company.com"
-            className={inputBase}
-            autoComplete="email"
-          />
+          <input type="email" name="email" value={form.email} onChange={handleChange}
+            placeholder="jane@company.com" className={inputBase} autoComplete="email" />
         </div>
       </div>
 
-      {/* Company */}
       <div>
         <label className={labelBase}>Company</label>
-        <input
-          type="text"
-          name="company"
-          value={form.company}
-          onChange={handleChange}
-          placeholder="Your company name (optional)"
-          className={inputBase}
-          autoComplete="organization"
-        />
+        <input type="text" name="company" value={form.company} onChange={handleChange}
+          placeholder="Your company name (optional)" className={inputBase} autoComplete="organization" />
       </div>
 
-      {/* Context field , only if configured */}
       {config.contextLabel && (
         <div>
           <label className={labelBase}>{config.contextLabel}</label>
@@ -184,72 +145,50 @@ export default function ContactForm({ config, type }: Props) {
                 backgroundPosition: "right 16px center",
               }}
             >
-              <option value="" disabled style={{ background: "#0d0d10" }}>
-                Select an option
-              </option>
+              <option value="" disabled style={{ background: "#0d0d10" }}>Select an option</option>
               {config.contextOptions?.map((opt) => (
-                <option key={opt} value={opt} style={{ background: "#0d0d10" }}>
-                  {opt}
-                </option>
+                <option key={opt} value={opt} style={{ background: "#0d0d10" }}>{opt}</option>
               ))}
             </select>
           ) : (
-            <input
-              type="text"
-              name="context"
-              value={form.context}
-              onChange={handleChange}
-              placeholder={config.contextPlaceholder ?? ""}
-              className={inputBase}
-            />
+            <input type="text" name="context" value={form.context} onChange={handleChange}
+              placeholder={config.contextPlaceholder ?? ""} className={inputBase} />
           )}
         </div>
       )}
 
-      {/* Message */}
       <div>
         <label className={labelBase}>Message *</label>
-        <textarea
-          name="message"
-          value={form.message}
-          onChange={handleChange}
-          rows={5}
-          placeholder={config.messagePlaceholder}
-          className={`${inputBase} resize-none leading-relaxed`}
-        />
+        <textarea name="message" value={form.message} onChange={handleChange}
+          rows={5} placeholder={config.messagePlaceholder}
+          className={`${inputBase} resize-none leading-relaxed`} />
       </div>
 
-      {/* Error */}
-      {error && (
-        <p className="text-[#e8341c] text-xs leading-relaxed">{error}</p>
+      {/* reCAPTCHA — only rendered when site key is configured */}
+      {SITE_KEY && (
+        <div className="flex justify-center">
+          <ReCAPTCHA
+            key={captchaKey}
+            sitekey={SITE_KEY}
+            theme="dark"
+            onChange={(token) => setCaptchaToken(token)}
+            onExpired={() => setCaptchaToken(null)}
+          />
+        </div>
       )}
 
-      {/* Submit */}
+      {error && <p className="text-red-400 text-xs leading-relaxed">{error}</p>}
+
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-[#e8341c] hover:bg-[#c02a16] disabled:bg-[#e8341c]/40 text-white font-medium text-sm py-3.5 rounded-xl transition-colors duration-200 flex items-center justify-center gap-2"
+        className="w-full bg-[#6366f1] hover:bg-[#4f46e5] disabled:bg-[#6366f1]/40 text-white font-medium text-sm py-3.5 rounded-xl transition-colors duration-200 flex items-center justify-center gap-2 cursor-pointer"
       >
         {loading ? (
           <>
-            <svg
-              className="w-4 h-4 animate-spin"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              />
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8v8H4z"
-              />
+            <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
             </svg>
             Sending…
           </>
@@ -259,8 +198,7 @@ export default function ContactForm({ config, type }: Props) {
       </button>
 
       <p className="text-white/20 text-xs text-center leading-relaxed">
-        By submitting you agree to our privacy policy. We never share your
-        information.
+        By submitting you agree to our privacy policy. We never share your information.
       </p>
     </form>
   );

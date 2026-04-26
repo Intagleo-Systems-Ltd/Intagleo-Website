@@ -66,9 +66,9 @@ export default function ContactPage({
             {/* ── Left: context panel ── */}
             <div className="lg:sticky lg:top-28">
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 bg-[#e8341c]/10 border border-[#e8341c]/20 rounded-full px-3.5 py-1.5 mb-8">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#e8341c]" />
-                <span className="text-[#e8341c] text-xs font-medium tracking-wide">
+              <div className="inline-flex items-center gap-2 bg-[#6366f1]/10 border border-[#6366f1]/20 rounded-full px-3.5 py-1.5 mb-8">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1]" />
+                <span className="text-[#6366f1] text-xs font-medium tracking-wide">
                   {config.badge}
                 </span>
               </div>
@@ -113,7 +113,7 @@ export default function ContactPage({
                   realities of your operations.&rdquo;
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-7 h-7 rounded-full bg-[#e8341c] flex items-center justify-center text-white text-xs font-bold">
+                  <div className="w-7 h-7 rounded-full bg-[#6366f1] flex items-center justify-center text-white text-xs font-bold">
                     I
                   </div>
                   <div>

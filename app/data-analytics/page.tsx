@@ -283,7 +283,7 @@ export default function DataAnalyticsPage() {
           <div className="flex flex-wrap items-center justify-center gap-3 mb-14">
             <Link
               href="/contact?type=data-analytics"
-              className="px-6 py-3 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors"
+              className="px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
             >
               Audit My Data
             </Link>
@@ -333,17 +333,17 @@ export default function DataAnalyticsPage() {
                 <div className="relative col-span-1 row-span-2 rounded-xl overflow-hidden" style={{ minHeight: "220px" }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src="/data1.png" alt="Data visualisation" className="w-full h-full object-cover" style={{ filter: "grayscale(100%)" }} />
-                  <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(160deg, rgba(10,10,20,0.45) 0%, rgba(232,52,28,0.08) 100%)" }} />
+                  <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(160deg, rgba(10,10,20,0.45) 0%, rgba(99,102,241,0.08) 100%)" }} />
                 </div>
                 <div className="relative rounded-xl overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src="/data2.png" alt="Analytics dashboard" className="w-full h-full object-cover" style={{ filter: "grayscale(100%)" }} />
-                  <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(160deg, rgba(10,10,20,0.45) 0%, rgba(232,52,28,0.08) 100%)" }} />
+                  <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(160deg, rgba(10,10,20,0.45) 0%, rgba(99,102,241,0.08) 100%)" }} />
                 </div>
                 <div className="relative rounded-xl overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src="/data3.png" alt="Data infrastructure" className="w-full h-full object-cover" style={{ filter: "grayscale(100%)" }} />
-                  <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(160deg, rgba(10,10,20,0.45) 0%, rgba(232,52,28,0.08) 100%)" }} />
+                  <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(160deg, rgba(10,10,20,0.45) 0%, rgba(99,102,241,0.08) 100%)" }} />
                 </div>
               </div>
 
@@ -361,7 +361,7 @@ export default function DataAnalyticsPage() {
                 </p>
                 <Link
                   href="/contact?type=data-analytics"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
                 >
                   Talk to a Data Engineer
                 </Link>
@@ -415,7 +415,7 @@ export default function DataAnalyticsPage() {
                       className="relative z-10 flex-shrink-0 w-[52px] h-[52px] rounded-[14px] flex items-center justify-center"
                       style={{
                         background: isActive ? "#20232f" : "#323645",
-                        color: isActive ? "#e8341c" : "rgba(255,255,255,0.35)",
+                        color: isActive ? "#6366f1" : "rgba(255,255,255,0.35)",
                       }}
                     >
                       {cat.tabIcon}
@@ -523,7 +523,7 @@ export default function DataAnalyticsPage() {
           {/* Left , text */}
           <div className="flex flex-col justify-center px-8 py-16 md:px-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-1">
-              <span className="text-[#e8341c]">Do you know</span>
+              <span className="text-[#6366f1]">Do you know</span>
             </h2>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               where your data-link is broken?
@@ -533,7 +533,7 @@ export default function DataAnalyticsPage() {
             </p>
             <Link
               href="/contact?type=data-analytics"
-              className="w-fit px-6 py-3 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors"
+              className="w-fit px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
             >
               Request a free data audit
             </Link>
@@ -581,7 +581,7 @@ export default function DataAnalyticsPage() {
                   className={`relative flex items-start gap-8 ${step.align === "right" ? "flex-row-reverse" : ""}`}
                 >
                   <div className={`flex-1 ${step.align === "right" ? "text-left" : "text-right"}`}>
-                    <span className="text-7xl font-bold leading-none text-[#e8341c]">
+                    <span className="text-7xl font-bold leading-none text-[#6366f1]">
                       {step.num}
                     </span>
                     <h3 className="text-white font-bold text-xl mt-3 mb-3">{step.title}</h3>
@@ -826,7 +826,7 @@ export default function DataAnalyticsPage() {
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
             <Link
               href="/contact?type=data-analytics"
-              className="px-7 py-3 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors"
+              className="px-7 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
             >
               Start a conversation
             </Link>

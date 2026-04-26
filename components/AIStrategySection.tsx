@@ -35,7 +35,7 @@ export default function AIStrategySection() {
             </p>
             <Link
               href="/contact?type=ai-strategy"
-              className="self-start inline-flex items-center gap-2 bg-[#e8341c] hover:bg-[#c02a16] text-white px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200"
+              className="self-start inline-flex items-center gap-2 bg-[#6366f1] hover:bg-[#4f46e5] text-white px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200"
             >
               Explore More
             </Link>

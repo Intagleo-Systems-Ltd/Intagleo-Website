@@ -112,19 +112,19 @@ const painPoints = [
     pre: "Have an idea but",
     main: "not a full roadmap?",
     desc: "You don't need everything figured out. We'll help you shape it into a working system.",
-    accent: "#e8341c",
+    accent: "#6366f1",
   },
   {
     pre: "Not sure",
     main: "which solution fits your case?",
     desc: "We'll map your requirements and recommend the right approach before writing a single line of code.",
-    accent: "#e8341c",
+    accent: "#6366f1",
   },
   {
     pre: "Need to move fast",
     main: "without losing structure?",
     desc: "We balance speed with solid architecture, so you don't rebuild later.",
-    accent: "#e8341c",
+    accent: "#6366f1",
   },
 ];
 
@@ -153,7 +153,7 @@ export default function CustomSoftwarePage() {
         {/* Subtle red glow bottom-left */}
         <div
           className="absolute left-0 bottom-0 w-[50%] h-[60%] pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at 10% 90%, rgba(232,52,28,0.10) 0%, transparent 55%)" }}
+          style={{ background: "radial-gradient(ellipse at 10% 90%, rgba(99,102,241,0.10) 0%, transparent 55%)" }}
         />
         {/* Bottom fade to page bg */}
         <div
@@ -163,9 +163,9 @@ export default function CustomSoftwarePage() {
 
         <div className="relative z-10 max-w-3xl mx-auto">
           {/* Badge */}
-          {/* <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#e8341c]/30 bg-[#e8341c]/10 mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#e8341c] animate-pulse" />
-            <span className="text-[#e8341c] text-xs font-medium tracking-wide uppercase">
+          {/* <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#6366f1]/30 bg-[#6366f1]/10 mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1] animate-pulse" />
+            <span className="text-[#6366f1] text-xs font-medium tracking-wide uppercase">
               Custom Software Development
             </span>
           </div> */}
@@ -184,7 +184,7 @@ export default function CustomSoftwarePage() {
           <div className="flex flex-wrap items-center justify-center gap-4 mb-10">
             <Link
               href="/contact?type=custom-software"
-              className="px-6 py-3 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors"
+              className="px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
             >
               Start a Project
             </Link>
@@ -230,7 +230,7 @@ export default function CustomSoftwarePage() {
           {/* Right , 3 stacked overlapping cards */}
           <div className="relative flex items-center justify-center" style={{ minHeight: "320px" }}>
             {/* Red glow */}
-            <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 65% 45%, rgba(232,52,28,0.08) 0%, transparent 65%)" }} />
+            <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 65% 45%, rgba(99,102,241,0.08) 0%, transparent 65%)" }} />
 
             {/* Back-left card (partial) */}
             <div
@@ -254,7 +254,7 @@ export default function CustomSoftwarePage() {
                 {[
                   { label: "Product Team",       icon: "#6366f1", dot: "#22c55e" },
                   { label: "Data Pipeline",      icon: "#f59e0b", dot: "#f97316" },
-                  { label: "Monitoring",         icon: "#3b82f6", dot: "#22c55e" },
+                  { label: "Monitoring",         icon: "#6366f1", dot: "#22c55e" },
                   { label: "Platform Eng.",      icon: "#8b5cf6", dot: "#22c55e" },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center gap-2.5 px-2 py-1.5 rounded-lg hover:bg-white/[0.03]">
@@ -322,7 +322,7 @@ export default function CustomSoftwarePage() {
                 {[
                   { label: "Product Strategy",     icon: "#6366f1", dot: "#22c55e" },
                   { label: "System Architecture",  icon: "#f59e0b", dot: "#f97316" },
-                  { label: "Workflow Design",       icon: "#3b82f6", dot: "#22c55e" },
+                  { label: "Workflow Design",       icon: "#6366f1", dot: "#22c55e" },
                   { label: "Engineering Lead",      icon: "#8b5cf6", dot: "#22c55e" },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center gap-2.5 px-2 py-1.5 rounded-lg hover:bg-white/[0.04] transition-colors">
@@ -415,7 +415,7 @@ export default function CustomSoftwarePage() {
                 onClick={() => setActiveSupport(i)}
                 className={`flex items-center gap-3 px-6 py-3.5 rounded-full border text-sm font-medium transition-all ${
                   activeSupport === i
-                    ? "bg-[#e8341c] border-[#e8341c] text-white"
+                    ? "bg-[#6366f1] border-[#6366f1] text-white"
                     : "bg-[#0d0d10] border-white/[0.08] text-white/55 hover:border-white/20 hover:text-white"
                 }`}
               >
@@ -432,20 +432,20 @@ export default function CustomSoftwarePage() {
             {activeSupport === 0 && (
               <div className="grid md:grid-cols-2 gap-10 items-center">
                 <div>
-                  <span className="text-xs text-[#e8341c] font-medium tracking-wider uppercase mb-3 block">Building something new</span>
+                  <span className="text-xs text-[#6366f1] font-medium tracking-wider uppercase mb-3 block">Building something new</span>
                   <h3 className="text-2xl font-bold text-white mb-4">From idea to production-ready system</h3>
                   <p className="text-white/50 leading-relaxed mb-6">
                     Whether you have a detailed spec or just a rough concept, we&apos;ll help you validate,
                     architect, and build a system that scales , starting with an MVP that proves your market.
                   </p>
-                  <Link href="/contact?type=custom-software" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors">
+                  <Link href="/contact?type=custom-software" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
                     Start Building
                   </Link>
                 </div>
                 <div className="space-y-3">
                   {["Discovery & problem definition", "MVP scoping & architecture", "Iterative development sprints", "Launch & post-launch support"].map((s, i) => (
                     <div key={s} className="flex items-center gap-3 p-4 rounded-xl bg-[#111116] border border-white/[0.05]">
-                      <span className="text-[#e8341c]/60 text-xs font-mono">0{i + 1}</span>
+                      <span className="text-[#6366f1]/60 text-xs font-mono">0{i + 1}</span>
                       <span className="text-white/65 text-sm">{s}</span>
                     </div>
                   ))}
@@ -455,20 +455,20 @@ export default function CustomSoftwarePage() {
             {activeSupport === 1 && (
               <div className="grid md:grid-cols-2 gap-10 items-center">
                 <div>
-                  <span className="text-xs text-[#e8341c] font-medium tracking-wider uppercase mb-3 block">Improving an existing product</span>
+                  <span className="text-xs text-[#6366f1] font-medium tracking-wider uppercase mb-3 block">Improving an existing product</span>
                   <h3 className="text-2xl font-bold text-white mb-4">Accelerate without breaking what works</h3>
                   <p className="text-white/50 leading-relaxed mb-6">
                     Your product is live and growing, but velocity is slowing. We audit your codebase,
                     identify bottlenecks, and add the engineering capacity to ship features faster.
                   </p>
-                  <Link href="/contact?type=custom-software" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors">
+                  <Link href="/contact?type=custom-software" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
                     Take Your Product To Next Level
                   </Link>
                 </div>
                 <div className="space-y-3">
                   {["Codebase audit & assessment", "Performance optimization", "Feature development sprints", "Technical debt reduction"].map((s, i) => (
                     <div key={s} className="flex items-center gap-3 p-4 rounded-xl bg-[#111116] border border-white/[0.05]">
-                      <span className="text-[#e8341c]/60 text-xs font-mono">0{i + 1}</span>
+                      <span className="text-[#6366f1]/60 text-xs font-mono">0{i + 1}</span>
                       <span className="text-white/65 text-sm">{s}</span>
                     </div>
                   ))}
@@ -478,20 +478,20 @@ export default function CustomSoftwarePage() {
             {activeSupport === 2 && (
               <div className="grid md:grid-cols-2 gap-10 items-center">
                 <div>
-                  <span className="text-xs text-[#e8341c] font-medium tracking-wider uppercase mb-3 block">Upgrading legacy systems</span>
+                  <span className="text-xs text-[#6366f1] font-medium tracking-wider uppercase mb-3 block">Upgrading legacy systems</span>
                   <h3 className="text-2xl font-bold text-white mb-4">Modernize without disrupting operations</h3>
                   <p className="text-white/50 leading-relaxed mb-6">
                     Legacy systems hold your business back. We map your current architecture, design a
                     migration path, and execute it in phases , zero downtime, full continuity.
                   </p>
-                  <Link href="/contact?type=legacy-modernization" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors">
+                  <Link href="/contact?type=legacy-modernization" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
                     Upgrade Your System
                   </Link>
                 </div>
                 <div className="space-y-3">
                   {["Legacy system assessment", "Migration strategy & roadmap", "Phased re-architecture", "Cloud-native transformation"].map((s, i) => (
                     <div key={s} className="flex items-center gap-3 p-4 rounded-xl bg-[#111116] border border-white/[0.05]">
-                      <span className="text-[#e8341c]/60 text-xs font-mono">0{i + 1}</span>
+                      <span className="text-[#6366f1]/60 text-xs font-mono">0{i + 1}</span>
                       <span className="text-white/65 text-sm">{s}</span>
                     </div>
                   ))}
@@ -539,7 +539,7 @@ export default function CustomSoftwarePage() {
                     <>
                       {/* Left content */}
                       <div className="w-1/2 pr-12 text-right">
-                        <div className="text-5xl font-extrabold text-[#e8341c] leading-none mb-2">{step.num}</div>
+                        <div className="text-5xl font-extrabold text-[#6366f1] leading-none mb-2">{step.num}</div>
                         <h3 className="text-white font-bold text-base mb-1">{step.title}</h3>
                         <p className="text-white/35 text-xs leading-relaxed">{step.desc}</p>
                       </div>
@@ -550,7 +550,7 @@ export default function CustomSoftwarePage() {
                       <div className="w-1/2" />
                       {/* Right content */}
                       <div className="w-1/2 pl-12">
-                        <div className="text-5xl font-extrabold text-[#e8341c] leading-none mb-2">{step.num}</div>
+                        <div className="text-5xl font-extrabold text-[#6366f1] leading-none mb-2">{step.num}</div>
                         <h3 className="text-white font-bold text-base mb-1">{step.title}</h3>
                         <p className="text-white/35 text-xs leading-relaxed">{step.desc}</p>
                       </div>
@@ -569,7 +569,7 @@ export default function CustomSoftwarePage() {
       <section className="relative section-padding py-20 overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(232,52,28,0.06) 0%, transparent 60%)" }}
+          style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(99,102,241,0.06) 0%, transparent 60%)" }}
         />
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="text-center mb-14">
@@ -645,7 +645,7 @@ export default function CustomSoftwarePage() {
               <ul className="space-y-2">
                 {["Horizontal scaling built-in", "Automated test coverage", "Zero-downtime deployments", "Real-time monitoring & alerts"].map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm text-white/50">
-                    <span className="w-1 h-1 rounded-full bg-[#e8341c]" />
+                    <span className="w-1 h-1 rounded-full bg-[#6366f1]" />
                     {item}
                   </li>
                 ))}
@@ -683,12 +683,12 @@ export default function CustomSoftwarePage() {
               >
                 <div
                   className="absolute top-0 right-0 w-24 h-24 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"
-                  style={{ background: "radial-gradient(ellipse at 100% 0%, rgba(232,52,28,0.10) 0%, transparent 70%)" }}
+                  style={{ background: "radial-gradient(ellipse at 100% 0%, rgba(99,102,241,0.10) 0%, transparent 70%)" }}
                 />
                 <div
                   className="text-6xl font-bold mb-5 leading-none"
                   style={{
-                    background: "linear-gradient(135deg, rgba(232,52,28,0.25), rgba(232,52,28,0.08))",
+                    background: "linear-gradient(135deg, rgba(99,102,241,0.25), rgba(99,102,241,0.08))",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                   }}
@@ -700,7 +700,7 @@ export default function CustomSoftwarePage() {
                 <div className="mt-6">
                   <Link
                     href="/contact?type=custom-software"
-                    className="text-xs text-[#e8341c] font-medium hover:underline inline-flex items-center gap-1"
+                    className="text-xs text-[#6366f1] font-medium hover:underline inline-flex items-center gap-1"
                   >
                     Learn more
                     <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -737,7 +737,7 @@ export default function CustomSoftwarePage() {
           <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
             <Link
               href="/contact?type=custom-software"
-              className="px-6 py-3 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors"
+              className="px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
             >
               Start a project
             </Link>

@@ -58,7 +58,7 @@ export default async function CaseStudiesPage() {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     ) : (
-                      <div className="w-full h-full bg-gradient-to-br from-[#e8341c]/10 via-[#e8341c]/5 to-transparent" />
+                      <div className="w-full h-full bg-gradient-to-br from-[#6366f1]/10 via-[#6366f1]/5 to-transparent" />
                     )}
                   </div>
 
@@ -66,7 +66,7 @@ export default async function CaseStudiesPage() {
                   <div className="p-8 lg:p-10 flex flex-col justify-between">
                     <div>
                       <div className="flex flex-wrap gap-2 mb-4">
-                        <span className="text-xs text-[#e8341c] bg-[#e8341c]/10 border border-[#e8341c]/20 rounded-full px-3 py-1">
+                        <span className="text-xs text-[#6366f1] bg-[#6366f1]/10 border border-[#6366f1]/20 rounded-full px-3 py-1">
                           {study.industry}
                         </span>
                         <span className="text-xs text-white/40 bg-white/5 border border-white/10 rounded-full px-3 py-1">
@@ -87,7 +87,7 @@ export default async function CaseStudiesPage() {
                         <span className="text-white/70 font-medium">Results: </span>
                         {study.results}
                       </p>
-                      <div className="flex items-center gap-1.5 text-[#e8341c] text-xs font-medium flex-shrink-0 ml-6">
+                      <div className="flex items-center gap-1.5 text-[#6366f1] text-xs font-medium flex-shrink-0 ml-6">
                         Read more
                         <svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none">
                           <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

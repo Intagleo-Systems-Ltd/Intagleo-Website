@@ -69,7 +69,7 @@ export default async function CaseStudyPage({ params }: Props) {
           </div>
 
           <div className="flex flex-wrap gap-2 mb-6">
-            <span className="text-xs text-[#e8341c] bg-[#e8341c]/10 border border-[#e8341c]/20 rounded-full px-3 py-1">
+            <span className="text-xs text-[#6366f1] bg-[#6366f1]/10 border border-[#6366f1]/20 rounded-full px-3 py-1">
               {study.industry}
             </span>
             <span className="text-xs text-white/40 bg-white/5 border border-white/10 rounded-full px-3 py-1">
@@ -109,11 +109,11 @@ export default async function CaseStudyPage({ params }: Props) {
               key={label}
               className={`rounded-2xl p-6 border ${
                 accent
-                  ? "bg-[#e8341c]/8 border-[#e8341c]/20"
+                  ? "bg-[#6366f1]/8 border-[#6366f1]/20"
                   : "bg-[#0d0d10] border-white/8"
               }`}
             >
-              <p className={`text-xs uppercase tracking-widest mb-3 font-semibold ${accent ? "text-[#e8341c]" : "text-white/30"}`}>
+              <p className={`text-xs uppercase tracking-widest mb-3 font-semibold ${accent ? "text-[#6366f1]" : "text-white/30"}`}>
                 {label}
               </p>
               <p className="text-white/65 text-sm leading-relaxed">{value}</p>
@@ -129,12 +129,12 @@ export default async function CaseStudyPage({ params }: Props) {
             className="prose prose-invert prose-sm md:prose-base max-w-none
               prose-headings:text-white prose-headings:font-semibold
               prose-p:text-white/60 prose-p:leading-relaxed
-              prose-a:text-[#e8341c] prose-a:no-underline hover:prose-a:underline
+              prose-a:text-[#6366f1] prose-a:no-underline hover:prose-a:underline
               prose-strong:text-white/90
               prose-li:text-white/60
               prose-hr:border-white/10
-              prose-blockquote:border-l-[#e8341c] prose-blockquote:text-white/50
-              prose-code:text-[#e8341c] prose-code:bg-white/5 prose-code:px-1 prose-code:rounded"
+              prose-blockquote:border-l-[#6366f1] prose-blockquote:text-white/50
+              prose-code:text-[#6366f1] prose-code:bg-white/5 prose-code:px-1 prose-code:rounded"
             dangerouslySetInnerHTML={{ __html: contentHtml }}
           />
         </div>

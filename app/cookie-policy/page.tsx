@@ -150,7 +150,7 @@ export default function CookiePolicyPage() {
             <h2 className="text-xl font-semibold text-white mb-3">Contact Us</h2>
             <p>If you have any questions about our use of cookies, please contact our Data Protection Officer:</p>
             <div className="mt-4 p-5 rounded-xl bg-white/[0.03] border border-white/[0.07] space-y-1.5">
-              <p><span className="text-white/80">Email:</span>{" "}<a href="mailto:dpo@intagleo.com" className="text-[#e8341c] hover:text-[#ff5540] transition-colors">dpo@intagleo.com</a></p>
+              <p><span className="text-white/80">Email:</span>{" "}<a href="mailto:dpo@intagleo.com" className="text-[#6366f1] hover:text-[#4f46e5] transition-colors">dpo@intagleo.com</a></p>
               <p><span className="text-white/80">Post:</span> Data Protection Officer, Intagleo Systems UK Limited, 268 Bath Road, Slough, SL1 4DX, United Kingdom</p>
             </div>
           </section>

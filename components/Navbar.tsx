@@ -202,6 +202,11 @@ const companyLinks = [
     icon: <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4 flex-shrink-0"><path d="M4 8c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H8l-4 3V8z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/></svg>,
   },
   {
+    label: "Join Us", href: "/join-us",
+    desc: "Explore open roles and join the Intagleo engineering team.",
+    icon: <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4 flex-shrink-0"><circle cx="8" cy="6" r="3" stroke="currentColor" strokeWidth="1.5"/><path d="M2 17c0-3.314 2.686-6 6-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/><path d="M14 12v6M11 15h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>,
+  },
+  {
     label: "Contact", href: "/contact",
     desc: "Start a conversation with our team.",
     icon: <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4 flex-shrink-0"><path d="M3 5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5z" stroke="currentColor" strokeWidth="1.5"/><path d="M3 5l7 5 7-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>,
@@ -305,7 +310,7 @@ export default function Navbar() {
             {/* <span className="text-white font-medium text-[13px] tracking-[0.2em] uppercase leading-none">
               INTAGLEO
             </span>
-            <span className="text-[#e8341c] text-[10px] tracking-[0.18em] font-normal leading-none">
+            <span className="text-[#6366f1] text-[10px] tracking-[0.18em] font-normal leading-none">
               systems
             </span> */}
           </div>
@@ -405,7 +410,7 @@ export default function Navbar() {
                     <Link
                       href="/contact"
                       onClick={() => setServicesOpen(false)}
-                      className="text-xs text-[#e8341c] hover:text-[#ff5540] transition-colors font-medium"
+                      className="text-xs text-[#6366f1] hover:text-[#4f46e5] transition-colors font-medium"
                     >
                       Talk to us →
                     </Link>
@@ -487,7 +492,7 @@ export default function Navbar() {
                     <Link
                       href="/contact"
                       onClick={() => setIndustriesOpen(false)}
-                      className="text-xs text-[#e8341c] hover:text-[#ff5540] transition-colors font-medium"
+                      className="text-xs text-[#6366f1] hover:text-[#4f46e5] transition-colors font-medium"
                     >
                       Talk to us →
                     </Link>

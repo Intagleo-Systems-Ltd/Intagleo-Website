@@ -49,8 +49,8 @@ export default function CookieConsent() {
         }}
       >
         {/* Cookie icon */}
-        <div className="flex-shrink-0 w-9 h-9 rounded-xl bg-[#e8341c]/10 border border-[#e8341c]/20 flex items-center justify-center">
-          <svg className="w-4 h-4 text-[#e8341c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <div className="flex-shrink-0 w-9 h-9 rounded-xl bg-[#6366f1]/10 border border-[#6366f1]/20 flex items-center justify-center">
+          <svg className="w-4 h-4 text-[#6366f1]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 8.25v.008M8.25 12v.008M15.75 12v.008M12 15.75v.008M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />
             <circle cx="8.5" cy="8.5" r="1" fill="currentColor" stroke="none" />
             <circle cx="15.5" cy="9.5" r="0.75" fill="currentColor" stroke="none" />
@@ -64,11 +64,11 @@ export default function CookieConsent() {
           <p className="text-white/80 text-sm font-medium leading-snug">We use cookies</p>
           <p className="text-white/40 text-xs leading-relaxed mt-0.5">
             We use essential and analytics cookies to improve your experience.{" "}
-            <Link href="/cookie-policy" className="text-[#e8341c]/80 hover:text-[#e8341c] transition-colors underline underline-offset-2">
+            <Link href="/cookie-policy" className="text-[#6366f1]/80 hover:text-[#6366f1] transition-colors underline underline-offset-2">
               Cookie Policy
             </Link>
             {" "}·{" "}
-            <Link href="/privacy-policy" className="text-[#e8341c]/80 hover:text-[#e8341c] transition-colors underline underline-offset-2">
+            <Link href="/privacy-policy" className="text-[#6366f1]/80 hover:text-[#6366f1] transition-colors underline underline-offset-2">
               Privacy Policy
             </Link>
           </p>
@@ -84,7 +84,7 @@ export default function CookieConsent() {
           </button>
           <button
             onClick={() => dismiss("accepted")}
-            className="px-4 py-2 rounded-full bg-[#e8341c] text-white text-xs font-semibold hover:bg-[#d42e18] transition-colors cursor-pointer"
+            className="px-4 py-2 rounded-full bg-[#6366f1] text-white text-xs font-semibold hover:bg-[#4f46e5] transition-colors cursor-pointer"
           >
             Accept all
           </button>

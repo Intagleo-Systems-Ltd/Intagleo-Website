@@ -89,6 +89,8 @@ export default function AdminPanel() {
     }
   };
 
+
+
   const handleLogout = () => {
     localStorage.removeItem("adminToken");
     setToken("");

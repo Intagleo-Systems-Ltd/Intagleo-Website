@@ -23,7 +23,7 @@ export default function CTABanner({
         <div className="grid lg:grid-cols-2 items-stretch relative overflow-hidden border border-white/[0.06]" style={{borderRadius: '32px', background: '#0E121D', backdropFilter: 'blur(3px)'}}>
           {/* Left , text content */}
           <div className="p-10 lg:p-14 flex flex-col justify-center relative z-10">
-            <h2 className="text-5xl md:text-6xl font-extrabold text-[#e8341c] mb-2 leading-none">
+            <h2 className="text-5xl md:text-6xl font-extrabold text-[#6366f1] mb-2 leading-none">
               {accentText}
             </h2>
             <p className="text-2xl md:text-3xl font-semibold text-white mb-4 leading-snug">
@@ -34,7 +34,7 @@ export default function CTABanner({
             </p>
             <Link
               href={ctaHref}
-              className="self-start inline-flex items-center gap-2 bg-[#e8341c] hover:bg-[#c02a16] text-white px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200"
+              className="self-start inline-flex items-center gap-2 bg-[#6366f1] hover:bg-[#4f46e5] text-white px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200"
             >
               {ctaLabel}
             </Link>

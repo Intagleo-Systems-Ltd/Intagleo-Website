@@ -58,7 +58,7 @@ export default async function BlogPage() {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     ) : (
-                      <div className="w-full h-full bg-gradient-to-br from-[#e8341c]/10 via-transparent to-transparent" />
+                      <div className="w-full h-full bg-gradient-to-br from-[#6366f1]/10 via-transparent to-transparent" />
                     )}
                   </div>
 
@@ -75,7 +75,7 @@ export default async function BlogPage() {
                     <p className="text-white/40 text-sm leading-relaxed line-clamp-3">
                       {post.excerpt}
                     </p>
-                    <div className="mt-4 flex items-center gap-1.5 text-[#e8341c] text-xs font-medium">
+                    <div className="mt-4 flex items-center gap-1.5 text-[#6366f1] text-xs font-medium">
                       Read post
                       <svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none">
                         <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

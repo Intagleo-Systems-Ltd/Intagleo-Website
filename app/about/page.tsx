@@ -112,7 +112,7 @@ export default function AboutPage() {
               <div className="flex flex-wrap gap-3 mt-8">
                 <Link
                   href="/contact?type=start-project"
-                  className="bg-[#e8341c] hover:bg-[#c02a16] text-white px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200"
+                  className="bg-[#6366f1] hover:bg-[#4f46e5] text-white px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200"
                 >
                   Start a project
                 </Link>
@@ -182,7 +182,7 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {values.map((v) => (
               <div key={v.title} className="rounded-2xl bg-[#0d0d10] border border-white/8 p-7 hover:border-white/15 transition-colors duration-300">
-                <div className="w-10 h-10 rounded-xl bg-[#e8341c]/10 border border-[#e8341c]/20 flex items-center justify-center text-[#e8341c] mb-5">
+                <div className="w-10 h-10 rounded-xl bg-[#6366f1]/10 border border-[#6366f1]/20 flex items-center justify-center text-[#6366f1] mb-5">
                   {v.icon}
                 </div>
                 <h3 className="text-white font-semibold text-base mb-3">{v.title}</h3>
@@ -206,12 +206,12 @@ export default function AboutPage() {
               {timeline.map((item, i) => (
                 <div key={i} className="flex gap-6 items-start pl-2">
                   <div className="relative flex-shrink-0">
-                    <div className="w-6 h-6 rounded-full border border-[#e8341c]/50 bg-[#0a0a0a] flex items-center justify-center">
-                      <div className="w-2 h-2 rounded-full bg-[#e8341c]" />
+                    <div className="w-6 h-6 rounded-full border border-[#6366f1]/50 bg-[#0a0a0a] flex items-center justify-center">
+                      <div className="w-2 h-2 rounded-full bg-[#6366f1]" />
                     </div>
                   </div>
                   <div className="pb-2">
-                    <span className="text-[#e8341c] text-xs font-semibold tracking-widest uppercase">{item.year}</span>
+                    <span className="text-[#6366f1] text-xs font-semibold tracking-widest uppercase">{item.year}</span>
                     <p className="text-white/55 text-sm leading-relaxed mt-1 max-w-xl">{item.event}</p>
                   </div>
                 </div>
@@ -254,7 +254,7 @@ export default function AboutPage() {
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 href="/contact?type=start-project"
-                className="bg-[#e8341c] hover:bg-[#c02a16] text-white px-8 py-3.5 rounded-full text-sm font-medium transition-colors duration-200"
+                className="bg-[#6366f1] hover:bg-[#4f46e5] text-white px-8 py-3.5 rounded-full text-sm font-medium transition-colors duration-200"
               >
                 Start a conversation
               </Link>

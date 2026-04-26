@@ -43,6 +43,23 @@ export interface Testimonial {
   show_on_homepage?: boolean;
 }
 
+export interface Vacancy {
+  _id: string;
+  title: string;
+  slug: string;
+  department?: string;
+  location?: string;
+  type?: string;
+  experience?: string;
+  salary?: string;
+  shortDescription: string;
+  responsibilities?: string[];
+  requirements?: string[];
+  niceToHave?: string[];
+  isOpen: boolean;
+  postedAt?: string;
+}
+
 // ─── Markdown utility ─────────────────────────────────────────────────────────
 
 export async function markdownToHtml(markdown: string): Promise<string> {

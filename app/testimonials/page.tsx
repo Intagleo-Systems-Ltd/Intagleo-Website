@@ -66,7 +66,7 @@ export default function TestimonialsPage() {
                           className="w-full h-full object-cover"
                         />
                       ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-[#e8341c]/20 to-transparent flex items-center justify-center">
+                        <div className="w-full h-full bg-gradient-to-br from-[#6366f1]/20 to-transparent flex items-center justify-center">
                           <span className="text-white/30 text-sm font-medium">
                             {testimonial.name[0]}
                           </span>
@@ -82,7 +82,7 @@ export default function TestimonialsPage() {
                       <p className="text-white/40 text-xs">
                         {testimonial.title}
                       </p>
-                      <p className="text-[#e8341c] text-xs font-medium">
+                      <p className="text-[#6366f1] text-xs font-medium">
                         {testimonial.company}
                       </p>
                     </div>

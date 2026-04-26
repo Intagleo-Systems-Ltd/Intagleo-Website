@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { getContactConfig } from "@/lib/contactConfigs";
+import { verifyCaptcha } from "@/lib/verifyCaptcha";
 
 function getTransporter() {
   return nodemailer.createTransport({
@@ -37,7 +38,7 @@ function confirmationHtml(name: string, badge: string): string {
 
           <!-- Header bar -->
           <tr>
-            <td style="background:#e8341c;padding:4px 0;"></td>
+            <td style="background:#6366f1;padding:4px 0;"></td>
           </tr>
 
           <!-- Logo -->
@@ -45,7 +46,7 @@ function confirmationHtml(name: string, badge: string): string {
             <td style="padding:36px 40px 0;">
               <table cellpadding="0" cellspacing="0">
                 <tr>
-                  <td style="background:#e8341c;border-radius:6px;width:28px;height:28px;text-align:center;vertical-align:middle;">
+                  <td style="background:#6366f1;border-radius:6px;width:28px;height:28px;text-align:center;vertical-align:middle;">
                     <span style="color:white;font-weight:700;font-size:14px;">I</span>
                   </td>
                   <td style="padding-left:8px;">
@@ -60,8 +61,8 @@ function confirmationHtml(name: string, badge: string): string {
           <tr>
             <td style="padding:32px 40px 40px;">
               <!-- Badge -->
-              <div style="display:inline-block;background:rgba(232,52,28,0.1);border:1px solid rgba(232,52,28,0.25);border-radius:100px;padding:4px 14px;margin-bottom:24px;">
-                <span style="color:#e8341c;font-size:12px;font-weight:500;">${badge}</span>
+              <div style="display:inline-block;background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.25);border-radius:100px;padding:4px 14px;margin-bottom:24px;">
+                <span style="color:#6366f1;font-size:12px;font-weight:500;">${badge}</span>
               </div>
 
               <h1 style="color:white;font-size:26px;font-weight:700;margin:0 0 12px;line-height:1.2;letter-spacing:-0.5px;">
@@ -111,7 +112,7 @@ function confirmationHtml(name: string, badge: string): string {
 
               <!-- CTA button -->
               <div style="margin-top:32px;">
-                <a href="https://intagleo.com" style="display:inline-block;background:#e8341c;color:white;text-decoration:none;padding:12px 28px;border-radius:100px;font-size:14px;font-weight:500;">
+                <a href="https://intagleo.com" style="display:inline-block;background:#6366f1;color:white;text-decoration:none;padding:12px 28px;border-radius:100px;font-size:14px;font-weight:500;">
                   Visit our website
                 </a>
               </div>
@@ -147,7 +148,7 @@ function notificationHtml(fields: {
   const rows = [
     ["Type", fields.badge],
     ["Name", fields.name],
-    ["Email", `<a href="mailto:${fields.email}" style="color:#e8341c;">${fields.email}</a>`],
+    ["Email", `<a href="mailto:${fields.email}" style="color:#6366f1;">${fields.email}</a>`],
     ["Company", fields.company || "-"],
     ...(fields.context ? [["Context", fields.context]] : []),
   ];
@@ -160,7 +161,7 @@ function notificationHtml(fields: {
     <tr>
       <td align="center">
         <table width="580" cellpadding="0" cellspacing="0" style="background:#0d0d10;border-radius:16px;border:1px solid rgba(255,255,255,0.07);overflow:hidden;max-width:580px;">
-          <tr><td style="background:#e8341c;padding:4px 0;"></td></tr>
+          <tr><td style="background:#6366f1;padding:4px 0;"></td></tr>
           <tr>
             <td style="padding:36px 40px 40px;">
               <h1 style="color:white;font-size:22px;font-weight:700;margin:0 0 6px;">
@@ -191,7 +192,7 @@ function notificationHtml(fields: {
 
               <!-- Reply CTA -->
               <div style="margin-top:24px;">
-                <a href="mailto:${fields.email}?subject=Re: Your inquiry - Intagleo" style="display:inline-block;background:#e8341c;color:white;text-decoration:none;padding:11px 24px;border-radius:100px;font-size:13px;font-weight:500;">
+                <a href="mailto:${fields.email}?subject=Re: Your inquiry - Intagleo" style="display:inline-block;background:#6366f1;color:white;text-decoration:none;padding:11px 24px;border-radius:100px;font-size:13px;font-weight:500;">
                   Reply to ${fields.name}
                 </a>
               </div>
@@ -216,19 +217,29 @@ function notificationHtml(fields: {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, company, context, message, type } = body as {
+    const { name, email, company, context, message, type, captchaToken } = body as {
       name: string;
       email: string;
       company?: string;
       context?: string;
       message: string;
       type?: string;
+      captchaToken?: string;
     };
 
     // Basic validation
     if (!name?.trim() || !email?.trim() || !message?.trim()) {
       return NextResponse.json(
         { error: "Name, email, and message are required." },
+        { status: 400 }
+      );
+    }
+
+    // CAPTCHA verification
+    const captchaValid = await verifyCaptcha(captchaToken ?? null);
+    if (!captchaValid) {
+      return NextResponse.json(
+        { error: "CAPTCHA verification failed. Please try again." },
         { status: 400 }
       );
     }

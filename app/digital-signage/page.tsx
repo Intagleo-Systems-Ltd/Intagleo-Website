@@ -161,7 +161,7 @@ export default function DigitalSignagePage() {
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/contact?type=digital-signage"
-              className="px-6 py-3 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors"
+              className="px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
             >
               Talk to Signage Expert
             </Link>
@@ -317,7 +317,7 @@ export default function DigitalSignagePage() {
               <div className="bg-[#13141a] border border-white/[0.07] border-t-0 rounded-b-2xl px-6 py-4 flex flex-wrap gap-x-6 gap-y-2">
                 {techCaps[activeTab].items.map((item) => (
                   <span key={item} className="flex items-center gap-2 text-xs text-white/55">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#e8341c]/70 flex-shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1]/70 flex-shrink-0" />
                     {item}
                   </span>
                 ))}
@@ -345,7 +345,7 @@ export default function DigitalSignagePage() {
             </p>
             <Link
               href="/contact?type=signage-review"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
             >
               Book an Architecture Review
             </Link>
@@ -401,7 +401,7 @@ export default function DigitalSignagePage() {
               </div>
 
               {/* Ambient glow */}
-              <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(232,52,28,0.05) 0%, transparent 70%)" }} />
+              <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(99,102,241,0.05) 0%, transparent 70%)" }} />
             </div>
           </div>
         </div>
@@ -448,7 +448,7 @@ export default function DigitalSignagePage() {
                 <div className="absolute left-1/2 top-2 -translate-x-1/2 w-3 h-3 rounded-full bg-white/20 border border-white/30 z-10" />
 
                 <div className={`w-[44%] ${step.align === "right" ? "text-left pl-8" : "text-right pr-8"}`}>
-                  <span className="text-[#e8341c] text-4xl font-bold leading-none block mb-2">{step.num}</span>
+                  <span className="text-[#6366f1] text-4xl font-bold leading-none block mb-2">{step.num}</span>
                   <h3 className="text-white font-bold text-lg mb-1">{step.title}</h3>
                   <p className="text-white/40 text-sm leading-relaxed">{step.desc}</p>
                 </div>
@@ -483,7 +483,7 @@ export default function DigitalSignagePage() {
               alt=""
               className="absolute inset-0 w-full h-full object-cover object-center opacity-35"
             />
-            <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 70% at 40% 70%, rgba(232,52,28,0.09) 0%, transparent 65%)" }} />
+            <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 70% at 40% 70%, rgba(99,102,241,0.09) 0%, transparent 65%)" }} />
             <div className="absolute inset-0 flex flex-col justify-between p-10">
               <div>
                 <p className="text-xs text-white/40 uppercase tracking-widest mb-5">Business Impact</p>
@@ -498,7 +498,7 @@ export default function DigitalSignagePage() {
               </div>
               <Link
                 href="/contact?type=digital-signage"
-                className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors cursor-pointer"
+                className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors cursor-pointer"
               >
                 Start Getting Results
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
@@ -518,7 +518,7 @@ export default function DigitalSignagePage() {
                 key={item.title}
                 className="flex-1 flex items-start gap-5 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-200"
               >
-                <span className="text-xs font-mono text-[#e8341c]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
+                <span className="text-xs font-mono text-[#6366f1]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
                 <div>
                   <h3 className="text-white font-semibold text-[15px] mb-1.5 leading-snug">{item.title}</h3>
                   <p className="text-white/55 text-sm leading-relaxed">{item.desc}</p>
@@ -621,7 +621,7 @@ export default function DigitalSignagePage() {
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
             <Link
               href="/contact?type=digital-signage"
-              className="px-7 py-3 rounded-full bg-[#e8341c] text-white text-sm font-semibold hover:bg-[#d42e18] transition-colors"
+              className="px-7 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
             >
               Talk to a Signage Expert
             </Link>
