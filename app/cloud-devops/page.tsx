@@ -100,7 +100,7 @@ export default function CloudDevOpsPage() {
           />
           <div
             className="absolute bottom-0 left-0 right-0 h-72"
-            style={{ background: "linear-gradient(to top, #0a0a0a 0%, transparent 100%)" }}
+            style={{ background: "linear-gradient(to bottom, transparent, #0a0a0a)" }}
           />
           <div className="absolute inset-y-0 left-0 w-24" style={{ background: "linear-gradient(to right, rgba(7,8,15,0.6), transparent)" }} />
           <div className="absolute inset-y-0 right-0 w-24" style={{ background: "linear-gradient(to left, rgba(7,8,15,0.6), transparent)" }} />
@@ -143,7 +143,7 @@ export default function CloudDevOpsPage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       {/* WHAT WE DELIVER                                                    */}
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative section-padding py-24">
+      <section style={{ background: "#0a0a0a" }} className="relative section-padding py-24">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: "radial-gradient(ellipse at 50% 40%, rgba(20,30,80,0.25) 0%, transparent 65%)" }}

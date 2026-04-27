@@ -210,25 +210,30 @@ export default function AITransformationPage() {
       <section className="relative min-h-[85vh] flex flex-col items-center pt-32 pb-24 px-6 text-center overflow-hidden">
 
         {/* Background layers */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/hex-mesh-bg.png"
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover object-center"
-            style={{ opacity: 0.45 }}
-          />
-          {/* Deep navy-purple base */}
-          <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(5,9,20,0.9) 0%, rgba(15,7,35,0.82) 50%, rgba(5,9,20,0.9) 100%)" }} />
-          {/* Large central glow orb */}
-          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 70% 55% at 50% 35%, rgba(139,92,246,0.18) 0%, rgba(139,92,246,0.05) 45%, transparent 70%)" }} />
-          {/* Subtle red accent at bottom-left */}
-          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 40% 30% at 10% 80%, rgba(232,52,28,0.08) 0%, transparent 60%)" }} />
-          <div className="absolute top-0 left-0 right-0 h-40" style={{ background: "linear-gradient(to bottom, #05091a 0%, transparent 100%)" }} />
-          <div className="absolute bottom-0 left-0 right-0 h-56" style={{ background: "linear-gradient(to top, #050914 0%, transparent 100%)" }} />
-          <div className="absolute inset-y-0 left-0 w-32" style={{ background: "linear-gradient(to right, rgba(5,9,20,0.7), transparent)" }} />
-          <div className="absolute inset-y-0 right-0 w-32" style={{ background: "linear-gradient(to left, rgba(5,9,20,0.7), transparent)" }} />
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/hex-mesh-bg.png"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+          style={{ opacity: 0.55 }}
+        />
+        {/* Dark base overlay */}
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(5,9,20,0.6)" }} />
+        {/* Central purple glow */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 70% 55% at 50% 35%, rgba(139,92,246,0.22) 0%, transparent 65%)" }}
+        />
+        {/* Subtle red accent bottom-left */}
+        <div
+          className="absolute left-0 bottom-0 w-[50%] h-[60%] pointer-events-none"
+          style={{ background: "radial-gradient(ellipse at 10% 90%, rgba(232,52,28,0.08) 0%, transparent 55%)" }}
+        />
+        {/* Bottom fade into page bg */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
+          style={{ background: "linear-gradient(to bottom, transparent, #050914)" }}
+        />
 
         {/* Headline content */}
         <div className="relative z-10 max-w-4xl mx-auto pb-12">
@@ -294,7 +299,7 @@ export default function AITransformationPage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       {/* WHAT CHANGES - live terminal race                                  */}
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section id="what-changes" className="relative section-padding py-24">
+      <section id="what-changes" className="relative section-padding py-24" style={{ background: "#050914" }}>
         <style>{`
           @keyframes scanline {
             0%   { top: 0%; opacity: 0; }
@@ -310,13 +315,9 @@ export default function AITransformationPage() {
         <div className="relative z-10 mx-auto max-w-6xl">
           {/* Header */}
           <div className="text-center mb-12">
-            <p className="text-xs text-white/35 uppercase tracking-widest mb-4 font-mono">Real impact</p>
             <h2 className="text-3xl md:text-[42px] font-bold heading-gradient mb-4 leading-tight">
               What actually changes<br />when you add AI.
             </h2>
-            <p className="text-white/40 max-w-md mx-auto text-sm">
-              Not theoretical benchmarks. Real workflow shifts we&apos;ve delivered for teams like yours.
-            </p>
           </div>
 
           {/* Tabs */}
@@ -587,7 +588,7 @@ export default function AITransformationPage() {
           <div className="relative overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/staffaug1.gif"
+              src="/Staffaug1.gif"
               alt=""
               className="absolute inset-0 w-full h-full object-cover object-center grayscale-[20%] opacity-50"
             />

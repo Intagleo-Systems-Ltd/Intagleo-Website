@@ -149,7 +149,7 @@ export default function StaffAugmentationPage() {
           {/* Bottom fade , blends into the page */}
           <div
             className="absolute bottom-0 left-0 right-0 h-72"
-            style={{ background: "linear-gradient(to top, #0a0a0a 0%, transparent 100%)" }}
+            style={{ background: "linear-gradient(to bottom, transparent, #0a0a0a)" }}
           />
           {/* Side vignettes */}
           <div className="absolute inset-y-0 left-0 w-24" style={{ background: "linear-gradient(to right, rgba(7,8,15,0.6), transparent)" }} />
@@ -188,7 +188,7 @@ export default function StaffAugmentationPage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       {/* WHAT WE DELIVER                                                    */}
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative section-padding py-24">
+      <section style={{ background: "#0a0a0a" }} className="relative section-padding py-24">
         {/* Subtle radial glow */}
         <div
           className="absolute inset-0 pointer-events-none"

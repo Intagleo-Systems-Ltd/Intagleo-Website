@@ -184,7 +184,7 @@ export default function EdtechPage() {
           <img src="/hex-mesh-bg.png" alt="" className="absolute inset-0 w-full h-full object-cover object-center" style={{ opacity: 0.85 }} />
           <div className="absolute inset-0" style={{ background: "rgba(10,10,10,0.55)" }} />
           <div className="absolute top-0 left-0 right-0 h-40" style={{ background: "linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)" }} />
-          <div className="absolute bottom-0 left-0 right-0 h-72" style={{ background: "linear-gradient(to top, #0a0a0a 0%, transparent 100%)" }} />
+          <div className="absolute bottom-0 left-0 right-0 h-72" style={{ background: "linear-gradient(to bottom, transparent, #0a0a0a)" }} />
           <div className="absolute inset-y-0 left-0 w-24" style={{ background: "linear-gradient(to right, rgba(10,10,10,0.6), transparent)" }} />
           <div className="absolute inset-y-0 right-0 w-24" style={{ background: "linear-gradient(to left, rgba(10,10,10,0.6), transparent)" }} />
         </div>
@@ -210,7 +210,7 @@ export default function EdtechPage() {
       <CapabilityCardSection caps={techCaps} sectionSubtitle="Built across the modern EdTech stack" />
 
       {/* ARCHITECTURE REVIEW */}
-      <section className="section-padding py-24">
+      <section style={{ background: "#0a0a0a" }} className="section-padding py-24">
         <div className="mx-auto max-w-6xl grid md:grid-cols-2 gap-16 items-center">
           <div>
             <p className="text-xs text-white/35 uppercase tracking-widest mb-4">Architecture Review</p>

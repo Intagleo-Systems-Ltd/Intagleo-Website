@@ -86,7 +86,7 @@ export default function MobileDevPage() {
           <img src="/hex-mesh-bg.png" alt="" className="absolute inset-0 w-full h-full object-cover object-center" style={{ opacity: 0.85 }} />
           <div className="absolute inset-0" style={{ background: "rgba(7,8,15,0.55)" }} />
           <div className="absolute top-0 left-0 right-0 h-40" style={{ background: "linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)" }} />
-          <div className="absolute bottom-0 left-0 right-0 h-72" style={{ background: "linear-gradient(to top, #0a0a0a 0%, transparent 100%)" }} />
+          <div className="absolute bottom-0 left-0 right-0 h-72" style={{ background: "linear-gradient(to bottom, transparent, #0a0a0a)" }} />
           <div className="absolute inset-y-0 left-0 w-24" style={{ background: "linear-gradient(to right, rgba(7,8,15,0.6), transparent)" }} />
           <div className="absolute inset-y-0 right-0 w-24" style={{ background: "linear-gradient(to left, rgba(7,8,15,0.6), transparent)" }} />
         </div>
@@ -115,7 +115,7 @@ export default function MobileDevPage() {
       </section>
 
       {/* WHAT WE DELIVER */}
-      <section className="relative section-padding py-24">
+      <section style={{ background: "#0a0a0a" }} className="relative section-padding py-24">
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 40%, rgba(20,30,80,0.25) 0%, transparent 65%)" }} />
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="text-center mb-14">

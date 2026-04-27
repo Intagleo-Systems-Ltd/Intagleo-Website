@@ -262,7 +262,7 @@ export default function DataAnalyticsPage() {
           />
           <div
             className="absolute bottom-0 left-0 right-0 h-72"
-            style={{ background: "linear-gradient(to top, #0a0a0a 0%, transparent 100%)" }}
+            style={{ background: "linear-gradient(to bottom, transparent, #0a0a0a)" }}
           />
           <div className="absolute inset-y-0 left-0 w-24" style={{ background: "linear-gradient(to right, rgba(7,8,15,0.6), transparent)" }} />
           <div className="absolute inset-y-0 right-0 w-24" style={{ background: "linear-gradient(to left, rgba(7,8,15,0.6), transparent)" }} />
@@ -304,7 +304,7 @@ export default function DataAnalyticsPage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       {/* MODERN DATA STACK                                                  */}
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="section-padding py-24 border-t border-white/5">
+      <section className="section-padding py-24" style={{ background: "#0a0a0a" }}>
         <div className="mx-auto max-w-6xl">
 
           {/* Gradient title */}
@@ -473,7 +473,7 @@ export default function DataAnalyticsPage() {
           <div className="relative overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/staffaug1.gif"
+              src="/data.gif"
               alt=""
               className="absolute inset-0 w-full h-full object-cover object-center grayscale-[20%] opacity-50"
             />

@@ -257,11 +257,11 @@ export default function ServicesSection() {
         {/* Top row */}
         <div className="flex items-start justify-between mb-12 gap-6">
           <h2 className="text-3xl md:text-4xl leading-tight max-w-lg">
-            <span className="font-bold heading-gradient">We Build </span>
-            <span className="font-light text-white/50">Production-Ready</span>
+            <span className="font-bold heading-gradient">Engineered</span>
+            <span className="font-light text-white/50"> To Scale.</span>
             <br />
-            <span className="font-bold heading-gradient">Software </span>
-            <span className="font-light text-white/50">That Scales</span>
+            <span className="font-bold heading-gradient">Built</span>
+            <span className="font-light text-white/50"> To Win</span>
           </h2>
           <a
             href="/contact?type=services"
