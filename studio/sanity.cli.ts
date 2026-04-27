@@ -6,4 +6,7 @@ export default defineCliConfig({
     dataset: "production",
   },
   studioHost: "intagleo",
+  deployment: {
+    appId: "kxqbb2a9lu24w7sq21wssffz",
+  },
 });

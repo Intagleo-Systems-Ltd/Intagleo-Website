@@ -173,12 +173,11 @@ const DEFAULT_VACANCIES: Vacancy[] = [
 
 async function getVacancies(): Promise<Vacancy[]> {
   try {
-    if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) return DEFAULT_VACANCIES;
+    if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) return [];
     const { getVacanciesAsync } = await import("@/lib/providers/sanity");
-    const vacancies = await getVacanciesAsync();
-    return vacancies.length > 0 ? vacancies : DEFAULT_VACANCIES;
+    return await getVacanciesAsync();
   } catch {
-    return DEFAULT_VACANCIES;
+    return [];
   }
 }
 

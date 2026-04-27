@@ -104,6 +104,7 @@ const SOURCE_OPTIONS = [
 ];
 
 const FIELD = "w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#6366f1]/60 focus:bg-white/[0.06] transition-colors duration-200";
+const SELECT_FIELD = "w-full px-4 py-3 rounded-xl bg-[#0d0f1c] border border-white/[0.08] text-white text-sm focus:outline-none focus:border-[#6366f1]/60 transition-colors duration-200 cursor-pointer appearance-none";
 
 const ALLOWED_EXTENSIONS = [".pdf", ".doc", ".docx"];
 const MAX_FILE_BYTES = 10 * 1024 * 1024;
@@ -291,7 +292,7 @@ function ApplyModal({ vacancy, onClose }: { vacancy: Vacancy; onClose: () => voi
                   id="apply-experience"
                   value={form.experience}
                   onChange={(e) => set("experience", e.target.value)}
-                  className={FIELD + " cursor-pointer"}
+                  className={SELECT_FIELD}
                 >
                   <option value="" disabled>Select…</option>
                   {EXPERIENCE_OPTIONS.map((o) => <option key={o} value={o}>{o}</option>)}
@@ -400,7 +401,7 @@ function ApplyModal({ vacancy, onClose }: { vacancy: Vacancy; onClose: () => voi
                 id="apply-source"
                 value={form.source}
                 onChange={(e) => set("source", e.target.value)}
-                className={FIELD + " cursor-pointer"}
+                className={SELECT_FIELD}
               >
                 <option value="" disabled>Select…</option>
                 {SOURCE_OPTIONS.map((o) => <option key={o} value={o}>{o}</option>)}

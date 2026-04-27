@@ -3,6 +3,7 @@ import { structureTool } from "sanity/structure";
 import { blogPost } from "./schemaTypes/blogPost";
 import { caseStudy } from "./schemaTypes/caseStudy";
 import { testimonial } from "./schemaTypes/testimonial";
+import { vacancy } from "./schemaTypes/vacancy";
 
 export default defineConfig({
   name: "intagleo",
@@ -21,9 +22,10 @@ export default defineConfig({
             S.listItem().title("Blog Posts").schemaType("blogPost").child(S.documentTypeList("blogPost")),
             S.listItem().title("Case Studies").schemaType("caseStudy").child(S.documentTypeList("caseStudy")),
             S.listItem().title("Testimonials").schemaType("testimonial").child(S.documentTypeList("testimonial")),
+            S.listItem().title("Vacancies").schemaType("vacancy").child(S.documentTypeList("vacancy")),
           ]),
     }),
   ],
 
-  schema: { types: [blogPost, caseStudy, testimonial] },
+  schema: { types: [blogPost, caseStudy, testimonial, vacancy] },
 });

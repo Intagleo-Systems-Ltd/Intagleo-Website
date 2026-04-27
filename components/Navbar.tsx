@@ -202,11 +202,6 @@ const companyLinks = [
     icon: <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4 flex-shrink-0"><path d="M4 8c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H8l-4 3V8z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/></svg>,
   },
   {
-    label: "Join Us", href: "/join-us",
-    desc: "Explore open roles and join the Intagleo engineering team.",
-    icon: <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4 flex-shrink-0"><circle cx="8" cy="6" r="3" stroke="currentColor" strokeWidth="1.5"/><path d="M2 17c0-3.314 2.686-6 6-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/><path d="M14 12v6M11 15h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>,
-  },
-  {
     label: "Contact", href: "/contact",
     desc: "Start a conversation with our team.",
     icon: <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4 flex-shrink-0"><path d="M3 5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5z" stroke="currentColor" strokeWidth="1.5"/><path d="M3 5l7 5 7-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>,
@@ -297,7 +292,7 @@ export default function Navbar() {
           : "bg-[#06080f]/80 backdrop-blur-sm"
       }`}
     >
-      <div className="section-padding mx-auto max-w-[1400px] flex items-center justify-between h-[60px]">
+      <div className="section-padding mx-auto max-w-[1400px] flex items-center justify-between h-[72px]">
         {/* Logo */}
         <Link
           href="/"
@@ -369,7 +364,7 @@ export default function Navbar() {
                   transition={{ duration: 0.18 }}
                   className="fixed rounded-2xl overflow-hidden"
                   style={{
-                    top: "68px",
+                    top: "80px",
                     left: "max(112px, calc((100vw - 800px) / 2 + 112px))",                    width: "760px",
                     background: "#0d0f1c",
                     border: "1px solid rgba(255,255,255,0.12)",
@@ -449,7 +444,7 @@ export default function Navbar() {
                   transition={{ duration: 0.18 }}
                   className="fixed rounded-2xl overflow-hidden"
                   style={{
-                    top: "68px",
+                    top: "80px",
                     left: "max(112px, calc((100vw - 800px) / 2 + 112px))",
                     width: "760px",
                     background: "#0d0f1c",
@@ -510,6 +505,8 @@ export default function Navbar() {
             Our Products
           </a>
 
+        
+
           {/* Company dropdown */}
           <div
             ref={companyRef}
@@ -539,7 +536,7 @@ export default function Navbar() {
                   transition={{ duration: 0.18 }}
                   className="fixed rounded-2xl overflow-hidden"
                   style={{
-                    top: "68px",
+                    top: "80px",
                     right: "max(112px, calc((100vw - 1400px) / 2 + 112px))",
                     width: "480px",
                     background: "#0d0f1c",
@@ -577,6 +574,13 @@ export default function Navbar() {
               )}
             </AnimatePresence>
           </div>
+            {/* Careers */}
+          <a
+            href="/join-us"
+            className="text-sm text-white/60 hover:text-white transition-colors duration-200 whitespace-nowrap"
+          >
+            Careers
+          </a>
         </nav>
 
         {/* CTA */}
@@ -757,6 +761,17 @@ export default function Navbar() {
                 className="text-white/65 hover:text-white transition-colors py-2.5 text-sm"
               >
                 Our Products
+              </motion.a>
+
+              {/* Careers */}
+              <motion.a
+                href="/join-us"
+                initial={{ opacity: 0, x: -12 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.33, duration: 0.22 }}
+                className="text-white/65 hover:text-white transition-colors py-2.5 text-sm"
+              >
+                Careers
               </motion.a>
 
               {/* Company accordion */}
