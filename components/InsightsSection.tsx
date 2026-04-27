@@ -79,7 +79,7 @@ export default function InsightsSection({ pageSlug }: { pageSlug?: string } = {}
 
         {/* ── Header ── */}
         <h2
-          className="text-center text-white mb-6"
+          className="text-center heading-gradient mb-6"
           style={{
             fontFamily: '"Roobert TRIAL", sans-serif',
             fontSize: "clamp(26px, 3vw, 44px)",

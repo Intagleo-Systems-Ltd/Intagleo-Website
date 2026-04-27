@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
@@ -417,7 +417,7 @@ export default function AdminPage() {
             ) : (
               <div className="max-w-3xl mx-auto px-8 py-8">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-white font-medium">
+                  <h2 className="heading-gradient font-medium">
                     {editingSlug === "new" ? `New ${COLLECTION_LABELS[contentType].replace(/s$/, "")}` : editingSlug}
                   </h2>
                   <div className="flex items-center gap-3">

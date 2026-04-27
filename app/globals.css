@@ -70,6 +70,15 @@ summary {
   }
 }
 
+/* ── Gradient headings ────────────────────────────────────────────────────── */
+
+.heading-gradient {
+  background: linear-gradient(135deg, #c7d2fe 0%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 /* ── Marquee animations ───────────────────────────────────────────────────── */
 
 @keyframes marquee {

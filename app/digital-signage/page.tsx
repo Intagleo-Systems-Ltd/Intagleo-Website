@@ -245,7 +245,7 @@ export default function DigitalSignagePage() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto pb-16">
-          <h1 className="text-4xl md:text-5xl lg:text-[52px] font-bold text-white leading-[1.07] tracking-tight mb-5">
+          <h1 className="text-4xl md:text-5xl lg:text-[52px] font-bold heading-gradient leading-[1.07] tracking-tight mb-5">
             Screens that tells Stories!!<br />
           </h1>
 
@@ -371,7 +371,7 @@ export default function DigitalSignagePage() {
         <div className="mx-auto max-w-3xl">
 
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-4 leading-tight">
               From first screen to a network that runs itself
             </h2>
             <p className="text-white/40 text-base leading-relaxed">
@@ -541,7 +541,7 @@ export default function DigitalSignagePage() {
         <div className="absolute inset-0 bg-[#0a0a0a]/65 pointer-events-none" />
 
         <div className="relative z-10 mx-auto max-w-2xl">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-5">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold heading-gradient leading-tight mb-5">
             Screens going dark<br />
             <span className="text-white/35">costs more than you think.</span>
           </h2>

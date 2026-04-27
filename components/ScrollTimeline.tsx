@@ -6,24 +6,24 @@ export interface TimelineStep {
   num: string;
   title: string;
   desc: string;
-  align?: "left" | "right";
+  align?: string;
 }
 
 interface Props {
   steps: TimelineStep[];
-  /** Solid CSS color for step numbers and dots. Default: indigo. */
+  /** Solid CSS color for dots (also used as fallback). Default: indigo. */
   numColor?: string;
-  /** Pass a CSS gradient string to use gradient text numbers instead of solid color. */
+  /** Gradient for the large step numbers. Defaults to indigo→violet. */
   numGradient?: string;
-  /** CSS color/gradient for the vertical line. Default: indigo-tinted. */
+  /** CSS color/gradient for the vertical line. */
   lineColor?: string;
 }
 
 export default function ScrollTimeline({
   steps,
   numColor = "#6366f1",
-  numGradient,
-  lineColor = "rgba(99,102,241,0.3)",
+  numGradient = "linear-gradient(135deg, #6366f1 0%, #a78bfa 100%)",
+  lineColor = "linear-gradient(to bottom, rgba(99,102,241,0.8), rgba(167,139,250,0.4), rgba(99,102,241,0.05))",
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -104,19 +104,17 @@ export default function ScrollTimeline({
           step.align === "right" || (!step.align && i % 2 !== 0);
         const delay = i * 90;
 
-        const numStyle: React.CSSProperties = numGradient
-          ? {
-              background: numGradient,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }
-          : { color: numColor };
+        const numStyle: React.CSSProperties = {
+          backgroundImage: numGradient,
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text",
+        };
 
         return (
           <div
             key={step.num}
-            className={`stl-step relative flex items-start mb-16 last:mb-0 ${
+            className={`stl-step relative flex items-start mb-20 last:mb-0 ${
               isRight ? "flex-row-reverse" : ""
             }`}
             style={{
@@ -132,15 +130,15 @@ export default function ScrollTimeline({
               }`}
             >
               <div
-                className="text-5xl font-extrabold leading-none mb-2"
+                className="text-7xl font-bold leading-none mb-3"
                 style={numStyle}
               >
                 {step.num}
               </div>
-              <h3 className="text-white font-bold text-base mb-1">
+              <h3 className="text-white font-bold text-xl mt-3 mb-3">
                 {step.title}
               </h3>
-              <p className="text-white/35 text-xs leading-relaxed">
+              <p className="text-white/45 text-sm leading-relaxed">
                 {step.desc}
               </p>
             </div>

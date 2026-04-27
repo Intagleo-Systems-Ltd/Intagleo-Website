@@ -1,4 +1,4 @@
-import ContactForm from "@/components/ContactForm";
+﻿import ContactForm from "@/components/ContactForm";
 import { getContactConfig } from "@/lib/contactConfigs";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -74,7 +74,7 @@ export default function ContactPage({
               </div>
 
               {/* Heading */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.05] tracking-tight mb-6"
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold heading-gradient leading-[1.05] tracking-tight mb-6"
                 style={{ fontFamily: '"Roobert TRIAL", sans-serif' }}
               >
                 {headingLines.map((line, i) => (
@@ -127,7 +127,7 @@ export default function ContactPage({
             {/* ── Right: form card ── */}
             <div className="bg-[#0d0d10] border border-white/[0.06] rounded-2xl p-8 md:p-10">
               <div className="mb-8">
-                <h2 className="text-lg font-semibold text-white mb-1">
+                <h2 className="text-lg font-semibold heading-gradient mb-1">
                   Send us a message
                 </h2>
                 <p className="text-white/35 text-sm">

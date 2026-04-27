@@ -455,7 +455,7 @@ export default function HealthcarePage() {
           <div className="absolute inset-y-0 right-0 w-24" style={{ background: "linear-gradient(to left, rgba(10,10,10,0.6), transparent)" }} />
         </div>
         <div className="relative z-10 max-w-4xl mx-auto pb-16">
-          <h1 className="text-4xl md:text-5xl lg:text-[52px] font-bold text-white leading-[1.07] tracking-tight mb-5">
+          <h1 className="text-4xl md:text-5xl lg:text-[52px] font-bold heading-gradient leading-[1.07] tracking-tight mb-5">
             Healthcare software that<br />prioritises patient outcomes.
           </h1>
           <p className="text-white/45 text-base md:text-lg max-w-xl mx-auto mb-9">
@@ -477,7 +477,7 @@ export default function HealthcarePage() {
       <section className="section-padding py-24" id="capabilities">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Core Capabilities</h2>
+            <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-3">Core Capabilities</h2>
             <p className="text-white/40 text-base">Built across the modern healthcare technology stack</p>
           </div>
           <div className="grid lg:grid-cols-[248px_1fr] gap-4 items-start">
@@ -603,7 +603,7 @@ export default function HealthcarePage() {
       <section id="process" className="section-padding py-24">
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-4 leading-tight">
               From fragmented clinical systems to connected care infrastructure
             </h2>
             <p className="text-white/40 text-base leading-relaxed">
@@ -709,7 +709,7 @@ export default function HealthcarePage() {
         <img src="/footer_CTA.gif" alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale-[20%] opacity-50" />
         <div className="absolute inset-0 bg-[#0a0a0a]/65 pointer-events-none" />
         <div className="relative z-10 mx-auto max-w-2xl">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-5">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold heading-gradient leading-tight mb-5">
             Patient data scattered<br />
             <span className="text-white/35">is patient safety compromised.</span>
           </h2>

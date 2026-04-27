@@ -34,7 +34,7 @@ export default function HeroSection() {
       {/* Main content - sits in the upper sky area of the GIF */}
       <div className="relative z-10 flex flex-col items-center justify-center flex-1 px-6 text-center pt-28 pb-0">
         <h1
-          className="text-white leading-[1.1] tracking-tight mb-6 max-w-4xl drop-shadow-lg font-medium"
+          className="heading-gradient leading-[1.1] tracking-tight mb-6 max-w-4xl drop-shadow-lg font-medium"
           style={{
             fontFamily: '"Roobert TRIAL", sans-serif',
             fontSize: '68px',

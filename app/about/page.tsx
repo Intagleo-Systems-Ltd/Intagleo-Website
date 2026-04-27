@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -106,7 +106,7 @@ export default function AboutPage() {
           <p className="text-xs text-white/40 uppercase tracking-widest mb-4">About Intagleo</p>
           <div className="grid lg:grid-cols-2 gap-12 items-end">
             <div>
-              <h1 className="text-4xl md:text-5xl lg:text-[52px] font-bold text-white leading-tight tracking-tight mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-[52px] font-bold heading-gradient leading-tight tracking-tight mb-6">
                 We build software that works in production, not just in demos.
               </h1>
               <div className="flex flex-wrap gap-3 mt-8">
@@ -156,7 +156,7 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-[1fr_2fr] gap-12 items-start">
             <div>
               <p className="text-xs text-white/40 uppercase tracking-widest mb-4">Our mission</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+              <h2 className="text-3xl md:text-4xl font-bold heading-gradient leading-tight">
                 Close the gap between idea and production.
               </h2>
             </div>
@@ -176,7 +176,7 @@ export default function AboutPage() {
       <section className="section-padding py-20 border-b border-white/5">
         <div className="mx-auto max-w-[1400px]">
           <p className="text-xs text-white/40 uppercase tracking-widest mb-4">How we operate</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-12 max-w-lg">
+          <h2 className="text-3xl md:text-4xl font-bold heading-gradient leading-tight mb-12 max-w-lg">
             Principles that show up in every line of code.
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -197,7 +197,7 @@ export default function AboutPage() {
       <section className="section-padding py-20 border-b border-white/5">
         <div className="mx-auto max-w-[1400px]">
           <p className="text-xs text-white/40 uppercase tracking-widest mb-4">Our story</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-12 max-w-lg">
+          <h2 className="text-3xl md:text-4xl font-bold heading-gradient leading-tight mb-12 max-w-lg">
             Eight years of building the hard stuff.
           </h2>
           <div className="relative">
@@ -245,7 +245,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-[1400px]">
           <div className="rounded-3xl bg-[#0d0d10] border border-white/8 p-12 md:p-16 text-center">
             <p className="text-xs text-white/40 uppercase tracking-widest mb-4">Work with us</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-5 max-w-xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold heading-gradient leading-tight mb-5 max-w-xl mx-auto">
               Have a project in mind? Let&apos;s talk.
             </h2>
             <p className="text-white/40 text-base max-w-md mx-auto mb-10">

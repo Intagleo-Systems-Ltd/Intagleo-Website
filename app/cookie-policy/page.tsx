@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+﻿import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageBackground from "@/components/PageBackground";
 
@@ -14,20 +14,20 @@ export default function CookiePolicyPage() {
       <Navbar />
 
       <main className="relative z-10 section-padding pt-32 pb-24 mx-auto max-w-3xl">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">Cookie Policy</h1>
+        <h1 className="text-4xl md:text-5xl font-bold heading-gradient mb-3 tracking-tight">Cookie Policy</h1>
         <p className="text-white/35 text-sm mb-12">Last updated: August 9, 2023</p>
 
         <div className="space-y-10 text-white/60 leading-relaxed text-sm">
 
           <section>
-            <h2 className="text-xl font-semibold text-white mb-3">What Are Cookies?</h2>
+            <h2 className="text-xl font-semibold heading-gradient mb-3">What Are Cookies?</h2>
             <p>
               Cookies are small text files that are placed on your device when you visit a website. They are widely used to make websites work more efficiently and to provide information to website owners. Cookies allow a website to recognise your device and remember certain information about your visit.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-white mb-3">How We Use Cookies</h2>
+            <h2 className="text-xl font-semibold heading-gradient mb-3">How We Use Cookies</h2>
             <p>Intagleo Systems uses cookies for the following purposes:</p>
             <ul className="list-disc pl-5 mt-3 space-y-1.5">
               <li>To ensure our website functions correctly and delivers a consistent experience.</li>
@@ -42,7 +42,7 @@ export default function CookiePolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-white mb-3">Necessary Cookies</h2>
+            <h2 className="text-xl font-semibold heading-gradient mb-3">Necessary Cookies</h2>
             <p className="mb-4">These cookies are essential for the website to function and cannot be switched off. They are usually set in response to actions you take such as setting your privacy preferences, logging in, or filling in forms.</p>
             <div className="overflow-x-auto rounded-xl border border-white/[0.07]">
               <table className="w-full text-xs">
@@ -72,7 +72,7 @@ export default function CookiePolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-white mb-3">Analytics Cookies</h2>
+            <h2 className="text-xl font-semibold heading-gradient mb-3">Analytics Cookies</h2>
             <p className="mb-4">These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. All data collected is aggregated and anonymous.</p>
             <div className="overflow-x-auto rounded-xl border border-white/[0.07]">
               <table className="w-full text-xs">
@@ -101,7 +101,7 @@ export default function CookiePolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-white mb-3">Managing Your Cookie Preferences</h2>
+            <h2 className="text-xl font-semibold heading-gradient mb-3">Managing Your Cookie Preferences</h2>
             <p>You can manage your cookie preferences at any time in the following ways:</p>
             <ul className="list-disc pl-5 mt-3 space-y-2">
               <li>
@@ -140,14 +140,14 @@ export default function CookiePolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-white mb-3">Changes to This Policy</h2>
+            <h2 className="text-xl font-semibold heading-gradient mb-3">Changes to This Policy</h2>
             <p>
               We may update this Cookie Policy from time to time. Any changes will be posted on this page with an updated revision date. We encourage you to review this page periodically to stay informed about how we use cookies.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-white mb-3">Contact Us</h2>
+            <h2 className="text-xl font-semibold heading-gradient mb-3">Contact Us</h2>
             <p>If you have any questions about our use of cookies, please contact our Data Protection Officer:</p>
             <div className="mt-4 p-5 rounded-xl bg-white/[0.03] border border-white/[0.07] space-y-1.5">
               <p><span className="text-white/80">Email:</span>{" "}<a href="mailto:dpo@intagleo.com" className="text-[#6366f1] hover:text-[#4f46e5] transition-colors">dpo@intagleo.com</a></p>

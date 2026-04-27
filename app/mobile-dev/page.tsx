@@ -93,7 +93,7 @@ export default function MobileDevPage() {
 
         <div className="relative z-10 max-w-3xl mx-auto pb-12">
           <p className="text-xs text-white/35 uppercase tracking-widest mb-5">Mobile Development</p>
-          <h1 className="text-4xl md:text-5xl lg:text-[52px] font-bold text-white leading-[1.07] tracking-tight mb-5">
+          <h1 className="text-4xl md:text-5xl lg:text-[52px] font-bold heading-gradient leading-[1.07] tracking-tight mb-5">
             Apps your users<br />
             won&apos;t uninstall.<br />
             <span className="text-white/35">Built to last.</span>
@@ -119,7 +119,7 @@ export default function MobileDevPage() {
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 40%, rgba(20,30,80,0.25) 0%, transparent 65%)" }} />
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">What We Deliver</h2>
+            <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-4">What We Deliver</h2>
             <p className="text-white/40 max-w-xl mx-auto">
               Full-cycle mobile development, from UX design to store launch and beyond.
             </p>
@@ -154,7 +154,7 @@ export default function MobileDevPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-1 leading-tight">
               <span className="text-[#6366f1]">Do you know</span>
             </h2>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-4">
               how many users abandon an app after one bad experience?
             </h2>
             <p className="text-white/45 text-sm leading-relaxed max-w-xs mb-8">
@@ -177,7 +177,7 @@ export default function MobileDevPage() {
       <section id="how-it-works" className="relative section-padding py-28">
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-5xl font-bold heading-gradient mb-4">
               From idea to App Store,{" "}
               <span className="font-light text-white/50">in weeks.</span>
             </h2>
@@ -193,7 +193,7 @@ export default function MobileDevPage() {
         <div className="absolute inset-y-0 left-0 w-64 pointer-events-none" style={{ background: "radial-gradient(ellipse at 0% 60%, rgba(175,50,40,0.28) 0%, transparent 70%)" }} />
         <div className="absolute inset-y-0 right-0 w-64 pointer-events-none" style={{ background: "radial-gradient(ellipse at 100% 60%, rgba(175,50,40,0.28) 0%, transparent 70%)" }} />
         <div className="relative z-10 mx-auto max-w-5xl px-6 text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Built across the full mobile stack</h2>
+          <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-3">Built across the full mobile stack</h2>
           <p className="text-white/40 text-sm">Native and cross-platform expertise under one roof.</p>
         </div>
         <div className="relative w-full" style={{ aspectRatio: "1920 / 1117" }}>
@@ -312,7 +312,7 @@ export default function MobileDevPage() {
         <img src="/footer_CTA.gif" alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale-[20%] opacity-50" />
         <div className="absolute inset-0 bg-[#06080f]/65 pointer-events-none" />
         <div className="relative z-10 mx-auto max-w-2xl">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-5">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold heading-gradient leading-tight mb-5">
             Your next app should<br />ship with confidence.
           </h2>
           <p className="text-white/45 mb-10">

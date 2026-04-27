@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
@@ -171,7 +171,7 @@ export default function CustomSoftwarePage() {
             </span>
           </div> */}
 
-          <h1 className="text-4xl md:text-5xl lg:text-[52px] font-bold text-white leading-[1.07] mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-[52px] font-bold heading-gradient leading-[1.07] mb-6">
             Built for your workflows.{" "}
             Engineered for scale.{" "}
             Delivered your way.
@@ -349,7 +349,7 @@ export default function CustomSoftwarePage() {
         />
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">What we Build</h2>
+            <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-3">What we Build</h2>
             <p className="text-white/40 max-w-xl mx-auto text-sm">
               See how we&apos;ve helped businesses turn complex challenges into scalable digital solutions.
             </p>
@@ -407,7 +407,7 @@ export default function CustomSoftwarePage() {
       <section className="section-padding py-20">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">How can we support you?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-3">How can we support you?</h2>
           </div>
           <div className="flex flex-wrap justify-center gap-4">
             {supportOptions.map((opt, i) => (
@@ -515,7 +515,7 @@ export default function CustomSoftwarePage() {
         <div className="mx-auto max-w-3xl">
           {/* Heading */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-4">
               We design systems, not just features
             </h2>
             <p className="text-white/40 text-sm max-w-lg mx-auto leading-relaxed">
@@ -538,7 +538,7 @@ export default function CustomSoftwarePage() {
         />
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Tech Capabilities</h2>
+            <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-3">Tech Capabilities</h2>
             <p className="text-white/40 text-sm">Built across the modern stack</p>
           </div>
 
@@ -630,7 +630,7 @@ export default function CustomSoftwarePage() {
         />
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-14">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold heading-gradient leading-tight mb-4">
               Flexible engagement{" "}
               <span className="text-white/35">based on your needs</span>
             </h2>
@@ -689,7 +689,7 @@ export default function CustomSoftwarePage() {
         <div className="absolute inset-0 bg-[#06080f]/65 pointer-events-none" />
 
         <div className="relative z-10 mx-auto max-w-2xl">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-5">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold heading-gradient leading-tight mb-5">
             Tell Us What You Want To Build.{" "}
             <span className="text-white/50">We&apos;ll Take It From There.</span>
           </h2>

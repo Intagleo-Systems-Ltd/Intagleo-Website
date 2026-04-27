@@ -34,7 +34,7 @@ export default function DifferenceSection() {
           {/* Two-column intro */}
           <div className="grid lg:grid-cols-2 gap-12 items-start mb-16">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold heading-gradient leading-tight mb-6">
                 Engineering tomorrow.<br />Delivering today.
               </h2>
               <a

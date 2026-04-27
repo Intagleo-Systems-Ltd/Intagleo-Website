@@ -77,7 +77,7 @@ export default async function CaseStudyPage({ params }: Props) {
             </span>
           </div>
 
-          <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-8">
+          <h1 className="text-3xl md:text-5xl font-bold heading-gradient leading-tight mb-8">
             {study.title}
           </h1>
         </div>

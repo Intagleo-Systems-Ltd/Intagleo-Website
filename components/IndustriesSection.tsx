@@ -63,9 +63,9 @@ export default function IndustriesSection() {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <p className="text-xs text-white/40 uppercase tracking-widest mb-4">Industries We Serve</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold heading-gradient leading-tight mb-4">
             Different Industries,{" "}
-            <span className="text-white/40">Different pressures.</span>
+            <span style={{ WebkitTextFillColor: "rgba(255,255,255,0.4)", backgroundImage: "none" }}>Different pressures.</span>
             <br />
             One standard for excellence.
           </h2>

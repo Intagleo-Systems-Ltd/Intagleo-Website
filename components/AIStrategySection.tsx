@@ -10,7 +10,7 @@ export default function AIStrategySection() {
           {/* Left , text content */}
           <div className="p-10 lg:p-14 flex flex-col justify-center relative z-10">
             <h2
-              className="text-white mb-6"
+              className="heading-gradient mb-6"
               style={{
                 fontSize: '42px',
                 fontWeight: 500,

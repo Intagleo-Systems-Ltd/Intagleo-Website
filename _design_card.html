@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Core Capabilities — Intagleo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0b0d13;
+    --card: #111520;
+    --card2: #161b27;
+    --border: rgba(255,255,255,0.08);
+    --border-hi: rgba(255,255,255,0.14);
+    --text: #dde1ee;
+    --muted: #6a7390;
+    --accent: #5b7fff;
+    --accent-soft: rgba(91,127,255,0.15);
+    --purple: #a78bfa;
+    --purple-soft: rgba(167,139,250,0.12);
+    --green: #34d399;
+    --green-soft: rgba(52,211,153,0.1);
+  }
+
+  body {
+    background: var(--bg);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 52px 32px 64px;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .section-header h1 {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -0.6px;
+    color: #fff;
+  }
+  .section-header p {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  /* ── Two-column layout ── */
+  .layout {
+    display: grid;
+    grid-template-columns: 248px 1fr;
+    gap: 16px;
+    width: 100%;
+    max-width: 1020px;
+    align-items: start;
+  }
+
+  /* ── Left nav ── */
+  .left-nav { display: flex; flex-direction: column; gap: 2px; }
+  .nav-item {
+    padding: 13px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.15s;
+    line-height: 1.4;
+    font-size: 14px;
+  }
+  .nav-item:hover { background: var(--card2); }
+  .nav-item.active {
+    background: var(--card2);
+    border-color: var(--border-hi);
+  }
+  .nav-item .kw { font-weight: 600; color: #fff; }
+  .nav-item .rest { color: var(--muted); font-weight: 400; }
+
+  /* ── Card ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border-hi);
+    border-radius: 18px;
+    overflow: hidden;
+  }
+
+  /* Header strip */
+  .card-header {
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-header-left { display: flex; flex-direction: column; gap: 4px; }
+  .card-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.2px;
+  }
+  .status-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--green-soft);
+    border: 1px solid rgba(52,211,153,0.2);
+    border-radius: 20px;
+    padding: 5px 13px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--green);
+  }
+  .status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* Feature tiles */
+  .features-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: 1px solid var(--border);
+  }
+  .feat {
+    padding: 16px 18px;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: background 0.15s;
+    cursor: default;
+  }
+  .feat:last-child { border-right: none; }
+  .feat:hover { background: var(--card2); }
+
+  .feat-icon {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+  .feat-icon.blue { background: var(--accent-soft); }
+  .feat-icon.purple { background: var(--purple-soft); }
+
+  .feat-name {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #c8cee0;
+    line-height: 1.35;
+  }
+  .feat-sub {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* Screenshot area */
+  .screenshot-wrap {
+    padding: 20px 24px;
+    background: #0d1018;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  /* Ambient glow behind screenshot */
+  .screenshot-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 80%, rgba(91,127,255,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .browser-frame {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-hi);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
+    position: relative;
+  }
+  .browser-bar {
+    background: #1a1e2e;
+    border-bottom: 1px solid var(--border);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .dots { display: flex; gap: 5px; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; }
+  .dot-r { background: #ff5f57; }
+  .dot-y { background: #febc2e; }
+  .dot-g { background: #28c840; }
+  .url-bar {
+    flex: 1;
+    background: #0f1220;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-size: 11px;
+    color: var(--muted);
+    font-family: monospace;
+  }
+
+  .screenshot-img {
+    width: 100%;
+    display: block;
+    min-height: 200px;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  /* Striped placeholder (shown when no real img) */
+  .screenshot-placeholder {
+    width: 100%;
+    height: 210px;
+    background: #131726;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .screenshot-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.018) 0, rgba(255,255,255,0.018) 1px,
+      transparent 1px, transparent 40px
+    ), repeating-linear-gradient(
+      180deg,
+      rgba(255,255,255,0.018) 0, rgba(255,255,255,0.018) 1px,
+      transparent 1px, transparent 40px
+    );
+  }
+  .ph-badge {
+    position: relative;
+    font-size: 11.5px;
+    font-family: monospace;
+    color: var(--muted);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border-hi);
+    border-radius: 6px;
+    padding: 7px 16px;
+  }
+
+  /* Footer tags */
+  .card-footer {
+    padding: 15px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .footer-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-right: 2px;
+  }
+  .chip {
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 20px;
+    padding: 4px 11px;
+    border: 1px solid;
+    transition: opacity 0.15s;
+    cursor: default;
+  }
+  .chip:hover { opacity: 0.8; }
+  .chip.blue { color: var(--accent); background: var(--accent-soft); border-color: rgba(91,127,255,0.25); }
+  .chip.purple { color: var(--purple); background: var(--purple-soft); border-color: rgba(167,139,250,0.22); }
+</style>
+</head>
+<body>
+
+<div class="section-header">
+  <h1>Core Capabilities</h1>
+  <p>Built across the modern healthcare technology stack</p>
+</div>
+
+<div class="layout">
+
+  <!-- Left nav -->
+  <nav class="left-nav">
+    <div class="nav-item active"><span class="kw">Clinical</span><span class="rest"> Platform Engineering</span></div>
+    <div class="nav-item"><span class="kw">Telehealth</span><span class="rest"> &amp; Remote Care</span></div>
+    <div class="nav-item"><span class="kw">Data</span><span class="rest"> &amp; Analytics</span></div>
+    <div class="nav-item"><span class="kw">Compliance</span><span class="rest"> &amp; Security</span></div>
+    <div class="nav-item"><span class="kw">Interoperability</span><span class="rest"> &amp; Integration</span></div>
+    <div class="nav-item"><span class="kw">AI</span><span class="rest"> &amp; Clinical Decision Support</span></div>
+  </nav>
+
+  <!-- Right card -->
+  <div class="card">
+
+    <!-- Header -->
+    <div class="card-header">
+      <div class="card-header-left">
+        <span class="card-eyebrow">Capability Area</span>
+        <span class="card-title">Clinical Platform Engineering</span>
+      </div>
+      <div class="status-pill">
+        <div class="status-dot"></div>
+        Active
+      </div>
+    </div>
+
+    <!-- 4 feature tiles -->
+    <div class="features-row">
+      <div class="feat">
+        <div class="feat-icon blue">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <rect x="1" y="3" width="13" height="9" rx="2" stroke="#5b7fff" stroke-width="1.4"/>
+            <path d="M5 7h5M7.5 5v4" stroke="#5b7fff" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="feat-name">EHR/EMR Integration</div>
+        <div class="feat-sub">Seamless data sync across systems</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon blue">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <path d="M2 4h11M2 8h7M2 12h5" stroke="#5b7fff" stroke-width="1.4" stroke-linecap="round"/>
+            <circle cx="12" cy="10" r="2.5" stroke="#5b7fff" stroke-width="1.3"/>
+          </svg>
+        </div>
+        <div class="feat-name">Clinical Workflow Builder</div>
+        <div class="feat-sub">Custom care pathway automation</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon purple">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <path d="M7.5 1.5v3M7.5 10.5v3M1.5 7.5h3M10.5 7.5h3" stroke="#a78bfa" stroke-width="1.4" stroke-linecap="round"/>
+            <circle cx="7.5" cy="7.5" r="3" stroke="#a78bfa" stroke-width="1.3"/>
+          </svg>
+        </div>
+        <div class="feat-name">HL7 &amp; FHIR Compliance</div>
+        <div class="feat-sub">Standards-based interoperability</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon purple">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <rect x="2" y="2" width="5" height="5" rx="1.2" stroke="#a78bfa" stroke-width="1.3"/>
+            <rect x="8" y="2" width="5" height="5" rx="1.2" stroke="#a78bfa" stroke-width="1.3"/>
+            <rect x="2" y="8" width="5" height="5" rx="1.2" stroke="#a78bfa" stroke-width="1.3"/>
+            <rect x="8" y="8" width="5" height="5" rx="1.2" stroke="#a78bfa" stroke-width="1.3"/>
+          </svg>
+        </div>
+        <div class="feat-name">Patient Portal</div>
+        <div class="feat-sub">Engagement &amp; self-service access</div>
+      </div>
+    </div>
+
+    <!-- Screenshot -->
+    <div class="screenshot-wrap">
+      <div class="browser-frame">
+        <div class="browser-bar">
+          <div class="dots">
+            <div class="dot dot-r"></div>
+            <div class="dot dot-y"></div>
+            <div class="dot dot-g"></div>
+          </div>
+          <div class="url-bar">app.intagleo.com / clinical-platform</div>
+        </div>
+        <!-- Use the uploaded screenshot -->
+        <img
+          class="screenshot-img"
+          src="uploads/pasted-1777213109620-0.png"
+          alt="Clinical platform dashboard"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        />
+        <div class="screenshot-placeholder" style="display:none;">
+          <span class="ph-badge">clinical platform · dashboard screenshot</span>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
+
+</body>
+</html>

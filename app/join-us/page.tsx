@@ -8,168 +8,10 @@ import type { Vacancy } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Join Us | Intagleo",
   description:
-    "Build production-ready software with a team of senior engineers. Explore open roles at Intagleo — remote-first, outcome-driven, no fluff.",
+    "Build production-ready software with a team of senior engineers. Explore open roles at Intagleo � remote-first, outcome-driven, no fluff.",
 };
 
 export const revalidate = 60;
-
-/* ── Default vacancies (shown if Sanity has none yet) ────────────────────── */
-const DEFAULT_VACANCIES: Vacancy[] = [
-  {
-    _id: "default-1",
-    title: "Senior Full-Stack Engineer",
-    slug: "senior-full-stack-engineer",
-    department: "Engineering",
-    location: "Remote",
-    type: "Full-time",
-    experience: "5+ years",
-    shortDescription:
-      "Build scalable web platforms using Next.js, TypeScript, and Node.js. You'll work directly with clients across FinTech, HealthTech, and EdTech — owning features end-to-end.",
-    responsibilities: [
-      "Design and implement full-stack features from spec to production",
-      "Collaborate directly with client stakeholders on requirements",
-      "Code review, architecture decisions, and mentoring junior engineers",
-      "Contribute to CI/CD pipelines and DevOps practices",
-    ],
-    requirements: [
-      "5+ years of professional full-stack experience",
-      "Deep expertise in TypeScript, React/Next.js, and Node.js",
-      "Experience with PostgreSQL or similar relational databases",
-      "Strong understanding of REST and GraphQL API design",
-    ],
-    niceToHave: ["Experience with AWS or GCP", "Familiarity with Sanity or headless CMS"],
-    isOpen: true,
-    postedAt: "2025-04-01",
-  },
-  {
-    _id: "default-2",
-    title: "DevOps / Cloud Engineer",
-    slug: "devops-cloud-engineer",
-    department: "DevOps & Cloud",
-    location: "Hybrid – UK",
-    type: "Full-time",
-    experience: "3–5 years",
-    shortDescription:
-      "Own cloud infrastructure across AWS and Azure. Design CI/CD pipelines, manage Kubernetes clusters, and ensure our clients' platforms scale reliably under load.",
-    responsibilities: [
-      "Design, provision, and maintain cloud infrastructure (AWS/Azure/GCP)",
-      "Build and maintain CI/CD pipelines for multiple client projects",
-      "Implement monitoring, alerting, and incident response workflows",
-      "Enforce security best practices across infrastructure and deployments",
-    ],
-    requirements: [
-      "3–5 years of hands-on DevOps/Cloud experience",
-      "Proficiency with Terraform, Kubernetes, and Docker",
-      "Experience with AWS (EKS, RDS, S3, Lambda) or Azure equivalent",
-      "Strong Linux and scripting fundamentals (Bash/Python)",
-    ],
-    niceToHave: ["AWS or Azure certification", "Experience with Datadog or Grafana"],
-    isOpen: true,
-    postedAt: "2025-04-05",
-  },
-  {
-    _id: "default-3",
-    title: "AI / ML Engineer",
-    slug: "ai-ml-engineer",
-    department: "AI & ML",
-    location: "Remote",
-    type: "Full-time",
-    experience: "3+ years",
-    shortDescription:
-      "Design and ship AI-powered features for enterprise clients — from LLM integrations and RAG pipelines to custom model fine-tuning and evaluation frameworks.",
-    responsibilities: [
-      "Build production-ready LLM integrations using OpenAI, Anthropic, and open-source models",
-      "Design and maintain RAG pipelines with vector databases (Pinecone, Weaviate)",
-      "Collaborate with product and engineering teams on AI feature specs",
-      "Evaluate model outputs and implement quality guardrails",
-    ],
-    requirements: [
-      "3+ years of ML engineering experience with production deployments",
-      "Strong Python skills with FastAPI or similar frameworks",
-      "Hands-on experience with LLMs, embeddings, and vector search",
-      "Understanding of prompt engineering and agent architectures",
-    ],
-    niceToHave: ["Experience with LangChain or LlamaIndex", "Research background or published work"],
-    isOpen: true,
-    postedAt: "2025-04-08",
-  },
-  {
-    _id: "default-4",
-    title: "Senior React Native Developer",
-    slug: "senior-react-native-developer",
-    department: "Engineering",
-    location: "Remote",
-    type: "Full-time",
-    experience: "4+ years",
-    shortDescription:
-      "Build polished, high-performance iOS and Android apps for clients in healthcare, retail, and logistics. You'll own the mobile experience from architecture to App Store release.",
-    responsibilities: [
-      "Architect and build cross-platform mobile apps with React Native",
-      "Integrate native modules for features like biometrics, camera, and push notifications",
-      "Collaborate with designers to implement pixel-perfect UIs",
-      "Set up and maintain mobile CI/CD with Fastlane and GitHub Actions",
-    ],
-    requirements: [
-      "4+ years of React Native experience with multiple shipped apps",
-      "Solid TypeScript fundamentals and state management (Zustand, Redux)",
-      "Experience publishing to the App Store and Google Play",
-      "Familiarity with native iOS (Swift) or Android (Kotlin) a plus",
-    ],
-    isOpen: true,
-    postedAt: "2025-04-10",
-  },
-  {
-    _id: "default-5",
-    title: "Lead Product Designer",
-    slug: "lead-product-designer",
-    department: "Design",
-    location: "Hybrid – UK",
-    type: "Full-time",
-    experience: "5+ years",
-    shortDescription:
-      "Shape the UX of complex enterprise products — from discovery and wireframes to high-fidelity Figma prototypes and design system contributions.",
-    responsibilities: [
-      "Lead design for 2–3 concurrent client products",
-      "Run discovery workshops, user research, and usability testing",
-      "Produce high-fidelity Figma prototypes and component libraries",
-      "Work closely with engineers to ensure design intent is preserved in production",
-    ],
-    requirements: [
-      "5+ years of product design experience across web and mobile",
-      "Expert-level Figma skills including auto-layout and component variants",
-      "Strong portfolio demonstrating end-to-end product design work",
-      "Experience with design systems and accessibility standards (WCAG 2.1)",
-    ],
-    niceToHave: ["Motion design skills (Rive, Lottie)", "Background in B2B or enterprise SaaS"],
-    isOpen: true,
-    postedAt: "2025-04-12",
-  },
-  {
-    _id: "default-6",
-    title: "QA Automation Engineer",
-    slug: "qa-automation-engineer",
-    department: "QA",
-    location: "Remote",
-    type: "Full-time",
-    experience: "2–4 years",
-    shortDescription:
-      "Build and maintain automated test suites that give engineering teams confidence to ship fast. You'll work across multiple client projects with varied tech stacks.",
-    responsibilities: [
-      "Design, implement, and maintain end-to-end test suites with Playwright or Cypress",
-      "Write unit and integration tests alongside engineering teams",
-      "Integrate test pipelines into CI/CD workflows",
-      "Triage failures, track flaky tests, and improve overall test reliability",
-    ],
-    requirements: [
-      "2–4 years of QA automation experience",
-      "Proficiency with Playwright, Cypress, or Selenium",
-      "Experience with JavaScript/TypeScript test frameworks (Jest, Vitest)",
-      "Understanding of API testing with Postman or equivalent",
-    ],
-    isOpen: true,
-    postedAt: "2025-04-15",
-  },
-];
 
 async function getVacancies(): Promise<Vacancy[]> {
   try {
@@ -181,11 +23,11 @@ async function getVacancies(): Promise<Vacancy[]> {
   }
 }
 
-/* ── Static content ──────────────────────────────────────────────────────── */
+/* -- Static content -------------------------------------------------------- */
 const values = [
   {
     title: "Real ownership",
-    desc: "No ticket queues. You own your work end-to-end — from scoping conversations to production releases. Every engineer here has a direct line to impact.",
+    desc: "No ticket queues. You own your work end-to-end � from scoping conversations to production releases. Every engineer here has a direct line to impact.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" aria-hidden="true">
         <path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7l2-7z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round"/>
@@ -194,7 +36,7 @@ const values = [
   },
   {
     title: "Senior-only environment",
-    desc: "You'll collaborate exclusively with experienced engineers. No mentoring juniors on client time — just high-signal technical conversations with people who've shipped production systems.",
+    desc: "You'll collaborate exclusively with experienced engineers. No mentoring juniors on client time � just high-signal technical conversations with people who've shipped production systems.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" aria-hidden="true">
         <circle cx="9" cy="7" r="3" stroke="currentColor" strokeWidth="1.4"/>
@@ -225,7 +67,7 @@ const values = [
   },
   {
     title: "No office politics",
-    desc: "Flat structure, transparent decisions, no management layers between you and the work. Good ideas win on merit — not seniority or who speaks loudest.",
+    desc: "Flat structure, transparent decisions, no management layers between you and the work. Good ideas win on merit � not seniority or who speaks loudest.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" aria-hidden="true">
         <path d="M12 22V12M12 12L7 17M12 12l5 5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -235,7 +77,7 @@ const values = [
   },
   {
     title: "Grow with the company",
-    desc: "We're growing fast across new industries and geographies. Roles evolve here — engineers become tech leads, leads become principals. If you grow, your title and comp will follow.",
+    desc: "We're growing fast across new industries and geographies. Roles evolve here � engineers become tech leads, leads become principals. If you grow, your title and comp will follow.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" aria-hidden="true">
         <path d="M3 20l5-8 4 4 4-7 5 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -247,7 +89,7 @@ const values = [
 const perks = [
   { label: "Competitive salary", sub: "Benchmarked to market rate" },
   { label: "Remote / hybrid", sub: "Work from wherever you do your best thinking" },
-  { label: "Flexible hours", sub: "Async-first — own your schedule" },
+  { label: "Flexible hours", sub: "Async-first � own your schedule" },
   { label: "Learning budget", sub: "Courses, conferences, and certifications" },
   { label: "Private health cover", sub: "UK & UAE team members" },
   { label: "Equipment stipend", sub: "Get the tools you need to ship" },
@@ -255,7 +97,7 @@ const perks = [
   { label: "Exciting clients", sub: "Enterprise products that actually matter" },
 ];
 
-/* ── Page ────────────────────────────────────────────────────────────────── */
+/* -- Page ------------------------------------------------------------------ */
 export default async function JoinUsPage() {
   const vacancies = await getVacancies();
 
@@ -264,7 +106,7 @@ export default async function JoinUsPage() {
       <Navbar />
 
       <main className="pt-20">
-        {/* ── Hero ──────────────────────────────────────────────────────────── */}
+        {/* -- Hero ------------------------------------------------------------ */}
         <section className="relative overflow-hidden">
           {/* Glow */}
           <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -282,13 +124,13 @@ export default async function JoinUsPage() {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[#6366f1]" />
                 </span>
                 <span className="text-[#6366f1] text-xs font-medium tracking-wide">
-                  We&apos;re hiring — {vacancies.length} open {vacancies.length === 1 ? "role" : "roles"}
+                  We&apos;re hiring � {vacancies.length} open {vacancies.length === 1 ? "role" : "roles"}
                 </span>
               </div>
 
               {/* Heading */}
               <h1
-                className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.02] tracking-tight mb-6"
+                className="text-5xl md:text-6xl lg:text-7xl font-bold heading-gradient leading-[1.02] tracking-tight mb-6"
                 style={{ fontFamily: '"Roobert TRIAL", sans-serif' }}
               >
                 Build the future
@@ -297,7 +139,7 @@ export default async function JoinUsPage() {
               </h1>
 
               <p className="text-white/50 text-lg leading-relaxed mb-10 max-w-xl">
-                Intagleo engineers work on real enterprise products — not internal tools or maintenance tickets.
+                Intagleo engineers work on real enterprise products � not internal tools or maintenance tickets.
                 If you want ownership, craft, and clients who actually care about quality, you&apos;ll fit right in.
               </p>
 
@@ -337,18 +179,18 @@ export default async function JoinUsPage() {
           </div>
         </section>
 
-        {/* ── Why Intagleo ──────────────────────────────────────────────────── */}
+        {/* -- Why Intagleo ---------------------------------------------------- */}
         <section className="py-20 lg:py-28 border-t border-white/[0.04]">
           <div className="mx-auto max-w-[1400px] px-6 md:px-10">
             <div className="mb-14">
               <p className="text-[#6366f1] text-xs font-medium tracking-widest uppercase mb-4">
                 Life at Intagleo
               </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold heading-gradient tracking-tight mb-4">
                 Why engineers choose us
               </h2>
               <p className="text-white/40 text-base max-w-xl">
-                We&apos;re not for everyone — and that&apos;s intentional. Here&apos;s what makes working here different.
+                We&apos;re not for everyone � and that&apos;s intentional. Here&apos;s what makes working here different.
               </p>
             </div>
 
@@ -369,7 +211,7 @@ export default async function JoinUsPage() {
           </div>
         </section>
 
-        {/* ── Perks ─────────────────────────────────────────────────────────── */}
+        {/* -- Perks ----------------------------------------------------------- */}
         <section className="py-16 border-t border-white/[0.04]">
           <div className="mx-auto max-w-[1400px] px-6 md:px-10">
             <p className="text-white/25 text-xs font-medium tracking-widest uppercase mb-10">
@@ -390,23 +232,23 @@ export default async function JoinUsPage() {
           </div>
         </section>
 
-        {/* ── Open Roles (client) ───────────────────────────────────────────── */}
+        {/* -- Open Roles (client) --------------------------------------------- */}
         <section className="border-t border-white/[0.04]">
           <CareersClient vacancies={vacancies} />
         </section>
 
-        {/* ── Closing CTA ───────────────────────────────────────────────────── */}
+        {/* -- Closing CTA ----------------------------------------------------- */}
         <section className="py-20 border-t border-white/[0.04]">
           <div className="mx-auto max-w-[1400px] px-6 md:px-10">
             <div className="rounded-3xl bg-[#0d0d10] border border-white/[0.06] p-12 md:p-16 text-center">
               <p className="text-[#6366f1] text-xs font-medium tracking-widest uppercase mb-4">
                 Don&apos;t see your role?
               </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold heading-gradient tracking-tight mb-4">
                 Send us a speculative application
               </h2>
               <p className="text-white/40 text-base max-w-lg mx-auto mb-8">
-                If you&apos;re exceptional at what you do, we want to hear from you — even if there&apos;s no open role that fits right now.
+                If you&apos;re exceptional at what you do, we want to hear from you � even if there&apos;s no open role that fits right now.
               </p>
               <Link
                 href="/contact?type=general"

@@ -238,7 +238,7 @@ export default function CaseStudiesSection({ pageSlug }: { pageSlug?: string } =
         {/* ── Header ── */}
         <div className="text-center pt-8 pb-6 px-6">
           <h2
-            className="text-white font-medium mb-4"
+            className="heading-gradient font-medium mb-4"
             style={{
               fontFamily: '"Roobert TRIAL", sans-serif',
               fontSize: "clamp(28px, 3.5vw, 48px)",

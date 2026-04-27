@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -41,7 +41,7 @@ export default function AdminLogin() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center p-4">
       <div className="bg-slate-800 p-8 rounded-lg shadow-xl w-full max-w-md border border-slate-700">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-white">Intagleo CMS</h1>
+          <h1 className="text-3xl font-bold heading-gradient">Intagleo CMS</h1>
           <p className="text-gray-400 mt-2">Content Management System</p>
         </div>
 

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllCaseStudiesAsync } from "@/lib/providers/sanity";
 import Navbar from "@/components/Navbar";
@@ -25,7 +25,7 @@ export default async function CaseStudiesPage() {
           <p className="text-xs text-white/40 uppercase tracking-widest mb-4">
             Our Work
           </p>
-          <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold heading-gradient leading-tight mb-4">
             Case Studies
           </h1>
           <p className="text-white/45 text-base max-w-lg">
@@ -73,7 +73,7 @@ export default async function CaseStudiesPage() {
                           {study.client}
                         </span>
                       </div>
-                      <h2 className="text-white font-semibold text-xl leading-snug mb-3 group-hover:text-white/90 transition-colors">
+                      <h2 className="heading-gradient font-semibold text-xl leading-snug mb-3 group-hover:heading-gradient/90 transition-colors">
                         {study.title}
                       </h2>
                       <p className="text-white/40 text-sm leading-relaxed line-clamp-2">

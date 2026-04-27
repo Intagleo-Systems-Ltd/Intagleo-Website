@@ -239,7 +239,7 @@ export default function AITransformationPage() {
           </div> */}
 
           <h1
-            className="text-4xl md:text-5xl lg:text-[52px] font-bold text-white leading-[1.07] tracking-tight mb-6"
+            className="text-4xl md:text-5xl lg:text-[52px] font-bold heading-gradient leading-[1.07] tracking-tight mb-6"
             style={{ }}
           >
             AI is Moving Fast!!<br />
@@ -311,7 +311,7 @@ export default function AITransformationPage() {
           {/* Header */}
           <div className="text-center mb-12">
             <p className="text-xs text-white/35 uppercase tracking-widest mb-4 font-mono">Real impact</p>
-            <h2 className="text-3xl md:text-[42px] font-bold text-white mb-4 leading-tight">
+            <h2 className="text-3xl md:text-[42px] font-bold heading-gradient mb-4 leading-tight">
               What actually changes<br />when you add AI.
             </h2>
             <p className="text-white/40 max-w-md mx-auto text-sm">
@@ -494,7 +494,7 @@ export default function AITransformationPage() {
               <p className="text-xs uppercase tracking-[0.2em]" style={{ color: "rgba(251,146,60,0.6)" }}>Solutions</p>
               <div className="w-5 h-px" style={{ background: "rgba(232,52,28,0.5)" }} />
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4" style={{ }}>What We Build</h2>
+            <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-4" style={{ }}>What We Build</h2>
             <p className="text-white/40 max-w-xl mx-auto text-sm leading-relaxed">
               AI solutions designed for production, not just demos.
             </p>
@@ -565,7 +565,7 @@ export default function AITransformationPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-1 leading-tight" style={{ }}>
               <span style={{ color: "#8B5CF6" }}>Do you know</span>
             </h2>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4" style={{ }}>
+            <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-4" style={{ }}>
               which of your workflows AI could eliminate this quarter?
             </h2>
             <p className="text-white/45 text-sm leading-relaxed max-w-xs mb-8">
@@ -611,7 +611,7 @@ export default function AITransformationPage() {
               <p className="text-xs uppercase tracking-[0.2em]" style={{ color: "rgba(196,181,253,0.5)" }}>Our process</p>
               <div className="w-5 h-px" style={{ background: "rgba(139,92,246,0.5)" }} />
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4" style={{ }}>
+            <h2 className="text-3xl md:text-5xl font-bold heading-gradient mb-4" style={{ }}>
               From idea to shipped AI,{" "}
               <span style={{ fontWeight: 300, color: "rgba(255,255,255,0.35)" }}>in weeks.</span>
             </h2>
@@ -780,7 +780,7 @@ export default function AITransformationPage() {
           </div>
 
           <h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-5"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold heading-gradient leading-tight mb-5"
             style={{ }}
           >
             The best time to start<br />

@@ -93,7 +93,7 @@ export default function EmbeddedIoTPage() {
         </div>
 
         <div className="relative z-10 max-w-3xl mx-auto pb-12">
-          <h1 className="text-4xl md:text-5xl lg:text-[52px] font-bold text-white leading-[1.07] tracking-tight mb-5">
+          <h1 className="text-4xl md:text-5xl lg:text-[52px] font-bold heading-gradient leading-[1.07] tracking-tight mb-5">
             Hardware that talks.<br />Platforms that listen.
           </h1>
 
@@ -127,7 +127,7 @@ export default function EmbeddedIoTPage() {
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 40%, rgba(20,30,80,0.25) 0%, transparent 65%)" }} />
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">What We Build</h2>
+            <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-4">What We Build</h2>
             <p className="text-white/40 max-w-xl mx-auto">
               Full-stack embedded expertise across firmware, protocols, fleet management, and the platforms that tie it all together.
             </p>
@@ -172,7 +172,7 @@ export default function EmbeddedIoTPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-1">
               <span className="text-[#6366f1]">Not sure</span>
             </h2>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-4">
               where to start with embedded?
             </h2>
             <p className="text-white/45 text-sm leading-relaxed max-w-xs mb-8">
@@ -207,7 +207,7 @@ export default function EmbeddedIoTPage() {
       <section id="how-it-works" className="relative section-padding py-28">
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-5xl font-bold heading-gradient mb-4">
               From brief to live device in weeks,{" "}
               <span className="font-light text-white/50">not quarters.</span>
             </h2>
@@ -230,7 +230,7 @@ export default function EmbeddedIoTPage() {
 
         <div className="relative z-10 mx-auto max-w-5xl px-6">
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Built across the embedded stack</h2>
+            <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-3">Built across the embedded stack</h2>
             <p className="text-white/40 text-sm">From bare-metal firmware to cloud-connected dashboards.</p>
           </div>
         </div>
@@ -400,7 +400,7 @@ export default function EmbeddedIoTPage() {
         <div className="absolute inset-0 bg-[#06080f]/65 pointer-events-none" />
 
         <div className="relative z-10 mx-auto max-w-2xl">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-5">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold heading-gradient leading-tight mb-5">
             Your hardware is ready.<br />Let&apos;s build the software around it.
           </h2>
           <p className="text-white/45 mb-10">From firmware to dashboard, we own the full stack.</p>
