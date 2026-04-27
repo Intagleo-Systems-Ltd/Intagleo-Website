@@ -2,72 +2,157 @@
 
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
+
 import Footer from "@/components/Footer";
+import ScrollTimeline from "@/components/ScrollTimeline";
 import Link from "next/link";
 import InsightsSection from "@/components/InsightsSection";
 import CaseStudiesSection from "@/components/CaseStudiesSection";
 import PageBackground from "@/components/PageBackground";
+import CapabilityCardSection, { type CapItem } from "@/components/CapabilityCardSection";
 
-const techCaps = [
+const techCaps: CapItem[] = [
   {
     highlight: "Property", rest: " Listing & Search",
-    annotations: [
-      { pos: "tl", text: "MLS & Portal Sync" },
-      { pos: "tr", text: "Geo-spatial Search" },
-      { pos: "bl", text: "Saved Search Alerts" },
-      { pos: "br", text: "AI Price Estimation" },
+    urlSlug: "property-listing-search",
+    tiles: [
+      { name: "MLS & Portal Sync", desc: "Real-time listing feeds", color: "blue" },
+      { name: "Geo-spatial Search", desc: "Map-based discovery", color: "blue" },
+      { name: "Saved Search Alerts", desc: "Push notifications", color: "purple" },
+      { name: "AI Price Estimation", desc: "Valuation models", color: "purple" },
     ],
-    items: ["MLS & portal integration", "Geo-spatial property search", "Real-time listing alerts", "AI-driven price estimation"],
+    preview: {
+      type: "status-bars",
+      statusLabel: "All Feeds Live",
+      rows: [
+        { label: "MLS Feed", value: "Synced", stat: "4s ago" },
+        { label: "Zillow Connect", value: "Active", stat: "Real-time" },
+        { label: "Geo Search API", value: "Online", stat: "18ms" },
+        { label: "Alert Engine", value: "Running", stat: "4.2K/hr" },
+      ],
+      chartLabel: "Listings\nIndexed",
+      bars: [40,48,55,60,52,68,74,70,82,78,88,84,76,90,86,80,92,88,84,94,90,86,92,96],
+    },
   },
   {
     highlight: "CRM", rest: " & Lead Management",
-    annotations: [
-      { pos: "tl", text: "Agent Pipeline Tracking" },
-      { pos: "tr", text: "Automated Lead Scoring" },
-      { pos: "bl", text: "SMS & Email Sequences" },
-      { pos: "br", text: "Deal Stage Automation" },
+    urlSlug: "crm-lead-management",
+    tiles: [
+      { name: "Agent Pipeline", desc: "Stage-based tracking", color: "blue" },
+      { name: "Lead Scoring", desc: "Automated ML ranking", color: "blue" },
+      { name: "Nurture Sequences", desc: "SMS & email flows", color: "purple" },
+      { name: "Deal Automation", desc: "Stage change triggers", color: "purple" },
     ],
-    items: ["Agent pipeline management", "Automated lead scoring", "Multi-channel nurture sequences", "Deal stage automation"],
+    preview: {
+      type: "pipeline",
+      headline: "4 pipelines active",
+      pipelines: [
+        { label: "Lead Qualification", pct: 88, rate: "Auto-scored", color: "#5b7fff" },
+        { label: "Email Sequences", pct: 72, rate: "Drip sends", color: "#6366f1" },
+        { label: "Agent Assignment", pct: 100, rate: "Instant", color: "#34d399" },
+        { label: "Deal Stage Sync", pct: 91, rate: "Real-time", color: "#a78bfa" },
+      ],
+      metrics: [
+        { label: "Leads Active", value: "3.2K" },
+        { label: "Avg Score", value: "72/100" },
+        { label: "Conversion", value: "4.8%" },
+      ],
+    },
   },
   {
     highlight: "Virtual", rest: " Tours & Media",
-    annotations: [
-      { pos: "tl", text: "3D Walkthrough Integration" },
-      { pos: "tr", text: "360° Media Processing" },
-      { pos: "bl", text: "AR Floor Plan Overlay" },
-      { pos: "br", text: "Video Tour Platform" },
+    urlSlug: "virtual-tours-media",
+    tiles: [
+      { name: "3D Walkthroughs", desc: "Matterport integration", color: "blue" },
+      { name: "360° Media", desc: "Processing pipeline", color: "blue" },
+      { name: "AR Floor Plans", desc: "Overlay rendering", color: "purple" },
+      { name: "Video Tours", desc: "Adaptive streaming", color: "purple" },
     ],
-    items: ["3D virtual tour integration", "360° media processing", "AR floor plan overlay", "Video tour delivery"],
+    preview: {
+      type: "session-grid",
+      liveLabel: "4 Tours Active",
+      sessions: [
+        { initials: "3D", name: "42 Oak St Walkthrough", color: "#5b7fff", qual: 3, live: true, secs: 384 },
+        { initials: "VR", name: "Penthouse 12A Tour", color: "#a78bfa", qual: 2, live: true, secs: 1847 },
+        { initials: "AR", name: "Floor Plan — Unit 7B", color: "#34d399", qual: 3, live: true, secs: 92 },
+        { initials: "VM", name: "Video — 18 Elm Close", color: "#6366f1", qual: 2, live: false, secs: 2310 },
+      ],
+      footerStats: ["Avg session: 4m 12s", "CDN: 99.98%", "4 active"],
+    },
   },
   {
     highlight: "Transaction", rest: " & Document Management",
-    annotations: [
-      { pos: "tl", text: "e-Signature Workflows" },
-      { pos: "tr", text: "Contract Versioning" },
-      { pos: "bl", text: "Escrow Tracking" },
-      { pos: "br", text: "Compliance Checklists" },
+    urlSlug: "transaction-documents",
+    tiles: [
+      { name: "e-Signature", desc: "DocuSign & HelloSign", color: "blue" },
+      { name: "Contract Versioning", desc: "Full audit trail", color: "blue" },
+      { name: "Escrow Tracking", desc: "Closing milestones", color: "purple" },
+      { name: "Compliance Checklists", desc: "Jurisdiction-specific", color: "purple" },
     ],
-    items: ["e-Signature workflows", "Contract versioning & audit", "Escrow & closing tracking", "Compliance checklists"],
+    preview: {
+      type: "ring-gauges",
+      scores: [
+        { label: "Docs Signed", pct: 94, color: "#5b7fff" },
+        { label: "Escrow On Track", pct: 87, color: "#34d399" },
+        { label: "Compliance Pass", pct: 100, color: "#a78bfa" },
+        { label: "Close Rate", pct: 68, color: "#6366f1" },
+      ],
+      events: [
+        { time: "14:22:08", text: "Contract signed — 42 Oak St" },
+        { time: "14:15:33", text: "Escrow released — Unit 3F" },
+        { time: "14:08:50", text: "Compliance check passed" },
+      ],
+      footer: "24 deals in progress",
+    },
   },
   {
     highlight: "Analytics", rest: " & Market Intelligence",
-    annotations: [
-      { pos: "tl", text: "Market Trend Dashboards" },
-      { pos: "tr", text: "Comparative Market Analysis" },
-      { pos: "bl", text: "Investment ROI Modelling" },
-      { pos: "br", text: "Neighbourhood Data APIs" },
+    urlSlug: "market-analytics",
+    tiles: [
+      { name: "Market Trends", desc: "Price movement data", color: "blue" },
+      { name: "Comp Market Analysis", desc: "CMA generation", color: "blue" },
+      { name: "ROI Modelling", desc: "Investment scenarios", color: "purple" },
+      { name: "Neighbourhood Data", desc: "Demographics & scores", color: "purple" },
     ],
-    items: ["Market trend analytics", "Comparative market analysis", "Investment ROI modelling", "Neighbourhood data integration"],
+    preview: {
+      type: "inference",
+      accuracyLabel: "Valuation AI v2.8",
+      inferences: [
+        { label: "Price Accuracy", pct: 96, color: "#34d399", level: "Excellent" },
+        { label: "Demand Signal", pct: 82, color: "#5b7fff", level: "High" },
+        { label: "ROI Confidence", pct: 88, color: "#a78bfa", level: "Strong" },
+        { label: "Market Timing", pct: 71, color: "#f59e0b", level: "Good" },
+      ],
+      alertsLabel: "Market Signals",
+      alerts: [
+        { time: "10:30:00", text: "Price surge detected — SW6 postcodes", sev: "#ef4444" },
+        { time: "10:22:14", text: "New comp sold at £740K — Oak Hill", sev: "#5b7fff" },
+        { time: "10:15:08", text: "Demand index up 12% week-on-week", sev: "#34d399" },
+      ],
+      footer: "Data from 8 sources",
+    },
   },
   {
     highlight: "Property", rest: " Management Portals",
-    annotations: [
-      { pos: "tl", text: "Tenant Communication Hub" },
-      { pos: "tr", text: "Maintenance Request Tracking" },
-      { pos: "bl", text: "Rent Collection & Ledger" },
-      { pos: "br", text: "Owner Financial Reporting" },
+    urlSlug: "property-management",
+    tiles: [
+      { name: "Tenant Hub", desc: "Communication portal", color: "blue" },
+      { name: "Maintenance", desc: "Request tracking", color: "blue" },
+      { name: "Rent Collection", desc: "Automated payments", color: "purple" },
+      { name: "Owner Reporting", desc: "Financial dashboards", color: "purple" },
     ],
-    items: ["Tenant communication portals", "Maintenance request workflows", "Automated rent collection", "Owner financial dashboards"],
+    preview: {
+      type: "network",
+      centerLabel: "PM Platform",
+      nodes: [
+        { x: 118, y: 28, label: "Tenant Portal", sub: "Self-service hub", color: "#5b7fff" },
+        { x: 198, y: 70, label: "Maintenance", sub: "Work orders", color: "#a78bfa" },
+        { x: 208, y: 148, label: "Rent Ledger", sub: "Auto-collect", color: "#34d399" },
+        { x: 140, y: 188, label: "Owner App", sub: "Financial reports", color: "#6366f1" },
+        { x: 42, y: 152, label: "Contractors", sub: "Vendor network", color: "#f59e0b" },
+      ],
+      footer: "180 units · 6 properties",
+    },
   },
 ];
 
@@ -75,7 +160,6 @@ const FLOORS = 6;
 const UNITS_PER_FLOOR = 4;
 
 export default function RealEstatePage() {
-  const [activeTab, setActiveTab] = useState(0);
   const [hoveredFloor, setHoveredFloor] = useState<number | null>(null);
 
   return (
@@ -111,94 +195,9 @@ export default function RealEstatePage() {
             </a>
           </div>
         </div>
-        <div className="relative z-10 w-full max-w-5xl mx-auto pb-12 text-center">
-          <p className="text-white/40 text-base mb-8">Trusted by property platforms handling thousands of transactions.</p>
-          <div className="flex flex-wrap items-center justify-center gap-10">
-            {[{ name: "Samsung", src: "/logos/samsung.png" }, { name: "IBM", src: "/logos/ibm.png" }, { name: "TCL", src: "/logos/tcl.png" }].map((logo) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img key={logo.name} src={logo.src} alt={logo.name} className="h-7 w-auto object-contain opacity-35 hover:opacity-60 transition-opacity duration-300" style={{ filter: "brightness(0) invert(1)", maxWidth: "110px" }} />
-            ))}
-          </div>
-        </div>
-        <div className="relative z-10 w-full max-w-5xl mx-auto pb-0">
-          <div className="rounded-t-2xl bg-[#13141a] border border-white/[0.07] border-b-0 overflow-hidden">
-            <div className="grid md:grid-cols-[1fr_1.1fr]">
-              <div className="grid grid-cols-2 grid-rows-2 gap-1.5 p-4 bg-[#111218]">
-                <div className="col-span-1 row-span-2 rounded-xl overflow-hidden" style={{ minHeight: "220px" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp1.png" alt="" className="w-full h-full object-cover object-top" style={{ filter: "grayscale(100%)" }} />
-                </div>
-                <div className="rounded-xl overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp2.png" alt="" className="w-full h-full object-cover object-top" style={{ filter: "grayscale(100%)" }} />
-                </div>
-                <div className="rounded-xl overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp3.png" alt="" className="w-full h-full object-cover object-center" style={{ filter: "grayscale(100%)" }} />
-                </div>
-              </div>
-              <div className="flex flex-col justify-center text-left p-8 md:p-10">
-                <h2 className="text-2xl md:text-3xl font-bold text-white leading-snug mb-4">
-                  Fragmented tools and manual workflows are costing you deals.{" "}
-                  <span className="text-white/35">Most agencies only realise when a competitor closes first.</span>
-                </h2>
-                <p className="text-white/40 text-sm leading-relaxed mb-3">
-                  Every slow listing update, every missed follow-up, every document chased over email - that&apos;s
-                  compounding deal-cycle drag that doesn&apos;t show up until a client walks away.
-                </p>
-                <p className="text-white/40 text-sm leading-relaxed mb-7">
-                  We&apos;ve built property platforms for agencies, developers, and portals at scale, focused
-                  on the transaction velocity and data infrastructure that modern real estate demands.
-                </p>
-                <Link href="/contact?type=real-estate" className="self-start px-6 py-2.5 rounded-full border border-white/20 text-white/70 text-sm font-medium hover:text-white hover:border-white/40 transition-colors">
-                  Talk to a PropTech Engineer
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
-      {/* TECH CAPABILITIES */}
-      <section className="section-padding py-24" id="capabilities">
-        <div className="mx-auto max-w-6xl">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Core Capabilities</h2>
-            <p className="text-white/40 text-base">Built across the modern PropTech stack</p>
-          </div>
-          <div className="grid lg:grid-cols-[320px_1fr] gap-4 items-stretch">
-            <div className="flex flex-col gap-2">
-              {techCaps.map((cap, i) => (
-                <button key={i} onClick={() => setActiveTab(i)} className={`text-left px-5 py-4 rounded-xl transition-all duration-200 border ${activeTab === i ? "bg-white/[0.08] border-white/[0.1] shadow-sm" : "bg-white/[0.02] border-transparent hover:bg-white/[0.04]"}`}>
-                  <span className="font-bold text-white text-sm md:text-[15px]">{cap.highlight}</span>
-                  <span className={`text-sm md:text-[15px] transition-colors ${activeTab === i ? "text-white/65" : "text-white/35"}`}>{cap.rest}</span>
-                </button>
-              ))}
-            </div>
-            <div className="flex flex-col gap-0">
-              <div className="relative bg-[#13141a] border border-white/[0.07] rounded-t-2xl overflow-hidden flex items-center justify-center p-10" style={{ minHeight: "360px" }}>
-                <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Cpath d='M40 0H0v1h40V0zM0 40V0H1v40H0z' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E\")" }} />
-                <div className="relative z-10 w-full" style={{ maxWidth: "calc(100% - 180px)" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/intvue-mockup.png" alt="Platform mockup" className="w-full rounded-xl shadow-2xl" />
-                </div>
-                {techCaps[activeTab].annotations.map((a) => (
-                  <div key={a.pos} className={`absolute z-20 bg-[#13141a]/90 border border-white/[0.1] rounded-lg px-3 py-2 backdrop-blur-sm max-w-[140px] transition-all duration-300 ${a.pos === "tl" ? "top-5 left-5" : a.pos === "tr" ? "top-5 right-5 text-right" : a.pos === "bl" ? "bottom-5 left-5" : "bottom-5 right-5 text-right"}`}>
-                    <p className="text-white/80 text-xs leading-snug">{a.text}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="bg-[#13141a] border border-white/[0.07] border-t-0 rounded-b-2xl px-6 py-4 flex flex-wrap gap-x-6 gap-y-2">
-                {techCaps[activeTab].items.map((item) => (
-                  <span key={item} className="flex items-center gap-2 text-xs text-white/55">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1]/70 flex-shrink-0" />{item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CapabilityCardSection caps={techCaps} sectionSubtitle="Built across the modern PropTech stack" />
 
       {/* ARCHITECTURE REVIEW */}
       <section className="section-padding py-24">
@@ -280,24 +279,12 @@ export default function RealEstatePage() {
               and the moments that make or lose a transaction.
             </p>
           </div>
-          <div className="relative">
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/[0.08] -translate-x-1/2" />
-            {[
-              { num: "01", title: "Platform Audit", desc: "We map your current tech stack, integration points, manual workflow gaps, and the data quality issues that slow your pipeline.", align: "left" },
-              { num: "02", title: "Architecture Design", desc: "We design for transaction velocity: real-time listing sync, automated follow-up infrastructure, and document management that removes friction from every close.", align: "right" },
-              { num: "03", title: "Build & Integrate", desc: "We develop against your MLS feed, CRM data model, and compliance requirements - with performance and search UX as primary deliverables.", align: "left" },
-              { num: "04", title: "Launch & Expand", desc: "Phased rollout to your agent network with training support, then expansion of features driven by real deal-cycle bottlenecks.", align: "right" },
-            ].map((step) => (
-              <div key={step.num} className={`relative flex mb-16 last:mb-0 ${step.align === "right" ? "justify-end" : "justify-start"}`}>
-                <div className="absolute left-1/2 top-2 -translate-x-1/2 w-3 h-3 rounded-full bg-white/20 border border-white/30 z-10" />
-                <div className={`w-[44%] ${step.align === "right" ? "text-left pl-8" : "text-right pr-8"}`}>
-                  <span className="text-[#6366f1] text-4xl font-bold leading-none block mb-2">{step.num}</span>
-                  <h3 className="text-white font-bold text-lg mb-1">{step.title}</h3>
-                  <p className="text-white/40 text-sm leading-relaxed">{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ScrollTimeline steps={[
+    { num: "01", title: "Platform Audit", desc: "We map your current tech stack, integration points, manual workflow gaps, and the data quality issues that slow your pipeline.", align: "left" },
+    { num: "02", title: "Architecture Design", desc: "We design for transaction velocity: real-time listing sync, automated follow-up infrastructure, and document management that removes friction from every close.", align: "right" },
+    { num: "03", title: "Build & Integrate", desc: "We develop against your MLS feed, CRM data model, and compliance requirements - with performance and search UX as primary deliverables.", align: "left" },
+    { num: "04", title: "Launch & Expand", desc: "Phased rollout to your agent network with training support, then expansion of features driven by real deal-cycle bottlenecks.", align: "right" },
+  ]} />
         </div>
       </section>
 

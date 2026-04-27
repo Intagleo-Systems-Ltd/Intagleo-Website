@@ -3,71 +3,155 @@
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollTimeline from "@/components/ScrollTimeline";
 import Link from "next/link";
 import InsightsSection from "@/components/InsightsSection";
 import CaseStudiesSection from "@/components/CaseStudiesSection";
 import PageBackground from "@/components/PageBackground";
+import CapabilityCardSection, { type CapItem } from "@/components/CapabilityCardSection";
 
-const techCaps = [
+const techCaps: CapItem[] = [
   {
     highlight: "Commerce", rest: " Platform Engineering",
-    annotations: [
-      { pos: "tl", text: "Headless Storefront" },
-      { pos: "tr", text: "Multi-currency Checkout" },
-      { pos: "bl", text: "Custom Cart Logic" },
-      { pos: "br", text: "Payment Gateway Integration" },
+    urlSlug: "commerce-platform",
+    tiles: [
+      { name: "Headless Storefront", desc: "Decoupled architecture", color: "blue" },
+      { name: "Multi-currency Checkout", desc: "Global tax handling", color: "blue" },
+      { name: "Custom Cart Logic", desc: "Rules engine", color: "purple" },
+      { name: "Payment Gateways", desc: "Stripe, Adyen, Braintree", color: "purple" },
     ],
-    items: ["Headless commerce architecture", "Custom checkout flows", "Multi-currency & tax", "Payment gateway integration"],
+    preview: {
+      type: "status-bars",
+      statusLabel: "Store Live",
+      rows: [
+        { label: "Storefront CDN", value: "Online", stat: "38ms" },
+        { label: "Checkout API", value: "Online", stat: "12ms" },
+        { label: "Payment Gateway", value: "Online", stat: "95ms" },
+        { label: "Cart Service", value: "Online", stat: "6ms" },
+      ],
+      chartLabel: "Checkouts\nToday",
+      bars: [22,30,38,45,52,48,60,72,68,80,85,78,90,84,76,88,92,86,80,74,82,78,88,94],
+    },
   },
   {
     highlight: "Inventory", rest: " & Order Management",
-    annotations: [
-      { pos: "tl", text: "Real-time Stock Sync" },
-      { pos: "tr", text: "Multi-warehouse Routing" },
-      { pos: "bl", text: "Backorder Handling" },
-      { pos: "br", text: "Supplier Integration" },
+    urlSlug: "inventory-order-management",
+    tiles: [
+      { name: "Real-time Stock Sync", desc: "Across all channels", color: "blue" },
+      { name: "Multi-warehouse", desc: "Intelligent routing", color: "blue" },
+      { name: "Backorder Logic", desc: "Pre-order workflows", color: "purple" },
+      { name: "3PL Integration", desc: "Supplier APIs", color: "purple" },
     ],
-    items: ["Real-time inventory sync", "Multi-warehouse routing", "Backorder & pre-order logic", "Supplier & 3PL integration"],
+    preview: {
+      type: "pipeline",
+      headline: "4 pipelines running",
+      pipelines: [
+        { label: "Stock Sync", pct: 100, rate: "Real-time", color: "#34d399" },
+        { label: "Order Routing", pct: 88, rate: "Automated", color: "#5b7fff" },
+        { label: "3PL Handoff", pct: 72, rate: "On-demand", color: "#a78bfa" },
+        { label: "Returns Processing", pct: 65, rate: "Batch", color: "#6366f1" },
+      ],
+      metrics: [
+        { label: "Orders Today", value: "14.2K" },
+        { label: "SKUs Tracked", value: "82K" },
+        { label: "Accuracy", value: "99.8%" },
+      ],
+    },
   },
   {
     highlight: "Personalisation", rest: " & Merchandising",
-    annotations: [
-      { pos: "tl", text: "AI Recommendation Engine" },
-      { pos: "tr", text: "Dynamic Pricing Rules" },
-      { pos: "bl", text: "Behavioural Segmentation" },
-      { pos: "br", text: "A/B Testing Framework" },
+    urlSlug: "personalisation-merchandising",
+    tiles: [
+      { name: "AI Recommendations", desc: "Collaborative filtering", color: "blue" },
+      { name: "Dynamic Pricing", desc: "Rule-based engine", color: "blue" },
+      { name: "Behavioural Segments", desc: "ML clustering", color: "purple" },
+      { name: "A/B Testing", desc: "Experimentation platform", color: "purple" },
     ],
-    items: ["AI product recommendations", "Dynamic pricing rules", "Behavioural segmentation", "A/B testing infrastructure"],
+    preview: {
+      type: "inference",
+      accuracyLabel: "Rec Engine v6.0",
+      inferences: [
+        { label: "Click-through Rate", pct: 34, color: "#5b7fff", level: "High" },
+        { label: "Add-to-cart Rate", pct: 22, color: "#a78bfa", level: "High" },
+        { label: "Cross-sell Match", pct: 91, color: "#34d399", level: "Strong" },
+        { label: "Price Sensitivity", pct: 78, color: "#f59e0b", level: "Medium" },
+      ],
+      alertsLabel: "Live Signals",
+      alerts: [
+        { time: "10:34:02", text: "Segment A: CTR up 18% vs baseline", sev: "#34d399" },
+        { time: "10:28:19", text: "Price rule triggered for Category 12", sev: "#5b7fff" },
+        { time: "10:22:44", text: "A/B test variant B reached significance", sev: "#a78bfa" },
+      ],
+      footer: "Models retrain nightly",
+    },
   },
   {
     highlight: "Analytics", rest: " & Revenue Intelligence",
-    annotations: [
-      { pos: "tl", text: "Conversion Funnel Tracking" },
-      { pos: "tr", text: "Customer LTV Modelling" },
-      { pos: "bl", text: "Cart Abandonment Signals" },
-      { pos: "br", text: "Revenue Attribution" },
+    urlSlug: "revenue-analytics",
+    tiles: [
+      { name: "Conversion Funnels", desc: "End-to-end tracking", color: "blue" },
+      { name: "Customer LTV", desc: "Lifetime value models", color: "blue" },
+      { name: "Cart Abandonment", desc: "Recovery signals", color: "purple" },
+      { name: "Revenue Attribution", desc: "Multi-touch models", color: "purple" },
     ],
-    items: ["Conversion funnel analytics", "Customer LTV modelling", "Cart abandonment recovery", "Revenue attribution"],
+    preview: {
+      type: "ring-gauges",
+      scores: [
+        { label: "CVR Overall", pct: 3, color: "#5b7fff" },
+        { label: "Cart Recovery", pct: 18, color: "#a78bfa" },
+        { label: "Repeat Purchase", pct: 42, color: "#34d399" },
+        { label: "AOV Growth", pct: 12, color: "#6366f1" },
+      ],
+      events: [
+        { time: "10:45:00", text: "Funnel CVR improved 0.4%" },
+        { time: "10:38:12", text: "Recovery email batch sent" },
+        { time: "10:30:55", text: "LTV model recalculated" },
+      ],
+      footer: "Reports refresh hourly",
+    },
   },
   {
     highlight: "Omnichannel", rest: " & Marketplace",
-    annotations: [
-      { pos: "tl", text: "POS System Integration" },
-      { pos: "tr", text: "Amazon & eBay Sync" },
-      { pos: "bl", text: "Social Commerce APIs" },
-      { pos: "br", text: "Unified Customer View" },
+    urlSlug: "omnichannel-marketplace",
+    tiles: [
+      { name: "POS Integration", desc: "In-store systems", color: "blue" },
+      { name: "Marketplace Sync", desc: "Amazon & eBay", color: "blue" },
+      { name: "Social Commerce", desc: "Instagram, TikTok", color: "purple" },
+      { name: "Unified Profiles", desc: "Single customer view", color: "purple" },
     ],
-    items: ["POS & in-store integration", "Marketplace syndication", "Social commerce channels", "Unified customer profiles"],
+    preview: {
+      type: "network",
+      centerLabel: "Commerce Hub",
+      nodes: [
+        { x: 118, y: 28, label: "Amazon", sub: "Marketplace sync", color: "#f59e0b" },
+        { x: 198, y: 70, label: "POS / Till", sub: "In-store integration", color: "#5b7fff" },
+        { x: 208, y: 148, label: "Instagram", sub: "Social commerce", color: "#a78bfa" },
+        { x: 140, y: 188, label: "eBay", sub: "Catalogue sync", color: "#6366f1" },
+        { x: 42, y: 152, label: "TikTok Shop", sub: "Live commerce", color: "#ef4444" },
+      ],
+      footer: "5 channels · unified inventory",
+    },
   },
   {
     highlight: "Performance", rest: " & Scalability",
-    annotations: [
-      { pos: "tl", text: "CDN-first Architecture" },
-      { pos: "tr", text: "Peak Load Handling" },
-      { pos: "bl", text: "Edge Caching Strategy" },
-      { pos: "br", text: "Core Web Vitals Optimisation" },
+    urlSlug: "performance-scalability",
+    tiles: [
+      { name: "CDN-first Delivery", desc: "Edge-optimised", color: "blue" },
+      { name: "Peak Load Handling", desc: "Black Friday ready", color: "blue" },
+      { name: "Edge Caching", desc: "Dynamic + static", color: "purple" },
+      { name: "Core Web Vitals", desc: "LCP, CLS, INP", color: "purple" },
     ],
-    items: ["CDN-first delivery", "Peak load architecture", "Edge caching strategy", "Core Web Vitals optimisation"],
+    preview: {
+      type: "session-grid",
+      liveLabel: "4 Edge Regions Active",
+      sessions: [
+        { initials: "US", name: "US-East (Cloudflare)", color: "#5b7fff", qual: 3, live: true, secs: 86400 },
+        { initials: "EU", name: "EU-West (Cloudflare)", color: "#34d399", qual: 3, live: true, secs: 86400 },
+        { initials: "AP", name: "APAC (Fastly)", color: "#a78bfa", qual: 2, live: true, secs: 86400 },
+        { initials: "ME", name: "ME-South (Akamai)", color: "#6366f1", qual: 2, live: false, secs: 86400 },
+      ],
+      footerStats: ["Cache hit: 98.4%", "LCP: 0.9s", "4 PoPs"],
+    },
   },
 ];
 
@@ -75,7 +159,6 @@ const GRID_COLS = 6;
 const GRID_ROWS = 4;
 
 export default function EcommerceRetailPage() {
-  const [activeTab, setActiveTab] = useState(0);
   const [activeBox, setActiveBox] = useState(0);
 
   useEffect(() => {
@@ -116,94 +199,9 @@ export default function EcommerceRetailPage() {
             </a>
           </div>
         </div>
-        <div className="relative z-10 w-full max-w-5xl mx-auto pb-12 text-center">
-          <p className="text-white/40 text-base mb-8">Trusted by retailers processing millions in transactions daily.</p>
-          <div className="flex flex-wrap items-center justify-center gap-10">
-            {[{ name: "Samsung", src: "/logos/samsung.png" }, { name: "IBM", src: "/logos/ibm.png" }, { name: "TCL", src: "/logos/tcl.png" }].map((logo) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img key={logo.name} src={logo.src} alt={logo.name} className="h-7 w-auto object-contain opacity-35 hover:opacity-60 transition-opacity duration-300" style={{ filter: "brightness(0) invert(1)", maxWidth: "110px" }} />
-            ))}
-          </div>
-        </div>
-        <div className="relative z-10 w-full max-w-5xl mx-auto pb-0">
-          <div className="rounded-t-2xl bg-[#13141a] border border-white/[0.07] border-b-0 overflow-hidden">
-            <div className="grid md:grid-cols-[1fr_1.1fr]">
-              <div className="grid grid-cols-2 grid-rows-2 gap-1.5 p-4 bg-[#111218]">
-                <div className="col-span-1 row-span-2 rounded-xl overflow-hidden" style={{ minHeight: "220px" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp1.png" alt="" className="w-full h-full object-cover object-top" style={{ filter: "grayscale(100%)" }} />
-                </div>
-                <div className="rounded-xl overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp2.png" alt="" className="w-full h-full object-cover object-top" style={{ filter: "grayscale(100%)" }} />
-                </div>
-                <div className="rounded-xl overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp3.png" alt="" className="w-full h-full object-cover object-center" style={{ filter: "grayscale(100%)" }} />
-                </div>
-              </div>
-              <div className="flex flex-col justify-center text-left p-8 md:p-10">
-                <h2 className="text-2xl md:text-3xl font-bold text-white leading-snug mb-4">
-                  Slow checkouts and fragmented inventory are silently killing your revenue.{" "}
-                  <span className="text-white/35">Most retailers only notice when CAC spikes.</span>
-                </h2>
-                <p className="text-white/40 text-sm leading-relaxed mb-3">
-                  Every abandoned cart, every out-of-stock error, every page that takes 4 seconds to load - that&apos;s
-                  compounding revenue loss that doesn&apos;t show up cleanly in your dashboard.
-                </p>
-                <p className="text-white/40 text-sm leading-relaxed mb-7">
-                  We&apos;ve built commerce platforms for brands at every scale, focusing on the conversion and
-                  inventory architecture that drives sustainable retail growth.
-                </p>
-                <Link href="/contact?type=ecommerce" className="self-start px-6 py-2.5 rounded-full border border-white/20 text-white/70 text-sm font-medium hover:text-white hover:border-white/40 transition-colors">
-                  Talk to a Commerce Engineer
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
-      {/* TECH CAPABILITIES */}
-      <section className="section-padding py-24" id="capabilities">
-        <div className="mx-auto max-w-6xl">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Core Capabilities</h2>
-            <p className="text-white/40 text-base">Built across the modern commerce stack</p>
-          </div>
-          <div className="grid lg:grid-cols-[320px_1fr] gap-4 items-stretch">
-            <div className="flex flex-col gap-2">
-              {techCaps.map((cap, i) => (
-                <button key={i} onClick={() => setActiveTab(i)} className={`text-left px-5 py-4 rounded-xl transition-all duration-200 border ${activeTab === i ? "bg-white/[0.08] border-white/[0.1] shadow-sm" : "bg-white/[0.02] border-transparent hover:bg-white/[0.04]"}`}>
-                  <span className="font-bold text-white text-sm md:text-[15px]">{cap.highlight}</span>
-                  <span className={`text-sm md:text-[15px] transition-colors ${activeTab === i ? "text-white/65" : "text-white/35"}`}>{cap.rest}</span>
-                </button>
-              ))}
-            </div>
-            <div className="flex flex-col gap-0">
-              <div className="relative bg-[#13141a] border border-white/[0.07] rounded-t-2xl overflow-hidden flex items-center justify-center p-10" style={{ minHeight: "360px" }}>
-                <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Cpath d='M40 0H0v1h40V0zM0 40V0H1v40H0z' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E\")" }} />
-                <div className="relative z-10 w-full" style={{ maxWidth: "calc(100% - 180px)" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/intvue-mockup.png" alt="Platform mockup" className="w-full rounded-xl shadow-2xl" />
-                </div>
-                {techCaps[activeTab].annotations.map((a) => (
-                  <div key={a.pos} className={`absolute z-20 bg-[#13141a]/90 border border-white/[0.1] rounded-lg px-3 py-2 backdrop-blur-sm max-w-[140px] transition-all duration-300 ${a.pos === "tl" ? "top-5 left-5" : a.pos === "tr" ? "top-5 right-5 text-right" : a.pos === "bl" ? "bottom-5 left-5" : "bottom-5 right-5 text-right"}`}>
-                    <p className="text-white/80 text-xs leading-snug">{a.text}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="bg-[#13141a] border border-white/[0.07] border-t-0 rounded-b-2xl px-6 py-4 flex flex-wrap gap-x-6 gap-y-2">
-                {techCaps[activeTab].items.map((item) => (
-                  <span key={item} className="flex items-center gap-2 text-xs text-white/55">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1]/70 flex-shrink-0" />{item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CapabilityCardSection caps={techCaps} sectionSubtitle="Built across the modern commerce stack" />
 
       {/* ARCHITECTURE REVIEW */}
       <section className="section-padding py-24">
@@ -272,24 +270,12 @@ export default function EcommerceRetailPage() {
               customer journey and revenue goals.
             </p>
           </div>
-          <div className="relative">
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/[0.08] -translate-x-1/2" />
-            {[
-              { num: "01", title: "Commerce Audit", desc: "We map your storefront performance, checkout conversion, inventory accuracy, and integration landscape before any code is written.", align: "left" },
-              { num: "02", title: "Platform Architecture", desc: "We design for conversion: CDN-first delivery, headless flexibility, event-driven inventory, and personalisation infrastructure that scales.", align: "right" },
-              { num: "03", title: "Build & Validate", desc: "We develop with performance, accessibility, and payment security as first-class requirements embedded in every sprint.", align: "left" },
-              { num: "04", title: "Launch & Optimise", desc: "Phased migration of your catalogue and customer data, then continuous optimisation driven by real conversion signals.", align: "right" },
-            ].map((step) => (
-              <div key={step.num} className={`relative flex mb-16 last:mb-0 ${step.align === "right" ? "justify-end" : "justify-start"}`}>
-                <div className="absolute left-1/2 top-2 -translate-x-1/2 w-3 h-3 rounded-full bg-white/20 border border-white/30 z-10" />
-                <div className={`w-[44%] ${step.align === "right" ? "text-left pl-8" : "text-right pr-8"}`}>
-                  <span className="text-[#6366f1] text-4xl font-bold leading-none block mb-2">{step.num}</span>
-                  <h3 className="text-white font-bold text-lg mb-1">{step.title}</h3>
-                  <p className="text-white/40 text-sm leading-relaxed">{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ScrollTimeline steps={[
+    { num: "01", title: "Commerce Audit", desc: "We map your storefront performance, checkout conversion, inventory accuracy, and integration landscape before any code is written.", align: "left" },
+    { num: "02", title: "Platform Architecture", desc: "We design for conversion: CDN-first delivery, headless flexibility, event-driven inventory, and personalisation infrastructure that scales.", align: "right" },
+    { num: "03", title: "Build & Validate", desc: "We develop with performance, accessibility, and payment security as first-class requirements embedded in every sprint.", align: "left" },
+    { num: "04", title: "Launch & Optimise", desc: "Phased migration of your catalogue and customer data, then continuous optimisation driven by real conversion signals.", align: "right" },
+  ]} />
         </div>
       </section>
 

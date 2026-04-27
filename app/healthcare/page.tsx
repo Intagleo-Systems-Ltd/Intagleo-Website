@@ -1,8 +1,9 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollTimeline from "@/components/ScrollTimeline";
 import Link from "next/link";
 import InsightsSection from "@/components/InsightsSection";
 import CaseStudiesSection from "@/components/CaseStudiesSection";
@@ -11,65 +12,397 @@ import PageBackground from "@/components/PageBackground";
 const techCaps = [
   {
     highlight: "Clinical", rest: " Platform Engineering",
-    annotations: [
-      { pos: "tl", text: "EHR/EMR Integration" },
-      { pos: "tr", text: "Clinical Workflow Builder" },
-      { pos: "bl", text: "HL7 & FHIR Compliance" },
-      { pos: "br", text: "Patient Portal" },
+    urlSlug: "clinical-platform",
+    tiles: [
+      { name: "EHR/EMR Integration", desc: "Seamless data sync across systems", color: "blue" },
+      { name: "Clinical Workflow Builder", desc: "Custom care pathway automation", color: "blue" },
+      { name: "HL7 & FHIR Compliance", desc: "Standards-based interoperability", color: "purple" },
+      { name: "Patient Portal", desc: "Engagement & self-service access", color: "purple" },
     ],
-    items: ["EHR/EMR integration & migration", "Clinical workflow automation", "HL7 & FHIR compliance", "Patient portal development"],
   },
   {
     highlight: "Telehealth", rest: " & Remote Care",
-    annotations: [
-      { pos: "tl", text: "Video Consultation Platform" },
-      { pos: "tr", text: "Async Messaging System" },
-      { pos: "bl", text: "Remote Patient Monitoring" },
-      { pos: "br", text: "Device Data Ingestion" },
+    urlSlug: "telehealth",
+    tiles: [
+      { name: "Video Consultation", desc: "HD video & low-latency streaming", color: "blue" },
+      { name: "Async Messaging", desc: "Structured async care messages", color: "blue" },
+      { name: "Remote Monitoring", desc: "Continuous vitals from devices", color: "purple" },
+      { name: "Device Data Ingestion", desc: "IoMT & wearable data pipelines", color: "purple" },
     ],
-    items: ["Video consultation infrastructure", "Async care messaging", "Remote patient monitoring", "Wearable data ingestion"],
   },
   {
     highlight: "Data", rest: " & Analytics",
-    annotations: [
-      { pos: "tl", text: "Population Health Dashboards" },
-      { pos: "tr", text: "Predictive Risk Modelling" },
-      { pos: "bl", text: "Clinical Outcome Tracking" },
-      { pos: "br", text: "Regulatory Reporting" },
+    urlSlug: "analytics",
+    tiles: [
+      { name: "Population Health", desc: "Cohort & population insights", color: "blue" },
+      { name: "Predictive Risk", desc: "ML-based risk stratification", color: "blue" },
+      { name: "Outcome Tracking", desc: "Measurable care quality KPIs", color: "purple" },
+      { name: "Regulatory Reporting", desc: "Automated HEDIS & CMS reports", color: "purple" },
     ],
-    items: ["Population health analytics", "Predictive risk modelling", "Clinical outcome tracking", "Regulatory reporting pipelines"],
   },
   {
     highlight: "Compliance", rest: " & Security",
-    annotations: [
-      { pos: "tl", text: "HIPAA Architecture" },
-      { pos: "tr", text: "Audit Trail Logging" },
-      { pos: "bl", text: "Access Control (RBAC)" },
-      { pos: "br", text: "Data Encryption at Rest" },
+    urlSlug: "compliance",
+    tiles: [
+      { name: "HIPAA Architecture", desc: "SOC 2-ready, HIPAA-native design", color: "blue" },
+      { name: "Audit Trail Logging", desc: "Immutable access & change logs", color: "blue" },
+      { name: "Access Control (RBAC)", desc: "Granular permission management", color: "purple" },
+      { name: "Data Encryption", desc: "AES-256 at rest & in transit", color: "purple" },
     ],
-    items: ["HIPAA-compliant architecture", "Audit trail & logging", "Role-based access control", "End-to-end encryption"],
   },
   {
     highlight: "Interoperability", rest: " & Integration",
-    annotations: [
-      { pos: "tl", text: "Lab & Radiology Systems" },
-      { pos: "tr", text: "Pharmacy Network APIs" },
-      { pos: "bl", text: "Insurance Eligibility Checks" },
-      { pos: "br", text: "Health Information Exchange" },
+    urlSlug: "interoperability",
+    tiles: [
+      { name: "Lab & Radiology Systems", desc: "Bidirectional lab result feeds", color: "blue" },
+      { name: "Pharmacy Network APIs", desc: "Real-time formulary & Rx checks", color: "blue" },
+      { name: "Insurance Eligibility", desc: "Automated benefit verification", color: "purple" },
+      { name: "Health Info Exchange", desc: "HL7 v2, FHIR R4 data exchange", color: "purple" },
     ],
-    items: ["Lab & radiology integration", "Pharmacy network connectivity", "Insurance eligibility APIs", "Health information exchange"],
   },
   {
     highlight: "AI", rest: " & Clinical Decision Support",
-    annotations: [
-      { pos: "tl", text: "Diagnostic Assistance Tools" },
-      { pos: "tr", text: "Drug Interaction Alerts" },
-      { pos: "bl", text: "NLP for Clinical Notes" },
-      { pos: "br", text: "Triage Prioritisation" },
+    urlSlug: "clinical-ai",
+    tiles: [
+      { name: "Diagnostic Assistance", desc: "Differential diagnosis support", color: "blue" },
+      { name: "Drug Interaction Alerts", desc: "Real-time contraindication checks", color: "blue" },
+      { name: "NLP for Clinical Notes", desc: "Structured data from free text", color: "purple" },
+      { name: "Triage Prioritisation", desc: "Risk-scored patient queuing", color: "purple" },
     ],
-    items: ["Clinical decision support AI", "Drug interaction detection", "NLP for clinical notes", "Automated triage systems"],
   },
 ];
+
+/* ── Cap 0: Clinical Platform — status rows + animated bar chart ── */
+function Preview0_Clinical() {
+  const [on, setOn] = useState(false);
+  useEffect(() => { const t = setTimeout(() => setOn(true), 40); return () => clearTimeout(t); }, []);
+  const rows = [
+    { label: "Epic EHR", value: "Connected", stat: "99.9% uptime" },
+    { label: "Cerner EMR", value: "Connected", stat: "98.2% uptime" },
+    { label: "FHIR R4 Gateway", value: "Active", stat: "100% compliant" },
+    { label: "Patient Portal", value: "Online", stat: "12,847 active" },
+  ];
+  const bars = [42,55,48,62,70,75,68,80,88,85,78,82,90,92,88,75,80,85,90,88,82,78,75,70];
+  return (
+    <div className="flex w-full overflow-hidden" style={{ height: "210px", background: "#0a0c14" }}>
+      <div className="flex-1 flex flex-col gap-3 p-4 border-r border-white/[0.06] min-w-0">
+        <div className="flex items-center justify-between gap-2">
+          <span className="text-[9px] text-white/25 font-mono uppercase tracking-widest">System Status</span>
+          <div className="flex items-center gap-1.5 flex-shrink-0">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#34d399] animate-pulse" />
+            <span className="text-[9px] text-[#34d399] font-mono">All Operational</span>
+          </div>
+        </div>
+        {rows.map((r, i) => (
+          <div key={i} className="flex items-center justify-between gap-2"
+            style={{ opacity: on ? 1 : 0, transform: on ? "none" : "translateX(-6px)", transition: `opacity 0.35s ease ${i * 70}ms, transform 0.35s ease ${i * 70}ms` }}>
+            <div className="flex items-center gap-1.5 min-w-0">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#34d399] flex-shrink-0" />
+              <span className="text-[11px] text-white/45 font-mono truncate">{r.label}</span>
+            </div>
+            <div className="flex items-center gap-2 flex-shrink-0">
+              <span className="text-[10.5px] text-[#34d399] font-mono">{r.value}</span>
+              <span className="text-[10px] text-white/20 font-mono hidden sm:block">{r.stat}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="w-[115px] flex flex-col gap-2 p-4 flex-shrink-0">
+        <span className="text-[9px] text-white/25 font-mono uppercase tracking-widest leading-tight">Sync Volume · 24h</span>
+        <div className="flex-1 flex items-end gap-px">
+          {bars.map((h, i) => (
+            <div key={i} className="flex-1 rounded-[1px]"
+              style={{ height: on ? `${h}%` : "0%", background: h > 75 ? "rgba(91,127,255,0.7)" : h > 50 ? "rgba(91,127,255,0.45)" : "rgba(91,127,255,0.25)", transition: `height 0.55s cubic-bezier(0.16,1,0.3,1) ${i * 18}ms` }} />
+          ))}
+        </div>
+        <div className="flex justify-between"><span className="text-[8px] text-white/15 font-mono">00:00</span><span className="text-[8px] text-white/15 font-mono">now</span></div>
+      </div>
+    </div>
+  );
+}
+
+/* ── Cap 1: Telehealth — live video session grid ── */
+function Preview1_Telehealth() {
+  const [secs, setSecs] = useState([2831, 1203, 4729, 342]);
+  useEffect(() => { const t = setInterval(() => setSecs(p => p.map(v => v + 1)), 1000); return () => clearInterval(t); }, []);
+  const fmt = (s: number) => `${String(Math.floor(s / 60)).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}`;
+  const sessions = [
+    { initials: "SJ", name: "Dr. Sarah J.", color: "#6366f1", qual: 3, live: true },
+    { initials: "MP", name: "M. Patel", color: "#8b5cf6", qual: 3, live: true },
+    { initials: "RK", name: "Dr. R. Khan", color: "#06b6d4", qual: 2, live: true },
+    { initials: "AL", name: "A. Lawson", color: "#10b981", qual: 3, live: false },
+  ];
+  return (
+    <div style={{ height: "210px", background: "#0a0c14" }} className="flex flex-col p-3 gap-2">
+      <div className="flex items-center justify-between">
+        <span className="text-[9px] text-white/25 font-mono uppercase tracking-widest">Active Sessions</span>
+        <div className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" /><span className="text-[9px] text-red-400 font-mono">847 live</span></div>
+      </div>
+      <div className="grid grid-cols-2 gap-2 flex-1">
+        {sessions.map((s, i) => (
+          <div key={i} className="rounded-lg border border-white/[0.07] bg-[#0f1220] p-2.5 flex flex-col gap-1.5">
+            <div className="flex items-center gap-1.5">
+              <div className="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold flex-shrink-0"
+                style={{ background: `${s.color}22`, border: `1px solid ${s.color}44`, color: s.color }}>{s.initials}</div>
+              <span className="text-[9.5px] text-white/45 font-mono truncate flex-1">{s.name}</span>
+              <div className="flex items-end gap-[2px] flex-shrink-0">
+                {[4, 7, 10].map((h, b) => <div key={b} className="w-[3px] rounded-full" style={{ height: `${h}px`, background: b < s.qual ? "#34d399" : "rgba(255,255,255,0.1)" }} />)}
+              </div>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className="w-1 h-1 rounded-full flex-shrink-0 animate-pulse" style={{ background: s.live ? "#ef4444" : "#f59e0b" }} />
+              <span className="text-[9px] font-mono text-white/30">{fmt(secs[i])}</span>
+              <span className="text-[8px] font-mono ml-auto" style={{ color: s.live ? "rgba(255,255,255,0.2)" : "rgba(245,158,11,0.6)" }}>{s.live ? "Live" : "Waiting"}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="flex items-center justify-between pt-1 border-t border-white/[0.05]">
+        {["48ms avg latency", "2.4 Gbps throughput", "HD · 1080p avg"].map(t => <span key={t} className="text-[8.5px] text-white/20 font-mono">{t}</span>)}
+      </div>
+    </div>
+  );
+}
+
+/* ── Cap 2: Data & Analytics — pipeline progress bars ── */
+function Preview2_DataAnalytics() {
+  const [on, setOn] = useState(false);
+  useEffect(() => { const t = setTimeout(() => setOn(true), 50); return () => clearTimeout(t); }, []);
+  const pipelines = [
+    { label: "EHR → Population Analytics", pct: 94, rate: "1.2M rows/min", color: "#6366f1" },
+    { label: "Risk Model Training", pct: 71, rate: "Epoch 4 / 12", color: "#8b5cf6" },
+    { label: "HEDIS Report Generation", pct: 100, rate: "Complete", color: "#34d399" },
+    { label: "Outcome Dashboard Sync", pct: 88, rate: "482 KPIs live", color: "#06b6d4" },
+  ];
+  const metrics = [{ label: "Records Today", value: "4.2M" }, { label: "Active Models", value: "94" }, { label: "Query P50", value: "124ms" }];
+  return (
+    <div style={{ height: "210px", background: "#0a0c14" }} className="flex flex-col p-4 gap-3">
+      <div className="flex items-center justify-between">
+        <span className="text-[9px] text-white/25 font-mono uppercase tracking-widest">Pipeline Status</span>
+        <span className="text-[9px] text-[#34d399] font-mono">4 healthy · 0 failed</span>
+      </div>
+      <div className="flex flex-col gap-2.5 flex-1">
+        {pipelines.map((p, i) => (
+          <div key={i} className="flex flex-col gap-1">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] text-white/40 font-mono">{p.label}</span>
+              <div className="flex items-center gap-2">
+                <span className="text-[9px] text-white/20 font-mono">{p.rate}</span>
+                <span className="text-[10px] font-mono font-semibold" style={{ color: p.color }}>{p.pct}%</span>
+              </div>
+            </div>
+            <div className="h-[3px] bg-white/[0.05] rounded-full overflow-hidden">
+              <div className="h-full rounded-full" style={{ width: on ? `${p.pct}%` : "0%", background: p.color, transition: `width 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 100}ms` }} />
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="flex items-center gap-5 border-t border-white/[0.05] pt-2">
+        {metrics.map((m, i) => <div key={i}><p className="text-[8px] text-white/20 font-mono">{m.label}</p><p className="text-[12px] text-white/55 font-mono font-semibold">{m.value}</p></div>)}
+      </div>
+    </div>
+  );
+}
+
+/* ── Cap 3: Compliance — SVG ring gauges + event log ── */
+function Preview3_Compliance() {
+  const [on, setOn] = useState(false);
+  useEffect(() => { const t = setTimeout(() => setOn(true), 80); return () => clearTimeout(t); }, []);
+  const r = 17; const circ = 2 * Math.PI * r;
+  const scores = [
+    { label: "HIPAA", pct: 100, color: "#34d399" },
+    { label: "SOC 2 T2", pct: 98, color: "#6366f1" },
+    { label: "ISO 27001", pct: 96, color: "#8b5cf6" },
+    { label: "GDPR", pct: 94, color: "#06b6d4" },
+  ];
+  const events = [
+    { time: "2m ago", text: "Audit log snapshot done" },
+    { time: "14m ago", text: "Access review passed" },
+    { time: "1h ago", text: "Vuln scan: 0 critical" },
+  ];
+  return (
+    <div style={{ height: "210px", background: "#0a0c14" }} className="flex overflow-hidden">
+      <div className="flex-1 flex flex-col p-4 gap-3 min-w-0">
+        <span className="text-[9px] text-white/25 font-mono uppercase tracking-widest">Compliance Scores</span>
+        <div className="grid grid-cols-2 gap-2.5 flex-1">
+          {scores.map((s, i) => (
+            <div key={i} className="flex items-center gap-2">
+              <svg width="42" height="42" viewBox="0 0 42 42" className="flex-shrink-0">
+                <circle cx="21" cy="21" r={r} fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="2.5" />
+                <circle cx="21" cy="21" r={r} fill="none" stroke={s.color} strokeWidth="2.5" strokeLinecap="round"
+                  strokeDasharray={circ} strokeDashoffset={on ? circ * (1 - s.pct / 100) : circ}
+                  transform="rotate(-90 21 21)"
+                  style={{ transition: `stroke-dashoffset 0.9s cubic-bezier(0.16,1,0.3,1) ${i * 130}ms` }} />
+                <text x="21" y="25" textAnchor="middle" fill={s.color} fontSize="9" fontFamily="monospace" fontWeight="600">{s.pct}%</text>
+              </svg>
+              <span className="text-[10px] text-white/35 font-mono leading-tight">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="w-[140px] flex flex-col gap-2 p-4 border-l border-white/[0.06] flex-shrink-0">
+        <span className="text-[9px] text-white/25 font-mono uppercase tracking-widest">Recent Events</span>
+        <div className="flex flex-col gap-2.5 flex-1">
+          {events.map((e, i) => (
+            <div key={i} className="flex flex-col gap-0.5">
+              <span className="text-[8px] text-white/15 font-mono">{e.time}</span>
+              <div className="flex items-start gap-1.5">
+                <span className="w-1 h-1 rounded-full bg-[#34d399] flex-shrink-0 mt-1" />
+                <span className="text-[9.5px] text-white/35 leading-snug">{e.text}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="border-t border-white/[0.05] pt-2">
+          <span className="text-[8.5px] text-white/15 font-mono">Next audit in 12 days</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ── Cap 4: Interoperability — SVG network topology with animated flowing dashes ── */
+function Preview4_Interop() {
+  const hx = 118, hy = 102;
+  const nodes = [
+    { x: 118, y: 22, label: "Lab & Radiology", sub: "3,240/min", color: "#6366f1" },
+    { x: 205, y: 75, label: "Pharmacy APIs", sub: "1,820/min", color: "#8b5cf6" },
+    { x: 192, y: 162, label: "Insurance", sub: "482/hr", color: "#06b6d4" },
+    { x: 30, y: 155, label: "HIE Network", sub: "892/min", color: "#10b981" },
+    { x: 28, y: 58, label: "Lab Systems", sub: "641/min", color: "#f59e0b" },
+  ];
+  return (
+    <div style={{ height: "210px", background: "#0a0c14" }} className="relative overflow-hidden">
+      <svg className="w-full h-full" viewBox="0 0 235 205" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <style>{`@keyframes df{to{stroke-dashoffset:-20}}`}</style>
+        </defs>
+        {nodes.map((n, i) => (
+          <g key={i}>
+            <line x1={hx} y1={hy} x2={n.x} y2={n.y} stroke={n.color} strokeWidth="0.6" strokeOpacity="0.12" />
+            <line x1={hx} y1={hy} x2={n.x} y2={n.y} stroke={n.color} strokeWidth="0.9" strokeOpacity="0.55"
+              strokeDasharray="4 7"
+              style={{ animation: `df ${1.3 + i * 0.22}s linear infinite`, animationDelay: `${i * 0.3}s` }} />
+            <circle cx={n.x} cy={n.y} r="15" fill="#0d101a" stroke={n.color} strokeWidth="0.8" strokeOpacity="0.45" />
+            <circle cx={n.x} cy={n.y} r="3.5" fill={n.color} fillOpacity="0.85" />
+            <text x={n.x} y={n.y + 23} textAnchor="middle" fill="rgba(255,255,255,0.2)" fontSize="5.5" fontFamily="monospace">{n.label}</text>
+            <text x={n.x} y={n.y + 30} textAnchor="middle" fill={n.color} fillOpacity="0.45" fontSize="5" fontFamily="monospace">{n.sub}</text>
+          </g>
+        ))}
+        <circle cx={hx} cy={hy} r="21" fill="#111520" stroke="#5b7fff" strokeWidth="1" strokeOpacity="0.5" />
+        <circle cx={hx} cy={hy} r="8" fill="#5b7fff" fillOpacity="0.15" />
+        <circle cx={hx} cy={hy} r="3.5" fill="#5b7fff" />
+        <text x={hx} y={hy + 31} textAnchor="middle" fill="rgba(91,127,255,0.4)" fontSize="6" fontFamily="monospace">Platform Hub</text>
+        <text x="6" y="198" fill="rgba(255,255,255,0.1)" fontSize="5.5" fontFamily="monospace">40 integrations · 0 degraded · 89ms avg response</text>
+      </svg>
+    </div>
+  );
+}
+
+/* ── Cap 5: AI & CDS — inference confidence bars + rotating live alerts ── */
+function Preview5_AI() {
+  const [on, setOn] = useState(false);
+  const [alertIdx, setAlertIdx] = useState(0);
+  useEffect(() => { const t = setTimeout(() => setOn(true), 50); return () => clearTimeout(t); }, []);
+  useEffect(() => { const t = setInterval(() => setAlertIdx(i => (i + 1) % 3), 3200); return () => clearInterval(t); }, []);
+  const inferences = [
+    { label: "Sepsis Risk", pct: 87, color: "#ef4444", level: "High" },
+    { label: "Readmission Risk", pct: 62, color: "#f59e0b", level: "Medium" },
+    { label: "Drug Interaction", pct: 94, color: "#ef4444", level: "Critical" },
+    { label: "Triage Priority", pct: 78, color: "#6366f1", level: "High" },
+  ];
+  const alerts = [
+    { time: "now", text: "Drug interaction: Warfarin + Aspirin · Pt #3812", sev: "#ef4444" },
+    { time: "2m", text: "Sepsis early warning · Patient #4421 · ICU", sev: "#f59e0b" },
+    { time: "5m", text: "Triage: 3 patients auto-escalated to Urgent", sev: "#6366f1" },
+  ];
+  return (
+    <div style={{ height: "210px", background: "#0a0c14" }} className="flex overflow-hidden">
+      <div className="flex-1 flex flex-col p-4 gap-3 border-r border-white/[0.06] min-w-0">
+        <div className="flex items-center justify-between">
+          <span className="text-[9px] text-white/25 font-mono uppercase tracking-widest">Model Inference</span>
+          <span className="text-[9px] text-[#6366f1] font-mono">94.7% accuracy</span>
+        </div>
+        {inferences.map((inf, i) => (
+          <div key={i} className="flex flex-col gap-1">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] text-white/40 font-mono">{inf.label}</span>
+              <div className="flex items-center gap-1.5">
+                <span className="text-[9px] px-1.5 py-0.5 rounded font-mono" style={{ background: `${inf.color}18`, color: inf.color }}>{inf.level}</span>
+                <span className="text-[10px] font-mono font-semibold" style={{ color: inf.color }}>{inf.pct}%</span>
+              </div>
+            </div>
+            <div className="h-[3px] bg-white/[0.05] rounded-full overflow-hidden">
+              <div className="h-full rounded-full" style={{ width: on ? `${inf.pct}%` : "0%", background: inf.color, opacity: 0.75, transition: `width 0.65s cubic-bezier(0.16,1,0.3,1) ${i * 90}ms` }} />
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="w-[148px] flex flex-col p-4 gap-2.5 flex-shrink-0">
+        <div className="flex items-center justify-between">
+          <span className="text-[9px] text-white/25 font-mono uppercase tracking-widest">CDS Alerts</span>
+          <span className="text-[9px] text-white/20 font-mono">1,284 today</span>
+        </div>
+        <div className="flex flex-col gap-2 flex-1">
+          {alerts.map((a, i) => (
+            <div key={i} className="flex flex-col gap-0.5 transition-opacity duration-500"
+              style={{ opacity: i === alertIdx ? 1 : i === (alertIdx + 1) % 3 ? 0.45 : 0.2 }}>
+              <div className="flex items-center gap-1">
+                <span className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: a.sev }} />
+                <span className="text-[8px] text-white/20 font-mono">{a.time} ago</span>
+              </div>
+              <span className="text-[9.5px] text-white/35 leading-snug">{a.text}</span>
+            </div>
+          ))}
+        </div>
+        <div className="border-t border-white/[0.05] pt-1.5">
+          <span className="text-[8px] text-white/15 font-mono">12ms avg inference · 847 triggers/min</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CapabilityPreview({ capIndex }: { capIndex: number }) {
+  if (capIndex === 1) return <Preview1_Telehealth />;
+  if (capIndex === 2) return <Preview2_DataAnalytics />;
+  if (capIndex === 3) return <Preview3_Compliance />;
+  if (capIndex === 4) return <Preview4_Interop />;
+  if (capIndex === 5) return <Preview5_AI />;
+  return <Preview0_Clinical />;
+}
+
+function CapabilityIcon({ idx, color }: { idx: number; color: string }) {
+  const blue = "#5b7fff";
+  const purple = "#a78bfa";
+  const c = color === "blue" ? blue : purple;
+  if (idx === 0) return (
+    <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+      <rect x="1" y="3" width="13" height="9" rx="2" stroke={c} strokeWidth="1.4" />
+      <path d="M5 7h5M7.5 5v4" stroke={c} strokeWidth="1.4" strokeLinecap="round" />
+    </svg>
+  );
+  if (idx === 1) return (
+    <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+      <path d="M2 4h11M2 8h7M2 12h5" stroke={c} strokeWidth="1.4" strokeLinecap="round" />
+      <circle cx="12" cy="10" r="2.5" stroke={c} strokeWidth="1.3" />
+    </svg>
+  );
+  if (idx === 2) return (
+    <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+      <path d="M7.5 1.5v3M7.5 10.5v3M1.5 7.5h3M10.5 7.5h3" stroke={c} strokeWidth="1.4" strokeLinecap="round" />
+      <circle cx="7.5" cy="7.5" r="3" stroke={c} strokeWidth="1.3" />
+    </svg>
+  );
+  return (
+    <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+      <rect x="2" y="2" width="5" height="5" rx="1.2" stroke={c} strokeWidth="1.3" />
+      <rect x="8" y="2" width="5" height="5" rx="1.2" stroke={c} strokeWidth="1.3" />
+      <rect x="2" y="8" width="5" height="5" rx="1.2" stroke={c} strokeWidth="1.3" />
+      <rect x="8" y="8" width="5" height="5" rx="1.2" stroke={c} strokeWidth="1.3" />
+    </svg>
+  );
+}
 
 const EKG_POINTS = [
   0, 0, 2, 0, 4, 0, 6, -2, 8, -20, 10, 30, 12, -15, 14, 10, 16, 0,
@@ -111,13 +444,13 @@ export default function HealthcarePage() {
       <Navbar />
 
       {/* HERO */}
-      <section className="relative flex flex-col items-center pt-32 pb-0 px-6 text-center overflow-hidden">
+      <section className="relative min-h-[85vh] flex flex-col items-center pt-32 pb-24 px-6 text-center overflow-hidden">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/hex-mesh-bg.png" alt="" className="absolute inset-0 w-full h-full object-cover object-center" style={{ opacity: 0.85 }} />
           <div className="absolute inset-0" style={{ background: "rgba(10,10,10,0.55)" }} />
           <div className="absolute top-0 left-0 right-0 h-40" style={{ background: "linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)" }} />
-          <div className="absolute bottom-0 left-0 right-0 h-48" style={{ background: "linear-gradient(to top, #0a0a0a 0%, transparent 100%)" }} />
+          <div className="absolute bottom-0 left-0 right-0 h-72" style={{ background: "linear-gradient(to top, #0a0a0a 0%, transparent 100%)" }} />
           <div className="absolute inset-y-0 left-0 w-24" style={{ background: "linear-gradient(to right, rgba(10,10,10,0.6), transparent)" }} />
           <div className="absolute inset-y-0 right-0 w-24" style={{ background: "linear-gradient(to left, rgba(10,10,10,0.6), transparent)" }} />
         </div>
@@ -138,52 +471,6 @@ export default function HealthcarePage() {
             </a>
           </div>
         </div>
-        <div className="relative z-10 w-full max-w-5xl mx-auto pb-12 text-center">
-          <p className="text-white/40 text-base mb-8">Trusted by healthcare organisations serving millions of patients.</p>
-          <div className="flex flex-wrap items-center justify-center gap-10">
-            {[{ name: "Samsung", src: "/logos/samsung.png" }, { name: "IBM", src: "/logos/ibm.png" }, { name: "TCL", src: "/logos/tcl.png" }].map((logo) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img key={logo.name} src={logo.src} alt={logo.name} className="h-7 w-auto object-contain opacity-35 hover:opacity-60 transition-opacity duration-300" style={{ filter: "brightness(0) invert(1)", maxWidth: "110px" }} />
-            ))}
-          </div>
-        </div>
-        <div className="relative z-10 w-full max-w-5xl mx-auto pb-0">
-          <div className="rounded-t-2xl bg-[#13141a] border border-white/[0.07] border-b-0 overflow-hidden">
-            <div className="grid md:grid-cols-[1fr_1.1fr]">
-              <div className="grid grid-cols-2 grid-rows-2 gap-1.5 p-4 bg-[#111218]">
-                <div className="col-span-1 row-span-2 rounded-xl overflow-hidden" style={{ minHeight: "220px" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp1.png" alt="" className="w-full h-full object-cover object-top" style={{ filter: "grayscale(100%)" }} />
-                </div>
-                <div className="rounded-xl overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp2.png" alt="" className="w-full h-full object-cover object-top" style={{ filter: "grayscale(100%)" }} />
-                </div>
-                <div className="rounded-xl overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp3.png" alt="" className="w-full h-full object-cover object-center" style={{ filter: "grayscale(100%)" }} />
-                </div>
-              </div>
-              <div className="flex flex-col justify-center text-left p-8 md:p-10">
-                <h2 className="text-2xl md:text-3xl font-bold text-white leading-snug mb-4">
-                  Legacy clinical systems are creating invisible risk.{" "}
-                  <span className="text-white/35">Most organisations only notice during an audit or incident.</span>
-                </h2>
-                <p className="text-white/40 text-sm leading-relaxed mb-3">
-                  Every manual data entry point, every system that doesn&apos;t talk to another, every clinician
-                  workaround - that&apos;s patient risk and operational debt accumulating silently.
-                </p>
-                <p className="text-white/40 text-sm leading-relaxed mb-7">
-                  We&apos;ve built compliant healthcare platforms trusted by providers serving millions of patients,
-                  with the interoperability and security architecture that clinical environments demand.
-                </p>
-                <Link href="/contact?type=healthcare" className="self-start px-6 py-2.5 rounded-full border border-white/20 text-white/70 text-sm font-medium hover:text-white hover:border-white/40 transition-colors">
-                  Talk to a Healthcare Engineer
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* TECH CAPABILITIES */}
@@ -193,34 +480,62 @@ export default function HealthcarePage() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Core Capabilities</h2>
             <p className="text-white/40 text-base">Built across the modern healthcare technology stack</p>
           </div>
-          <div className="grid lg:grid-cols-[320px_1fr] gap-4 items-stretch">
-            <div className="flex flex-col gap-2">
+          <div className="grid lg:grid-cols-[248px_1fr] gap-4 items-start">
+            {/* Left nav */}
+            <div className="flex flex-col gap-0.5">
               {techCaps.map((cap, i) => (
-                <button key={i} onClick={() => setActiveTab(i)} className={`text-left px-5 py-4 rounded-xl transition-all duration-200 border ${activeTab === i ? "bg-white/[0.08] border-white/[0.1] shadow-sm" : "bg-white/[0.02] border-transparent hover:bg-white/[0.04]"}`}>
-                  <span className="font-bold text-white text-sm md:text-[15px]">{cap.highlight}</span>
-                  <span className={`text-sm md:text-[15px] transition-colors ${activeTab === i ? "text-white/65" : "text-white/35"}`}>{cap.rest}</span>
+                <button key={i} onClick={() => setActiveTab(i)} className={`text-left px-4 py-3.5 rounded-xl transition-all duration-150 border ${activeTab === i ? "bg-[#161b27] border-white/[0.14]" : "border-transparent hover:bg-white/[0.04]"} cursor-pointer`}>
+                  <span className="font-semibold text-white text-sm">{cap.highlight}</span>
+                  <span className={`text-sm transition-colors ${activeTab === i ? "text-white/55" : "text-white/35"}`}>{cap.rest}</span>
                 </button>
               ))}
             </div>
-            <div className="flex flex-col gap-0">
-              <div className="relative bg-[#13141a] border border-white/[0.07] rounded-t-2xl overflow-hidden flex items-center justify-center p-10" style={{ minHeight: "360px" }}>
-                <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Cpath d='M40 0H0v1h40V0zM0 40V0H1v40H0z' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E\")" }} />
-                <div className="relative z-10 w-full" style={{ maxWidth: "calc(100% - 180px)" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/intvue-mockup.png" alt="Platform mockup" className="w-full rounded-xl shadow-2xl" />
+
+            {/* Right card */}
+            <div className="bg-[#111520] border border-white/[0.14] rounded-[18px] overflow-hidden">
+              {/* Header strip */}
+              <div className="px-6 py-5 flex items-center justify-between border-b border-white/[0.08]">
+                <div className="flex flex-col gap-1">
+                  <span className="text-[11px] font-semibold tracking-[0.1em] uppercase text-[#5b7fff]">Capability Area</span>
+                  <span className="text-[18px] font-bold text-white tracking-[-0.2px]">{techCaps[activeTab].highlight}{techCaps[activeTab].rest}</span>
                 </div>
-                {techCaps[activeTab].annotations.map((a) => (
-                  <div key={a.pos} className={`absolute z-20 bg-[#13141a]/90 border border-white/[0.1] rounded-lg px-3 py-2 backdrop-blur-sm max-w-[140px] transition-all duration-300 ${a.pos === "tl" ? "top-5 left-5" : a.pos === "tr" ? "top-5 right-5 text-right" : a.pos === "bl" ? "bottom-5 left-5" : "bottom-5 right-5 text-right"}`}>
-                    <p className="text-white/80 text-xs leading-snug">{a.text}</p>
+                <div className="flex items-center gap-1.5 bg-[rgba(52,211,153,0.1)] border border-[rgba(52,211,153,0.2)] rounded-full px-3 py-1.5 text-[12px] font-medium text-[#34d399] flex-shrink-0">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#34d399] animate-pulse" />
+                  Active
+                </div>
+              </div>
+
+              {/* Feature tiles */}
+              <div className="grid grid-cols-2 md:grid-cols-4 border-b border-white/[0.08]">
+                {techCaps[activeTab].tiles.map((tile, idx) => (
+                  <div key={idx} className={`p-4 flex flex-col gap-2 transition-colors hover:bg-[#161b27] ${idx < techCaps[activeTab].tiles.length - 1 ? "border-r border-white/[0.08]" : ""}`}>
+                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${tile.color === "blue" ? "bg-[rgba(91,127,255,0.15)]" : "bg-[rgba(167,139,250,0.12)]"}`}>
+                      <CapabilityIcon idx={idx} color={tile.color} />
+                    </div>
+                    <p className="text-[12.5px] font-semibold text-[#c8cee0] leading-snug">{tile.name}</p>
+                    <p className="text-[11px] text-white/35 leading-relaxed">{tile.desc}</p>
                   </div>
                 ))}
               </div>
-              <div className="bg-[#13141a] border border-white/[0.07] border-t-0 rounded-b-2xl px-6 py-4 flex flex-wrap gap-x-6 gap-y-2">
-                {techCaps[activeTab].items.map((item) => (
-                  <span key={item} className="flex items-center gap-2 text-xs text-white/55">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1]/70 flex-shrink-0" />{item}
-                  </span>
-                ))}
+
+              {/* Browser-frame live preview */}
+              <div className="p-5 bg-[#0d1018] relative">
+                <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 60% at 50% 80%, rgba(91,127,255,0.07) 0%, transparent 70%)" }} />
+                <div className="relative rounded-xl overflow-hidden border border-white/[0.14]" style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04)" }}>
+                  {/* Browser bar */}
+                  <div className="bg-[#1a1e2e] border-b border-white/[0.08] px-3.5 py-2.5 flex items-center gap-2.5">
+                    <div className="flex gap-1.5 flex-shrink-0">
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+                    </div>
+                    <div className="flex-1 bg-[#0f1220] border border-white/[0.08] rounded-md px-3 py-1 text-[11px] text-white/35 font-mono truncate">
+                      app.intagleo.com / {techCaps[activeTab].urlSlug}
+                    </div>
+                  </div>
+                  {/* Animated live dashboard */}
+                  <CapabilityPreview key={activeTab} capIndex={activeTab} />
+                </div>
               </div>
             </div>
           </div>
@@ -296,24 +611,12 @@ export default function HealthcarePage() {
               and clinical workflow requirements.
             </p>
           </div>
-          <div className="relative">
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/[0.08] -translate-x-1/2" />
-            {[
-              { num: "01", title: "Clinical Audit", desc: "We map your existing systems, integration gaps, compliance posture, and data flows before any architecture decisions are made.", align: "left" },
-              { num: "02", title: "Platform Architecture", desc: "We design for compliance and interoperability: HIPAA controls, FHIR-native data models, and HL7 integration patterns built in from day one.", align: "right" },
-              { num: "03", title: "Build & Validate", desc: "We develop with security, accessibility, and clinical workflow accuracy as primary requirements - not afterthoughts.", align: "left" },
-              { num: "04", title: "Deploy & Monitor", desc: "Staged rollout with clinical workflow validation, staff training support, and continuous monitoring of system performance and data integrity.", align: "right" },
-            ].map((step) => (
-              <div key={step.num} className={`relative flex mb-16 last:mb-0 ${step.align === "right" ? "justify-end" : "justify-start"}`}>
-                <div className="absolute left-1/2 top-2 -translate-x-1/2 w-3 h-3 rounded-full bg-white/20 border border-white/30 z-10" />
-                <div className={`w-[44%] ${step.align === "right" ? "text-left pl-8" : "text-right pr-8"}`}>
-                  <span className="text-[#6366f1] text-4xl font-bold leading-none block mb-2">{step.num}</span>
-                  <h3 className="text-white font-bold text-lg mb-1">{step.title}</h3>
-                  <p className="text-white/40 text-sm leading-relaxed">{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ScrollTimeline steps={[
+    { num: "01", title: "Clinical Audit", desc: "We map your existing systems, integration gaps, compliance posture, and data flows before any architecture decisions are made.", align: "left" },
+    { num: "02", title: "Platform Architecture", desc: "We design for compliance and interoperability: HIPAA controls, FHIR-native data models, and HL7 integration patterns built in from day one.", align: "right" },
+    { num: "03", title: "Build & Validate", desc: "We develop with security, accessibility, and clinical workflow accuracy as primary requirements - not afterthoughts.", align: "left" },
+    { num: "04", title: "Deploy & Monitor", desc: "Staged rollout with clinical workflow validation, staff training support, and continuous monitoring of system performance and data integrity.", align: "right" },
+  ]} />
         </div>
       </section>
 
@@ -430,3 +733,5 @@ export default function HealthcarePage() {
     </div>
   );
 }
+
+

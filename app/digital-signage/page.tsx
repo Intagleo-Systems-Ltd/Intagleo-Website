@@ -1,84 +1,180 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollTimeline from "@/components/ScrollTimeline";
 import Link from "next/link";
 import InsightsSection from "@/components/InsightsSection";
 import CaseStudiesSection from "@/components/CaseStudiesSection";
 import PageBackground from "@/components/PageBackground";
+import CapabilityCardSection, { type CapItem } from "@/components/CapabilityCardSection";
 
 /* ── Tech capabilities ─────────────────────────────────────────────────── */
-const techCaps = [
+const techCaps: CapItem[] = [
   {
     highlight: "Content", rest: " Management Systems",
-    annotations: [
-      { pos: "tl", text: "Granular Asset Control" },
-      { pos: "tr", text: "Targeted Scheduling and Group Orchestration" },
-      { pos: "bl", text: "Provision legacy and next-gen players" },
-      { pos: "br", text: "Manage devices across network" },
+    urlSlug: "content-management",
+    tiles: [
+      { name: "Asset Control", desc: "Granular permissions", color: "blue" },
+      { name: "Scheduled Playback", desc: "Time & rule-based", color: "blue" },
+      { name: "Multi-tenant", desc: "Isolated orgs", color: "purple" },
+      { name: "Template Libraries", desc: "Reusable layouts", color: "purple" },
     ],
-    items: ["Dynamic content triggers", "Multi-tenant architecture", "Scheduled playback engine", "Template & asset libraries"],
+    preview: {
+      type: "status-bars",
+      statusLabel: "CMS Active",
+      rows: [
+        { label: "Content API", value: "Online", stat: "8ms" },
+        { label: "Scheduler Engine", value: "Running", stat: "12K slots" },
+        { label: "Asset CDN", value: "Online", stat: "99.98%" },
+        { label: "Playback Queue", value: "Active", stat: "4.8K items" },
+      ],
+      chartLabel: "Plays\nLast 24h",
+      bars: [55,60,72,68,80,76,88,84,76,90,86,80,92,88,84,76,88,92,86,80,92,88,94,96],
+    },
   },
   {
     highlight: "Device", rest: " & Fleet Management",
-    annotations: [
-      { pos: "tl", text: "Remote Device Provisioning" },
-      { pos: "tr", text: "Fleet Health Dashboard" },
-      { pos: "bl", text: "OTA Firmware Updates" },
-      { pos: "br", text: "Offline-resilient Sync" },
+    urlSlug: "device-fleet-management",
+    tiles: [
+      { name: "Remote Provisioning", desc: "Zero-touch setup", color: "blue" },
+      { name: "Fleet Health", desc: "Live status dashboard", color: "blue" },
+      { name: "OTA Firmware", desc: "Safe update pipeline", color: "purple" },
+      { name: "Offline Sync", desc: "Resilient delivery", color: "purple" },
     ],
-    items: ["Remote monitoring & control", "OTA firmware updates", "Fleet health dashboards", "Offline-resilient sync"],
+    preview: {
+      type: "network",
+      centerLabel: "Fleet NOC",
+      nodes: [
+        { x: 118, y: 28, label: "EU-North Zone", sub: "2,400 screens", color: "#5b7fff" },
+        { x: 198, y: 70, label: "US-East Zone", sub: "1,840 screens", color: "#a78bfa" },
+        { x: 208, y: 148, label: "APAC Zone", sub: "920 screens", color: "#34d399" },
+        { x: 140, y: 188, label: "ME Zone", sub: "640 screens", color: "#6366f1" },
+        { x: 42, y: 152, label: "OTA Server", sub: "Firmware hub", color: "#f59e0b" },
+      ],
+      footer: "5,800 devices · 4 regions",
+    },
   },
   {
     highlight: "Player", rest: " Software & Firmware",
-    annotations: [
-      { pos: "tl", text: "Cross-platform Player Builds" },
-      { pos: "tr", text: "Hardware-agnostic Architecture" },
-      { pos: "bl", text: "Crash Recovery & Auto-heal" },
-      { pos: "br", text: "Offline-first Playback" },
+    urlSlug: "player-software",
+    tiles: [
+      { name: "Cross-platform Builds", desc: "Android, Linux, Windows", color: "blue" },
+      { name: "Hardware-agnostic", desc: "Any SoC support", color: "blue" },
+      { name: "Crash Recovery", desc: "Auto-heal on failure", color: "purple" },
+      { name: "Offline-first", desc: "Local cache fallback", color: "purple" },
     ],
-    items: ["Cross-platform players", "Hardware-agnostic builds", "Offline-first architecture", "Crash recovery & auto-heal"],
+    preview: {
+      type: "pipeline",
+      headline: "4 release pipelines",
+      pipelines: [
+        { label: "Android Player v14", pct: 100, rate: "Deployed", color: "#34d399" },
+        { label: "Linux Player v9", pct: 88, rate: "Staged", color: "#5b7fff" },
+        { label: "Windows Player v7", pct: 72, rate: "QA testing", color: "#a78bfa" },
+        { label: "WebOS Player v3", pct: 55, rate: "In review", color: "#6366f1" },
+      ],
+      metrics: [
+        { label: "Crash Rate", value: "0.04%" },
+        { label: "Recovery", value: "<30s" },
+        { label: "Platforms", value: "4" },
+      ],
+    },
   },
   {
     highlight: "Real-time", rest: " Analytics & Proof of Play",
-    annotations: [
-      { pos: "tl", text: "Live Playback Verification" },
-      { pos: "tr", text: "Audience Measurement" },
-      { pos: "bl", text: "Advertiser-facing Portals" },
-      { pos: "br", text: "Campaign Performance Reports" },
+    urlSlug: "analytics-proof-of-play",
+    tiles: [
+      { name: "Playback Verification", desc: "Live confirmation", color: "blue" },
+      { name: "Audience Measurement", desc: "Impression counting", color: "blue" },
+      { name: "Advertiser Portals", desc: "Campaign dashboards", color: "purple" },
+      { name: "Campaign Reports", desc: "Automated delivery", color: "purple" },
     ],
-    items: ["Real-time playback verification", "Audience measurement", "Advertiser-facing portals", "Campaign performance reporting"],
+    preview: {
+      type: "ring-gauges",
+      scores: [
+        { label: "Play Accuracy", pct: 99, color: "#34d399" },
+        { label: "Uptime SLA", pct: 100, color: "#5b7fff" },
+        { label: "Audience Reach", pct: 87, color: "#a78bfa" },
+        { label: "Report Delivery", pct: 98, color: "#6366f1" },
+      ],
+      events: [
+        { time: "09:15:00", text: "Campaign A proof delivered" },
+        { time: "09:08:22", text: "1,240 plays verified this hour" },
+        { time: "09:01:45", text: "Audience count: 84K impressions" },
+      ],
+      footer: "Verified every 60s",
+    },
   },
   {
     highlight: "API", rest: " & Integration Layer",
-    annotations: [
-      { pos: "tl", text: "REST & WebSocket APIs" },
-      { pos: "tr", text: "Data Feed Connectors" },
-      { pos: "bl", text: "Ad-tech Integrations" },
-      { pos: "br", text: "Third-party CMS Bridges" },
+    urlSlug: "api-integration",
+    tiles: [
+      { name: "REST & WebSocket", desc: "Real-time push APIs", color: "blue" },
+      { name: "Data Feed Connectors", desc: "Live data sources", color: "blue" },
+      { name: "Ad-tech Integrations", desc: "DSP & SSP connectors", color: "purple" },
+      { name: "CMS Bridges", desc: "Third-party ingestion", color: "purple" },
     ],
-    items: ["REST and WebSocket APIs", "Data feed connectors", "Ad-tech integrations", "Third-party CMS bridges"],
+    preview: {
+      type: "inference",
+      accuracyLabel: "API Gateway v3",
+      inferences: [
+        { label: "REST Latency", pct: 98, color: "#34d399", level: "Excellent" },
+        { label: "WebSocket Uptime", pct: 100, color: "#5b7fff", level: "Optimal" },
+        { label: "Feed Parse Rate", pct: 94, color: "#a78bfa", level: "High" },
+        { label: "Ad-tech Match", pct: 89, color: "#6366f1", level: "Strong" },
+      ],
+      alertsLabel: "API Signals",
+      alerts: [
+        { time: "09:30:00", text: "Weather feed updated for 320 zones", sev: "#5b7fff" },
+        { time: "09:22:10", text: "DSP campaign ingested — 1.2K slots", sev: "#34d399" },
+        { time: "09:15:44", text: "WebSocket reconnect on Node-88", sev: "#f59e0b" },
+      ],
+      footer: "14M API calls/day",
+    },
   },
   {
     highlight: "Network", rest: " Operations & Monitoring",
-    annotations: [
-      { pos: "tl", text: "Centralised NOC Dashboards" },
-      { pos: "tr", text: "SLA Monitoring & Alerting" },
-      { pos: "bl", text: "White-label Platform Support" },
-      { pos: "br", text: "Incident Auto-remediation" },
+    urlSlug: "network-operations",
+    tiles: [
+      { name: "NOC Dashboards", desc: "Centralised control", color: "blue" },
+      { name: "SLA Monitoring", desc: "Threshold alerting", color: "blue" },
+      { name: "White-label Support", desc: "Custom branding", color: "purple" },
+      { name: "Auto-remediation", desc: "Incident response", color: "purple" },
     ],
-    items: ["Centralised NOC dashboards", "SLA monitoring & alerting", "White-label platform support", "Incident auto-remediation"],
+    preview: {
+      type: "session-grid",
+      liveLabel: "4 Regions Monitored",
+      sessions: [
+        { initials: "EU", name: "EU-North NOC", color: "#5b7fff", qual: 3, live: true, secs: 86400 },
+        { initials: "US", name: "US-East NOC", color: "#34d399", qual: 3, live: true, secs: 86400 },
+        { initials: "AP", name: "APAC NOC", color: "#a78bfa", qual: 2, live: true, secs: 86400 },
+        { initials: "ME", name: "ME NOC", color: "#6366f1", qual: 2, live: false, secs: 86400 },
+      ],
+      footerStats: ["SLA: 99.95%", "Incidents: 0 open", "4 regions"],
+    },
   },
   {
     highlight: "Multi-site", rest: " Orchestration",
-    annotations: [
-      { pos: "tl", text: "Zone-based Content Targeting" },
-      { pos: "tr", text: "Geo & Time-based Rules" },
-      { pos: "bl", text: "Bulk Screen Management" },
-      { pos: "br", text: "Role-based Access Control" },
+    urlSlug: "multi-site-orchestration",
+    tiles: [
+      { name: "Zone Targeting", desc: "Content per location", color: "blue" },
+      { name: "Geo & Time Rules", desc: "Contextual scheduling", color: "blue" },
+      { name: "Bulk Management", desc: "Screen group actions", color: "purple" },
+      { name: "Role-based Access", desc: "Permission layers", color: "purple" },
     ],
-    items: ["Zone-based content targeting", "Geo & time-based scheduling rules", "Bulk screen management", "Role-based access control"],
+    preview: {
+      type: "status-bars",
+      statusLabel: "All Zones Active",
+      rows: [
+        { label: "Airport Zone A", value: "18 screens", stat: "Playing" },
+        { label: "Retail Network B", value: "124 screens", stat: "Playing" },
+        { label: "Transit Zone C", value: "72 screens", stat: "Playing" },
+        { label: "Corporate D", value: "36 screens", stat: "Paused" },
+      ],
+      chartLabel: "Active\nScreens",
+      bars: [88,90,86,92,88,84,90,94,88,92,86,90,94,88,84,90,92,88,86,92,90,88,94,96],
+    },
   },
 ];
 
@@ -131,7 +227,7 @@ export default function DigitalSignagePage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       {/* HERO                                                               */}
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative flex flex-col items-center pt-32 pb-0 px-6 text-center overflow-hidden">
+      <section className="relative min-h-[85vh] flex flex-col items-center pt-32 pb-24 px-6 text-center overflow-hidden">
 
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -143,7 +239,7 @@ export default function DigitalSignagePage() {
           />
           <div className="absolute inset-0" style={{ background: "rgba(10,10,10,0.55)" }} />
           <div className="absolute top-0 left-0 right-0 h-40" style={{ background: "linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)" }} />
-          <div className="absolute bottom-0 left-0 right-0 h-48" style={{ background: "linear-gradient(to top, #0a0a0a 0%, transparent 100%)" }} />
+          <div className="absolute bottom-0 left-0 right-0 h-72" style={{ background: "linear-gradient(to top, #0a0a0a 0%, transparent 100%)" }} />
           <div className="absolute inset-y-0 left-0 w-24" style={{ background: "linear-gradient(to right, rgba(10,10,10,0.6), transparent)" }} />
           <div className="absolute inset-y-0 right-0 w-24" style={{ background: "linear-gradient(to left, rgba(10,10,10,0.6), transparent)" }} />
         </div>
@@ -174,159 +270,11 @@ export default function DigitalSignagePage() {
           </div>
         </div>
 
-        {/* Trusted by strip */}
-        <div className="relative z-10 w-full max-w-5xl mx-auto pb-12 text-center">
-          <p className="text-white/40 text-base mb-8">
-            Trusted by brands running thousands of screens.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-10">
-            {[
-              { name: "Samsung",     src: "/logos/samsung.png",     invert: true  },
-              { name: "IBM",         src: "/logos/ibm.png",         invert: true  },
-              { name: "TCL",         src: "/logos/tcl.png",         invert: true  },
-              { name: "KIA",         src: "/logos/kia.png",         invert: true  },
-              { name: "Alpha Tauri", src: "/logos/alpha-tauri.png", invert: true  },
-            ].map((logo) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                key={logo.name}
-                src={logo.src}
-                alt={logo.name}
-                className="h-7 w-auto object-contain opacity-35 hover:opacity-60 transition-opacity duration-300"
-                style={{ filter: logo.invert ? "brightness(0) invert(1)" : "none", maxWidth: "110px" }}
-              />
-            ))}
-          </div>
-        </div>
 
-        {/* Bottom hanging card */}
-        <div className="relative z-10 w-full max-w-5xl mx-auto pb-0">
-          <div className="rounded-t-2xl bg-[#13141a] border border-white/[0.07] border-b-0 overflow-hidden">
-            <div className="grid md:grid-cols-[1fr_1.1fr]">
-
-              {/* Left: photo grid */}
-              <div className="grid grid-cols-2 grid-rows-2 gap-1.5 p-4 bg-[#111218]">
-                <div className="col-span-1 row-span-2 rounded-xl overflow-hidden" style={{ minHeight: "220px" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp1.png" alt="" className="w-full h-full object-cover object-top" style={{ filter: "grayscale(100%)" }} />
-                </div>
-                <div className="rounded-xl overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp2.png" alt="" className="w-full h-full object-cover object-top" style={{ filter: "grayscale(100%)" }} />
-                </div>
-                <div className="rounded-xl overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp3.png" alt="" className="w-full h-full object-cover object-center" style={{ filter: "grayscale(100%)" }} />
-                </div>
-              </div>
-
-              {/* Right: text */}
-              <div className="flex flex-col justify-center text-left p-8 md:p-10">
-                <h2 className="text-2xl md:text-3xl font-bold text-white leading-snug mb-4">
-                  Signage technology debt is a silent network killer.{" "}
-                  <span className="text-white/35">Most operators don&apos;t see it until screens go dark.</span>
-                </h2>
-                <p className="text-white/40 text-sm leading-relaxed mb-3">
-                  Every workaround your team has built, every player that needs manual rebooting, every
-                  content update that takes hours, that&apos;s operational debt compounding silently.
-                </p>
-                <p className="text-white/40 text-sm leading-relaxed mb-7">
-                  We&apos;ve built signage software for networks spanning thousands of screens across multiple
-                  continents, focusing on the architectural integrity that keeps networks profitable.
-                </p>
-                <Link
-                  href="/contact?type=digital-signage"
-                  className="self-start px-6 py-2.5 rounded-full border border-white/20 text-white/70 text-sm font-medium hover:text-white hover:border-white/40 transition-colors"
-                >
-                  Talk to a Signage Expert
-                </Link>
-              </div>
-
-            </div>
-          </div>
-        </div>
       </section>
 
-      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      {/* TECH CAPABILITIES                                                  */}
-      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="section-padding py-24" id="capabilities">
-        <div className="mx-auto max-w-6xl">
-
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Core Capabilities</h2>
-            <p className="text-white/40 text-base">Built across the modern stack</p>
-          </div>
-
-          <div className="grid lg:grid-cols-[320px_1fr] gap-4 items-stretch">
-
-            {/* Left: tab list */}
-            <div className="flex flex-col gap-2">
-              {techCaps.map((cap, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActiveTab(i)}
-                  className={`text-left px-5 py-4 rounded-xl transition-all duration-200 border ${
-                    activeTab === i
-                      ? "bg-white/[0.08] border-white/[0.1] shadow-sm"
-                      : "bg-white/[0.02] border-transparent hover:bg-white/[0.04]"
-                  }`}
-                >
-                  <span className="font-bold text-white text-sm md:text-[15px]">{cap.highlight}</span>
-                  <span className={`text-sm md:text-[15px] transition-colors ${activeTab === i ? "text-white/65" : "text-white/35"}`}>{cap.rest}</span>
-                </button>
-              ))}
-            </div>
-
-            {/* Right: visual panel */}
-            <div className="flex flex-col gap-0">
-
-              {/* Mockup + annotations panel */}
-              <div className="relative bg-[#13141a] border border-white/[0.07] rounded-t-2xl overflow-hidden flex items-center justify-center p-10" style={{ minHeight: "360px" }}>
-
-                {/* Grid bg */}
-                <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Cpath d='M40 0H0v1h40V0zM0 40V0H1v40H0z' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E\")" }} />
-
-                {/* Mockup - constrained so annotations never overlap */}
-                <div className="relative z-10 w-full" style={{ maxWidth: "calc(100% - 180px)" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/intvue-mockup.png"
-                    alt="Platform mockup"
-                    className="w-full rounded-xl shadow-2xl"
-                  />
-                </div>
-
-                {/* Corner annotations - only top + bottom, no z-fight with items */}
-                {techCaps[activeTab].annotations.map((a) => (
-                  <div
-                    key={a.pos}
-                    className={`absolute z-20 bg-[#13141a]/90 border border-white/[0.1] rounded-lg px-3 py-2 backdrop-blur-sm max-w-[140px] transition-all duration-300 ${
-                      a.pos === "tl" ? "top-5 left-5" :
-                      a.pos === "tr" ? "top-5 right-5 text-right" :
-                      a.pos === "bl" ? "bottom-5 left-5" :
-                      "bottom-5 right-5 text-right"
-                    }`}
-                  >
-                    <p className="text-white/80 text-xs leading-snug">{a.text}</p>
-                  </div>
-                ))}
-              </div>
-
-              {/* Items strip - completely separate row, zero overlap */}
-              <div className="bg-[#13141a] border border-white/[0.07] border-t-0 rounded-b-2xl px-6 py-4 flex flex-wrap gap-x-6 gap-y-2">
-                {techCaps[activeTab].items.map((item) => (
-                  <span key={item} className="flex items-center gap-2 text-xs text-white/55">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1]/70 flex-shrink-0" />
-                    {item}
-                  </span>
-                ))}
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* TECH CAPABILITIES */}
+      <CapabilityCardSection caps={techCaps} sectionSubtitle="Built across the modern digital signage stack" />
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       {/* RUNNING A SIGNAGE NETWORK                                          */}
@@ -433,28 +381,12 @@ export default function DigitalSignagePage() {
           </div>
 
           {/* Timeline */}
-          <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/[0.08] -translate-x-1/2" />
-
-            {[
-              { num: "01", title: "Network Audit",      desc: "We map your existing hardware, player versions, content workflows, and failure points before writing a single line of code.",     align: "left"  },
-              { num: "02", title: "Architecture Design", desc: "We define the CMS structure, device management layer, and data flows - built to scale from hundreds to tens of thousands of screens.", align: "right" },
-              { num: "03", title: "Build & Harden",      desc: "We develop with resilience as the baseline: offline-first players, automated recovery, OTA update pipelines, and end-to-end monitoring.", align: "left"  },
-              { num: "04", title: "Launch & Operate",    desc: "We migrate your network to the new platform with zero dark screens, then provide ongoing performance oversight and continuous improvement.", align: "right" },
-            ].map((step) => (
-              <div key={step.num} className={`relative flex mb-16 last:mb-0 ${step.align === "right" ? "justify-end" : "justify-start"}`}>
-                {/* Dot */}
-                <div className="absolute left-1/2 top-2 -translate-x-1/2 w-3 h-3 rounded-full bg-white/20 border border-white/30 z-10" />
-
-                <div className={`w-[44%] ${step.align === "right" ? "text-left pl-8" : "text-right pr-8"}`}>
-                  <span className="text-[#6366f1] text-4xl font-bold leading-none block mb-2">{step.num}</span>
-                  <h3 className="text-white font-bold text-lg mb-1">{step.title}</h3>
-                  <p className="text-white/40 text-sm leading-relaxed">{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ScrollTimeline steps={[
+    { num: "01", title: "Network Audit", desc: "We map your existing hardware, player versions, content workflows, and failure points before writing a single line of code.", align: "left" },
+    { num: "02", title: "Architecture Design", desc: "We define the CMS structure, device management layer, and data flows - built to scale from hundreds to tens of thousands of screens.", align: "right" },
+    { num: "03", title: "Build & Harden", desc: "We develop with resilience as the baseline: offline-first players, automated recovery, OTA update pipelines, and end-to-end monitoring.", align: "left" },
+    { num: "04", title: "Launch & Operate", desc: "We migrate your network to the new platform with zero dark screens, then provide ongoing performance oversight and continuous improvement.", align: "right" },
+  ]} />
 
         </div>
       </section>
@@ -643,3 +575,5 @@ export default function DigitalSignagePage() {
     </div>
   );
 }
+
+

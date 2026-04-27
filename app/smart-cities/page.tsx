@@ -1,73 +1,157 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollTimeline from "@/components/ScrollTimeline";
 import Link from "next/link";
 import InsightsSection from "@/components/InsightsSection";
 import CaseStudiesSection from "@/components/CaseStudiesSection";
 import PageBackground from "@/components/PageBackground";
+import CapabilityCardSection, { type CapItem } from "@/components/CapabilityCardSection";
 
-const techCaps = [
+const techCaps: CapItem[] = [
   {
     highlight: "IoT", rest: " Platform & Device Management",
-    annotations: [
-      { pos: "tl", text: "Device Provisioning" },
-      { pos: "tr", text: "OTA Firmware Updates" },
-      { pos: "bl", text: "Fleet Health Monitoring" },
-      { pos: "br", text: "Edge Processing" },
+    urlSlug: "iot-platform",
+    tiles: [
+      { name: "Device Provisioning", desc: "Zero-touch onboarding at scale", color: "blue" },
+      { name: "OTA Firmware", desc: "Remote update orchestration", color: "purple" },
+      { name: "Fleet Health", desc: "Real-time device monitoring", color: "blue" },
+      { name: "Edge Compute", desc: "On-device processing & logic", color: "purple" },
     ],
-    items: ["Device provisioning at scale", "OTA firmware management", "Fleet health monitoring", "Edge compute orchestration"],
+    preview: {
+      type: "network",
+      centerLabel: "IoT Hub",
+      nodes: [
+        { x: 118, y: 28,  label: "Device Provisioning", sub: "Zero-touch onboarding", color: "#5b7fff" },
+        { x: 198, y: 72,  label: "OTA Firmware",        sub: "Remote update pipeline", color: "#a78bfa" },
+        { x: 208, y: 148, label: "Fleet Monitor",        sub: "28K devices online",    color: "#34d399" },
+        { x: 140, y: 188, label: "Edge Compute",         sub: "On-device processing",  color: "#6366f1" },
+        { x: 42,  y: 152, label: "Device Registry",      sub: "Provisioning DB",       color: "#f59e0b" },
+      ],
+      footer: "5M+ devices · 4 zones",
+    },
   },
   {
     highlight: "Data", rest: " Ingestion & Pipelines",
-    annotations: [
-      { pos: "tl", text: "MQTT & CoAP Brokers" },
-      { pos: "tr", text: "Time-series Data Stores" },
-      { pos: "bl", text: "Stream Processing" },
-      { pos: "br", text: "Data Lake Architecture" },
+    urlSlug: "data-ingestion",
+    tiles: [
+      { name: "MQTT & CoAP", desc: "High-throughput broker setup", color: "blue" },
+      { name: "Time-series DB", desc: "Optimised sensor data stores", color: "purple" },
+      { name: "Stream Processing", desc: "Real-time event pipelines", color: "blue" },
+      { name: "Data Lake", desc: "Scalable archive architecture", color: "purple" },
     ],
-    items: ["MQTT & CoAP broker setup", "Time-series data pipelines", "Real-time stream processing", "Data lake architecture"],
+    preview: {
+      type: "pipeline",
+      headline: "4 pipelines running",
+      pipelines: [
+        { label: "MQTT Broker",      pct: 98,  rate: "12K msg/s",    color: "#5b7fff" },
+        { label: "Time-series DB",   pct: 100, rate: "Real-time",    color: "#34d399" },
+        { label: "Stream Processor", pct: 87,  rate: "Event-driven", color: "#a78bfa" },
+        { label: "Data Lake Ingest", pct: 74,  rate: "Batch hourly", color: "#6366f1" },
+      ],
+      metrics: [
+        { label: "Events/s",  value: "1.8M" },
+        { label: "Lag (ms)",  value: "42"   },
+        { label: "Topics",    value: "320"  },
+      ],
+    },
   },
   {
     highlight: "Smart", rest: " Infrastructure Control",
-    annotations: [
-      { pos: "tl", text: "Traffic Signal Management" },
-      { pos: "tr", text: "Utility Grid Monitoring" },
-      { pos: "bl", text: "Smart Lighting Control" },
-      { pos: "br", text: "Environmental Sensors" },
+    urlSlug: "smart-infrastructure",
+    tiles: [
+      { name: "Traffic Control", desc: "Adaptive signal management", color: "blue" },
+      { name: "Energy Grid", desc: "Utility monitoring & control", color: "purple" },
+      { name: "Smart Lighting", desc: "Demand-responsive lighting", color: "blue" },
+      { name: "Env Sensors", desc: "Environmental monitoring nets", color: "purple" },
     ],
-    items: ["Traffic management systems", "Utility grid monitoring", "Smart lighting control", "Environmental sensor networks"],
+    preview: {
+      type: "status-bars",
+      statusLabel: "4 Systems Live",
+      rows: [
+        { label: "Traffic Control", value: "Optimising", stat: "1,247 signals" },
+        { label: "Energy Grid",     value: "Monitoring", stat: "84.2 MW"       },
+        { label: "Smart Lighting",  value: "Active",     stat: "6,200 units"   },
+        { label: "Env Sensors",     value: "Online",     stat: "420 nodes"     },
+      ],
+      chartLabel: "Control\nEvents",
+      bars: [62,70,68,74,80,76,72,82,78,86,88,84,76,88,90,86,82,88,92,86,80,92,88,90],
+    },
   },
   {
     highlight: "Analytics", rest: " & City Intelligence",
-    annotations: [
-      { pos: "tl", text: "Urban Mobility Insights" },
-      { pos: "tr", text: "Predictive Maintenance" },
-      { pos: "bl", text: "Energy Optimisation AI" },
-      { pos: "br", text: "Citizen Services Dashboards" },
+    urlSlug: "city-analytics",
+    tiles: [
+      { name: "Urban Mobility", desc: "Movement pattern analytics", color: "blue" },
+      { name: "Predictive Maint", desc: "ML-driven failure prevention", color: "purple" },
+      { name: "Energy Opt AI", desc: "Demand-based optimisation", color: "blue" },
+      { name: "Citizen Services", desc: "Service delivery dashboards", color: "purple" },
     ],
-    items: ["Urban mobility analytics", "Predictive maintenance models", "Energy optimisation AI", "Citizen services dashboards"],
+    preview: {
+      type: "ring-gauges",
+      scores: [
+        { label: "Urban Mobility",   pct: 87, color: "#5b7fff" },
+        { label: "Predictive Maint", pct: 73, color: "#34d399" },
+        { label: "Energy Opt AI",    pct: 91, color: "#a78bfa" },
+        { label: "Citizen Services", pct: 78, color: "#6366f1" },
+      ],
+      events: [
+        { time: "09:14:22", text: "Traffic anomaly detected — Sector 7"     },
+        { time: "09:12:08", text: "Energy forecast updated for tomorrow"     },
+        { time: "09:10:44", text: "Maintenance alert: Pump Station 12"       },
+      ],
+      footer: "Updated every 5 min",
+    },
   },
   {
     highlight: "Security", rest: " & Compliance",
-    annotations: [
-      { pos: "tl", text: "Device Authentication" },
-      { pos: "tr", text: "Encrypted Data Transit" },
-      { pos: "bl", text: "Access Control Policies" },
-      { pos: "br", text: "Audit & Compliance Logs" },
+    urlSlug: "security-compliance",
+    tiles: [
+      { name: "Device Auth", desc: "Certificate-based identity", color: "blue" },
+      { name: "Encrypted Transit", desc: "TLS/DTLS end-to-end", color: "purple" },
+      { name: "Access Policies", desc: "Role-based control planes", color: "blue" },
+      { name: "Audit Logs", desc: "Compliance-ready audit trails", color: "purple" },
     ],
-    items: ["Device-level authentication", "End-to-end encryption", "Role-based access policies", "Compliance audit trails"],
+    preview: {
+      type: "inference",
+      accuracyLabel: "Security Engine v2.1",
+      inferences: [
+        { label: "Device Auth",      pct: 99,  color: "#34d399", level: "Secure"  },
+        { label: "Data Encryption",  pct: 100, color: "#5b7fff", level: "Optimal" },
+        { label: "Access Control",   pct: 95,  color: "#a78bfa", level: "High"    },
+        { label: "Audit Compliance", pct: 88,  color: "#6366f1", level: "Strong"  },
+      ],
+      alertsLabel: "Security Signals",
+      alerts: [
+        { time: "09:18:02", text: "Device cert renewed — Node-4821",       sev: "#34d399" },
+        { time: "09:15:30", text: "Anomalous access attempt blocked",       sev: "#ef4444" },
+        { time: "09:10:44", text: "GDPR audit log exported",               sev: "#5b7fff" },
+      ],
+      footer: "Monitored 24/7",
+    },
   },
   {
     highlight: "Integration", rest: " & Open Standards",
-    annotations: [
-      { pos: "tl", text: "FIWARE & CityGML" },
-      { pos: "tr", text: "Digital Twin APIs" },
-      { pos: "bl", text: "GIS & Mapping Integration" },
-      { pos: "br", text: "Citizen App APIs" },
+    urlSlug: "integration-standards",
+    tiles: [
+      { name: "FIWARE & CityGML", desc: "Open city data standards", color: "blue" },
+      { name: "Digital Twins", desc: "Real-time asset mirroring", color: "purple" },
+      { name: "GIS Integration", desc: "Mapping & spatial layers", color: "blue" },
+      { name: "Citizen APIs", desc: "Public-facing data services", color: "purple" },
     ],
-    items: ["FIWARE & open city standards", "Digital twin development", "GIS & mapping integration", "Citizen-facing APIs"],
+    preview: {
+      type: "session-grid",
+      liveLabel: "4 Standards Active",
+      sessions: [
+        { initials: "FW", name: "FIWARE API",   color: "#5b7fff", qual: 3, live: true,  secs: 3640  },
+        { initials: "DT", name: "Digital Twin", color: "#a78bfa", qual: 3, live: true,  secs: 1820  },
+        { initials: "GI", name: "GIS Mapping",  color: "#34d399", qual: 2, live: true,  secs: 7200  },
+        { initials: "CA", name: "Citizen Apps", color: "#6366f1", qual: 2, live: true,  secs: 5400  },
+      ],
+      footerStats: ["FIWARE v1.4", "4 standards", "Open APIs"],
+    },
   },
 ];
 
@@ -85,7 +169,6 @@ function initParticles(count: number): Particle[] {
 }
 
 export default function SmartCitiesPage() {
-  const [activeTab, setActiveTab] = useState(0);
   const [particles, setParticles] = useState<Particle[]>([]);
 
   useEffect(() => {
@@ -119,13 +202,13 @@ export default function SmartCitiesPage() {
       <Navbar />
 
       {/* HERO */}
-      <section className="relative flex flex-col items-center pt-32 pb-0 px-6 text-center overflow-hidden">
+      <section className="relative min-h-[85vh] flex flex-col items-center pt-32 pb-24 px-6 text-center overflow-hidden">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/hex-mesh-bg.png" alt="" className="absolute inset-0 w-full h-full object-cover object-center" style={{ opacity: 0.85 }} />
           <div className="absolute inset-0" style={{ background: "rgba(10,10,10,0.55)" }} />
           <div className="absolute top-0 left-0 right-0 h-40" style={{ background: "linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)" }} />
-          <div className="absolute bottom-0 left-0 right-0 h-48" style={{ background: "linear-gradient(to top, #0a0a0a 0%, transparent 100%)" }} />
+          <div className="absolute bottom-0 left-0 right-0 h-72" style={{ background: "linear-gradient(to top, #0a0a0a 0%, transparent 100%)" }} />
           <div className="absolute inset-y-0 left-0 w-24" style={{ background: "linear-gradient(to right, rgba(10,10,10,0.6), transparent)" }} />
           <div className="absolute inset-y-0 right-0 w-24" style={{ background: "linear-gradient(to left, rgba(10,10,10,0.6), transparent)" }} />
         </div>
@@ -146,95 +229,10 @@ export default function SmartCitiesPage() {
             </a>
           </div>
         </div>
-        <div className="relative z-10 w-full max-w-5xl mx-auto pb-12 text-center">
-          <p className="text-white/40 text-base mb-8">Trusted by governments and operators managing millions of connected devices.</p>
-          <div className="flex flex-wrap items-center justify-center gap-10">
-            {[{ name: "Samsung", src: "/logos/samsung.png" }, { name: "IBM", src: "/logos/ibm.png" }, { name: "TCL", src: "/logos/tcl.png" }].map((logo) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img key={logo.name} src={logo.src} alt={logo.name} className="h-7 w-auto object-contain opacity-35 hover:opacity-60 transition-opacity duration-300" style={{ filter: "brightness(0) invert(1)", maxWidth: "110px" }} />
-            ))}
-          </div>
-        </div>
-        <div className="relative z-10 w-full max-w-5xl mx-auto pb-0">
-          <div className="rounded-t-2xl bg-[#13141a] border border-white/[0.07] border-b-0 overflow-hidden">
-            <div className="grid md:grid-cols-[1fr_1.1fr]">
-              <div className="grid grid-cols-2 grid-rows-2 gap-1.5 p-4 bg-[#111218]">
-                <div className="col-span-1 row-span-2 rounded-xl overflow-hidden" style={{ minHeight: "220px" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp1.png" alt="" className="w-full h-full object-cover object-top" style={{ filter: "grayscale(100%)" }} />
-                </div>
-                <div className="rounded-xl overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp2.png" alt="" className="w-full h-full object-cover object-top" style={{ filter: "grayscale(100%)" }} />
-                </div>
-                <div className="rounded-xl overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp3.png" alt="" className="w-full h-full object-cover object-center" style={{ filter: "grayscale(100%)" }} />
-                </div>
-              </div>
-              <div className="flex flex-col justify-center text-left p-8 md:p-10">
-                <h2 className="text-2xl md:text-3xl font-bold text-white leading-snug mb-4">
-                  Siloed sensor data and fragmented device management are creating blind spots.{" "}
-                  <span className="text-white/35">Most cities only find out during an outage.</span>
-                </h2>
-                <p className="text-white/40 text-sm leading-relaxed mb-3">
-                  Every unmonitored device, every data stream that doesn&apos;t feed the right dashboard,
-                  every infrastructure failure that wasn&apos;t predicted - that&apos;s compounding operational
-                  risk and wasted public resource.
-                </p>
-                <p className="text-white/40 text-sm leading-relaxed mb-7">
-                  We&apos;ve built IoT platforms managing millions of connected endpoints, focused on the
-                  data architecture and real-time control that smart city operations require.
-                </p>
-                <Link href="/contact?type=smart-cities" className="self-start px-6 py-2.5 rounded-full border border-white/20 text-white/70 text-sm font-medium hover:text-white hover:border-white/40 transition-colors">
-                  Talk to an IoT Engineer
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* TECH CAPABILITIES */}
-      <section className="section-padding py-24" id="capabilities">
-        <div className="mx-auto max-w-6xl">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Core Capabilities</h2>
-            <p className="text-white/40 text-base">Built across the modern IoT and smart city stack</p>
-          </div>
-          <div className="grid lg:grid-cols-[320px_1fr] gap-4 items-stretch">
-            <div className="flex flex-col gap-2">
-              {techCaps.map((cap, i) => (
-                <button key={i} onClick={() => setActiveTab(i)} className={`text-left px-5 py-4 rounded-xl transition-all duration-200 border ${activeTab === i ? "bg-white/[0.08] border-white/[0.1] shadow-sm" : "bg-white/[0.02] border-transparent hover:bg-white/[0.04]"}`}>
-                  <span className="font-bold text-white text-sm md:text-[15px]">{cap.highlight}</span>
-                  <span className={`text-sm md:text-[15px] transition-colors ${activeTab === i ? "text-white/65" : "text-white/35"}`}>{cap.rest}</span>
-                </button>
-              ))}
-            </div>
-            <div className="flex flex-col gap-0">
-              <div className="relative bg-[#13141a] border border-white/[0.07] rounded-t-2xl overflow-hidden flex items-center justify-center p-10" style={{ minHeight: "360px" }}>
-                <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Cpath d='M40 0H0v1h40V0zM0 40V0H1v40H0z' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E\")" }} />
-                <div className="relative z-10 w-full" style={{ maxWidth: "calc(100% - 180px)" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/intvue-mockup.png" alt="Platform mockup" className="w-full rounded-xl shadow-2xl" />
-                </div>
-                {techCaps[activeTab].annotations.map((a) => (
-                  <div key={a.pos} className={`absolute z-20 bg-[#13141a]/90 border border-white/[0.1] rounded-lg px-3 py-2 backdrop-blur-sm max-w-[140px] transition-all duration-300 ${a.pos === "tl" ? "top-5 left-5" : a.pos === "tr" ? "top-5 right-5 text-right" : a.pos === "bl" ? "bottom-5 left-5" : "bottom-5 right-5 text-right"}`}>
-                    <p className="text-white/80 text-xs leading-snug">{a.text}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="bg-[#13141a] border border-white/[0.07] border-t-0 rounded-b-2xl px-6 py-4 flex flex-wrap gap-x-6 gap-y-2">
-                {techCaps[activeTab].items.map((item) => (
-                  <span key={item} className="flex items-center gap-2 text-xs text-white/55">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1]/70 flex-shrink-0" />{item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CapabilityCardSection caps={techCaps} sectionSubtitle="Built across the modern IoT and smart city stack" />
 
       {/* ARCHITECTURE REVIEW */}
       <section className="section-padding py-24">
@@ -316,24 +314,12 @@ export default function SmartCitiesPage() {
               goals and the outcomes your city needs to achieve.
             </p>
           </div>
-          <div className="relative">
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/[0.08] -translate-x-1/2" />
-            {[
-              { num: "01", title: "IoT Audit", desc: "We map your existing device estate, data flows, integration gaps, and the operational blind spots that create inefficiency and risk.", align: "left" },
-              { num: "02", title: "Platform Architecture", desc: "We design for scale and resilience: edge-first processing, time-series data infrastructure, and real-time control planes that handle millions of events.", align: "right" },
-              { num: "03", title: "Build & Deploy", desc: "We develop with device security, data integrity, and regulatory compliance built in - not bolted on after deployment.", align: "left" },
-              { num: "04", title: "Monitor & Expand", desc: "Phased device onboarding with operational dashboards live from day one, then continuous expansion of the connected infrastructure.", align: "right" },
-            ].map((step) => (
-              <div key={step.num} className={`relative flex mb-16 last:mb-0 ${step.align === "right" ? "justify-end" : "justify-start"}`}>
-                <div className="absolute left-1/2 top-2 -translate-x-1/2 w-3 h-3 rounded-full bg-white/20 border border-white/30 z-10" />
-                <div className={`w-[44%] ${step.align === "right" ? "text-left pl-8" : "text-right pr-8"}`}>
-                  <span className="text-[#6366f1] text-4xl font-bold leading-none block mb-2">{step.num}</span>
-                  <h3 className="text-white font-bold text-lg mb-1">{step.title}</h3>
-                  <p className="text-white/40 text-sm leading-relaxed">{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ScrollTimeline steps={[
+    { num: "01", title: "IoT Audit", desc: "We map your existing device estate, data flows, integration gaps, and the operational blind spots that create inefficiency and risk.", align: "left" },
+    { num: "02", title: "Platform Architecture", desc: "We design for scale and resilience: edge-first processing, time-series data infrastructure, and real-time control planes that handle millions of events.", align: "right" },
+    { num: "03", title: "Build & Deploy", desc: "We develop with device security, data integrity, and regulatory compliance built in - not bolted on after deployment.", align: "left" },
+    { num: "04", title: "Monitor & Expand", desc: "Phased device onboarding with operational dashboards live from day one, then continuous expansion of the connected infrastructure.", align: "right" },
+  ]} />
         </div>
       </section>
 
@@ -450,3 +436,5 @@ export default function SmartCitiesPage() {
     </div>
   );
 }
+
+

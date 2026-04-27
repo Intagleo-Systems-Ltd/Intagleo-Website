@@ -133,12 +133,12 @@ function Card({
 
         {/* ── Right: text panel ── */}
         <div
-          className="relative flex flex-col justify-between flex-1 p-12"
+          className="relative flex flex-col justify-between flex-1 p-8"
           style={{ background: "#0c0f1a" }}
         >
           <div>
             <h3
-              className="text-white font-medium mb-6 leading-snug"
+              className="text-white font-medium mb-4 leading-snug"
               style={{
                 fontFamily: '"Roobert TRIAL", sans-serif',
                 fontSize: "clamp(22px, 2vw, 32px)",
@@ -149,7 +149,7 @@ function Card({
             </h3>
 
             <p
-              className="text-white/50 leading-relaxed mb-10 line-clamp-6"
+              className="text-white/50 leading-relaxed mb-6 line-clamp-6"
               style={{
                 fontFamily: '"Roobert TRIAL", sans-serif',
                 fontSize: "clamp(13px, 1vw, 16px)",
@@ -236,7 +236,7 @@ export default function CaseStudiesSection({ pageSlug }: { pageSlug?: string } =
     <ReactLenis root>
       <div className="bg-[#0a0a0a]">
         {/* ── Header ── */}
-        <div className="text-center pt-28 pb-16 px-6">
+        <div className="text-center pt-8 pb-6 px-6">
           <h2
             className="text-white font-medium mb-4"
             style={{
@@ -273,7 +273,7 @@ export default function CaseStudiesSection({ pageSlug }: { pageSlug?: string } =
         </div>
 
         {/* ── View all CTA ── */}
-        <div className="flex justify-center py-20">
+        <div className="flex justify-center py-12">
           <a
             href="/case-studies"
             className="inline-flex items-center gap-2 border border-white/25 hover:border-white/50 hover:bg-white/5 text-white rounded-full transition-all duration-200 cursor-pointer"

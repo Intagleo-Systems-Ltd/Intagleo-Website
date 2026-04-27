@@ -1,8 +1,9 @@
-"use client";
+﻿"use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollTimeline from "@/components/ScrollTimeline";
 import PageBackground from "@/components/PageBackground";
 import CaseStudiesSection from "@/components/CaseStudiesSection";
 import InsightsSection from "@/components/InsightsSection";
@@ -80,24 +81,36 @@ const solutions = [
 /* ── Transformation scenarios ───────────────────────────────────────────── */
 const scenarios = [
   {
+    tag: "Sales & RevOps",
     before: "Sales team spends 3 hours/day writing proposals",
     after:  "AI drafts proposals in 90 seconds, tailored to each client",
-    tag:    "Sales & RevOps",
+    manualSteps: ["Research client history...", "Pull CRM data manually...", "Draft proposal template...", "Personalise each section...", "Internal review cycle..."],
+    aiSteps:     ["Fetch CRM + deal history", "Generate personalised draft", "Apply brand template", "Ready to send"],
+    timeManual: "3 hrs/day", timeAI: "90 sec", saved: 97, manualPct: 21,
   },
   {
+    tag: "Customer Support",
     before: "Support handles 500 tickets/week, 70% are repeat questions",
     after:  "AI resolves 65% of tickets instantly, 24/7, in any language",
-    tag:    "Customer Support",
+    manualSteps: ["Read & categorise ticket...", "Search knowledge base...", "Draft response...", "Supervisor sign-off...", "Send & log reply..."],
+    aiSteps:     ["Classify intent & language", "Match knowledge base", "Generate response", "Auto-resolved & logged"],
+    timeManual: "18 min/ticket", timeAI: "4 sec", saved: 96, manualPct: 18,
   },
   {
+    tag: "Finance & Ops",
     before: "Finance team manually reconciles 10,000 rows of data monthly",
     after:  "AI reconciles, flags anomalies, and generates reports in minutes",
-    tag:    "Finance & Ops",
+    manualSteps: ["Export multiple spreadsheets...", "Run VLOOKUP formulas...", "Cross-reference entries...", "Flag discrepancies...", "Build report from scratch..."],
+    aiSteps:     ["Ingest all data sources", "Run reconciliation engine", "Flag 12 anomalies", "Report auto-generated"],
+    timeManual: "40 hrs/month", timeAI: "8 min", saved: 99, manualPct: 14,
   },
   {
+    tag: "Engineering",
     before: "Engineers spend 30% of their time reviewing and writing docs",
     after:  "AI generates, updates, and reviews documentation from the codebase",
-    tag:    "Engineering",
+    manualSteps: ["Read changed codebase...", "Write function-level docs...", "Update README & guides...", "Peer review accuracy...", "Publish & sync changes..."],
+    aiSteps:     ["Scan codebase diff", "Generate doc updates", "Validate against tests", "PR created & merged"],
+    timeManual: "12 hrs/week", timeAI: "90 sec", saved: 98, manualPct: 24,
   },
 ];
 
@@ -184,6 +197,51 @@ const aiTools = [
 /* ── Page ───────────────────────────────────────────────────────────────── */
 export default function AITransformationPage() {
   const [activeScenario, setActiveScenario] = useState(0);
+  const [userPaused, setUserPaused]         = useState(false);
+  const [visibleManual, setVisibleManual]   = useState(0);
+  const [aiDone, setAiDone]                 = useState(false);
+  const [manualBarPct, setManualBarPct]     = useState(0);
+  const [savedCount, setSavedCount]         = useState(0);
+
+  useEffect(() => {
+    if (userPaused) return;
+    const t = setInterval(() => setActiveScenario(prev => (prev + 1) % scenarios.length), 5500);
+    return () => clearInterval(t);
+  }, [userPaused]);
+
+  const handleSelect = (i: number) => { setActiveScenario(i); setUserPaused(true); };
+
+  useEffect(() => {
+    const sc = scenarios[activeScenario];
+    setVisibleManual(0); setAiDone(false); setManualBarPct(0); setSavedCount(0);
+
+    const tAI = setTimeout(() => setAiDone(true), 420);
+
+    const stepTimers = sc.manualSteps.map((_, i) =>
+      setTimeout(() => setVisibleManual(i + 1), 480 + i * 680)
+    );
+
+    let bar = 0;
+    const barInt = setInterval(() => {
+      bar += 1;
+      if (bar >= sc.manualPct) { clearInterval(barInt); setManualBarPct(sc.manualPct); return; }
+      setManualBarPct(bar);
+    }, 55);
+
+    let count = 0;
+    const savedInt = setInterval(() => {
+      count += 2;
+      if (count >= sc.saved) { setSavedCount(sc.saved); clearInterval(savedInt); return; }
+      setSavedCount(count);
+    }, 14);
+
+    return () => {
+      clearTimeout(tAI);
+      stepTimers.forEach(clearTimeout);
+      clearInterval(barInt);
+      clearInterval(savedInt);
+    };
+  }, [activeScenario]);
 
   return (
     <div className="relative min-h-screen" style={{ background: "#050914" }}>
@@ -193,7 +251,7 @@ export default function AITransformationPage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       {/* HERO                                                               */}
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative flex flex-col items-center pt-32 pb-0 px-6 text-center overflow-hidden">
+      <section className="relative min-h-[85vh] flex flex-col items-center pt-32 pb-24 px-6 text-center overflow-hidden">
 
         {/* Background layers */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -273,109 +331,50 @@ export default function AITransformationPage() {
             </Link>
           </div>
 
-          {/* Trusted by strip */}
-          <div className="flex flex-col items-center gap-5">
-            <p className="text-white/25 text-sm">Trusted by teams building the next generation of their products.</p>
-            <div className="flex flex-wrap items-center justify-center gap-10">
-              {[
-                { name: "IBM",         src: "/logos/ibm.png",         invert: true  },
-                { name: "Samsung",     src: "/logos/samsung.png",     invert: true  },
-                { name: "Red Bull",    src: "/logos/red-bull.png",    invert: true  },
-                { name: "KIA",         src: "/logos/kia.png",         invert: true  },
-                { name: "Emaar",       src: "/logos/emaar.png",       invert: false },
-                { name: "Alpha Tauri", src: "/logos/alpha-tauri.png", invert: true  },
-              ].map((logo) => (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  key={logo.name}
-                  src={logo.src}
-                  alt={logo.name}
-                  className="h-7 w-auto object-contain opacity-35 hover:opacity-60 transition-opacity duration-300"
-                  style={{ filter: logo.invert ? "brightness(0) invert(1)" : "none", maxWidth: "110px" }}
-                />
-              ))}
-            </div>
-          </div>
         </div>
 
-        {/* Hanging card */}
-        <div className="relative z-10 w-full max-w-5xl mx-auto pb-0">
-          <div
-            className="rounded-t-2xl overflow-hidden"
-            style={{ background: "#0d0f1e", border: "1px solid rgba(139,92,246,0.1)", borderBottom: "none" }}
-          >
-            <div className="grid md:grid-cols-[1fr_1.1fr]">
-              <div className="grid grid-cols-2 grid-rows-2 gap-1.5 p-4" style={{ background: "#090b18" }}>
-                <div className="col-span-1 row-span-2 rounded-xl overflow-hidden" style={{ minHeight: "220px" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp1.png" alt="" className="w-full h-full object-cover object-top" style={{ filter: "grayscale(100%)" }} />
-                </div>
-                <div className="rounded-xl overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp2.png" alt="" className="w-full h-full object-cover object-top" style={{ filter: "grayscale(100%)" }} />
-                </div>
-                <div className="rounded-xl overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp3.png" alt="" className="w-full h-full object-cover object-top" style={{ filter: "grayscale(100%)" }} />
-                </div>
-              </div>
-              <div className="flex flex-col items-center justify-center text-center p-8 md:p-10">
-                <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight mb-4" style={{ }}>
-                  Your competitors aren&apos;t waiting<br />
-                  <span style={{ color: "rgba(255,255,255,0.3)" }}>for AI to mature.</span>
-                </h2>
-                <p className="text-white/45 text-sm leading-relaxed mb-7">
-                  The gap between AI-native businesses and everyone else is widening every quarter.
-                  We help you move from &quot;evaluating AI&quot; to shipping AI-powered features,
-                  automations, and products, with the engineering rigour to make them last.
-                </p>
-                <Link
-                  href="/contact?type=ai-transformation"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-sm font-semibold transition-all duration-200 hover:opacity-90"
-                  style={{
-                    background: "linear-gradient(135deg, #e8341c 0%, #8B5CF6 100%)",
-                    boxShadow: "0 0 18px rgba(139,92,246,0.25)",
-                    
-                  }}
-                >
-                  Talk to an AI engineer
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      {/* WHAT CHANGES - before/after scenarios                              */}
+      {/* WHAT CHANGES - live terminal race                                  */}
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section id="what-changes" className="relative section-padding py-24">
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(120,60,220,0.07) 0%, transparent 65%)" }}
-        />
+        <style>{`
+          @keyframes scanline {
+            0%   { top: 0%; opacity: 0; }
+            5%   { opacity: 1; }
+            95%  { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+          }
+          .ai-scanline { animation: scanline 2.8s linear infinite; }
+        `}</style>
+
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 40%, rgba(100,50,220,0.09) 0%, transparent 65%)" }} />
+
         <div className="relative z-10 mx-auto max-w-6xl">
-          <div className="text-center mb-14">
-            <p className="text-xs text-white/35 uppercase tracking-widest mb-4">Real impact</p>
+          {/* Header */}
+          <div className="text-center mb-12">
+            <p className="text-xs text-white/35 uppercase tracking-widest mb-4 font-mono">Real impact</p>
             <h2 className="text-3xl md:text-[42px] font-bold text-white mb-4 leading-tight">
               What actually changes<br />when you add AI.
             </h2>
             <p className="text-white/40 max-w-md mx-auto text-sm">
-              Not theoretical benchmarks. Real workflow shifts we have delivered for teams like yours.
+              Not theoretical benchmarks. Real workflow shifts we&apos;ve delivered for teams like yours.
             </p>
           </div>
 
-          {/* Scenario selector tabs */}
+          {/* Tabs */}
           <div className="flex flex-wrap justify-center gap-2 mb-10">
             {scenarios.map((s, i) => (
               <button
                 key={i}
-                onClick={() => setActiveScenario(i)}
-                className="px-4 py-2 rounded-full text-xs font-medium transition-all duration-200"
+                onClick={() => handleSelect(i)}
+                className="px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer"
                 style={{
-                  background: activeScenario === i ? "rgba(232,52,28,0.15)" : "rgba(255,255,255,0.04)",
-                  border: `1px solid ${activeScenario === i ? "rgba(232,52,28,0.4)" : "rgba(255,255,255,0.08)"}`,
-                  color: activeScenario === i ? "#e8341c" : "rgba(255,255,255,0.45)",
+                  background: activeScenario === i ? "rgba(139,92,246,0.18)" : "rgba(255,255,255,0.04)",
+                  border: `1px solid ${activeScenario === i ? "rgba(139,92,246,0.5)" : "rgba(255,255,255,0.07)"}`,
+                  color: activeScenario === i ? "#c4b5fd" : "rgba(255,255,255,0.4)",
+                  boxShadow: activeScenario === i ? "0 0 18px rgba(139,92,246,0.18)" : "none",
                 }}
               >
                 {s.tag}
@@ -383,35 +382,143 @@ export default function AITransformationPage() {
             ))}
           </div>
 
-          {/* Before / After card */}
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-px rounded-2xl overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
-              {/* Before */}
-              <div className="p-8 md:p-10" style={{ background: "#0d0e18" }}>
-                <div className="flex items-center gap-2 mb-5">
-                  <div className="w-2 h-2 rounded-full bg-white/20" />
-                  <span className="text-xs text-white/30 uppercase tracking-widest">Before</span>
+          {/* Terminal race card */}
+          {(() => {
+            const sc = scenarios[activeScenario];
+            return (
+              <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.07)", background: "#07080f" }}>
+
+                {/* Three-column layout */}
+                <div className="grid md:grid-cols-[1fr_160px_1fr]">
+
+                  {/* LEFT — Manual terminal */}
+                  <div className="p-6 md:p-8" style={{ borderRight: "1px solid rgba(255,255,255,0.05)" }}>
+                    <div className="flex items-center justify-between mb-5">
+                      <div className="flex items-center gap-2">
+                        <div className="flex gap-1">
+                          <div className="w-2 h-2 rounded-full" style={{ background: "rgba(255,90,90,0.5)" }} />
+                          <div className="w-2 h-2 rounded-full" style={{ background: "rgba(255,190,50,0.5)" }} />
+                          <div className="w-2 h-2 rounded-full" style={{ background: "rgba(50,210,100,0.25)" }} />
+                        </div>
+                        <span className="text-[10px] text-white/25 uppercase tracking-widest font-mono ml-1">Without AI</span>
+                      </div>
+                      <span className="text-[10px] font-mono px-2 py-1 rounded" style={{ background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.25)" }}>
+                        {sc.timeManual}
+                      </span>
+                    </div>
+
+                    {/* Steps */}
+                    <div className="font-mono text-sm space-y-2.5 mb-6" style={{ minHeight: "140px" }}>
+                      {sc.manualSteps.map((step, i) => (
+                        <div key={i} className="flex items-start gap-2 transition-all duration-400"
+                          style={{ opacity: i < visibleManual ? 1 : 0, transform: i < visibleManual ? "none" : "translateY(6px)", transitionDuration: "350ms" }}>
+                          <span className="mt-px flex-shrink-0" style={{ color: "rgba(255,255,255,0.18)" }}>›</span>
+                          <span style={{ color: "rgba(255,255,255,0.42)" }}>{step}</span>
+                          {i === visibleManual - 1 && (
+                            <span className="inline-block w-[7px] h-[14px] rounded-[1px] animate-pulse flex-shrink-0" style={{ background: "rgba(255,255,255,0.35)", marginTop: "1px" }} />
+                          )}
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Progress */}
+                    <div>
+                      <div className="flex items-center justify-between mb-1.5">
+                        <span className="text-[10px] text-white/20 font-mono">Progress</span>
+                        <span className="text-[10px] text-white/30 font-mono">{manualBarPct}%</span>
+                      </div>
+                      <div className="h-[3px] rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.05)" }}>
+                        <div className="h-full rounded-full transition-all duration-200" style={{ width: `${manualBarPct}%`, background: "rgba(255,255,255,0.18)" }} />
+                      </div>
+                      <span className="text-[10px] text-white/18 font-mono mt-1.5 block" style={{ color: "rgba(255,255,255,0.18)" }}>Still processing...</span>
+                    </div>
+
+                    <p className="text-white/30 text-xs leading-relaxed mt-5 pt-5" style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}>{sc.before}</p>
+                  </div>
+
+                  {/* CENTER — Time saved */}
+                  <div className="flex flex-col items-center justify-center py-8 px-4 text-center" style={{ borderRight: "1px solid rgba(255,255,255,0.05)", background: "rgba(139,92,246,0.03)" }}>
+                    <span className="text-[9px] text-white/20 font-mono uppercase tracking-widest mb-3">saved</span>
+                    <div
+                      className="font-bold leading-none tabular-nums"
+                      style={{
+                        fontSize: "clamp(40px, 4vw, 62px)",
+                        backgroundImage: "linear-gradient(135deg, #e8341c 0%, #8B5CF6 100%)",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                        filter: "drop-shadow(0 0 18px rgba(139,92,246,0.55))",
+                      }}
+                    >
+                      {savedCount}%
+                    </div>
+                    <div className="w-px my-4" style={{ height: "32px", background: "linear-gradient(to bottom, rgba(139,92,246,0.4), transparent)" }} />
+                    <div className="space-y-1.5">
+                      <div className="text-[10px] font-mono line-through" style={{ color: "rgba(255,255,255,0.2)" }}>{sc.timeManual}</div>
+                      <div className="text-[11px] font-semibold font-mono" style={{ color: "#c4b5fd" }}>{sc.timeAI}</div>
+                    </div>
+                  </div>
+
+                  {/* RIGHT — AI terminal */}
+                  <div className="p-6 md:p-8 relative overflow-hidden">
+                    {/* Scanline */}
+                    <div className="ai-scanline absolute left-0 right-0 h-px pointer-events-none z-10"
+                      style={{ background: "linear-gradient(to right, transparent 5%, rgba(139,92,246,0.45) 50%, transparent 95%)" }} />
+
+                    {/* Corner glow */}
+                    <div className="absolute top-0 right-0 w-40 h-40 pointer-events-none" style={{ background: "radial-gradient(ellipse at 100% 0%, rgba(139,92,246,0.1) 0%, transparent 70%)" }} />
+                    <div className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(139,92,246,0.04), transparent)" }} />
+
+                    <div className="flex items-center justify-between mb-5">
+                      <div className="flex items-center gap-2">
+                        <div className="flex gap-1">
+                          <div className="w-2 h-2 rounded-full" style={{ background: "rgba(255,90,90,0.25)" }} />
+                          <div className="w-2 h-2 rounded-full" style={{ background: "rgba(255,190,50,0.25)" }} />
+                          <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: "#8B5CF6" }} />
+                        </div>
+                        <span className="text-[10px] uppercase tracking-widest font-mono ml-1" style={{ color: "rgba(139,92,246,0.65)" }}>With AI</span>
+                      </div>
+                      <span className="text-[10px] font-mono px-2 py-1 rounded" style={{ background: "rgba(139,92,246,0.12)", color: "#c4b5fd", border: "1px solid rgba(139,92,246,0.2)" }}>
+                        {sc.timeAI}
+                      </span>
+                    </div>
+
+                    {/* Steps — all at once */}
+                    <div className="font-mono text-sm space-y-2.5 mb-6" style={{ minHeight: "140px" }}>
+                      {sc.aiSteps.map((step, i) => (
+                        <div key={i} className="flex items-center gap-2 transition-all duration-300"
+                          style={{ opacity: aiDone ? 1 : 0, transform: aiDone ? "none" : "translateY(4px)", transitionDelay: `${i * 70}ms` }}>
+                          <svg className="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 14 14" fill="none">
+                            <circle cx="7" cy="7" r="6" stroke="#8B5CF6" strokeWidth="1" />
+                            <path d="M4 7l2.2 2.2L10 5" stroke="#8B5CF6" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                          <span style={{ color: "rgba(196,181,253,0.75)" }}>{step}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Progress — instant 100% */}
+                    <div>
+                      <div className="flex items-center justify-between mb-1.5">
+                        <span className="text-[10px] font-mono" style={{ color: "rgba(139,92,246,0.45)" }}>Progress</span>
+                        <span className="text-[10px] font-mono transition-all duration-300" style={{ color: aiDone ? "#c4b5fd" : "rgba(255,255,255,0.2)" }}>
+                          {aiDone ? "100%" : "—"}
+                        </span>
+                      </div>
+                      <div className="h-[3px] rounded-full overflow-hidden" style={{ background: "rgba(139,92,246,0.1)" }}>
+                        <div className="h-full rounded-full transition-all duration-700"
+                          style={{ width: aiDone ? "100%" : "0%", background: "linear-gradient(to right, #e8341c, #8B5CF6)", boxShadow: aiDone ? "0 0 10px rgba(139,92,246,0.7)" : "none" }} />
+                      </div>
+                      <span className="text-[10px] font-mono mt-1.5 block transition-all duration-300" style={{ color: aiDone ? "rgba(139,92,246,0.7)" : "rgba(255,255,255,0.1)" }}>
+                        {aiDone ? "✓ Complete" : "Waiting..."}
+                      </span>
+                    </div>
+
+                    <p className="text-white/55 text-xs leading-relaxed mt-5 pt-5" style={{ borderTop: "1px solid rgba(139,92,246,0.08)" }}>{sc.after}</p>
+                  </div>
                 </div>
-                <p className="text-white/55 text-lg leading-relaxed">
-                  {scenarios[activeScenario].before}
-                </p>
               </div>
-              {/* After */}
-              <div className="p-8 md:p-10 relative overflow-hidden" style={{ background: "#0d0e18" }}>
-                <div
-                  className="absolute inset-0 pointer-events-none"
-                  style={{ background: "radial-gradient(ellipse at 30% 50%, rgba(232,52,28,0.06) 0%, transparent 60%)" }}
-                />
-                <div className="flex items-center gap-2 mb-5">
-                  <div className="w-2 h-2 rounded-full bg-[#e8341c]" />
-                  <span className="text-xs text-[#e8341c]/70 uppercase tracking-widest">After AI</span>
-                </div>
-                <p className="relative z-10 text-white text-lg leading-relaxed">
-                  {scenarios[activeScenario].after}
-                </p>
-              </div>
-            </div>
-          </div>
+            );
+          })()}
         </div>
       </section>
 
@@ -556,44 +663,12 @@ export default function AITransformationPage() {
               A proven process that de-risks AI projects and delivers value fast.
             </p>
           </div>
-          <div className="relative">
-            {/* Gradient vertical line */}
-            <div
-              className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2"
-              style={{ background: "linear-gradient(to bottom, #e8341c, #8B5CF6, rgba(139,92,246,0.1))" }}
-            />
-            <div className="space-y-20">
-              {steps.map((step) => (
-                <div
-                  key={step.num}
-                  className={`relative flex items-start gap-8 ${step.align === "right" ? "flex-row-reverse" : ""}`}
-                >
-                  <div className={`flex-1 ${step.align === "right" ? "text-left" : "text-right"}`}>
-                    <span
-                      className="text-7xl font-bold leading-none"
-                      style={{
-                        backgroundImage: "linear-gradient(135deg, #e8341c 0%, #8B5CF6 100%)",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                        filter: "drop-shadow(0 0 16px rgba(139,92,246,0.3))",
-                        
-                      }}
-                    >
-                      {step.num}
-                    </span>
-                    <h3 className="text-white font-bold text-xl mt-3 mb-3" style={{ }}>{step.title}</h3>
-                    <p className="text-white/45 text-sm leading-relaxed">{step.desc}</p>
-                  </div>
-                  {/* Step dot with glow */}
-                  <div
-                    className="absolute left-1/2 top-8 -translate-x-1/2 w-3 h-3 rounded-full flex-shrink-0"
-                    style={{ background: "#8B5CF6", boxShadow: "0 0 12px rgba(139,92,246,0.7)", border: "2px solid rgba(139,92,246,0.4)" }}
-                  />
-                  <div className="flex-1" />
-                </div>
-              ))}
-            </div>
-          </div>
+          <ScrollTimeline
+            steps={steps}
+            numColor="#8B5CF6"
+            numGradient="linear-gradient(135deg, #e8341c 0%, #8B5CF6 100%)"
+            lineColor="linear-gradient(to bottom, #e8341c, #8B5CF6, rgba(139,92,246,0.1))"
+          />
         </div>
       </section>
 
@@ -923,3 +998,4 @@ export default function AITransformationPage() {
     </div>
   );
 }
+

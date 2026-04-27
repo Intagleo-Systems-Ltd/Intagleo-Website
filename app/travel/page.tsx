@@ -1,73 +1,157 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollTimeline from "@/components/ScrollTimeline";
 import Link from "next/link";
 import InsightsSection from "@/components/InsightsSection";
 import CaseStudiesSection from "@/components/CaseStudiesSection";
 import PageBackground from "@/components/PageBackground";
+import CapabilityCardSection, { type CapItem } from "@/components/CapabilityCardSection";
 
-const techCaps = [
+const techCaps: CapItem[] = [
   {
     highlight: "Booking", rest: " Engine Development",
-    annotations: [
-      { pos: "tl", text: "Multi-provider Aggregation" },
-      { pos: "tr", text: "Real-time Availability" },
-      { pos: "bl", text: "Dynamic Pricing Engine" },
-      { pos: "br", text: "Group & Corporate Booking" },
+    urlSlug: "booking-engine",
+    tiles: [
+      { name: "Multi-provider", desc: "Aggregated availability at scale", color: "blue" },
+      { name: "Real-time Availability", desc: "Live sync across all suppliers", color: "purple" },
+      { name: "Dynamic Pricing", desc: "Rule-based fare computation", color: "blue" },
+      { name: "Group & Corporate", desc: "Negotiated rate management", color: "purple" },
     ],
-    items: ["Multi-provider aggregation", "Real-time availability sync", "Dynamic pricing rules", "Group & corporate booking"],
+    preview: {
+      type: "status-bars",
+      statusLabel: "All Systems Live",
+      rows: [
+        { label: "Flight Search",    value: "Online", stat: "180ms avg"   },
+        { label: "Hotel Avail",      value: "Online", stat: "240ms avg"   },
+        { label: "Dynamic Pricing",  value: "Active", stat: "Real-time"   },
+        { label: "Group Booking",    value: "Online", stat: "98.4% uptime" },
+      ],
+      chartLabel: "Bookings\n24h",
+      bars: [44,52,60,56,70,66,78,74,68,82,78,84,90,86,80,88,84,90,86,80,92,88,86,94],
+    },
   },
   {
     highlight: "GDS", rest: " & API Integration",
-    annotations: [
-      { pos: "tl", text: "Amadeus & Sabre Connectivity" },
-      { pos: "tr", text: "NDC Airline APIs" },
-      { pos: "bl", text: "Hotel Bed Banks" },
-      { pos: "br", text: "Car & Transfer APIs" },
+    urlSlug: "gds-integration",
+    tiles: [
+      { name: "Amadeus & Sabre", desc: "Full GDS connectivity", color: "blue" },
+      { name: "NDC Airline APIs", desc: "Direct airline content", color: "purple" },
+      { name: "Hotel Bed Banks", desc: "Multi-bed-bank aggregation", color: "blue" },
+      { name: "Car & Transfers", desc: "Ground transport APIs", color: "purple" },
     ],
-    items: ["Amadeus & Sabre integration", "NDC airline direct connect", "Hotel bed bank connectivity", "Car & transfer APIs"],
+    preview: {
+      type: "network",
+      centerLabel: "GDS Core",
+      nodes: [
+        { x: 118, y: 28,  label: "Amadeus GDS",     sub: "Full content",      color: "#5b7fff" },
+        { x: 198, y: 72,  label: "NDC Airlines",    sub: "Direct connect",    color: "#a78bfa" },
+        { x: 208, y: 148, label: "Hotel Bed Banks", sub: "Multi-aggregate",   color: "#34d399" },
+        { x: 140, y: 188, label: "Car & Transfers", sub: "Ground transport",  color: "#6366f1" },
+        { x: 42,  y: 152, label: "Sabre GDS",       sub: "Fallback rail",     color: "#f59e0b" },
+      ],
+      footer: "15+ GDS & supplier integrations",
+    },
   },
   {
     highlight: "Traveller", rest: " Experience Platforms",
-    annotations: [
-      { pos: "tl", text: "Personalised Itineraries" },
-      { pos: "tr", text: "In-trip Notifications" },
-      { pos: "bl", text: "Mobile Check-in Flows" },
-      { pos: "br", text: "Loyalty Programme Integration" },
+    urlSlug: "traveller-experience",
+    tiles: [
+      { name: "Itinerary Builder", desc: "Personalised trip planning", color: "blue" },
+      { name: "In-trip Alerts", desc: "Real-time disruption notifications", color: "purple" },
+      { name: "Mobile Check-in", desc: "Digital boarding flows", color: "blue" },
+      { name: "Loyalty Integration", desc: "Points earn & redemption", color: "purple" },
     ],
-    items: ["Personalised itinerary builder", "Real-time trip notifications", "Mobile check-in & boarding", "Loyalty programme integration"],
+    preview: {
+      type: "session-grid",
+      liveLabel: "4 Journeys Active",
+      sessions: [
+        { initials: "IT", name: "Itinerary Builder", color: "#5b7fff", qual: 3, live: true,  secs: 3600 },
+        { initials: "NT", name: "In-trip Alerts",    color: "#34d399", qual: 3, live: true,  secs: 1800 },
+        { initials: "MC", name: "Mobile Check-in",   color: "#a78bfa", qual: 2, live: true,  secs: 900  },
+        { initials: "LP", name: "Loyalty API",       color: "#6366f1", qual: 2, live: false, secs: 7200 },
+      ],
+      footerStats: ["80M+ bookings", "15+ suppliers", "Real-time"],
+    },
   },
   {
     highlight: "Revenue", rest: " Management",
-    annotations: [
-      { pos: "tl", text: "Ancillary Upsell Engine" },
-      { pos: "tr", text: "Fare Class Optimisation" },
-      { pos: "bl", text: "Yield Management Tools" },
-      { pos: "br", text: "Commission Tracking" },
+    urlSlug: "revenue-management",
+    tiles: [
+      { name: "Ancillary Upsell", desc: "Automated ancillary sequencing", color: "blue" },
+      { name: "Fare Optimisation", desc: "Class-level yield modelling", color: "purple" },
+      { name: "Yield Management", desc: "Demand-driven pricing tools", color: "blue" },
+      { name: "Commission Tracking", desc: "Agent & channel payments", color: "purple" },
     ],
-    items: ["Ancillary upsell automation", "Fare class optimisation", "Yield management systems", "Commission & payment tracking"],
+    preview: {
+      type: "ring-gauges",
+      scores: [
+        { label: "Ancillary Attach", pct: 74, color: "#5b7fff" },
+        { label: "Fare Utilisation", pct: 88, color: "#34d399" },
+        { label: "Yield Score",      pct: 82, color: "#a78bfa" },
+        { label: "Commission Acc",   pct: 99, color: "#6366f1" },
+      ],
+      events: [
+        { time: "09:14:02", text: "Seat upsell rate: 38% on LHR-DXB"         },
+        { time: "09:11:30", text: "Yield model updated for school holidays"   },
+        { time: "09:08:18", text: "Commission batch settled: $84K"            },
+      ],
+      footer: "Updated every 15 min",
+    },
   },
   {
     highlight: "Operations", rest: " & Back-office",
-    annotations: [
-      { pos: "tl", text: "Agent Booking Tools" },
-      { pos: "tr", text: "Disruption Management" },
-      { pos: "bl", text: "Supplier Reconciliation" },
-      { pos: "br", text: "Reporting Dashboards" },
+    urlSlug: "operations",
+    tiles: [
+      { name: "Agent Tools", desc: "Desktop booking & servicing", color: "blue" },
+      { name: "Disruption Mgmt", desc: "Automated rebooking flows", color: "purple" },
+      { name: "Supplier Recon", desc: "Invoice & payment matching", color: "blue" },
+      { name: "Reporting", desc: "Operational dashboards", color: "purple" },
     ],
-    items: ["Agent desktop tools", "Disruption & rebooking flows", "Supplier reconciliation", "Operational dashboards"],
+    preview: {
+      type: "pipeline",
+      headline: "4 pipelines active",
+      pipelines: [
+        { label: "Agent Desktop",     pct: 100, rate: "Always-on",  color: "#5b7fff" },
+        { label: "Disruption Engine", pct: 88,  rate: "Real-time",  color: "#34d399" },
+        { label: "Supplier Recon",    pct: 76,  rate: "Daily batch", color: "#a78bfa" },
+        { label: "Reporting Suite",   pct: 94,  rate: "On demand",  color: "#6366f1" },
+      ],
+      metrics: [
+        { label: "Disruptions",    value: "24 active" },
+        { label: "Recon Match",    value: "99.7%"     },
+        { label: "Agent Sessions", value: "1,840"     },
+      ],
+    },
   },
   {
     highlight: "Analytics", rest: " & Intelligence",
-    annotations: [
-      { pos: "tl", text: "Booking Funnel Analysis" },
-      { pos: "tr", text: "Demand Forecasting" },
-      { pos: "bl", text: "Customer LTV Modelling" },
-      { pos: "br", text: "Route Performance Data" },
+    urlSlug: "analytics-intelligence",
+    tiles: [
+      { name: "Funnel Analytics", desc: "Booking conversion insights", color: "blue" },
+      { name: "Demand Forecasting", desc: "ML-driven demand models", color: "purple" },
+      { name: "Customer LTV", desc: "Lifetime value segmentation", color: "blue" },
+      { name: "Route Performance", desc: "Inventory & yield analytics", color: "purple" },
     ],
-    items: ["Booking funnel analytics", "Demand forecasting models", "Customer LTV modelling", "Route & inventory performance"],
+    preview: {
+      type: "inference",
+      accuracyLabel: "Travel Intelligence v2.4",
+      inferences: [
+        { label: "Funnel Analysis", pct: 92, color: "#5b7fff", level: "High"   },
+        { label: "Demand Forecast", pct: 87, color: "#34d399", level: "Strong" },
+        { label: "Customer LTV",    pct: 84, color: "#a78bfa", level: "Strong" },
+        { label: "Route Perf AI",   pct: 89, color: "#6366f1", level: "High"   },
+      ],
+      alertsLabel: "Intelligence Signals",
+      alerts: [
+        { time: "09:16:02", text: "Summer demand spike detected: +22%", sev: "#34d399" },
+        { time: "09:12:30", text: "LTV model: Segment A churning",      sev: "#f59e0b" },
+        { time: "09:08:44", text: "Route DXB-SIN underperforming",      sev: "#ef4444" },
+      ],
+      footer: "Analysed 80M+ bookings",
+    },
   },
 ];
 
@@ -89,7 +173,6 @@ function ScrambleChar({ target, tick }: { target: string; tick: number }) {
 }
 
 export default function TravelPage() {
-  const [activeTab, setActiveTab] = useState(0);
   const [tick, setTick] = useState(0);
   const [activeDep, setActiveDep] = useState(0);
 
@@ -112,13 +195,13 @@ export default function TravelPage() {
       <Navbar />
 
       {/* HERO */}
-      <section className="relative flex flex-col items-center pt-32 pb-0 px-6 text-center overflow-hidden">
+      <section className="relative min-h-[85vh] flex flex-col items-center pt-32 pb-24 px-6 text-center overflow-hidden">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/hex-mesh-bg.png" alt="" className="absolute inset-0 w-full h-full object-cover object-center" style={{ opacity: 0.85 }} />
           <div className="absolute inset-0" style={{ background: "rgba(10,10,10,0.55)" }} />
           <div className="absolute top-0 left-0 right-0 h-40" style={{ background: "linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)" }} />
-          <div className="absolute bottom-0 left-0 right-0 h-48" style={{ background: "linear-gradient(to top, #0a0a0a 0%, transparent 100%)" }} />
+          <div className="absolute bottom-0 left-0 right-0 h-72" style={{ background: "linear-gradient(to top, #0a0a0a 0%, transparent 100%)" }} />
           <div className="absolute inset-y-0 left-0 w-24" style={{ background: "linear-gradient(to right, rgba(10,10,10,0.6), transparent)" }} />
           <div className="absolute inset-y-0 right-0 w-24" style={{ background: "linear-gradient(to left, rgba(10,10,10,0.6), transparent)" }} />
         </div>
@@ -139,94 +222,12 @@ export default function TravelPage() {
             </a>
           </div>
         </div>
-        <div className="relative z-10 w-full max-w-5xl mx-auto pb-12 text-center">
-          <p className="text-white/40 text-base mb-8">Trusted by travel brands serving millions of journeys annually.</p>
-          <div className="flex flex-wrap items-center justify-center gap-10">
-            {[{ name: "Samsung", src: "/logos/samsung.png" }, { name: "IBM", src: "/logos/ibm.png" }, { name: "TCL", src: "/logos/tcl.png" }].map((logo) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img key={logo.name} src={logo.src} alt={logo.name} className="h-7 w-auto object-contain opacity-35 hover:opacity-60 transition-opacity duration-300" style={{ filter: "brightness(0) invert(1)", maxWidth: "110px" }} />
-            ))}
-          </div>
-        </div>
-        <div className="relative z-10 w-full max-w-5xl mx-auto pb-0">
-          <div className="rounded-t-2xl bg-[#13141a] border border-white/[0.07] border-b-0 overflow-hidden">
-            <div className="grid md:grid-cols-[1fr_1.1fr]">
-              <div className="grid grid-cols-2 grid-rows-2 gap-1.5 p-4 bg-[#111218]">
-                <div className="col-span-1 row-span-2 rounded-xl overflow-hidden" style={{ minHeight: "220px" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp1.png" alt="" className="w-full h-full object-cover object-top" style={{ filter: "grayscale(100%)" }} />
-                </div>
-                <div className="rounded-xl overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp2.png" alt="" className="w-full h-full object-cover object-top" style={{ filter: "grayscale(100%)" }} />
-                </div>
-                <div className="rounded-xl overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp3.png" alt="" className="w-full h-full object-cover object-center" style={{ filter: "grayscale(100%)" }} />
-                </div>
-              </div>
-              <div className="flex flex-col justify-center text-left p-8 md:p-10">
-                <h2 className="text-2xl md:text-3xl font-bold text-white leading-snug mb-4">
-                  Slow booking engines and fragmented supplier connectivity are costing you bookings.{" "}
-                  <span className="text-white/35">Travellers abandon in milliseconds.</span>
-                </h2>
-                <p className="text-white/40 text-sm leading-relaxed mb-3">
-                  Every extra second at search, every failed availability check, every upsell opportunity
-                  missed - that&apos;s compounding revenue loss hidden behind your booking funnel.
-                </p>
-                <p className="text-white/40 text-sm leading-relaxed mb-7">
-                  We&apos;ve built travel platforms for OTAs, airlines, and tour operators at scale, focused
-                  on the booking performance and supplier integration that modern travel demands.
-                </p>
-                <Link href="/contact?type=travel" className="self-start px-6 py-2.5 rounded-full border border-white/20 text-white/70 text-sm font-medium hover:text-white hover:border-white/40 transition-colors">
-                  Talk to a Travel Tech Engineer
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
+       
+      
       </section>
 
       {/* TECH CAPABILITIES */}
-      <section className="section-padding py-24" id="capabilities">
-        <div className="mx-auto max-w-6xl">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Core Capabilities</h2>
-            <p className="text-white/40 text-base">Built across the modern travel technology stack</p>
-          </div>
-          <div className="grid lg:grid-cols-[320px_1fr] gap-4 items-stretch">
-            <div className="flex flex-col gap-2">
-              {techCaps.map((cap, i) => (
-                <button key={i} onClick={() => setActiveTab(i)} className={`text-left px-5 py-4 rounded-xl transition-all duration-200 border ${activeTab === i ? "bg-white/[0.08] border-white/[0.1] shadow-sm" : "bg-white/[0.02] border-transparent hover:bg-white/[0.04]"}`}>
-                  <span className="font-bold text-white text-sm md:text-[15px]">{cap.highlight}</span>
-                  <span className={`text-sm md:text-[15px] transition-colors ${activeTab === i ? "text-white/65" : "text-white/35"}`}>{cap.rest}</span>
-                </button>
-              ))}
-            </div>
-            <div className="flex flex-col gap-0">
-              <div className="relative bg-[#13141a] border border-white/[0.07] rounded-t-2xl overflow-hidden flex items-center justify-center p-10" style={{ minHeight: "360px" }}>
-                <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Cpath d='M40 0H0v1h40V0zM0 40V0H1v40H0z' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E\")" }} />
-                <div className="relative z-10 w-full" style={{ maxWidth: "calc(100% - 180px)" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/intvue-mockup.png" alt="Platform mockup" className="w-full rounded-xl shadow-2xl" />
-                </div>
-                {techCaps[activeTab].annotations.map((a) => (
-                  <div key={a.pos} className={`absolute z-20 bg-[#13141a]/90 border border-white/[0.1] rounded-lg px-3 py-2 backdrop-blur-sm max-w-[140px] transition-all duration-300 ${a.pos === "tl" ? "top-5 left-5" : a.pos === "tr" ? "top-5 right-5 text-right" : a.pos === "bl" ? "bottom-5 left-5" : "bottom-5 right-5 text-right"}`}>
-                    <p className="text-white/80 text-xs leading-snug">{a.text}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="bg-[#13141a] border border-white/[0.07] border-t-0 rounded-b-2xl px-6 py-4 flex flex-wrap gap-x-6 gap-y-2">
-                {techCaps[activeTab].items.map((item) => (
-                  <span key={item} className="flex items-center gap-2 text-xs text-white/55">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1]/70 flex-shrink-0" />{item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CapabilityCardSection caps={techCaps} sectionSubtitle="Built across the modern travel technology stack" />
 
       {/* ARCHITECTURE REVIEW */}
       <section className="section-padding py-24">
@@ -307,24 +308,12 @@ export default function TravelPage() {
               your traveller journey and the revenue moments that matter.
             </p>
           </div>
-          <div className="relative">
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/[0.08] -translate-x-1/2" />
-            {[
-              { num: "01", title: "Stack Audit", desc: "We map your booking engine performance, supplier connectivity, fallback logic, and the funnel drop-off points costing you bookings.", align: "left" },
-              { num: "02", title: "Architecture Design", desc: "We design for booking speed: sub-200ms search responses, resilient multi-GDS failover, and content aggregation that covers every segment.", align: "right" },
-              { num: "03", title: "Build & Integrate", desc: "We develop against live GDS sandboxes with booking accuracy, payment security, and PCI compliance woven into every sprint.", align: "left" },
-              { num: "04", title: "Launch & Optimise", desc: "Phased cutover from legacy booking paths, then continuous optimisation against real booking funnel conversion signals.", align: "right" },
-            ].map((step) => (
-              <div key={step.num} className={`relative flex mb-16 last:mb-0 ${step.align === "right" ? "justify-end" : "justify-start"}`}>
-                <div className="absolute left-1/2 top-2 -translate-x-1/2 w-3 h-3 rounded-full bg-white/20 border border-white/30 z-10" />
-                <div className={`w-[44%] ${step.align === "right" ? "text-left pl-8" : "text-right pr-8"}`}>
-                  <span className="text-[#6366f1] text-4xl font-bold leading-none block mb-2">{step.num}</span>
-                  <h3 className="text-white font-bold text-lg mb-1">{step.title}</h3>
-                  <p className="text-white/40 text-sm leading-relaxed">{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ScrollTimeline steps={[
+    { num: "01", title: "Stack Audit", desc: "We map your booking engine performance, supplier connectivity, fallback logic, and the funnel drop-off points costing you bookings.", align: "left" },
+    { num: "02", title: "Architecture Design", desc: "We design for booking speed: sub-200ms search responses, resilient multi-GDS failover, and content aggregation that covers every segment.", align: "right" },
+    { num: "03", title: "Build & Integrate", desc: "We develop against live GDS sandboxes with booking accuracy, payment security, and PCI compliance woven into every sprint.", align: "left" },
+    { num: "04", title: "Launch & Optimise", desc: "Phased cutover from legacy booking paths, then continuous optimisation against real booking funnel conversion signals.", align: "right" },
+  ]} />
         </div>
       </section>
 
@@ -441,3 +430,5 @@ export default function TravelPage() {
     </div>
   );
 }
+
+

@@ -1,7 +1,8 @@
-"use client";
+﻿"use client";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollTimeline from "@/components/ScrollTimeline";
 import PageBackground from "@/components/PageBackground";
 import CaseStudiesSection from "@/components/CaseStudiesSection";
 import InsightsSection from "@/components/InsightsSection";
@@ -74,7 +75,7 @@ export default function EmbeddedIoTPage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       {/* HERO                                                               */}
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative flex flex-col items-center pt-32 pb-0 px-6 text-center overflow-hidden">
+      <section className="relative min-h-[85vh] flex flex-col items-center pt-32 pb-24 px-6 text-center overflow-hidden">
 
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -85,8 +86,8 @@ export default function EmbeddedIoTPage() {
             style={{ opacity: 0.85 }}
           />
           <div className="absolute inset-0" style={{ background: "rgba(7,8,15,0.55)" }} />
-          <div className="absolute top-0 left-0 right-0 h-40" style={{ background: "linear-gradient(to bottom, #07080f 0%, transparent 100%)" }} />
-          <div className="absolute bottom-0 left-0 right-0 h-48" style={{ background: "linear-gradient(to top, #07080f 0%, transparent 100%)" }} />
+          <div className="absolute top-0 left-0 right-0 h-40" style={{ background: "linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)" }} />
+          <div className="absolute bottom-0 left-0 right-0 h-72" style={{ background: "linear-gradient(to top, #0a0a0a 0%, transparent 100%)" }} />
           <div className="absolute inset-y-0 left-0 w-24" style={{ background: "linear-gradient(to right, rgba(7,8,15,0.6), transparent)" }} />
           <div className="absolute inset-y-0 right-0 w-24" style={{ background: "linear-gradient(to left, rgba(7,8,15,0.6), transparent)" }} />
         </div>
@@ -115,69 +116,8 @@ export default function EmbeddedIoTPage() {
               See how it works
             </Link>
           </div>
-
-          <div className="flex flex-col items-center gap-5">
-            <p className="text-white/30 text-sm">Trusted by hardware companies that can&apos;t afford downtime.</p>
-            <div className="flex flex-wrap items-center justify-center gap-10">
-              {[
-                { name: "IBM",      src: "/logos/ibm.png",      invert: true  },
-                { name: "Samsung",  src: "/logos/samsung.png",  invert: true  },
-                { name: "Red Bull", src: "/logos/red-bull.png", invert: true  },
-                { name: "KIA",      src: "/logos/kia.png",      invert: true  },
-                { name: "Emaar",    src: "/logos/emaar.png",    invert: false },
-              ].map((logo) => (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  key={logo.name}
-                  src={logo.src}
-                  alt={logo.name}
-                  className="h-7 w-auto object-contain opacity-40 hover:opacity-70 transition-opacity duration-300"
-                  style={{ filter: logo.invert ? "brightness(0) invert(1)" : "none", maxWidth: "110px" }}
-                />
-              ))}
-            </div>
-          </div>
         </div>
 
-        {/* Bottom card */}
-        <div className="relative z-10 w-full max-w-5xl mx-auto pb-0">
-          <div className="rounded-t-2xl bg-[#0e0f18] border border-white/[0.07] border-b-0 overflow-hidden">
-            <div className="grid md:grid-cols-[1fr_1.1fr]">
-
-              {/* Left: protocol grid visual */}
-              <div className="grid grid-cols-2 grid-rows-2 gap-1.5 p-4 bg-[#0b0c15]">
-                {["MQTT", "BACnet", "Modbus", "OPC-UA"].map((proto) => (
-                  <div
-                    key={proto}
-                    className="rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center"
-                    style={{ minHeight: "100px" }}
-                  >
-                    <span className="text-white/40 text-sm font-mono">{proto}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Right: text */}
-              <div className="flex flex-col items-center justify-center text-center p-8 md:p-10">
-                <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight mb-4">
-                  Your devices are generating data.<br />
-                  <span className="text-white/40">Is it reaching your platform?</span>
-                </h2>
-                <p className="text-white/45 text-sm leading-relaxed mb-7">
-                  Most embedded projects stall not because of the hardware, but because the
-                  software connecting it to the cloud was never built to scale. We close that gap,
-                  from firmware to dashboard, with engineers who have done it before.
-                </p>
-                <Link
-                  href="/contact?type=embedded-iot"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
-                >
-                  Talk to an engineer
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
@@ -276,25 +216,7 @@ export default function EmbeddedIoTPage() {
             </p>
           </div>
 
-          <div className="relative">
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/[0.08] -translate-x-1/2" />
-            <div className="space-y-20">
-              {steps.map((step) => (
-                <div
-                  key={step.num}
-                  className={`relative flex items-start gap-8 ${step.align === "right" ? "flex-row-reverse" : ""}`}
-                >
-                  <div className={`flex-1 ${step.align === "right" ? "text-left" : "text-right"}`}>
-                    <span className="text-7xl font-bold leading-none text-[#6366f1]">{step.num}</span>
-                    <h3 className="text-white font-bold text-xl mt-3 mb-3">{step.title}</h3>
-                    <p className="text-white/45 text-sm leading-relaxed">{step.desc}</p>
-                  </div>
-                  <div className="absolute left-1/2 top-8 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-white/25 border border-white/20 flex-shrink-0" />
-                  <div className="flex-1" />
-                </div>
-              ))}
-            </div>
-          </div>
+                    <ScrollTimeline steps={steps} />
         </div>
       </section>
 
@@ -508,3 +430,5 @@ export default function EmbeddedIoTPage() {
     </div>
   );
 }
+
+

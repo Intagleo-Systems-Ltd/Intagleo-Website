@@ -65,7 +65,7 @@ export default function DifferenceSection() {
           >
             {/* 200+ */}
             <div
-              className="rounded-2xl p-8 flex flex-col justify-end min-h-[280px]"
+              className="rounded-2xl p-8 flex flex-col justify-center items-center text-center min-h-[280px]"
               style={{ background: "#161618", backgroundImage: dotGrid, gridColumn: "1", gridRow: "1 / 3" }}
             >
               <div className="text-6xl md:text-7xl font-light text-white mb-2">200+</div>
@@ -83,7 +83,7 @@ export default function DifferenceSection() {
 
             {/* 20+ */}
             <div
-              className="rounded-2xl p-8 flex flex-col justify-end min-h-[280px]"
+              className="rounded-2xl p-8 flex flex-col justify-center items-center text-center min-h-[280px]"
               style={{ background: "#161618", backgroundImage: dotGrid, gridColumn: "3", gridRow: "1 / 3" }}
             >
               <div className="text-6xl md:text-7xl font-light text-white mb-2">20+</div>

@@ -1,10 +1,11 @@
-
+﻿
 
 
 "use client";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollTimeline from "@/components/ScrollTimeline";
 import PageBackground from "@/components/PageBackground";
 import CaseStudiesSection from "@/components/CaseStudiesSection";
 import InsightsSection from "@/components/InsightsSection";
@@ -126,7 +127,7 @@ export default function StaffAugmentationPage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       {/* HERO                                                               */}
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative flex flex-col items-center pt-32 pb-0 px-6 text-center overflow-hidden">
+      <section className="relative min-h-[85vh] flex flex-col items-center pt-32 pb-24 px-6 text-center overflow-hidden">
 
         {/* ── Hero background image ─────────────────────────────────────── */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -143,12 +144,12 @@ export default function StaffAugmentationPage() {
           {/* Top fade , darkens the very top so navbar blends in */}
           <div
             className="absolute top-0 left-0 right-0 h-40"
-            style={{ background: "linear-gradient(to bottom, #07080f 0%, transparent 100%)" }}
+            style={{ background: "linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)" }}
           />
           {/* Bottom fade , blends into the page */}
           <div
-            className="absolute bottom-0 left-0 right-0 h-48"
-            style={{ background: "linear-gradient(to top, #07080f 0%, transparent 100%)" }}
+            className="absolute bottom-0 left-0 right-0 h-72"
+            style={{ background: "linear-gradient(to top, #0a0a0a 0%, transparent 100%)" }}
           />
           {/* Side vignettes */}
           <div className="absolute inset-y-0 left-0 w-24" style={{ background: "linear-gradient(to right, rgba(7,8,15,0.6), transparent)" }} />
@@ -181,81 +182,7 @@ export default function StaffAugmentationPage() {
             </Link>
           </div>
 
-          {/* ── Trusted by strip ─────────────────────────────────────── */}
-          <div className="flex flex-col items-center gap-5">
-            <p className="text-white/30 text-sm">Trusted by teams that can&apos;t afford to slow down.</p>
-            <div className="flex flex-wrap items-center justify-center gap-10">
-              {[
-                { name: "IBM",         src: "/logos/ibm.png",         invert: true  },
-                { name: "Samsung",     src: "/logos/samsung.png",     invert: true  },
-                { name: "Red Bull",    src: "/logos/red-bull.png",    invert: true  },
-                { name: "KIA",         src: "/logos/kia.png",         invert: true  },
-                { name: "Emaar",       src: "/logos/emaar.png",       invert: false },
-                { name: "Alpha Tauri", src: "/logos/alpha-tauri.png", invert: true  },
-              ].map((logo) => (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  key={logo.name}
-                  src={logo.src}
-                  alt={logo.name}
-                  className="h-7 w-auto object-contain opacity-40 hover:opacity-70 transition-opacity duration-300"
-                  style={{
-                    filter: logo.invert ? "brightness(0) invert(1)" : "none",
-                    maxWidth: "110px",
-                  }}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* ── "Hiring takes months" card ───────────────────────────────── */}
-        <div className="relative z-10 w-full max-w-5xl mx-auto pb-0">
-          <div className="rounded-t-2xl bg-[#0e0f18] border border-white/[0.07] border-b-0 overflow-hidden">
-            <div className="grid md:grid-cols-[1fr_1.1fr]">
-
-              {/* Left , photo collage */}
-              <div className="grid grid-cols-2 grid-rows-2 gap-1.5 p-4 bg-[#0b0c15]">
-                {/* emp1 , left column, full height */}
-                <div className="col-span-1 row-span-2 rounded-xl overflow-hidden" style={{ minHeight: "220px" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp1.png" alt="Team member" className="w-full h-full object-cover object-top" style={{ filter: "grayscale(100%)" }} />
-                </div>
-                {/* emp2 , top right */}
-                <div className="rounded-xl overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp2.png" alt="Team member" className="w-full h-full object-cover object-top" style={{ filter: "grayscale(100%)" }} />
-                </div>
-                {/* emp3 , bottom right */}
-                <div className="rounded-xl overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp3.png" alt="Team member" className="w-full h-full object-cover object-top" style={{ filter: "grayscale(100%)" }} />
-                </div>
-              </div>
-
-              {/* Right , text */}
-              <div className="flex flex-col items-center justify-center text-center p-8 md:p-10">
-                <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight mb-4">
-                  Hiring takes months.<br />
-                  <span className="text-white/40">Your roadmap can&apos;t wait.</span>
-                </h2>
-                <p className="text-white/45 text-sm leading-relaxed mb-7">
-                  Scaling too fast comes at the cost of momentum. We give you
-                  pre-vetted engineers and specialists , matched to your stack,
-                  onboarded to your workflows, and productive from day one. We
-                  believe that the right engineers give you more focus and drive
-                  more value through every sprint.
-                </p>
-                <Link
-                  href="/contact?type=staff-augmentation"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
-                >
-                  Talk to an expert
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
+       </div>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
@@ -371,37 +298,7 @@ export default function StaffAugmentationPage() {
             </p>
           </div>
 
-          {/* Timeline */}
-          <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/[0.08] -translate-x-1/2" />
-
-            <div className="space-y-20">
-              {steps.map((step) => (
-                <div
-                  key={step.num}
-                  className={`relative flex items-start gap-8 ${
-                    step.align === "right" ? "flex-row-reverse" : ""
-                  }`}
-                >
-                  {/* Content */}
-                  <div className={`flex-1 ${step.align === "right" ? "text-left" : "text-right"}`}>
-                    <span className="text-7xl font-bold leading-none text-[#6366f1]">
-                      {step.num}
-                    </span>
-                    <h3 className="text-white font-bold text-xl mt-3 mb-3">{step.title}</h3>
-                    <p className="text-white/45 text-sm leading-relaxed">{step.desc}</p>
-                  </div>
-
-                  {/* Dot on timeline */}
-                  <div className="absolute left-1/2 top-8 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-white/25 border border-white/20 flex-shrink-0" />
-
-                  {/* Empty side */}
-                  <div className="flex-1" />
-                </div>
-              ))}
-            </div>
-          </div>
+          <ScrollTimeline steps={steps} />
         </div>
       </section>
 
@@ -680,3 +577,5 @@ export default function StaffAugmentationPage() {
     </div>
   );
 }
+
+

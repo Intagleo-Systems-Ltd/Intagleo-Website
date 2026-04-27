@@ -55,7 +55,7 @@ export default function InsightsSection({ pageSlug }: { pageSlug?: string } = {}
           : "/api/blog/featured";
         const response = await fetch(url);
         const data = await response.json();
-        setArticles((data.posts ?? []).slice(0, 3));
+        setArticles((data.posts ?? []).slice(0, 4));
       } catch {
         // silent
       } finally {
@@ -66,20 +66,20 @@ export default function InsightsSection({ pageSlug }: { pageSlug?: string } = {}
   }, [pageSlug]);
 
   const featured = articles[0];
-  const secondary = articles.slice(1, 3);
+  const secondary = articles.slice(1, 4);
 
   if (!loading && pageSlug && articles.length === 0) return null;
 
   return (
     <section
       id="insights"
-      className="bg-[#0a0a0a] py-24 px-6"
+      className="bg-[#0a0a0a] py-12 px-6"
     >
       <div className="mx-auto max-w-[1200px]">
 
         {/* ── Header ── */}
         <h2
-          className="text-center text-white mb-10"
+          className="text-center text-white mb-6"
           style={{
             fontFamily: '"Roobert TRIAL", sans-serif',
             fontSize: "clamp(26px, 3vw, 44px)",
@@ -96,7 +96,7 @@ export default function InsightsSection({ pageSlug }: { pageSlug?: string } = {}
         {loading ? (
           <div className="flex flex-col md:flex-row gap-8 pt-8 pb-8">
             <div className="flex-1 min-w-0 space-y-4">
-              <div className="skeleton w-full h-[320px] rounded-2xl" />
+              <div className="skeleton w-full h-[240px] rounded-2xl" />
               <div className="skeleton h-3 w-24 rounded" />
               <div className="skeleton h-7 w-3/4 rounded" />
               <div className="skeleton h-4 w-full rounded" />
@@ -104,7 +104,7 @@ export default function InsightsSection({ pageSlug }: { pageSlug?: string } = {}
             </div>
             <div className="hidden md:block w-px bg-white/10 self-stretch" />
             <div className="flex-1 min-w-0 flex flex-col gap-8">
-              {[0, 1].map((i) => (
+              {[0, 1, 2].map((i) => (
                 <div key={i} className="flex gap-4">
                   <div className="skeleton w-[120px] h-[90px] flex-shrink-0 rounded-xl" />
                   <div className="flex-1 space-y-2">
@@ -128,7 +128,7 @@ export default function InsightsSection({ pageSlug }: { pageSlug?: string } = {}
                   src={featured.cover_image}
                   alt={featured.title}
                   className="w-full rounded-2xl mb-6"
-                  style={{ height: "320px" }}
+                  style={{ height: "240px" }}
                 />
                 <p className="text-white/35 text-xs mb-3 tracking-wide">
                   {formatDate(featured.date)}

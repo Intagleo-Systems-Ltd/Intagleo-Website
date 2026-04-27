@@ -1,73 +1,157 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollTimeline from "@/components/ScrollTimeline";
 import Link from "next/link";
 import InsightsSection from "@/components/InsightsSection";
 import CaseStudiesSection from "@/components/CaseStudiesSection";
 import PageBackground from "@/components/PageBackground";
+import CapabilityCardSection, { type CapItem } from "@/components/CapabilityCardSection";
 
-const techCaps = [
+const techCaps: CapItem[] = [
   {
     highlight: "Payment", rest: " Infrastructure",
-    annotations: [
-      { pos: "tl", text: "Multi-rail Payment Processing" },
-      { pos: "tr", text: "PCI DSS Compliance" },
-      { pos: "bl", text: "Fraud Detection Engine" },
-      { pos: "br", text: "Reconciliation Automation" },
+    urlSlug: "payment-infrastructure",
+    tiles: [
+      { name: "Multi-rail Processing", desc: "Stripe, ACH, SEPA routing", color: "blue" },
+      { name: "PCI DSS Compliance", desc: "Card data security layer", color: "blue" },
+      { name: "Fraud Detection", desc: "Real-time ML scoring", color: "purple" },
+      { name: "Reconciliation", desc: "Automated settlement", color: "purple" },
     ],
-    items: ["Multi-rail payment processing", "PCI DSS compliance", "Real-time fraud detection", "Automated reconciliation"],
+    preview: {
+      type: "status-bars",
+      statusLabel: "All Rails Live",
+      rows: [
+        { label: "Stripe Gateway", value: "Online", stat: "14ms" },
+        { label: "ACH Rail", value: "Online", stat: "8ms" },
+        { label: "SEPA Network", value: "Online", stat: "22ms" },
+        { label: "SWIFT Bridge", value: "Online", stat: "31ms" },
+      ],
+      chartLabel: "TX Volume\n24h",
+      bars: [42,38,55,61,48,52,70,78,65,72,80,74,68,76,83,79,85,88,72,90,84,78,86,92],
+    },
   },
   {
     highlight: "Banking", rest: " & Core Systems",
-    annotations: [
-      { pos: "tl", text: "Core Banking Integration" },
-      { pos: "tr", text: "Open Banking APIs" },
-      { pos: "bl", text: "Ledger Architecture" },
-      { pos: "br", text: "Account Management" },
+    urlSlug: "banking-core-systems",
+    tiles: [
+      { name: "Core Banking", desc: "Integration layer", color: "blue" },
+      { name: "Open Banking APIs", desc: "PSD2 & beyond", color: "blue" },
+      { name: "Ledger Architecture", desc: "Double-entry systems", color: "purple" },
+      { name: "Account Management", desc: "Full lifecycle workflows", color: "purple" },
     ],
-    items: ["Core banking integration", "Open banking API layer", "Double-entry ledger systems", "Account lifecycle management"],
+    preview: {
+      type: "pipeline",
+      headline: "4 pipelines running",
+      pipelines: [
+        { label: "Core Tx Processing", pct: 94, rate: "12.4k/s", color: "#5b7fff" },
+        { label: "Batch Settlement", pct: 78, rate: "Nightly", color: "#6366f1" },
+        { label: "Ledger Reconcile", pct: 100, rate: "Real-time", color: "#34d399" },
+        { label: "Account Sync", pct: 86, rate: "Event-driven", color: "#a78bfa" },
+      ],
+      metrics: [
+        { label: "Journals Today", value: "2.4M" },
+        { label: "Active Accounts", value: "184K" },
+        { label: "Error Rate", value: "0.002%" },
+      ],
+    },
   },
   {
     highlight: "Lending", rest: " & Credit Platforms",
-    annotations: [
-      { pos: "tl", text: "Credit Scoring Engine" },
-      { pos: "tr", text: "Loan Origination System" },
-      { pos: "bl", text: "Collections Automation" },
-      { pos: "br", text: "Bureau Integration" },
+    urlSlug: "lending-credit",
+    tiles: [
+      { name: "Credit Scoring", desc: "Custom ML models", color: "blue" },
+      { name: "Loan Origination", desc: "End-to-end LOS", color: "blue" },
+      { name: "Collections", desc: "Automated workflows", color: "purple" },
+      { name: "Bureau Integration", desc: "Equifax, Experian", color: "purple" },
     ],
-    items: ["Custom credit scoring models", "Loan origination systems", "Collections automation", "Credit bureau integration"],
+    preview: {
+      type: "ring-gauges",
+      scores: [
+        { label: "Model Accuracy", pct: 97, color: "#5b7fff" },
+        { label: "Bureau Match", pct: 99, color: "#34d399" },
+        { label: "Auto-Approval", pct: 74, color: "#a78bfa" },
+        { label: "Collection Rate", pct: 88, color: "#6366f1" },
+      ],
+      events: [
+        { time: "09:14:02", text: "Loan #8821 approved" },
+        { time: "09:13:10", text: "Bureau refresh complete" },
+        { time: "09:12:44", text: "Score model retrained" },
+      ],
+      footer: "Updated every 15 min",
+    },
   },
   {
     highlight: "Compliance", rest: " & RegTech",
-    annotations: [
-      { pos: "tl", text: "KYC/AML Workflows" },
-      { pos: "tr", text: "Transaction Monitoring" },
-      { pos: "bl", text: "Regulatory Reporting" },
-      { pos: "br", text: "Sanctions Screening" },
+    urlSlug: "compliance-regtech",
+    tiles: [
+      { name: "KYC/AML Workflows", desc: "Automated checks", color: "blue" },
+      { name: "Transaction Monitor", desc: "Real-time screening", color: "blue" },
+      { name: "Regulatory Reporting", desc: "Automated pipelines", color: "purple" },
+      { name: "Sanctions Screening", desc: "PEP & OFAC lists", color: "purple" },
     ],
-    items: ["KYC/AML workflow automation", "Real-time transaction monitoring", "Regulatory reporting pipelines", "Sanctions & PEP screening"],
+    preview: {
+      type: "inference",
+      accuracyLabel: "AML Engine v4.2",
+      inferences: [
+        { label: "Fraud Detection", pct: 99, color: "#ef4444", level: "Critical" },
+        { label: "AML Risk Score", pct: 87, color: "#f59e0b", level: "High" },
+        { label: "KYC Confidence", pct: 96, color: "#5b7fff", level: "High" },
+        { label: "Sanctions Match", pct: 100, color: "#34d399", level: "Clear" },
+      ],
+      alertsLabel: "Live Signals",
+      alerts: [
+        { time: "09:15:01", text: "Suspicious pattern on TXN-9912", sev: "#ef4444" },
+        { time: "09:12:33", text: "KYC review passed for Entity-774", sev: "#34d399" },
+        { time: "09:10:18", text: "OFAC list updated – 3 new entries", sev: "#f59e0b" },
+      ],
+      footer: "Monitored 24/7",
+    },
   },
   {
     highlight: "Data", rest: " & Risk Analytics",
-    annotations: [
-      { pos: "tl", text: "Risk Scoring Dashboards" },
-      { pos: "tr", text: "Portfolio Analytics" },
-      { pos: "bl", text: "Anomaly Detection" },
-      { pos: "br", text: "Stress Testing Models" },
+    urlSlug: "data-risk-analytics",
+    tiles: [
+      { name: "Risk Dashboards", desc: "Real-time scoring", color: "blue" },
+      { name: "Portfolio Analytics", desc: "Exposure tracking", color: "blue" },
+      { name: "Anomaly Detection", desc: "ML-based monitoring", color: "purple" },
+      { name: "Stress Testing", desc: "Regulatory models", color: "purple" },
     ],
-    items: ["Risk scoring systems", "Portfolio analytics", "Anomaly detection models", "Regulatory stress testing"],
+    preview: {
+      type: "network",
+      centerLabel: "Risk Hub",
+      nodes: [
+        { x: 118, y: 28, label: "Credit Bureau", sub: "FICO / VantageScore", color: "#5b7fff" },
+        { x: 198, y: 72, label: "Market Data", sub: "Bloomberg feeds", color: "#a78bfa" },
+        { x: 208, y: 148, label: "TX Ledger", sub: "Event stream", color: "#34d399" },
+        { x: 140, y: 188, label: "Stress Models", sub: "Basel III engine", color: "#6366f1" },
+        { x: 42, y: 152, label: "Fraud Engine", sub: "ML scoring", color: "#f59e0b" },
+      ],
+      footer: "5 data feeds · 60s refresh",
+    },
   },
   {
     highlight: "Embedded", rest: " Finance & BaaS",
-    annotations: [
-      { pos: "tl", text: "Banking-as-a-Service APIs" },
-      { pos: "tr", text: "White-label Card Issuing" },
-      { pos: "bl", text: "Wallet Infrastructure" },
-      { pos: "br", text: "Financial Data APIs" },
+    urlSlug: "embedded-finance-baas",
+    tiles: [
+      { name: "BaaS APIs", desc: "Banking-as-a-Service", color: "blue" },
+      { name: "Card Issuing", desc: "White-label programs", color: "blue" },
+      { name: "Wallet Infrastructure", desc: "Digital wallets", color: "purple" },
+      { name: "Financial Data APIs", desc: "Data aggregation", color: "purple" },
     ],
-    items: ["Banking-as-a-service APIs", "White-label card issuing", "Digital wallet infrastructure", "Financial data aggregation"],
+    preview: {
+      type: "session-grid",
+      liveLabel: "4 API Sessions Active",
+      sessions: [
+        { initials: "SH", name: "Shopify Connect", color: "#5b7fff", qual: 3, live: true, secs: 1240 },
+        { initials: "UB", name: "Uber Money API", color: "#a78bfa", qual: 2, live: true, secs: 3820 },
+        { initials: "WP", name: "Wallet Processor", color: "#34d399", qual: 3, live: true, secs: 542 },
+        { initials: "CA", name: "Card Issuer Auth", color: "#6366f1", qual: 3, live: false, secs: 7234 },
+      ],
+      footerStats: ["API uptime: 99.99%", "Latency: 12ms p50", "4 tenants"],
+    },
   },
 ];
 
@@ -89,7 +173,6 @@ const LEDGER_ROWS = [
 ];
 
 export default function FintechPage() {
-  const [activeTab, setActiveTab] = useState(0);
   const [tickerOffset, setTickerOffset] = useState(0);
   const [activeLedger, setActiveLedger] = useState(0);
 
@@ -112,13 +195,13 @@ export default function FintechPage() {
       <Navbar />
 
       {/* HERO */}
-      <section className="relative flex flex-col items-center pt-32 pb-0 px-6 text-center overflow-hidden">
+      <section className="relative min-h-[85vh] flex flex-col items-center pt-32 pb-24 px-6 text-center overflow-hidden">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/hex-mesh-bg.png" alt="" className="absolute inset-0 w-full h-full object-cover object-center" style={{ opacity: 0.85 }} />
           <div className="absolute inset-0" style={{ background: "rgba(10,10,10,0.55)" }} />
           <div className="absolute top-0 left-0 right-0 h-40" style={{ background: "linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)" }} />
-          <div className="absolute bottom-0 left-0 right-0 h-48" style={{ background: "linear-gradient(to top, #0a0a0a 0%, transparent 100%)" }} />
+          <div className="absolute bottom-0 left-0 right-0 h-72" style={{ background: "linear-gradient(to top, #0a0a0a 0%, transparent 100%)" }} />
           <div className="absolute inset-y-0 left-0 w-24" style={{ background: "linear-gradient(to right, rgba(10,10,10,0.6), transparent)" }} />
           <div className="absolute inset-y-0 right-0 w-24" style={{ background: "linear-gradient(to left, rgba(10,10,10,0.6), transparent)" }} />
         </div>
@@ -139,94 +222,9 @@ export default function FintechPage() {
             </a>
           </div>
         </div>
-        <div className="relative z-10 w-full max-w-5xl mx-auto pb-12 text-center">
-          <p className="text-white/40 text-base mb-8">Trusted by financial institutions processing billions in transactions.</p>
-          <div className="flex flex-wrap items-center justify-center gap-10">
-            {[{ name: "Samsung", src: "/logos/samsung.png" }, { name: "IBM", src: "/logos/ibm.png" }, { name: "TCL", src: "/logos/tcl.png" }].map((logo) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img key={logo.name} src={logo.src} alt={logo.name} className="h-7 w-auto object-contain opacity-35 hover:opacity-60 transition-opacity duration-300" style={{ filter: "brightness(0) invert(1)", maxWidth: "110px" }} />
-            ))}
-          </div>
-        </div>
-        <div className="relative z-10 w-full max-w-5xl mx-auto pb-0">
-          <div className="rounded-t-2xl bg-[#13141a] border border-white/[0.07] border-b-0 overflow-hidden">
-            <div className="grid md:grid-cols-[1fr_1.1fr]">
-              <div className="grid grid-cols-2 grid-rows-2 gap-1.5 p-4 bg-[#111218]">
-                <div className="col-span-1 row-span-2 rounded-xl overflow-hidden" style={{ minHeight: "220px" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp1.png" alt="" className="w-full h-full object-cover object-top" style={{ filter: "grayscale(100%)" }} />
-                </div>
-                <div className="rounded-xl overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp2.png" alt="" className="w-full h-full object-cover object-top" style={{ filter: "grayscale(100%)" }} />
-                </div>
-                <div className="rounded-xl overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp3.png" alt="" className="w-full h-full object-cover object-center" style={{ filter: "grayscale(100%)" }} />
-                </div>
-              </div>
-              <div className="flex flex-col justify-center text-left p-8 md:p-10">
-                <h2 className="text-2xl md:text-3xl font-bold text-white leading-snug mb-4">
-                  Legacy payment rails and compliance gaps are silently increasing your risk exposure.{" "}
-                  <span className="text-white/35">Most firms only find out during a failed audit.</span>
-                </h2>
-                <p className="text-white/40 text-sm leading-relaxed mb-3">
-                  Every manual reconciliation step, every KYC bottleneck, every payment failure that
-                  can&apos;t be traced - that&apos;s regulatory risk and operational cost accumulating in the dark.
-                </p>
-                <p className="text-white/40 text-sm leading-relaxed mb-7">
-                  We&apos;ve built financial platforms trusted by institutions processing billions in transactions,
-                  focused on the compliance architecture and payment reliability that finance demands.
-                </p>
-                <Link href="/contact?type=fintech" className="self-start px-6 py-2.5 rounded-full border border-white/20 text-white/70 text-sm font-medium hover:text-white hover:border-white/40 transition-colors">
-                  Talk to a Fintech Engineer
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
-      {/* TECH CAPABILITIES */}
-      <section className="section-padding py-24" id="capabilities">
-        <div className="mx-auto max-w-6xl">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Core Capabilities</h2>
-            <p className="text-white/40 text-base">Built across the modern fintech stack</p>
-          </div>
-          <div className="grid lg:grid-cols-[320px_1fr] gap-4 items-stretch">
-            <div className="flex flex-col gap-2">
-              {techCaps.map((cap, i) => (
-                <button key={i} onClick={() => setActiveTab(i)} className={`text-left px-5 py-4 rounded-xl transition-all duration-200 border ${activeTab === i ? "bg-white/[0.08] border-white/[0.1] shadow-sm" : "bg-white/[0.02] border-transparent hover:bg-white/[0.04]"}`}>
-                  <span className="font-bold text-white text-sm md:text-[15px]">{cap.highlight}</span>
-                  <span className={`text-sm md:text-[15px] transition-colors ${activeTab === i ? "text-white/65" : "text-white/35"}`}>{cap.rest}</span>
-                </button>
-              ))}
-            </div>
-            <div className="flex flex-col gap-0">
-              <div className="relative bg-[#13141a] border border-white/[0.07] rounded-t-2xl overflow-hidden flex items-center justify-center p-10" style={{ minHeight: "360px" }}>
-                <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Cpath d='M40 0H0v1h40V0zM0 40V0H1v40H0z' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E\")" }} />
-                <div className="relative z-10 w-full" style={{ maxWidth: "calc(100% - 180px)" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/intvue-mockup.png" alt="Platform mockup" className="w-full rounded-xl shadow-2xl" />
-                </div>
-                {techCaps[activeTab].annotations.map((a) => (
-                  <div key={a.pos} className={`absolute z-20 bg-[#13141a]/90 border border-white/[0.1] rounded-lg px-3 py-2 backdrop-blur-sm max-w-[140px] transition-all duration-300 ${a.pos === "tl" ? "top-5 left-5" : a.pos === "tr" ? "top-5 right-5 text-right" : a.pos === "bl" ? "bottom-5 left-5" : "bottom-5 right-5 text-right"}`}>
-                    <p className="text-white/80 text-xs leading-snug">{a.text}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="bg-[#13141a] border border-white/[0.07] border-t-0 rounded-b-2xl px-6 py-4 flex flex-wrap gap-x-6 gap-y-2">
-                {techCaps[activeTab].items.map((item) => (
-                  <span key={item} className="flex items-center gap-2 text-xs text-white/55">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1]/70 flex-shrink-0" />{item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CapabilityCardSection caps={techCaps} sectionSubtitle="Built across the modern fintech stack" />
 
       {/* ARCHITECTURE REVIEW */}
       <section className="section-padding py-24">
@@ -312,24 +310,12 @@ export default function FintechPage() {
               regulatory obligations and the payment flows that must never fail.
             </p>
           </div>
-          <div className="relative">
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/[0.08] -translate-x-1/2" />
-            {[
-              { num: "01", title: "Compliance & Tech Audit", desc: "We map your payment architecture, KYC/AML workflows, data residency requirements, and the compliance gaps your current setup creates.", align: "left" },
-              { num: "02", title: "Architecture Design", desc: "We design for regulatory confidence: immutable audit trails, real-time transaction monitoring, and payment infrastructure that survives scrutiny.", align: "right" },
-              { num: "03", title: "Build & Certify", desc: "We develop with PCI DSS, SOC 2, and regional financial regulations as primary design constraints - not afterthoughts.", align: "left" },
-              { num: "04", title: "Deploy & Monitor", desc: "Staged go-live with compliance monitoring live from day one, then continuous improvement of fraud detection and operational efficiency.", align: "right" },
-            ].map((step) => (
-              <div key={step.num} className={`relative flex mb-16 last:mb-0 ${step.align === "right" ? "justify-end" : "justify-start"}`}>
-                <div className="absolute left-1/2 top-2 -translate-x-1/2 w-3 h-3 rounded-full bg-white/20 border border-white/30 z-10" />
-                <div className={`w-[44%] ${step.align === "right" ? "text-left pl-8" : "text-right pr-8"}`}>
-                  <span className="text-[#6366f1] text-4xl font-bold leading-none block mb-2">{step.num}</span>
-                  <h3 className="text-white font-bold text-lg mb-1">{step.title}</h3>
-                  <p className="text-white/40 text-sm leading-relaxed">{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ScrollTimeline steps={[
+    { num: "01", title: "Compliance & Tech Audit", desc: "We map your payment architecture, KYC/AML workflows, data residency requirements, and the compliance gaps your current setup creates.", align: "left" },
+    { num: "02", title: "Architecture Design", desc: "We design for regulatory confidence: immutable audit trails, real-time transaction monitoring, and payment infrastructure that survives scrutiny.", align: "right" },
+    { num: "03", title: "Build & Certify", desc: "We develop with PCI DSS, SOC 2, and regional financial regulations as primary design constraints - not afterthoughts.", align: "left" },
+    { num: "04", title: "Deploy & Monitor", desc: "Staged go-live with compliance monitoring live from day one, then continuous improvement of fraud detection and operational efficiency.", align: "right" },
+  ]} />
         </div>
       </section>
 
@@ -446,3 +432,5 @@ export default function FintechPage() {
     </div>
   );
 }
+
+

@@ -1,73 +1,157 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollTimeline from "@/components/ScrollTimeline";
 import Link from "next/link";
 import InsightsSection from "@/components/InsightsSection";
 import CaseStudiesSection from "@/components/CaseStudiesSection";
 import PageBackground from "@/components/PageBackground";
+import CapabilityCardSection, { type CapItem } from "@/components/CapabilityCardSection";
 
-const techCaps = [
+const techCaps: CapItem[] = [
   {
     highlight: "LMS", rest: " Architecture & Development",
-    annotations: [
-      { pos: "tl", text: "Custom Course Builder" },
-      { pos: "tr", text: "Multi-tenant Organisation" },
-      { pos: "bl", text: "SCORM & xAPI Support" },
-      { pos: "br", text: "White-label Platform" },
+    urlSlug: "lms-architecture",
+    tiles: [
+      { name: "Custom Course Builder", desc: "Drag-and-drop authoring", color: "blue" },
+      { name: "Multi-tenant", desc: "Organisation isolation", color: "blue" },
+      { name: "SCORM & xAPI", desc: "Standards compliance", color: "purple" },
+      { name: "White-label Platform", desc: "Full brand control", color: "purple" },
     ],
-    items: ["Custom LMS development", "Multi-tenant architecture", "SCORM & xAPI compliance", "White-label & branding"],
+    preview: {
+      type: "pipeline",
+      headline: "4 pipelines active",
+      pipelines: [
+        { label: "Content Ingestion", pct: 92, rate: "18 MB/s", color: "#5b7fff" },
+        { label: "SCORM Processing", pct: 85, rate: "Real-time", color: "#6366f1" },
+        { label: "CDN Distribution", pct: 100, rate: "Global", color: "#34d399" },
+        { label: "Tenant Sync", pct: 78, rate: "Event-driven", color: "#a78bfa" },
+      ],
+      metrics: [
+        { label: "Courses Live", value: "4,280" },
+        { label: "Tenants", value: "62" },
+        { label: "Uptime", value: "99.97%" },
+      ],
+    },
   },
   {
     highlight: "Adaptive", rest: " Learning Engines",
-    annotations: [
-      { pos: "tl", text: "Learner Progress Tracking" },
-      { pos: "tr", text: "Personalised Content Paths" },
-      { pos: "bl", text: "Competency-based Pacing" },
-      { pos: "br", text: "AI Difficulty Adjustment" },
+    urlSlug: "adaptive-learning",
+    tiles: [
+      { name: "Content Pathways", desc: "AI-driven routing", color: "blue" },
+      { name: "Competency Pacing", desc: "Mastery-based progress", color: "blue" },
+      { name: "Difficulty Adjustment", desc: "Real-time calibration", color: "purple" },
+      { name: "Progress Tracking", desc: "Granular learner data", color: "purple" },
     ],
-    items: ["Adaptive content pathways", "Competency-based pacing", "AI difficulty adjustment", "Learner progress tracking"],
+    preview: {
+      type: "ring-gauges",
+      scores: [
+        { label: "Engagement Rate", pct: 88, color: "#5b7fff" },
+        { label: "Completion Rate", pct: 94, color: "#34d399" },
+        { label: "Mastery Score", pct: 79, color: "#a78bfa" },
+        { label: "Path Accuracy", pct: 96, color: "#6366f1" },
+      ],
+      events: [
+        { time: "11:42:08", text: "Pathway adjusted for Cohort-12" },
+        { time: "11:39:55", text: "Difficulty recalibrated x3" },
+        { time: "11:35:20", text: "Competency milestone reached" },
+      ],
+      footer: "Adapts every 5 min",
+    },
   },
   {
     highlight: "Assessment", rest: " & Credentialing",
-    annotations: [
-      { pos: "tl", text: "Automated Quiz Engines" },
-      { pos: "tr", text: "Proctoring Integration" },
-      { pos: "bl", text: "Digital Credential Issuance" },
-      { pos: "br", text: "Anti-cheat Detection" },
+    urlSlug: "assessment-credentialing",
+    tiles: [
+      { name: "Quiz Engine", desc: "Automated assessments", color: "blue" },
+      { name: "Proctoring", desc: "Remote exam integrity", color: "blue" },
+      { name: "Digital Credentials", desc: "Verifiable issuance", color: "purple" },
+      { name: "Anti-cheat", desc: "Behavioural detection", color: "purple" },
     ],
-    items: ["Automated assessment engines", "Proctoring integration", "Digital credential issuance", "Anti-cheat detection"],
+    preview: {
+      type: "inference",
+      accuracyLabel: "Proctoring AI v3.1",
+      inferences: [
+        { label: "Identity Verification", pct: 99, color: "#34d399", level: "Verified" },
+        { label: "Anomaly Detection", pct: 94, color: "#5b7fff", level: "Nominal" },
+        { label: "Screen Activity", pct: 87, color: "#a78bfa", level: "Normal" },
+        { label: "Cheat Probability", pct: 3, color: "#ef4444", level: "Low" },
+      ],
+      alertsLabel: "Live Events",
+      alerts: [
+        { time: "14:22:01", text: "Credential issued to learner #4412", sev: "#34d399" },
+        { time: "14:18:44", text: "Tab switch flagged – Session #992", sev: "#f59e0b" },
+        { time: "14:15:30", text: "Batch of 120 certs dispatched", sev: "#5b7fff" },
+      ],
+      footer: "Monitored per session",
+    },
   },
   {
     highlight: "Analytics", rest: " & Learner Insights",
-    annotations: [
-      { pos: "tl", text: "Engagement Heatmaps" },
-      { pos: "tr", text: "Cohort Performance Tracking" },
-      { pos: "bl", text: "Drop-off Prediction" },
-      { pos: "br", text: "Instructor Dashboards" },
+    urlSlug: "learner-analytics",
+    tiles: [
+      { name: "Engagement Heatmaps", desc: "Per-content signals", color: "blue" },
+      { name: "Cohort Tracking", desc: "Group performance", color: "blue" },
+      { name: "Drop-off Prediction", desc: "Early intervention", color: "purple" },
+      { name: "Instructor Dashboards", desc: "Real-time visibility", color: "purple" },
     ],
-    items: ["Learner engagement analytics", "Cohort performance tracking", "Drop-off prediction models", "Instructor dashboards"],
+    preview: {
+      type: "status-bars",
+      statusLabel: "All Pipelines Live",
+      rows: [
+        { label: "Event Collector", value: "Active", stat: "2.1M/hr" },
+        { label: "Drop-off Model", value: "Running", stat: "4ms" },
+        { label: "Cohort Aggregator", value: "Active", stat: "62 cohorts" },
+        { label: "Instructor Feed", value: "Live", stat: "Real-time" },
+      ],
+      chartLabel: "Events\nToday",
+      bars: [30,45,52,48,60,72,68,80,85,78,90,84,76,88,92,86,74,82,94,88,80,76,85,90],
+    },
   },
   {
     highlight: "Live", rest: " & Async Learning",
-    annotations: [
-      { pos: "tl", text: "Video Streaming Platform" },
-      { pos: "tr", text: "Interactive Webinar Tools" },
-      { pos: "bl", text: "Discussion Forums" },
-      { pos: "br", text: "Recorded Session Management" },
+    urlSlug: "live-async-learning",
+    tiles: [
+      { name: "Video Streaming", desc: "CDN-first delivery", color: "blue" },
+      { name: "Webinar Tools", desc: "Interactive sessions", color: "blue" },
+      { name: "Discussion Forums", desc: "Community learning", color: "purple" },
+      { name: "Async Content", desc: "On-demand access", color: "purple" },
     ],
-    items: ["Video streaming infrastructure", "Interactive webinar tools", "Discussion & forum systems", "Async content management"],
+    preview: {
+      type: "session-grid",
+      liveLabel: "4 Sessions Live",
+      sessions: [
+        { initials: "DK", name: "Dr. Kim — React 101", color: "#5b7fff", qual: 3, live: true, secs: 2831 },
+        { initials: "MP", name: "M. Patel — Data Sci", color: "#a78bfa", qual: 2, live: true, secs: 1203 },
+        { initials: "JR", name: "J. Reyes — UX Design", color: "#34d399", qual: 3, live: true, secs: 4729 },
+        { initials: "AL", name: "A. Lee — ML Basics", color: "#6366f1", qual: 2, live: false, secs: 342 },
+      ],
+      footerStats: ["Peak concurrent: 1,840", "CDN: 99.97%", "4 streams"],
+    },
   },
   {
     highlight: "Integration", rest: " & Ecosystem",
-    annotations: [
-      { pos: "tl", text: "SIS Integration" },
-      { pos: "tr", text: "HR & Payroll Connectors" },
-      { pos: "bl", text: "SSO & Identity Management" },
-      { pos: "br", text: "Third-party Content APIs" },
+    urlSlug: "integration-ecosystem",
+    tiles: [
+      { name: "SIS Integration", desc: "Student data sync", color: "blue" },
+      { name: "HR & Payroll", desc: "People system connectors", color: "blue" },
+      { name: "SSO & Identity", desc: "SAML & OAuth flows", color: "purple" },
+      { name: "Content APIs", desc: "Third-party libraries", color: "purple" },
     ],
-    items: ["Student information system sync", "HR & payroll connectors", "SSO & identity management", "Third-party content APIs"],
+    preview: {
+      type: "network",
+      centerLabel: "LMS Core",
+      nodes: [
+        { x: 118, y: 28, label: "SIS / Banner", sub: "Student records", color: "#5b7fff" },
+        { x: 198, y: 70, label: "HR Platform", sub: "Payroll sync", color: "#a78bfa" },
+        { x: 208, y: 148, label: "SSO Provider", sub: "Okta / Azure AD", color: "#34d399" },
+        { x: 140, y: 188, label: "Content Lib", sub: "LinkedIn / Coursera", color: "#6366f1" },
+        { x: 42, y: 152, label: "Zoom / Teams", sub: "Live session API", color: "#f59e0b" },
+      ],
+      footer: "5 integrations · real-time sync",
+    },
   },
 ];
 
@@ -81,7 +165,6 @@ const modules = [
 ];
 
 export default function EdtechPage() {
-  const [activeTab, setActiveTab] = useState(0);
   const [activeModule, setActiveModule] = useState(0);
 
   useEffect(() => {
@@ -95,13 +178,13 @@ export default function EdtechPage() {
       <Navbar />
 
       {/* HERO */}
-      <section className="relative flex flex-col items-center pt-32 pb-0 px-6 text-center overflow-hidden">
+      <section className="relative min-h-[85vh] flex flex-col items-center pt-32 pb-24 px-6 text-center overflow-hidden">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/hex-mesh-bg.png" alt="" className="absolute inset-0 w-full h-full object-cover object-center" style={{ opacity: 0.85 }} />
           <div className="absolute inset-0" style={{ background: "rgba(10,10,10,0.55)" }} />
           <div className="absolute top-0 left-0 right-0 h-40" style={{ background: "linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)" }} />
-          <div className="absolute bottom-0 left-0 right-0 h-48" style={{ background: "linear-gradient(to top, #0a0a0a 0%, transparent 100%)" }} />
+          <div className="absolute bottom-0 left-0 right-0 h-72" style={{ background: "linear-gradient(to top, #0a0a0a 0%, transparent 100%)" }} />
           <div className="absolute inset-y-0 left-0 w-24" style={{ background: "linear-gradient(to right, rgba(10,10,10,0.6), transparent)" }} />
           <div className="absolute inset-y-0 right-0 w-24" style={{ background: "linear-gradient(to left, rgba(10,10,10,0.6), transparent)" }} />
         </div>
@@ -122,94 +205,9 @@ export default function EdtechPage() {
             </a>
           </div>
         </div>
-        <div className="relative z-10 w-full max-w-5xl mx-auto pb-12 text-center">
-          <p className="text-white/40 text-base mb-8">Trusted by educational institutions reaching millions of learners.</p>
-          <div className="flex flex-wrap items-center justify-center gap-10">
-            {[{ name: "Samsung", src: "/logos/samsung.png" }, { name: "IBM", src: "/logos/ibm.png" }, { name: "TCL", src: "/logos/tcl.png" }].map((logo) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img key={logo.name} src={logo.src} alt={logo.name} className="h-7 w-auto object-contain opacity-35 hover:opacity-60 transition-opacity duration-300" style={{ filter: "brightness(0) invert(1)", maxWidth: "110px" }} />
-            ))}
-          </div>
-        </div>
-        <div className="relative z-10 w-full max-w-5xl mx-auto pb-0">
-          <div className="rounded-t-2xl bg-[#13141a] border border-white/[0.07] border-b-0 overflow-hidden">
-            <div className="grid md:grid-cols-[1fr_1.1fr]">
-              <div className="grid grid-cols-2 grid-rows-2 gap-1.5 p-4 bg-[#111218]">
-                <div className="col-span-1 row-span-2 rounded-xl overflow-hidden" style={{ minHeight: "220px" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp1.png" alt="" className="w-full h-full object-cover object-top" style={{ filter: "grayscale(100%)" }} />
-                </div>
-                <div className="rounded-xl overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp2.png" alt="" className="w-full h-full object-cover object-top" style={{ filter: "grayscale(100%)" }} />
-                </div>
-                <div className="rounded-xl overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp3.png" alt="" className="w-full h-full object-cover object-center" style={{ filter: "grayscale(100%)" }} />
-                </div>
-              </div>
-              <div className="flex flex-col justify-center text-left p-8 md:p-10">
-                <h2 className="text-2xl md:text-3xl font-bold text-white leading-snug mb-4">
-                  Legacy LMS platforms cap your learner growth.{" "}
-                  <span className="text-white/35">Most institutions only notice when engagement drops.</span>
-                </h2>
-                <p className="text-white/40 text-sm leading-relaxed mb-3">
-                  Every clunky course upload, every learner who drops off mid-module, every report that
-                  takes a week to generate - that&apos;s educational debt compounding silently.
-                </p>
-                <p className="text-white/40 text-sm leading-relaxed mb-7">
-                  We&apos;ve built learning platforms serving millions of learners, focusing on the engagement
-                  and performance architecture that drives real outcomes.
-                </p>
-                <Link href="/contact?type=edtech" className="self-start px-6 py-2.5 rounded-full border border-white/20 text-white/70 text-sm font-medium hover:text-white hover:border-white/40 transition-colors">
-                  Talk to an EdTech Engineer
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
-      {/* TECH CAPABILITIES */}
-      <section className="section-padding py-24" id="capabilities">
-        <div className="mx-auto max-w-6xl">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Core Capabilities</h2>
-            <p className="text-white/40 text-base">Built across the modern EdTech stack</p>
-          </div>
-          <div className="grid lg:grid-cols-[320px_1fr] gap-4 items-stretch">
-            <div className="flex flex-col gap-2">
-              {techCaps.map((cap, i) => (
-                <button key={i} onClick={() => setActiveTab(i)} className={`text-left px-5 py-4 rounded-xl transition-all duration-200 border ${activeTab === i ? "bg-white/[0.08] border-white/[0.1] shadow-sm" : "bg-white/[0.02] border-transparent hover:bg-white/[0.04]"}`}>
-                  <span className="font-bold text-white text-sm md:text-[15px]">{cap.highlight}</span>
-                  <span className={`text-sm md:text-[15px] transition-colors ${activeTab === i ? "text-white/65" : "text-white/35"}`}>{cap.rest}</span>
-                </button>
-              ))}
-            </div>
-            <div className="flex flex-col gap-0">
-              <div className="relative bg-[#13141a] border border-white/[0.07] rounded-t-2xl overflow-hidden flex items-center justify-center p-10" style={{ minHeight: "360px" }}>
-                <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Cpath d='M40 0H0v1h40V0zM0 40V0H1v40H0z' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E\")" }} />
-                <div className="relative z-10 w-full" style={{ maxWidth: "calc(100% - 180px)" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/intvue-mockup.png" alt="Platform mockup" className="w-full rounded-xl shadow-2xl" />
-                </div>
-                {techCaps[activeTab].annotations.map((a) => (
-                  <div key={a.pos} className={`absolute z-20 bg-[#13141a]/90 border border-white/[0.1] rounded-lg px-3 py-2 backdrop-blur-sm max-w-[140px] transition-all duration-300 ${a.pos === "tl" ? "top-5 left-5" : a.pos === "tr" ? "top-5 right-5 text-right" : a.pos === "bl" ? "bottom-5 left-5" : "bottom-5 right-5 text-right"}`}>
-                    <p className="text-white/80 text-xs leading-snug">{a.text}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="bg-[#13141a] border border-white/[0.07] border-t-0 rounded-b-2xl px-6 py-4 flex flex-wrap gap-x-6 gap-y-2">
-                {techCaps[activeTab].items.map((item) => (
-                  <span key={item} className="flex items-center gap-2 text-xs text-white/55">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1]/70 flex-shrink-0" />{item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CapabilityCardSection caps={techCaps} sectionSubtitle="Built across the modern EdTech stack" />
 
       {/* ARCHITECTURE REVIEW */}
       <section className="section-padding py-24">
@@ -270,24 +268,12 @@ export default function EdtechPage() {
               journey and institutional goals.
             </p>
           </div>
-          <div className="relative">
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/[0.08] -translate-x-1/2" />
-            {[
-              { num: "01", title: "Learning Audit", desc: "We map your existing LMS architecture, content delivery performance, learner engagement data, and integration landscape before any code is written.", align: "left" },
-              { num: "02", title: "Platform Architecture", desc: "We design for scale: CDN-first content delivery, event-driven analytics, and modular course management that grows with your catalogue.", align: "right" },
-              { num: "03", title: "Build & Validate", desc: "We develop with accessibility, performance, and SCORM compliance as first-class requirements woven into every sprint.", align: "left" },
-              { num: "04", title: "Launch & Iterate", desc: "Phased migration of your course library and learner data, then continuous optimisation based on real engagement signals.", align: "right" },
-            ].map((step) => (
-              <div key={step.num} className={`relative flex mb-16 last:mb-0 ${step.align === "right" ? "justify-end" : "justify-start"}`}>
-                <div className="absolute left-1/2 top-2 -translate-x-1/2 w-3 h-3 rounded-full bg-white/20 border border-white/30 z-10" />
-                <div className={`w-[44%] ${step.align === "right" ? "text-left pl-8" : "text-right pr-8"}`}>
-                  <span className="text-[#6366f1] text-4xl font-bold leading-none block mb-2">{step.num}</span>
-                  <h3 className="text-white font-bold text-lg mb-1">{step.title}</h3>
-                  <p className="text-white/40 text-sm leading-relaxed">{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ScrollTimeline steps={[
+    { num: "01", title: "Learning Audit", desc: "We map your existing LMS architecture, content delivery performance, learner engagement data, and integration landscape before any code is written.", align: "left" },
+    { num: "02", title: "Platform Architecture", desc: "We design for scale: CDN-first content delivery, event-driven analytics, and modular course management that grows with your catalogue.", align: "right" },
+    { num: "03", title: "Build & Validate", desc: "We develop with accessibility, performance, and SCORM compliance as first-class requirements woven into every sprint.", align: "left" },
+    { num: "04", title: "Launch & Iterate", desc: "Phased migration of your course library and learner data, then continuous optimisation based on real engagement signals.", align: "right" },
+  ]} />
         </div>
       </section>
 
@@ -404,3 +390,5 @@ export default function EdtechPage() {
     </div>
   );
 }
+
+

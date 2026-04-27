@@ -1,92 +1,173 @@
-"use client";
+﻿"use client";
 
-import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollTimeline from "@/components/ScrollTimeline";
 import Link from "next/link";
 import InsightsSection from "@/components/InsightsSection";
 import CaseStudiesSection from "@/components/CaseStudiesSection";
 import PageBackground from "@/components/PageBackground";
+import CapabilityCardSection, { type CapItem } from "@/components/CapabilityCardSection";
 
-const techCaps = [
+const techCaps: CapItem[] = [
   {
     highlight: "Building", rest: " Automation Systems",
-    annotations: [
-      { pos: "tl", text: "HVAC Integration" },
-      { pos: "tr", text: "Lighting Control Networks" },
-      { pos: "bl", text: "Energy Management Systems" },
-      { pos: "br", text: "Smart Sensor Orchestration" },
+    urlSlug: "building-automation",
+    tiles: [
+      { name: "HVAC Integration", desc: "Climate control across all zones", color: "blue" },
+      { name: "Lighting Control", desc: "Occupancy-responsive networks", color: "purple" },
+      { name: "Energy Management", desc: "Real-time consumption analytics", color: "blue" },
+      { name: "Sensor Orchestration", desc: "Smart IoT device coordination", color: "purple" },
     ],
-    items: ["IoT sensor integration", "HVAC & lighting automation", "Energy consumption analytics", "Predictive maintenance triggers"],
+    preview: {
+      type: "network",
+      centerLabel: "BMS Core",
+      nodes: [
+        { x: 118, y: 28,  label: "HVAC Control", sub: "Climate automation",  color: "#5b7fff" },
+        { x: 198, y: 72,  label: "Lighting Net",  sub: "6,200 units",        color: "#a78bfa" },
+        { x: 208, y: 148, label: "Energy Mgmt",   sub: "84.2 MW monitored",  color: "#34d399" },
+        { x: 140, y: 188, label: "IoT Sensors",   sub: "12K sensor nodes",   color: "#6366f1" },
+        { x: 42,  y: 152, label: "Security Hub",  sub: "Access & CCTV",      color: "#f59e0b" },
+      ],
+      footer: "500+ buildings · 15+ BMS integrations",
+    },
   },
   {
     highlight: "Asset", rest: " & Maintenance Management",
-    annotations: [
-      { pos: "tl", text: "Work Order Automation" },
-      { pos: "tr", text: "Preventive Maintenance" },
-      { pos: "bl", text: "Asset Lifecycle Tracking" },
-      { pos: "br", text: "Vendor Management" },
+    urlSlug: "asset-maintenance",
+    tiles: [
+      { name: "Work Orders", desc: "Automated job creation & routing", color: "blue" },
+      { name: "Preventive Maint", desc: "Scheduled servicing workflows", color: "purple" },
+      { name: "Asset Lifecycle", desc: "End-to-end equipment tracking", color: "blue" },
+      { name: "Vendor Portals", desc: "Contractor management & docs", color: "purple" },
     ],
-    items: ["Automated work orders", "Asset lifecycle tracking", "Vendor management portals", "Compliance documentation"],
+    preview: {
+      type: "pipeline",
+      headline: "4 pipelines running",
+      pipelines: [
+        { label: "Work Order Queue",    pct: 94,  rate: "Auto-assigned", color: "#5b7fff" },
+        { label: "Preventive Schedule", pct: 100, rate: "On schedule",   color: "#34d399" },
+        { label: "Asset Tracking",      pct: 88,  rate: "Real-time",    color: "#a78bfa" },
+        { label: "Vendor Dispatch",     pct: 72,  rate: "In progress",  color: "#6366f1" },
+      ],
+      metrics: [
+        { label: "Open WOs", value: "142"   },
+        { label: "SLA Met",  value: "97.4%" },
+        { label: "Assets",   value: "8,400" },
+      ],
+    },
   },
   {
     highlight: "Access", rest: " Control & Security",
-    annotations: [
-      { pos: "tl", text: "Role-based Entry Systems" },
-      { pos: "tr", text: "Visitor Management" },
-      { pos: "bl", text: "Audit Trail Logging" },
-      { pos: "br", text: "Multi-site Synchronisation" },
+    urlSlug: "access-security",
+    tiles: [
+      { name: "Role-based Entry", desc: "Granular access permissions", color: "blue" },
+      { name: "Visitor Mgmt", desc: "Digital check-in & badge flows", color: "purple" },
+      { name: "Audit Logs", desc: "Real-time entry event trails", color: "blue" },
+      { name: "Multi-site Sync", desc: "Unified access across locations", color: "purple" },
     ],
-    items: ["Role-based access control", "Visitor management", "Real-time audit logs", "Multi-site sync"],
+    preview: {
+      type: "session-grid",
+      liveLabel: "4 Sites Monitored",
+      sessions: [
+        { initials: "HQ", name: "HQ Tower",    color: "#5b7fff", qual: 3, live: true,  secs: 86400 },
+        { initials: "DT", name: "Data Centre", color: "#34d399", qual: 3, live: true,  secs: 43200 },
+        { initials: "WH", name: "Warehouse A", color: "#a78bfa", qual: 2, live: true,  secs: 28800 },
+        { initials: "RT", name: "Retail Zones", color: "#6366f1", qual: 2, live: false, secs: 14400 },
+      ],
+      footerStats: ["RBAC enabled", "4 sites", "Zero breaches"],
+    },
   },
   {
     highlight: "Energy", rest: " & Sustainability",
-    annotations: [
-      { pos: "tl", text: "Consumption Dashboards" },
-      { pos: "tr", text: "Carbon Footprint Tracking" },
-      { pos: "bl", text: "Utility Billing Integration" },
-      { pos: "br", text: "Green Certification Reports" },
+    urlSlug: "energy-sustainability",
+    tiles: [
+      { name: "Consumption Dash", desc: "Live energy monitoring", color: "blue" },
+      { name: "Carbon Tracking", desc: "Footprint & ESG reporting", color: "purple" },
+      { name: "Utility Billing", desc: "Invoice & cost allocation", color: "blue" },
+      { name: "Green Certification", desc: "BREEAM/LEED report generation", color: "purple" },
     ],
-    items: ["Real-time consumption dashboards", "Carbon tracking", "Utility billing integration", "Sustainability reporting"],
+    preview: {
+      type: "ring-gauges",
+      scores: [
+        { label: "Energy Efficiency", pct: 78, color: "#34d399" },
+        { label: "Carbon Reduction",  pct: 64, color: "#5b7fff" },
+        { label: "Utility Cost Save", pct: 82, color: "#a78bfa" },
+        { label: "Green Score",       pct: 91, color: "#6366f1" },
+      ],
+      events: [
+        { time: "09:14:22", text: "HVAC power reduced 12% — Floor 4"     },
+        { time: "09:11:08", text: "Monthly CO2 report auto-generated"     },
+        { time: "09:08:44", text: "Utility billing reconciled: £142K"     },
+      ],
+      footer: "30% avg energy reduction",
+    },
   },
   {
     highlight: "Space", rest: " Utilisation & Planning",
-    annotations: [
-      { pos: "tl", text: "Occupancy Analytics" },
-      { pos: "tr", text: "Room Booking Systems" },
-      { pos: "bl", text: "Floor Plan Management" },
-      { pos: "br", text: "Capacity Forecasting" },
+    urlSlug: "space-utilisation",
+    tiles: [
+      { name: "Occupancy Analytics", desc: "Sensor-driven usage insights", color: "blue" },
+      { name: "Room Booking", desc: "Desk & meeting room scheduling", color: "purple" },
+      { name: "Floor Plan Mgmt", desc: "Interactive layout management", color: "blue" },
+      { name: "Capacity Forecasting", desc: "Demand-based space planning", color: "purple" },
     ],
-    items: ["Occupancy sensor analytics", "Room & desk booking", "Floor plan management", "Capacity forecasting"],
+    preview: {
+      type: "status-bars",
+      statusLabel: "4 Buildings Live",
+      rows: [
+        { label: "HQ Tower",    value: "73% occupied", stat: "1,240 desks" },
+        { label: "Data Centre", value: "91% capacity", stat: "Restricted"  },
+        { label: "Warehouse A", value: "62% used",     stat: "8,400 m²"   },
+        { label: "Retail Zones", value: "88% booked",  stat: "42 units"   },
+      ],
+      chartLabel: "Occupancy\nLast 24h",
+      bars: [42,50,62,68,76,80,78,84,86,82,78,80,76,72,68,72,76,80,74,68,62,58,54,48],
+    },
   },
   {
     highlight: "Compliance", rest: " & Reporting",
-    annotations: [
-      { pos: "tl", text: "Regulatory Audit Trails" },
-      { pos: "tr", text: "Incident Reporting" },
-      { pos: "bl", text: "Certificate Management" },
-      { pos: "br", text: "SLA Dashboards" },
+    urlSlug: "compliance-reporting",
+    tiles: [
+      { name: "Regulatory Audit", desc: "Automated compliance trails", color: "blue" },
+      { name: "Incident Reports", desc: "Digital incident management", color: "purple" },
+      { name: "Certificate Mgmt", desc: "Expiry tracking & renewals", color: "blue" },
+      { name: "SLA Dashboards", desc: "Performance & breach alerting", color: "purple" },
     ],
-    items: ["Regulatory compliance tracking", "Automated incident reports", "Certificate management", "SLA monitoring dashboards"],
+    preview: {
+      type: "inference",
+      accuracyLabel: "Compliance Engine v3.1",
+      inferences: [
+        { label: "Regulatory Check", pct: 99,  color: "#34d399", level: "Compliant" },
+        { label: "Incident Classify", pct: 94, color: "#5b7fff", level: "High"      },
+        { label: "Cert Validity",    pct: 100, color: "#a78bfa", level: "Valid"     },
+        { label: "SLA Compliance",   pct: 97,  color: "#6366f1", level: "Strong"   },
+      ],
+      alertsLabel: "Compliance Signals",
+      alerts: [
+        { time: "09:16:02", text: "Fire cert renewal due in 14 days",   sev: "#f59e0b" },
+        { time: "09:12:30", text: "ISO 9001 audit passed — Site 3",     sev: "#34d399" },
+        { time: "09:08:44", text: "Lift inspection report auto-filed",  sev: "#5b7fff" },
+      ],
+      footer: "Monitored 24/7",
+    },
   },
 ];
 
 export default function FacilitiesManagementPage() {
-  const [activeTab, setActiveTab] = useState(0);
-
   return (
     <div className="relative min-h-screen bg-[#0a0a0a]">
       <PageBackground />
       <Navbar />
 
       {/* HERO */}
-      <section className="relative flex flex-col items-center pt-32 pb-0 px-6 text-center overflow-hidden">
+      <section className="relative min-h-[85vh] flex flex-col items-center pt-32 pb-24 px-6 text-center overflow-hidden">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/hex-mesh-bg.png" alt="" className="absolute inset-0 w-full h-full object-cover object-center" style={{ opacity: 0.85 }} />
           <div className="absolute inset-0" style={{ background: "rgba(10,10,10,0.55)" }} />
           <div className="absolute top-0 left-0 right-0 h-40" style={{ background: "linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)" }} />
-          <div className="absolute bottom-0 left-0 right-0 h-48" style={{ background: "linear-gradient(to top, #0a0a0a 0%, transparent 100%)" }} />
+          <div className="absolute bottom-0 left-0 right-0 h-72" style={{ background: "linear-gradient(to top, #0a0a0a 0%, transparent 100%)" }} />
           <div className="absolute inset-y-0 left-0 w-24" style={{ background: "linear-gradient(to right, rgba(10,10,10,0.6), transparent)" }} />
           <div className="absolute inset-y-0 right-0 w-24" style={{ background: "linear-gradient(to left, rgba(10,10,10,0.6), transparent)" }} />
         </div>
@@ -108,101 +189,10 @@ export default function FacilitiesManagementPage() {
             </a>
           </div>
         </div>
-
-        <div className="relative z-10 w-full max-w-5xl mx-auto pb-12 text-center">
-          <p className="text-white/40 text-base mb-8">Trusted by facilities operators managing thousands of sites.</p>
-          <div className="flex flex-wrap items-center justify-center gap-10">
-            {[
-              { name: "Samsung", src: "/logos/samsung.png" },
-              { name: "IBM", src: "/logos/ibm.png" },
-              { name: "TCL", src: "/logos/tcl.png" },
-              { name: "KIA", src: "/logos/kia.png" },
-            ].map((logo) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img key={logo.name} src={logo.src} alt={logo.name} className="h-7 w-auto object-contain opacity-35 hover:opacity-60 transition-opacity duration-300" style={{ filter: "brightness(0) invert(1)", maxWidth: "110px" }} />
-            ))}
-          </div>
-        </div>
-
-        <div className="relative z-10 w-full max-w-5xl mx-auto pb-0">
-          <div className="rounded-t-2xl bg-[#13141a] border border-white/[0.07] border-b-0 overflow-hidden">
-            <div className="grid md:grid-cols-[1fr_1.1fr]">
-              <div className="grid grid-cols-2 grid-rows-2 gap-1.5 p-4 bg-[#111218]">
-                <div className="col-span-1 row-span-2 rounded-xl overflow-hidden" style={{ minHeight: "220px" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp1.png" alt="" className="w-full h-full object-cover object-top" style={{ filter: "grayscale(100%)" }} />
-                </div>
-                <div className="rounded-xl overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp2.png" alt="" className="w-full h-full object-cover object-top" style={{ filter: "grayscale(100%)" }} />
-                </div>
-                <div className="rounded-xl overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/emp3.png" alt="" className="w-full h-full object-cover object-center" style={{ filter: "grayscale(100%)" }} />
-                </div>
-              </div>
-              <div className="flex flex-col justify-center text-left p-8 md:p-10">
-                <h2 className="text-2xl md:text-3xl font-bold text-white leading-snug mb-4">
-                  Facilities tech debt compounds silently.{" "}
-                  <span className="text-white/35">Most operators don&apos;t notice until a system fails.</span>
-                </h2>
-                <p className="text-white/40 text-sm leading-relaxed mb-3">
-                  Every manual override your team has built, every sensor that needs physical inspection,
-                  every maintenance ticket handled by spreadsheet - that&apos;s operational debt compounding.
-                </p>
-                <p className="text-white/40 text-sm leading-relaxed mb-7">
-                  We&apos;ve built facilities management software for operators spanning hundreds of buildings,
-                  focusing on the architectural integrity that keeps buildings profitable.
-                </p>
-                <Link href="/contact?type=facilities" className="self-start px-6 py-2.5 rounded-full border border-white/20 text-white/70 text-sm font-medium hover:text-white hover:border-white/40 transition-colors">
-                  Talk to a Facilities Expert
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* TECH CAPABILITIES */}
-      <section className="section-padding py-24" id="capabilities">
-        <div className="mx-auto max-w-6xl">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Core Capabilities</h2>
-            <p className="text-white/40 text-base">Built across the modern facilities stack</p>
-          </div>
-          <div className="grid lg:grid-cols-[320px_1fr] gap-4 items-stretch">
-            <div className="flex flex-col gap-2">
-              {techCaps.map((cap, i) => (
-                <button key={i} onClick={() => setActiveTab(i)} className={`text-left px-5 py-4 rounded-xl transition-all duration-200 border ${activeTab === i ? "bg-white/[0.08] border-white/[0.1] shadow-sm" : "bg-white/[0.02] border-transparent hover:bg-white/[0.04]"}`}>
-                  <span className="font-bold text-white text-sm md:text-[15px]">{cap.highlight}</span>
-                  <span className={`text-sm md:text-[15px] transition-colors ${activeTab === i ? "text-white/65" : "text-white/35"}`}>{cap.rest}</span>
-                </button>
-              ))}
-            </div>
-            <div className="flex flex-col gap-0">
-              <div className="relative bg-[#13141a] border border-white/[0.07] rounded-t-2xl overflow-hidden flex items-center justify-center p-10" style={{ minHeight: "360px" }}>
-                <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Cpath d='M40 0H0v1h40V0zM0 40V0H1v40H0z' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E\")" }} />
-                <div className="relative z-10 w-full" style={{ maxWidth: "calc(100% - 180px)" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/intvue-mockup.png" alt="Platform mockup" className="w-full rounded-xl shadow-2xl" />
-                </div>
-                {techCaps[activeTab].annotations.map((a) => (
-                  <div key={a.pos} className={`absolute z-20 bg-[#13141a]/90 border border-white/[0.1] rounded-lg px-3 py-2 backdrop-blur-sm max-w-[140px] transition-all duration-300 ${a.pos === "tl" ? "top-5 left-5" : a.pos === "tr" ? "top-5 right-5 text-right" : a.pos === "bl" ? "bottom-5 left-5" : "bottom-5 right-5 text-right"}`}>
-                    <p className="text-white/80 text-xs leading-snug">{a.text}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="bg-[#13141a] border border-white/[0.07] border-t-0 rounded-b-2xl px-6 py-4 flex flex-wrap gap-x-6 gap-y-2">
-                {techCaps[activeTab].items.map((item) => (
-                  <span key={item} className="flex items-center gap-2 text-xs text-white/55">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1]/70 flex-shrink-0" />{item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CapabilityCardSection caps={techCaps} sectionSubtitle="Built across the modern facilities stack" />
 
       {/* ARCHITECTURE REVIEW */}
       <section className="section-padding py-24">
@@ -281,24 +271,12 @@ export default function FacilitiesManagementPage() {
               your building&apos;s operational model and works inward from there.
             </p>
           </div>
-          <div className="relative">
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/[0.08] -translate-x-1/2" />
-            {[
-              { num: "01", title: "Systems Audit", desc: "We map your existing BMS, IoT sensors, access systems, and maintenance workflows to identify integration gaps and failure points.", align: "left" },
-              { num: "02", title: "Platform Architecture", desc: "We design a unified data layer that connects all building systems, enabling real-time visibility and automated workflows across every floor.", align: "right" },
-              { num: "03", title: "Integration & Testing", desc: "We build with reliability as the baseline: fault-tolerant integrations, redundant data paths, and automated alerting across all systems.", align: "left" },
-              { num: "04", title: "Go Live & Operate", desc: "Seamless cutover from legacy systems with zero operational disruption, followed by ongoing performance optimisation.", align: "right" },
-            ].map((step) => (
-              <div key={step.num} className={`relative flex mb-16 last:mb-0 ${step.align === "right" ? "justify-end" : "justify-start"}`}>
-                <div className="absolute left-1/2 top-2 -translate-x-1/2 w-3 h-3 rounded-full bg-white/20 border border-white/30 z-10" />
-                <div className={`w-[44%] ${step.align === "right" ? "text-left pl-8" : "text-right pr-8"}`}>
-                  <span className="text-[#6366f1] text-4xl font-bold leading-none block mb-2">{step.num}</span>
-                  <h3 className="text-white font-bold text-lg mb-1">{step.title}</h3>
-                  <p className="text-white/40 text-sm leading-relaxed">{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ScrollTimeline steps={[
+    { num: "01", title: "Systems Audit", desc: "We map your existing BMS, IoT sensors, access systems, and maintenance workflows to identify integration gaps and failure points.", align: "left" },
+    { num: "02", title: "Platform Architecture", desc: "We design a unified data layer that connects all building systems, enabling real-time visibility and automated workflows across every floor.", align: "right" },
+    { num: "03", title: "Integration & Testing", desc: "We build with reliability as the baseline: fault-tolerant integrations, redundant data paths, and automated alerting across all systems.", align: "left" },
+    { num: "04", title: "Go Live & Operate", desc: "Seamless cutover from legacy systems with zero operational disruption, followed by ongoing performance optimisation.", align: "right" },
+  ]} />
         </div>
       </section>
 
@@ -414,3 +392,5 @@ export default function FacilitiesManagementPage() {
     </div>
   );
 }
+
+

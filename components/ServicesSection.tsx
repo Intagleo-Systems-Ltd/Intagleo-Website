@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const CDN = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons";
 
@@ -239,6 +239,16 @@ const services = [
 
 export default function ServicesSection() {
   const [active, setActive] = useState(0);
+  const [userPaused, setUserPaused] = useState(false);
+
+  useEffect(() => {
+    if (userPaused) return;
+    const t = setInterval(() => setActive(prev => (prev + 1) % services.length), 3500);
+    return () => clearInterval(t);
+  }, [userPaused]);
+
+  const handleSelect = (i: number) => { setActive(i); setUserPaused(true); };
+
   const svc = services[active];
 
   return (
@@ -254,10 +264,10 @@ export default function ServicesSection() {
             <span className="font-light text-white/50">That Scales</span>
           </h2>
           <a
-            href="#services"
+            href="/contact?type=services"
             className="flex-shrink-0 mt-1 px-5 py-2.5 rounded-full border border-white/20 text-white/70 text-sm hover:border-white/50 hover:text-white transition-all"
           >
-            View our Services
+            Get Our Services
           </a>
         </div>
 
@@ -268,7 +278,7 @@ export default function ServicesSection() {
             {services.map((s, i) => (
               <button
                 key={s.name}
-                onClick={() => setActive(i)}
+                onClick={() => handleSelect(i)}
                 className={`w-full text-left px-6 py-4 rounded-2xl border border-white/[0.06] transition-all duration-200 ${
                   i === active
                     ? "bg-[#0d0f12] text-white"
@@ -323,16 +333,16 @@ export default function ServicesSection() {
 
             {/* Actions */}
             <div className="flex items-center gap-3 flex-wrap mt-auto">
-              <a
+              {/* <a
                 href={`/contact?type=${serviceContactTypes[svc.name] ?? "general"}`}
                 className="inline-block px-6 py-2.5 rounded-full border border-white/20 text-white/70 text-sm hover:border-white/50 hover:text-white transition-all"
               >
                 Get Started
-              </a>
+              </a> */}
               {servicePageUrls[svc.name] && (
                 <a
                   href={servicePageUrls[svc.name]}
-                  className="inline-flex items-center gap-1.5 text-sm text-[#6366f1] font-medium hover:gap-2.5 transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#6366f1]/10 border border-[#6366f1]/30 text-[#818cf8] text-sm font-medium hover:bg-[#6366f1]/20 hover:border-[#6366f1]/60 hover:text-white transition-all duration-200"
                 >
                   Learn More
                   <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

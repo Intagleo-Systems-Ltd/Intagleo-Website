@@ -4,42 +4,50 @@ import { useState } from "react";
 const industries = [
   {
     name: "Smart Cities & IoT",
+    url: "/smart-cities",
     bullets: ["Real-Time Sensor Networks", "Urban Data Platforms", "Smart Infrastructure Management"],
     gradient: "from-blue-900/60 via-blue-800/20 to-transparent",
     glowColor: "rgba(30, 80, 180, 0.35)",
   },
   {
     name: "Fintech",
+    url: "/fintech",
     bullets: ["Payment & Trading Platforms", "Compliance Automation", "Financial Analytics Dashboards"],
     gradient: "from-indigo-900/60 via-indigo-800/20 to-transparent",
     glowColor: "rgba(60, 40, 180, 0.35)",
   },
   {
     name: "Healthcare",
+    url: "/healthcare",
     bullets: ["EHR & Telemedicine Systems", "Patient Management Portals", "AI-Assisted Diagnostics"],
     gradient: "from-teal-900/60 via-teal-800/20 to-transparent",
     glowColor: "rgba(20, 120, 100, 0.35)",
   },
   {
-    name: "Retail & e-commerce",
-    bullets: ["AI-Driven Inventory Intelligence", "Interactive Digital Signage & Kiosks", "Scalable Marketplace Modernization"],
-    gradient: "from-red-900/60 via-red-800/20 to-transparent",
-    glowColor: "rgba(180, 30, 15, 0.45)",
-  },
-  {
     name: "Digital Signage",
+    url: "/digital-signage",
     bullets: ["Dynamic Content Management", "Multi-Screen Network Control", "Real-Time Audience Analytics"],
     gradient: "from-purple-900/60 via-purple-800/20 to-transparent",
     glowColor: "rgba(100, 30, 160, 0.35)",
   },
   {
+    name: "Retail & e-commerce",
+    url: "/ecommerce-retail",
+    bullets: ["AI-Driven Inventory Intelligence", "Interactive Digital Signage & Kiosks", "Scalable Marketplace Modernization"],
+    gradient: "from-red-900/60 via-red-800/20 to-transparent",
+    glowColor: "rgba(180, 30, 15, 0.45)",
+  },
+  
+  {
     name: "HR & recruitment",
+    url: "/hr-recruitment",
     bullets: ["Applicant Tracking Systems", "AI Resume Screening", "Onboarding Automation"],
     gradient: "from-orange-900/60 via-orange-800/20 to-transparent",
     glowColor: "rgba(180, 80, 15, 0.35)",
   },
   {
     name: "Facilities Management",
+    url: "/facilities-management",
     bullets: ["Asset Lifecycle Tracking", "Predictive Maintenance AI", "Work Order Automation"],
     gradient: "from-slate-800/60 via-slate-700/20 to-transparent",
     glowColor: "rgba(60, 70, 90, 0.4)",
@@ -47,7 +55,7 @@ const industries = [
 ];
 
 export default function IndustriesSection() {
-  const [active, setActive] = useState(3); // Retail open by default
+  const [active, setActive] = useState(3); // Digital Signage open by default
 
   return (
     <section id="industries" className="relative z-10 bg-[#0a0a0a] section-padding pt-24 pb-0">
@@ -134,7 +142,7 @@ export default function IndustriesSection() {
                         ))}
                       </ul>
                       <a
-                        href="/contact?type=start-project"
+                        href={ind.url}
                         className="flex items-center gap-2 text-white/50 text-sm hover:text-white transition-colors"
                       >
                         <svg viewBox="0 0 10 10" fill="currentColor" className="w-3 h-3 text-white/40">
