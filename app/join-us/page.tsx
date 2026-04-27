@@ -8,7 +8,7 @@ import type { Vacancy } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Join Us | Intagleo",
   description:
-    "Build production-ready software with a team of senior engineers. Explore open roles at Intagleo — remote-first, outcome-driven, no fluff.",
+    "Build production-ready software with a team of senior engineers. Explore open roles at Intagleo â€” remote-first, outcome-driven, no fluff.",
 };
 
 export const revalidate = 60;
@@ -27,7 +27,7 @@ async function getVacancies(): Promise<Vacancy[]> {
 const values = [
   {
     title: "Real ownership",
-    desc: "No ticket queues. You own your work end-to-end — from scoping conversations to production releases. Every engineer here has a direct line to impact.",
+    desc: "No ticket queues. You own your work end-to-end â€” from scoping conversations to production releases. Every engineer here has a direct line to impact.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" aria-hidden="true">
         <path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7l2-7z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round"/>
@@ -36,7 +36,7 @@ const values = [
   },
   {
     title: "Senior-only environment",
-    desc: "You'll collaborate exclusively with experienced engineers. No mentoring juniors on client time — just high-signal technical conversations with people who've shipped production systems.",
+    desc: "You'll collaborate exclusively with experienced engineers. No mentoring juniors on client time â€” just high-signal technical conversations with people who've shipped production systems.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" aria-hidden="true">
         <circle cx="9" cy="7" r="3" stroke="currentColor" strokeWidth="1.4"/>
@@ -67,7 +67,7 @@ const values = [
   },
   {
     title: "No office politics",
-    desc: "Flat structure, transparent decisions, no management layers between you and the work. Good ideas win on merit — not seniority or who speaks loudest.",
+    desc: "Flat structure, transparent decisions, no management layers between you and the work. Good ideas win on merit â€” not seniority or who speaks loudest.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" aria-hidden="true">
         <path d="M12 22V12M12 12L7 17M12 12l5 5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -77,7 +77,7 @@ const values = [
   },
   {
     title: "Grow with the company",
-    desc: "We're growing fast across new industries and geographies. Roles evolve here — engineers become tech leads, leads become principals. If you grow, your title and comp will follow.",
+    desc: "We're growing fast across new industries and geographies. Roles evolve here â€” engineers become tech leads, leads become principals. If you grow, your title and comp will follow.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" aria-hidden="true">
         <path d="M3 20l5-8 4 4 4-7 5 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -89,7 +89,7 @@ const values = [
 const perks = [
   { label: "Competitive salary", sub: "Benchmarked to market rate" },
   { label: "Remote / hybrid", sub: "Work from wherever you do your best thinking" },
-  { label: "Flexible hours", sub: "Async-first — own your schedule" },
+  { label: "Flexible hours", sub: "Async-first â€” own your schedule" },
   { label: "Learning budget", sub: "Courses, conferences, and certifications" },
   { label: "Private health cover", sub: "UK & UAE team members" },
   { label: "Equipment stipend", sub: "Get the tools you need to ship" },
@@ -124,7 +124,7 @@ export default async function JoinUsPage() {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[#6366f1]" />
                 </span>
                 <span className="text-[#6366f1] text-xs font-medium tracking-wide">
-                  We&apos;re hiring — {vacancies.length} open {vacancies.length === 1 ? "role" : "roles"}
+                  We&apos;re hiring â€” {vacancies.length} open {vacancies.length === 1 ? "role" : "roles"}
                 </span>
               </div>
 
@@ -139,7 +139,7 @@ export default async function JoinUsPage() {
               </h1>
 
               <p className="text-white/50 text-lg leading-relaxed mb-10 max-w-xl">
-                Intagleo engineers work on real enterprise products — not internal tools or maintenance tickets.
+                Intagleo engineers work on real enterprise products â€” not internal tools or maintenance tickets.
                 If you want ownership, craft, and clients who actually care about quality, you&apos;ll fit right in.
               </p>
 
@@ -190,7 +190,7 @@ export default async function JoinUsPage() {
                 Why engineers choose us
               </h2>
               <p className="text-white/40 text-base max-w-xl">
-                We&apos;re not for everyone — and that&apos;s intentional. Here&apos;s what makes working here different.
+                We&apos;re not for everyone â€” and that&apos;s intentional. Here&apos;s what makes working here different.
               </p>
             </div>
 
@@ -248,7 +248,7 @@ export default async function JoinUsPage() {
                 Send us a speculative application
               </h2>
               <p className="text-white/40 text-base max-w-lg mx-auto mb-8">
-                If you&apos;re exceptional at what you do, we want to hear from you — even if there&apos;s no open role that fits right now.
+                If you&apos;re exceptional at what you do, we want to hear from you â€” even if there&apos;s no open role that fits right now.
               </p>
               <Link
                 href="/contact?type=general"
