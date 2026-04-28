@@ -10,7 +10,7 @@ import Button from "@/components/ui/Button";
 
 const serviceLinks = [
   {
-    label: "Custom Software", href: "/custom-software",
+    label: "Custom Software Development", href: "/custom-software",
     desc: "Purpose-built software from architecture to production.",
     icon: <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4 flex-shrink-0"><path d="M5 7l-3 3 3 3M15 7l3 3-3 3M11 4l-2 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>,
   },
@@ -40,7 +40,7 @@ const serviceLinks = [
     icon: <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4 flex-shrink-0"><rect x="6" y="1" width="8" height="14" rx="2" stroke="currentColor" strokeWidth="1.5"/><rect x="6" y="15" width="8" height="4" rx="1" stroke="currentColor" strokeWidth="1.5"/><circle cx="10" cy="17" r="0.75" fill="currentColor"/><path d="M8 4h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>,
   },
   {
-    label: "Legacy Modernisation", href: "/legacy-modernization",
+    label: "Digital Transformation", href: "/legacy-modernization",
     desc: "Migrate outdated systems to modern cloud-native architecture.",
     icon: <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4 flex-shrink-0"><path d="M4 10a6 6 0 0 1 10.5-4M4 10H1l3 3 3-3H4zM16 10a6 6 0 0 1-10.5 4M16 10h3l-3-3-3 3h3z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>,
   },
@@ -584,11 +584,25 @@ export default function Navbar() {
         </nav>
 
         {/* CTA */}
-        <div className="hidden lg:flex">
-          <Button href="/contact" variant="primary" className="text-sm px-5 py-2">
-            Contact Us
-          </Button>
-        </div>
+        <Link
+          href="/contact"
+          className="group hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] hover:bg-[#4f46e5] text-white text-sm font-medium relative overflow-hidden transition-colors duration-300"
+        >
+          {/* Shimmer sweep on hover */}
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"
+            style={{ background: "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.18) 50%, transparent 60%)" }}
+          />
+          <span className="relative">Contact Us</span>
+          <svg
+            viewBox="0 0 16 16" fill="none"
+            className="relative w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200"
+            aria-hidden="true"
+          >
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </Link>
 
         {/* Mobile hamburger */}
         <motion.button

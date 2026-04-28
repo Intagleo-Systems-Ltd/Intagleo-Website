@@ -92,11 +92,10 @@ export default function MobileDevPage() {
         </div>
 
         <div className="relative z-10 max-w-3xl mx-auto pb-12">
-          <p className="text-xs text-white/35 uppercase tracking-widest mb-5">Mobile Development</p>
+          {/* <p className="text-xs text-white/35 uppercase tracking-widest mb-5">Mobile Development</p> */}
           <h1 className="text-4xl md:text-5xl lg:text-[52px] font-bold heading-gradient leading-[1.07] tracking-tight mb-5">
-            Apps your users<br />
-            won&apos;t uninstall.<br />
-            <span className="text-white/35">Built to last.</span>
+            Apps that users love.<br />
+            <span className="text-white/35">Results you measure.</span>
           </h1>
           <p className="text-white/45 text-base md:text-lg max-w-lg mx-auto mb-9">
             Native iOS, Android, and cross-platform apps engineered for performance, usability, and
@@ -188,71 +187,7 @@ export default function MobileDevPage() {
       </section>
 
       {/* TECH STACK */}
-      <section className="relative py-16 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "conic-gradient(from 180deg at 50% 110%, rgba(175,77,68,0.35) 0%, rgba(90,43,44,0.12) 12%, transparent 28%)" }} />
-        <div className="absolute inset-y-0 left-0 w-64 pointer-events-none" style={{ background: "radial-gradient(ellipse at 0% 60%, rgba(175,50,40,0.28) 0%, transparent 70%)" }} />
-        <div className="absolute inset-y-0 right-0 w-64 pointer-events-none" style={{ background: "radial-gradient(ellipse at 100% 60%, rgba(175,50,40,0.28) 0%, transparent 70%)" }} />
-        <div className="relative z-10 mx-auto max-w-5xl px-6 text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-3">Built across the full mobile stack</h2>
-          <p className="text-white/40 text-sm">Native and cross-platform expertise under one roof.</p>
-        </div>
-        <div className="relative w-full" style={{ aspectRatio: "1920 / 1117" }}>
-          <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1920 1117" preserveAspectRatio="xMidYMid meet" fill="none">
-            <defs>
-              <linearGradient id="mob1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#050914" stopOpacity="1"/><stop offset="100%" stopColor="#050914" stopOpacity="0"/></linearGradient>
-              <linearGradient id="mob2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#050914" stopOpacity="1"/><stop offset="100%" stopColor="#050914" stopOpacity="0"/></linearGradient>
-              <linearGradient id="mob3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#050914" stopOpacity="1"/><stop offset="100%" stopColor="#050914" stopOpacity="0"/></linearGradient>
-              <linearGradient id="mob4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#050914" stopOpacity="0.4"/><stop offset="100%" stopColor="#050914" stopOpacity="0"/></linearGradient>
-              <linearGradient id="mob5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#050914" stopOpacity="0.3"/><stop offset="100%" stopColor="#050914" stopOpacity="0"/></linearGradient>
-              <linearGradient id="mobInner" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#050914" stopOpacity="1"/><stop offset="100%" stopColor="#050914" stopOpacity="0"/></linearGradient>
-              <linearGradient id="mobBottom" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#050914" stopOpacity="0.8"/><stop offset="100%" stopColor="#050914" stopOpacity="0"/></linearGradient>
-            </defs>
-            <rect x="121" y="89" width="1678" height="1153" rx="191" fill="url(#mob1)" stroke="rgba(255,255,255,0.07)" strokeWidth="1"/>
-            <rect x="240" y="209" width="1439" height="1033" rx="163" fill="url(#mob2)" stroke="rgba(255,255,255,0.07)" strokeWidth="1"/>
-            <rect x="366" y="336" width="1188" height="906" rx="145" fill="url(#mob3)" stroke="rgba(255,255,255,0.07)" strokeWidth="1"/>
-            <rect x="487" y="457" width="946" height="785" rx="145" fill="url(#mob4)" stroke="rgba(255,255,255,0.07)" strokeWidth="1"/>
-            <rect x="619" y="586" width="682" height="656" rx="116" fill="url(#mob5)" stroke="rgba(255,255,255,0.06)" strokeWidth="1"/>
-            <rect x="827" y="372" width="266" height="262" rx="52" fill="url(#mobInner)" stroke="rgba(255,255,255,0.07)" strokeWidth="1"/>
-            <rect x="741" y="684" width="438" height="307" rx="116" fill="url(#mobBottom)" stroke="rgba(255,255,255,0.05)" strokeWidth="1"/>
-            <path d="M960,503 C750,503 430,430 269,310" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M960,503 C1150,503 1540,440 1613,348" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M960,503 C750,503 500,475 384,475" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M960,503 C1150,503 1620,503 1699,566" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M960,503 C750,503 330,550 163,623" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M960,503 C1150,503 1360,580 1390,676" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M960,503 C750,503 540,640 480,728" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M960,503 C1150,503 1360,380 1405,302" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
-          </svg>
-          {[
-            { name: "React Native", lp: 14.0,  tp: 27.75, icon: <svg viewBox="0 0 40 40" fill="none" className="w-full h-full"><circle cx="20" cy="20" r="3" fill="#61DAFB"/><ellipse cx="20" cy="20" rx="14" ry="5.5" stroke="#61DAFB" strokeWidth="1.5" fill="none"/><ellipse cx="20" cy="20" rx="14" ry="5.5" stroke="#61DAFB" strokeWidth="1.5" fill="none" transform="rotate(60 20 20)"/><ellipse cx="20" cy="20" rx="14" ry="5.5" stroke="#61DAFB" strokeWidth="1.5" fill="none" transform="rotate(120 20 20)"/></svg> },
-            { name: "Flutter",      lp: 84.0,  tp: 31.16, icon: <svg viewBox="0 0 40 40" fill="none" className="w-full h-full"><path d="M22 8l-12 12 5 5 12-12-5-5z" fill="#54C5F8"/><path d="M15 25l5 5-5 5-5-5 5-5z" fill="#01579B"/><path d="M15 25l5 5h-5l-5-5h5z" fill="#29B6F6"/></svg> },
-            { name: "Swift",        lp: 20.0,  tp: 42.52, icon: <svg viewBox="0 0 40 40" fill="none" className="w-full h-full"><path d="M28 14c0 0-3-4-10-3C10 12 8 18 10 22c1 2 3 3 3 3s-1-2 0-4c2-4 8-4 12-2l3-5z" fill="#F05138"/><path d="M14 28c0 0 3 4 10 3 8-1 10-7 8-11-1-2-3-3-3-3s1 2 0 4c-2 4-8 4-12 2l-3 5z" fill="#F05138"/></svg> },
-            { name: "Kotlin",       lp: 88.5,  tp: 50.67, icon: <svg viewBox="0 0 40 40" fill="none" className="w-full h-full"><path d="M10 10h20L20 20l10 10H10V10z" fill="url(#kt)"/><defs><linearGradient id="kt" x1="10" y1="10" x2="30" y2="30"><stop stopColor="#7F52FF"/><stop offset="1" stopColor="#C811E1"/></linearGradient></defs></svg> },
-            { name: "Firebase",     lp: 8.5,   tp: 55.77, icon: <svg viewBox="0 0 40 40" fill="none" className="w-full h-full"><path d="M13 28l4-14 4 8 3-5 3 11H13z" fill="#FFA000"/><path d="M13 28l7-7 7 7H13z" fill="#F57C00" fillOpacity="0.6"/><path d="M17 14l3 6 3-5 3 13-9-3 0-11z" fill="#FFCA28"/></svg> },
-            { name: "TypeScript",   lp: 72.38, tp: 60.52, icon: <svg viewBox="0 0 40 40" fill="none" className="w-full h-full"><rect x="8" y="8" width="24" height="24" rx="2" fill="#3178C6"/><path d="M22 18h6M25 18v10M13 24c0 0 1 4 5 4s4-3 4-3-0-3-4-3-4-3-4-3 0-2 3-2 3 2 3 2" stroke="white" strokeWidth="1.5" strokeLinecap="round"/></svg> },
-            { name: "Xcode",        lp: 25.0,  tp: 65.18, icon: <svg viewBox="0 0 40 40" fill="none" className="w-full h-full"><rect x="8" y="8" width="24" height="24" rx="5" fill="#1575F9" fillOpacity="0.2" stroke="#1575F9" strokeWidth="1.5"/><path d="M14 26l6-12 6 12" stroke="#1575F9" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M16 22h8" stroke="#1575F9" strokeWidth="1.5" strokeLinecap="round"/></svg> },
-            { name: "Android",      lp: 73.16, tp: 27.04, icon: <svg viewBox="0 0 40 40" fill="none" className="w-full h-full"><path d="M13 20v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8H13z" fill="#3DDC84" fillOpacity="0.8"/><path d="M13 20h14c0-4-3-7-7-7s-7 3-7 7z" fill="#3DDC84"/><path d="M11 21h2M27 21h2M17 14l-2-3M23 14l2-3" stroke="#3DDC84" strokeWidth="1.5" strokeLinecap="round"/><circle cx="17" cy="18" r="1" fill="white"/><circle cx="23" cy="18" r="1" fill="white"/></svg> },
-          ].map((tech) => (
-            <div key={tech.name} className="absolute z-10" style={{ left: `${tech.lp}%`, top: `${tech.tp}%`, transform: "translate(-50%,-50%)" }}>
-              <div className="rounded-[18px] flex items-center justify-center hover:scale-110 transition-transform duration-200" style={{ width: "clamp(52px, 4.22vw, 82px)", height: "clamp(52px, 4.22vw, 82px)", padding: "clamp(10px, 0.8vw, 16px)", backgroundImage: "linear-gradient(121deg, rgb(51,52,61) 41%, rgb(6,4,9) 109%)", border: "1px solid rgba(255,255,255,0.11)", boxShadow: "0px 1px 14px 0px rgba(255,255,255,0.10)", backdropFilter: "blur(3px)" }}>
-                {tech.icon}
-              </div>
-              <p className="text-center text-white/30 mt-1.5" style={{ fontSize: "clamp(9px, 0.7vw, 12px)" }}>{tech.name}</p>
-            </div>
-          ))}
-          <div className="absolute z-20" style={{ left: "49.9%", top: "45%", transform: "translate(-50%,-50%)" }}>
-            <div className="rounded-[22px] flex items-center justify-center" style={{ width: "clamp(80px, 12.66vw, 244px)", height: "clamp(80px, 12.55vw, 241px)", padding: "clamp(14px, 1.8vw, 30px)", backgroundImage: "linear-gradient(121deg, rgb(51,52,61) 41%, rgb(6,4,9) 109%)", border: "1px solid rgba(255,255,255,0.11)", boxShadow: "0px 1px 14px 0px rgba(255,255,255,0.10)", backdropFilter: "blur(3px)" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo-static.png" alt="Intagleo" className="w-full h-full object-contain" />
-            </div>
-          </div>
-          <div className="absolute z-20" style={{ left: "50%", top: "78%", transform: "translate(-50%,-50%)" }}>
-            <div className="rounded-[58px] flex items-center justify-center" style={{ padding: "clamp(8px, 1.5vw, 29px) clamp(20px, 3vw, 58px)", background: "linear-gradient(to bottom, #050914, rgba(5,9,20,0.6))", border: "1px solid rgba(255,255,255,0.10)" }}>
-              <span className="whitespace-nowrap font-normal" style={{ fontSize: "clamp(13px, 1.25vw, 24px)", backgroundImage: "linear-gradient(120deg, rgb(230,242,255) 20%, rgb(175,175,175) 41%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Technologies</span>
-            </div>
-          </div>
-        </div>
-      </section>
+     
 
       {/* STATS */}
       <section className="section-padding py-8">
@@ -320,7 +255,7 @@ export default function MobileDevPage() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
             <Link href="/contact?type=mobile-dev" className="px-7 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">Start a conversation</Link>
-            <Link href="/contact?type=technical-call" className="px-7 py-3 rounded-full border border-white/25 text-white/80 text-sm font-medium hover:text-white hover:border-white/45 transition-colors">Schedule a technical call</Link>
+            <Link href="/case-studies" className="px-7 py-3 rounded-full border border-white/25 text-white/80 text-sm font-medium hover:text-white hover:border-white/45 transition-colors">See our Work</Link>
           </div>
           <p className="text-white/25 text-xs tracking-wide">Direct Engineer Access · Response within 1 business day</p>
         </div>

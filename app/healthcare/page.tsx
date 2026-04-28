@@ -625,7 +625,7 @@ export default function HealthcarePage() {
         <div className="mx-auto max-w-6xl grid md:grid-cols-2 gap-6 items-stretch">
           <div className="relative rounded-2xl overflow-hidden" style={{ minHeight: "480px", background: "#13141a" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/hex-mesh-bg.png" alt="" className="absolute inset-0 w-full h-full object-cover object-center opacity-35" />
+            <img src="/health.gif" alt="" className="absolute inset-0 w-full h-full object-cover object-center opacity-35" />
             <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 70% at 40% 70%, rgba(99,102,241,0.09) 0%, transparent 65%)" }} />
             <div className="absolute inset-0 flex flex-col justify-between p-10">
               <div>
@@ -721,9 +721,8 @@ export default function HealthcarePage() {
             <Link href="/contact?type=healthcare" className="px-7 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
               Talk to a healthcare engineer
             </Link>
-            <Link href="/contact?type=healthcare-review" className="px-7 py-3 rounded-full border border-white/25 text-white/80 text-sm font-medium hover:text-white hover:border-white/45 transition-colors">
-              Book a clinical system review
-            </Link>
+                        <Link href="/case-studies" className="px-7 py-3 rounded-full border border-white/25 text-white/80 text-sm font-medium hover:text-white hover:border-white/45 transition-colors">See our Work</Link>
+
           </div>
           <p className="text-white/25 text-xs tracking-wide">Direct Engineer Access · Response within 1 business day</p>
         </div>

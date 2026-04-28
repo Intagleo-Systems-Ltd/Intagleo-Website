@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 
 const stats = [
-  { value: "98%", label: "On-Time Delivery" },
+  { value: "100%", label: "On-Time Delivery" },
   { value: "150+", label: "Scaled Products" },
   { value: "4.9/5", label: "Client Satisfaction" },
   { value: "50+", label: "Enterprise Partners" },

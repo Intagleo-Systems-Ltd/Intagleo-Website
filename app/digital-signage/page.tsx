@@ -411,7 +411,7 @@ export default function DigitalSignagePage() {
           <div className="relative rounded-2xl overflow-hidden" style={{ minHeight: "480px", background: "#13141a" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/hex-mesh-bg.png"
+              src="/ds.gif"
               alt=""
               className="absolute inset-0 w-full h-full object-cover object-center opacity-35"
             />
@@ -557,12 +557,8 @@ export default function DigitalSignagePage() {
             >
               Talk to a Signage Expert
             </Link>
-            <Link
-              href="/contact?type=signage-review"
-              className="px-7 py-3 rounded-full border border-white/25 text-white/80 text-sm font-medium hover:text-white hover:border-white/45 transition-colors"
-            >
-              Book an Architecture Review
-            </Link>
+                        <Link href="/case-studies" className="px-7 py-3 rounded-full border border-white/25 text-white/80 text-sm font-medium hover:text-white hover:border-white/45 transition-colors">See our Work</Link>
+
           </div>
 
           <p className="text-white/25 text-xs tracking-wide">

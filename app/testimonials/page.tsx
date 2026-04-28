@@ -2,6 +2,7 @@
 import { getAllTestimonials } from "@/lib/content";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import TestimonialsGrid from "@/components/TestimonialsGrid";
 
 export const metadata: Metadata = {
   title: "Testimonials , Intagleo",
@@ -32,65 +33,10 @@ export default function TestimonialsPage() {
         </div>
       </section>
 
-      {/* Testimonials grid */}
+      {/* Testimonials grid with pagination */}
       <section className="section-padding py-16">
         <div className="mx-auto max-w-[1400px]">
-          {testimonials.length === 0 ? (
-            <p className="text-white/30 text-sm">
-              No testimonials yet , check back soon.
-            </p>
-          ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {testimonials.map((testimonial) => (
-                <div
-                  key={testimonial.slug}
-                  className="rounded-2xl bg-[#0d0d10] border border-white/8 p-8 hover:border-white/20 transition-all duration-300 flex flex-col"
-                >
-                  {/* Quote */}
-                  <p className="text-white/65 text-base leading-relaxed mb-8 flex-grow">
-                    "{testimonial.quote}"
-                  </p>
-
-                  {/* Divider */}
-                  <div className="h-px bg-white/10 mb-6" />
-
-                  {/* Author info */}
-                  <div className="flex items-center gap-4">
-                    {/* Avatar */}
-                    <div className="w-12 h-12 rounded-full bg-[#161618] flex-shrink-0 overflow-hidden">
-                      {testimonial.photo ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          src={testimonial.photo}
-                          alt={testimonial.name}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-[#6366f1]/20 to-transparent flex items-center justify-center">
-                          <span className="text-white/30 text-sm font-medium">
-                            {testimonial.name[0]}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Name, title, company */}
-                    <div className="min-w-0">
-                      <p className="text-white font-medium text-sm">
-                        {testimonial.name}
-                      </p>
-                      <p className="text-white/40 text-xs">
-                        {testimonial.title}
-                      </p>
-                      <p className="text-[#6366f1] text-xs font-medium">
-                        {testimonial.company}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+          <TestimonialsGrid testimonials={testimonials} />
         </div>
       </section>
 

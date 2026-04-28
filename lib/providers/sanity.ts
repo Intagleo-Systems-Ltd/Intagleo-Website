@@ -175,6 +175,21 @@ export async function getFeaturedTestimonialsAsync(): Promise<Testimonial[]> {
   return getClient().fetch<Testimonial[]>(`*[_type == "testimonial" && show_on_homepage != false] { ${testimonialFields} }`);
 }
 
+export async function getVacancyBySlugAsync(slug: string): Promise<Vacancy | null> {
+  const results = await getClient().fetch<Vacancy[]>(
+    `*[_type == "vacancy" && slug.current == $slug][0..0] {
+      "_id": _id,
+      title,
+      "slug": slug.current,
+      department, location, type, experience, salary,
+      shortDescription, responsibilities, requirements, niceToHave,
+      isOpen, postedAt
+    }`,
+    { slug }
+  );
+  return results[0] ?? null;
+}
+
 export async function getVacanciesAsync(): Promise<Vacancy[]> {
   return getClient().fetch<Vacancy[]>(
     `*[_type == "vacancy" && isOpen != false] | order(postedAt desc) {

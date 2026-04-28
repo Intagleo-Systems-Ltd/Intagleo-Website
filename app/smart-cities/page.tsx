@@ -424,9 +424,8 @@ export default function SmartCitiesPage() {
             <Link href="/contact?type=smart-cities" className="px-7 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
               Talk to an IoT engineer
             </Link>
-            <Link href="/contact?type=smart-cities-review" className="px-7 py-3 rounded-full border border-white/25 text-white/80 text-sm font-medium hover:text-white hover:border-white/45 transition-colors">
-              Book an architecture review
-            </Link>
+                        <Link href="/case-studies" className="px-7 py-3 rounded-full border border-white/25 text-white/80 text-sm font-medium hover:text-white hover:border-white/45 transition-colors">See our Work</Link>
+
           </div>
           <p className="text-white/25 text-xs tracking-wide">Direct Engineer Access · Response within 1 business day</p>
         </div>

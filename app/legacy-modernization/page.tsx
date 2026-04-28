@@ -92,11 +92,11 @@ export default function LegacyModernizationPage() {
         </div>
 
         <div className="relative z-10 max-w-3xl mx-auto pb-12">
-          <p className="text-xs text-white/35 uppercase tracking-widest mb-5">Legacy Modernisation</p>
+          {/* <p className="text-xs text-white/35 uppercase tracking-widest mb-5">Legacy Modernisation</p> */}
           <h1 className="text-4xl md:text-5xl lg:text-[52px] font-bold heading-gradient leading-[1.07] tracking-tight mb-5">
-            Your legacy system<br />
-            is slowing you down.<br />
-            <span className="text-white/35">We&apos;ll fix that.</span>
+            Evolve Beyond <br />
+           
+            <span className="text-white/35">Legacy.</span>
           </h1>
           <p className="text-white/45 text-base md:text-lg max-w-lg mx-auto mb-9">
             We migrate monoliths, modernise databases, and re-platform front-ends without grinding
@@ -162,7 +162,7 @@ export default function LegacyModernizationPage() {
               the cost of doing nothing by 3×.
             </p>
             <Link href="/contact?type=legacy-modernization" className="w-fit px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
-              Book a free system audit
+              Book a free system consultation
             </Link>
           </div>
           <div className="relative overflow-hidden">
@@ -188,71 +188,6 @@ export default function LegacyModernizationPage() {
       </section>
 
       {/* TECH STACK */}
-      <section className="relative py-16 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "conic-gradient(from 180deg at 50% 110%, rgba(175,77,68,0.35) 0%, rgba(90,43,44,0.12) 12%, transparent 28%)" }} />
-        <div className="absolute inset-y-0 left-0 w-64 pointer-events-none" style={{ background: "radial-gradient(ellipse at 0% 60%, rgba(175,50,40,0.28) 0%, transparent 70%)" }} />
-        <div className="absolute inset-y-0 right-0 w-64 pointer-events-none" style={{ background: "radial-gradient(ellipse at 100% 60%, rgba(175,50,40,0.28) 0%, transparent 70%)" }} />
-        <div className="relative z-10 mx-auto max-w-5xl px-6 text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-3">Modern stack, proven migration patterns</h2>
-          <p className="text-white/40 text-sm">The tools we use to replace the old without breaking the business.</p>
-        </div>
-        <div className="relative w-full" style={{ aspectRatio: "1920 / 1117" }}>
-          <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1920 1117" preserveAspectRatio="xMidYMid meet" fill="none">
-            <defs>
-              <linearGradient id="leg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#050914" stopOpacity="1"/><stop offset="100%" stopColor="#050914" stopOpacity="0"/></linearGradient>
-              <linearGradient id="leg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#050914" stopOpacity="1"/><stop offset="100%" stopColor="#050914" stopOpacity="0"/></linearGradient>
-              <linearGradient id="leg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#050914" stopOpacity="1"/><stop offset="100%" stopColor="#050914" stopOpacity="0"/></linearGradient>
-              <linearGradient id="leg4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#050914" stopOpacity="0.4"/><stop offset="100%" stopColor="#050914" stopOpacity="0"/></linearGradient>
-              <linearGradient id="leg5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#050914" stopOpacity="0.3"/><stop offset="100%" stopColor="#050914" stopOpacity="0"/></linearGradient>
-              <linearGradient id="legInner" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#050914" stopOpacity="1"/><stop offset="100%" stopColor="#050914" stopOpacity="0"/></linearGradient>
-              <linearGradient id="legBottom" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#050914" stopOpacity="0.8"/><stop offset="100%" stopColor="#050914" stopOpacity="0"/></linearGradient>
-            </defs>
-            <rect x="121" y="89" width="1678" height="1153" rx="191" fill="url(#leg1)" stroke="rgba(255,255,255,0.07)" strokeWidth="1"/>
-            <rect x="240" y="209" width="1439" height="1033" rx="163" fill="url(#leg2)" stroke="rgba(255,255,255,0.07)" strokeWidth="1"/>
-            <rect x="366" y="336" width="1188" height="906" rx="145" fill="url(#leg3)" stroke="rgba(255,255,255,0.07)" strokeWidth="1"/>
-            <rect x="487" y="457" width="946" height="785" rx="145" fill="url(#leg4)" stroke="rgba(255,255,255,0.07)" strokeWidth="1"/>
-            <rect x="619" y="586" width="682" height="656" rx="116" fill="url(#leg5)" stroke="rgba(255,255,255,0.06)" strokeWidth="1"/>
-            <rect x="827" y="372" width="266" height="262" rx="52" fill="url(#legInner)" stroke="rgba(255,255,255,0.07)" strokeWidth="1"/>
-            <rect x="741" y="684" width="438" height="307" rx="116" fill="url(#legBottom)" stroke="rgba(255,255,255,0.05)" strokeWidth="1"/>
-            <path d="M960,503 C750,503 430,430 269,310" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M960,503 C1150,503 1540,440 1613,348" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M960,503 C750,503 500,475 384,475" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M960,503 C1150,503 1620,503 1699,566" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M960,503 C750,503 330,550 163,623" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M960,503 C1150,503 1360,580 1390,676" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M960,503 C750,503 540,640 480,728" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M960,503 C1150,503 1360,380 1405,302" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
-          </svg>
-          {[
-            { name: "Docker",     lp: 14.0,  tp: 27.75, icon: <svg viewBox="0 0 40 40" fill="none" className="w-full h-full"><rect x="8" y="16" width="24" height="12" rx="2" stroke="#2496ED" strokeWidth="1.5"/><path d="M8 22h24" stroke="#2496ED" strokeWidth="1"/><rect x="12" y="19" width="3" height="3" rx="0.5" stroke="#2496ED" strokeWidth="1"/><rect x="18" y="19" width="3" height="3" rx="0.5" stroke="#2496ED" strokeWidth="1"/><rect x="24" y="19" width="3" height="3" rx="0.5" stroke="#2496ED" strokeWidth="1"/><path d="M32 20c2-1 3-4 1-6" stroke="#2496ED" strokeWidth="1.5" strokeLinecap="round"/></svg> },
-            { name: "Kubernetes", lp: 84.0,  tp: 31.16, icon: <svg viewBox="0 0 40 40" fill="none" className="w-full h-full"><circle cx="20" cy="20" r="11" stroke="#326CE5" strokeWidth="1.5"/><path d="M20 9v22M9 20h22M12.5 12.5l15 15M27.5 12.5l-15 15" stroke="#326CE5" strokeWidth="1" strokeLinecap="round"/><circle cx="20" cy="20" r="3" fill="#326CE5"/></svg> },
-            { name: "PostgreSQL", lp: 20.0,  tp: 42.52, icon: <svg viewBox="0 0 40 40" fill="none" className="w-full h-full"><ellipse cx="20" cy="14" rx="10" ry="5" stroke="#336791" strokeWidth="1.5"/><path d="M10 14v12c0 2.76 4.48 5 10 5s10-2.24 10-5V14" stroke="#336791" strokeWidth="1.5"/><path d="M30 18c2-1 3-1 3 2v4" stroke="#336791" strokeWidth="1.5" strokeLinecap="round"/></svg> },
-            { name: "Redis",      lp: 88.5,  tp: 50.67, icon: <svg viewBox="0 0 40 40" fill="none" className="w-full h-full"><ellipse cx="20" cy="22" rx="12" ry="5" stroke="#DC382D" strokeWidth="1.5"/><ellipse cx="20" cy="18" rx="12" ry="5" stroke="#DC382D" strokeWidth="1.5"/><path d="M8 18v4M32 18v4" stroke="#DC382D" strokeWidth="1.5"/><path d="M14 11l6-3 6 3" stroke="#DC382D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg> },
-            { name: "React",      lp: 8.5,   tp: 55.77, icon: <svg viewBox="0 0 40 40" fill="none" className="w-full h-full"><circle cx="20" cy="20" r="2.5" fill="#61DAFB"/><ellipse cx="20" cy="20" rx="13" ry="5" stroke="#61DAFB" strokeWidth="1.5" fill="none"/><ellipse cx="20" cy="20" rx="13" ry="5" stroke="#61DAFB" strokeWidth="1.5" fill="none" transform="rotate(60 20 20)"/><ellipse cx="20" cy="20" rx="13" ry="5" stroke="#61DAFB" strokeWidth="1.5" fill="none" transform="rotate(120 20 20)"/></svg> },
-            { name: "Terraform",  lp: 72.38, tp: 60.52, icon: <svg viewBox="0 0 40 40" fill="none" className="w-full h-full"><path d="M16 11l8 4.6v9.2L16 20.2V11z" fill="#7B42BC" fillOpacity="0.8"/><path d="M25 15.8l7 4V29l-7-4V15.8z" fill="#7B42BC"/><path d="M8 15.8l7 4V29l-7-4V15.8z" fill="#7B42BC" fillOpacity="0.6"/><path d="M16 29l8-4.6" stroke="#7B42BC" strokeWidth="1.2"/></svg> },
-            { name: "Go",         lp: 25.0,  tp: 65.18, icon: <svg viewBox="0 0 40 40" fill="none" className="w-full h-full"><path d="M8 20c0-4 3-7 8-7h8c4 0 7 3 7 7s-3 7-7 7H16c-5 0-8-3-8-7z" stroke="#00ACD7" strokeWidth="1.5"/><circle cx="16" cy="17" r="1.5" fill="#00ACD7"/><path d="M22 20h5M24 18v4" stroke="#00ACD7" strokeWidth="1.5" strokeLinecap="round"/></svg> },
-            { name: "AWS",        lp: 73.16, tp: 27.04, icon: <svg viewBox="0 0 40 40" fill="none" className="w-full h-full"><path d="M10 24l4-12 3 8 3-8 4 12" stroke="#FF9900" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M8 28c3 2 6 3 12 3s9-1 12-3" stroke="#FF9900" strokeWidth="1.5" strokeLinecap="round"/></svg> },
-          ].map((tech) => (
-            <div key={tech.name} className="absolute z-10" style={{ left: `${tech.lp}%`, top: `${tech.tp}%`, transform: "translate(-50%,-50%)" }}>
-              <div className="rounded-[18px] flex items-center justify-center hover:scale-110 transition-transform duration-200" style={{ width: "clamp(52px, 4.22vw, 82px)", height: "clamp(52px, 4.22vw, 82px)", padding: "clamp(10px, 0.8vw, 16px)", backgroundImage: "linear-gradient(121deg, rgb(51,52,61) 41%, rgb(6,4,9) 109%)", border: "1px solid rgba(255,255,255,0.11)", boxShadow: "0px 1px 14px 0px rgba(255,255,255,0.10)", backdropFilter: "blur(3px)" }}>
-                {tech.icon}
-              </div>
-              <p className="text-center text-white/30 mt-1.5" style={{ fontSize: "clamp(9px, 0.7vw, 12px)" }}>{tech.name}</p>
-            </div>
-          ))}
-          <div className="absolute z-20" style={{ left: "49.9%", top: "45%", transform: "translate(-50%,-50%)" }}>
-            <div className="rounded-[22px] flex items-center justify-center" style={{ width: "clamp(80px, 12.66vw, 244px)", height: "clamp(80px, 12.55vw, 241px)", padding: "clamp(14px, 1.8vw, 30px)", backgroundImage: "linear-gradient(121deg, rgb(51,52,61) 41%, rgb(6,4,9) 109%)", border: "1px solid rgba(255,255,255,0.11)", boxShadow: "0px 1px 14px 0px rgba(255,255,255,0.10)", backdropFilter: "blur(3px)" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo-static.png" alt="Intagleo" className="w-full h-full object-contain" />
-            </div>
-          </div>
-          <div className="absolute z-20" style={{ left: "50%", top: "78%", transform: "translate(-50%,-50%)" }}>
-            <div className="rounded-[58px] flex items-center justify-center" style={{ padding: "clamp(8px, 1.5vw, 29px) clamp(20px, 3vw, 58px)", background: "linear-gradient(to bottom, #050914, rgba(5,9,20,0.6))", border: "1px solid rgba(255,255,255,0.10)" }}>
-              <span className="whitespace-nowrap font-normal" style={{ fontSize: "clamp(13px, 1.25vw, 24px)", backgroundImage: "linear-gradient(120deg, rgb(230,242,255) 20%, rgb(175,175,175) 41%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Technologies</span>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* STATS */}
       <section className="section-padding py-8">
@@ -320,7 +255,7 @@ export default function LegacyModernizationPage() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
             <Link href="/contact?type=legacy-modernization" className="px-7 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">Start a conversation</Link>
-            <Link href="/contact?type=technical-call" className="px-7 py-3 rounded-full border border-white/25 text-white/80 text-sm font-medium hover:text-white hover:border-white/45 transition-colors">Schedule a technical call</Link>
+            <Link href="/case-studies" className="px-7 py-3 rounded-full border border-white/25 text-white/80 text-sm font-medium hover:text-white hover:border-white/45 transition-colors">See our Work</Link>
           </div>
           <p className="text-white/25 text-xs tracking-wide">Direct Engineer Access · Response within 1 business day</p>
         </div>

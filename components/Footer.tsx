@@ -67,10 +67,86 @@ const legalLinks = [
 ];
 
 const offices = [
-  { code: "US", country: "USA", address: "2670 S White Road Suite #125,\nSan Jose, CA 95148" },
-  { code: "GB", country: "United Kingdom", address: "268 Bath Road, Slough\nSL1 4DX" },
-  { code: "AE", country: "United Arab Emirates", address: "IFZA Business Park,\nDDP" },
-  { code: "PK", country: "Pakistan", address: "13-CCA, DHA Phase 8 – Ex Park View\nLahore, 54792" },
+  {
+    country: "USA",
+    address: "2670 S White Road Suite #125,\nSan Jose, CA 95148",
+    icon: (
+      // Golden Gate Bridge — two towers, catenary cable, hangers, road
+      <svg viewBox="0 0 24 16" fill="none" className="w-6 h-[18px] text-white/60" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="0" y1="14" x2="24" y2="14"/>
+        <line x1="7" y1="5" x2="7" y2="14"/>
+        <line x1="9" y1="5" x2="9" y2="14"/>
+        <line x1="7" y1="7" x2="9" y2="7"/>
+        <line x1="7" y1="10" x2="9" y2="10"/>
+        <line x1="15" y1="5" x2="15" y2="14"/>
+        <line x1="17" y1="5" x2="17" y2="14"/>
+        <line x1="15" y1="7" x2="17" y2="7"/>
+        <line x1="15" y1="10" x2="17" y2="10"/>
+        <path d="M1 14 L8 5 Q12 2 16 5 L23 14"/>
+        <line x1="4" y1="11.5" x2="4" y2="14"/>
+        <line x1="12" y1="3" x2="12" y2="14"/>
+        <line x1="20" y1="11.5" x2="20" y2="14"/>
+      </svg>
+    ),
+  },
+  {
+    country: "United Kingdom",
+    address: "268 Bath Road, Slough\nSL1 4DX",
+    icon: (
+      // Big Ben — spire, belfry, clock face, tower body, base
+      <svg viewBox="0 0 14 22" fill="none" className="w-[14px] h-[22px] text-white/60" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="7" y1="0" x2="7" y2="2"/>
+        <path d="M4 2 L7 0 L10 2"/>
+        <rect x="4" y="2" width="6" height="4"/>
+        <rect x="3" y="6" width="8" height="1"/>
+        <rect x="3.5" y="7" width="7" height="8"/>
+        <circle cx="7" cy="11" r="2.2"/>
+        <line x1="7" y1="9" x2="7" y2="11"/>
+        <line x1="7" y1="11" x2="8.5" y2="11"/>
+        <rect x="2" y="15" width="10" height="6"/>
+        <line x1="1" y1="21" x2="13" y2="21"/>
+      </svg>
+    ),
+  },
+  {
+    country: "United Arab Emirates",
+    address: "IFZA Business Park,\nDDP",
+    icon: (
+      // Burj Khalifa — needle, stepped setbacks tapering to wide base
+      <svg viewBox="0 0 14 24" fill="none" className="w-[14px] h-[24px] text-white/60" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="7" y1="0" x2="7" y2="3"/>
+        <path d="M5.5 3 L7 0 L8.5 3 Z"/>
+        <rect x="5.5" y="3" width="3" height="3"/>
+        <rect x="5" y="6" width="4" height="3"/>
+        <rect x="4.5" y="9" width="5" height="3"/>
+        <rect x="4" y="12" width="6" height="3"/>
+        <rect x="3" y="15" width="8" height="7"/>
+        <line x1="2" y1="22" x2="12" y2="22"/>
+      </svg>
+    ),
+  },
+  {
+    country: "Pakistan",
+    address: "13-CCA, DHA Phase 8 – Ex Park View\nLahore, 54792",
+    icon: (
+      // Badshahi Mosque — two minarets, central onion dome, platform
+      <svg viewBox="0 0 24 20" fill="none" className="w-6 h-[20px] text-white/60" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="3" y1="1" x2="3" y2="14"/>
+        <line x1="5" y1="1" x2="5" y2="14"/>
+        <path d="M3 1 Q4 0 5 1"/>
+        <line x1="3" y1="9" x2="5" y2="9"/>
+        <line x1="19" y1="1" x2="19" y2="14"/>
+        <line x1="21" y1="1" x2="21" y2="14"/>
+        <path d="M19 1 Q20 0 21 1"/>
+        <line x1="19" y1="9" x2="21" y2="9"/>
+        <path d="M8 14 Q8 6 12 5 Q16 6 16 14"/>
+        <line x1="12" y1="3" x2="12" y2="5"/>
+        <line x1="1" y1="14" x2="23" y2="14"/>
+        <rect x="7" y="14" width="10" height="5"/>
+        <line x1="0" y1="19" x2="24" y2="19"/>
+      </svg>
+    ),
+  },
 ];
 
 const socials = [
@@ -155,13 +231,15 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
         </div>
       )}
 
-      {/* ── Services mega-grid ── */}
-      <nav aria-label="Services navigation" className="section-padding pt-14 pb-10 border-b border-white/[0.06]">
+      {/* ── Navigation grid ── */}
+      <nav aria-label="Site navigation" className="section-padding pt-14 pb-10 border-b border-white/[0.06]">
         <div className="mx-auto max-w-[1400px]">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-10">
+
+          {/* 6-col grid: 4 services + company + legal */}
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-x-6 gap-y-10">
             {serviceColumns.map((col) => (
               <div key={col.heading}>
-                <p className="text-white/60 text-[11px] font-semibold uppercase tracking-widest mb-4">
+                <p className="text-white/40 text-[10px] font-semibold uppercase tracking-widest mb-4">
                   {col.heading}
                 </p>
                 <ul className="space-y-3" role="list">
@@ -183,50 +261,48 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
                 </ul>
               </div>
             ))}
-          </div>
 
-          {/* Industries + Company/Legal */}
-          <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-x-8 gap-y-10 mt-10 pt-10 border-t border-white/[0.05]">
+            {/* Company */}
             <div>
-              <p className="text-white/60 text-[11px] font-semibold uppercase tracking-widest mb-4">Industries</p>
-              <ul className="grid grid-cols-2 gap-x-8 gap-y-3" role="list">
-                {industryLinks.map((link) => (
+              <p className="text-white/40 text-[10px] font-semibold uppercase tracking-widest mb-4">Company</p>
+              <ul className="space-y-3" role="list">
+                {companyLinks.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className={`${linkCls} text-sm`}>
-                      {link.label}
-                    </Link>
+                    <Link href={link.href} className={`${linkCls} text-sm`}>{link.label}</Link>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="flex gap-12 flex-shrink-0">
-              <div>
-                <p className="text-white/60 text-[11px] font-semibold uppercase tracking-widest mb-4">Company</p>
-                <ul className="space-y-3" role="list">
-                  {companyLinks.map((link) => (
-                    <li key={link.href}>
-                      <Link href={link.href} className={`${linkCls} text-sm`}>
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <p className="text-white/60 text-[11px] font-semibold uppercase tracking-widest mb-4">Legal</p>
-                <ul className="space-y-3" role="list">
-                  {legalLinks.map((link) => (
-                    <li key={link.href}>
-                      <Link href={link.href} className={`${linkCls} text-sm`}>
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            {/* Legal */}
+            <div>
+              <p className="text-white/40 text-[10px] font-semibold uppercase tracking-widest mb-4">Legal</p>
+              <ul className="space-y-3" role="list">
+                {legalLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className={`${linkCls} text-sm`}>{link.label}</Link>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
+
+          {/* Industries — pill tags */}
+          <div className="mt-10 pt-8 border-t border-white/[0.04]">
+            <p className="text-white/40 text-[10px] font-semibold uppercase tracking-widest mb-4">Industries</p>
+            <div className="flex flex-wrap gap-2">
+              {industryLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="px-3 py-1.5 rounded-full border border-white/[0.08] text-white/45 text-xs hover:border-white/20 hover:text-white/70 transition-colors duration-200"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
         </div>
       </nav>
 
@@ -249,13 +325,13 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
                 +1 408 469 4384
               </a>
               <a
-                href="mailto:services@intagleo.com"
+                href="mailto:sales@intagleo.com"
                 className={`${linkCls} flex items-center gap-2 text-sm`}
               >
                 <svg className="w-4 h-4 flex-shrink-0 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                 </svg>
-                services@intagleo.com
+                sales@intagleo.com
               </a>
             </div>
             <p className="text-white/45 text-sm leading-relaxed">
@@ -355,15 +431,16 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
         <div className="mx-auto max-w-[1400px]">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {offices.map((o) => (
-              <address key={o.country} className="not-italic">
-                <div className="flex items-center gap-2 mb-2">
-                  {/* Country code badge instead of emoji */}
-                  <span className="text-[9px] font-bold tracking-wider px-1.5 py-0.5 rounded border border-white/[0.15] text-white/50 leading-none select-none">
-                    {o.code}
-                  </span>
-                  <p className="text-white/70 text-sm font-medium">{o.country}</p>
+              <address key={o.country} className="not-italic flex gap-3">
+                {/* Icon column */}
+                <div className="flex-shrink-0 w-10 h-10 rounded-lg border border-white/[0.08] bg-white/[0.03] flex items-center justify-center p-1.5">
+                  {o.icon}
                 </div>
-                <p className="text-white/40 text-xs leading-relaxed whitespace-pre-line">{o.address}</p>
+                {/* Text column */}
+                <div>
+                  <p className="text-white/70 text-sm font-medium mb-1">{o.country}</p>
+                  <p className="text-white/40 text-xs leading-relaxed whitespace-pre-line">{o.address}</p>
+                </div>
               </address>
             ))}
           </div>

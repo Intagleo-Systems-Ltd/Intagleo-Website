@@ -3,12 +3,14 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CareersClient from "@/components/CareersClient";
+import VacancyApplyForm from "@/components/VacancyApplyForm";
+import HeroTerminal from "@/components/HeroTerminal";
 import type { Vacancy } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Join Us | Intagleo",
   description:
-    "Build production-ready software with a team of senior engineers. Explore open roles at Intagleo — remote-first, outcome-driven, no fluff.",
+    "Build production-ready software with a team of senior engineers. Explore open roles at Intagleo - remote-first, outcome-driven, no fluff.",
 };
 
 export const revalidate = 60;
@@ -27,7 +29,7 @@ async function getVacancies(): Promise<Vacancy[]> {
 const values = [
   {
     title: "Real ownership",
-    desc: "No ticket queues. You own your work end-to-end — from scoping conversations to production releases. Every engineer here has a direct line to impact.",
+    desc: "No ticket queues. You own your work end-to-end - from scoping conversations to production releases. Every engineer here has a direct line to impact.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" aria-hidden="true">
         <path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7l2-7z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round"/>
@@ -36,7 +38,7 @@ const values = [
   },
   {
     title: "Senior-only environment",
-    desc: "You'll collaborate exclusively with experienced engineers. No mentoring juniors on client time — just high-signal technical conversations with people who've shipped production systems.",
+    desc: "You'll collaborate exclusively with experienced engineers. No mentoring juniors on client time - just high-signal technical conversations with people who've shipped production systems.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" aria-hidden="true">
         <circle cx="9" cy="7" r="3" stroke="currentColor" strokeWidth="1.4"/>
@@ -67,7 +69,7 @@ const values = [
   },
   {
     title: "No office politics",
-    desc: "Flat structure, transparent decisions, no management layers between you and the work. Good ideas win on merit — not seniority or who speaks loudest.",
+    desc: "Flat structure, transparent decisions, no management layers between you and the work. Good ideas win on merit - not seniority or who speaks loudest.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" aria-hidden="true">
         <path d="M12 22V12M12 12L7 17M12 12l5 5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -77,7 +79,7 @@ const values = [
   },
   {
     title: "Grow with the company",
-    desc: "We're growing fast across new industries and geographies. Roles evolve here — engineers become tech leads, leads become principals. If you grow, your title and comp will follow.",
+    desc: "We're growing fast across new industries and geographies. Roles evolve here - engineers become tech leads, leads become principals. If you grow, your title and comp will follow.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" aria-hidden="true">
         <path d="M3 20l5-8 4 4 4-7 5 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -89,7 +91,7 @@ const values = [
 const perks = [
   { label: "Competitive salary", sub: "Benchmarked to market rate" },
   { label: "Remote / hybrid", sub: "Work from wherever you do your best thinking" },
-  { label: "Flexible hours", sub: "Async-first — own your schedule" },
+  { label: "Flexible hours", sub: "Async-first - own your schedule" },
   { label: "Learning budget", sub: "Courses, conferences, and certifications" },
   { label: "Private health cover", sub: "UK & UAE team members" },
   { label: "Equipment stipend", sub: "Get the tools you need to ship" },
@@ -116,59 +118,67 @@ export default async function JoinUsPage() {
           </div>
 
           <div className="relative mx-auto max-w-[1400px] px-6 md:px-10 py-24 lg:py-36">
-            <div className="max-w-3xl">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 bg-[#6366f1]/10 border border-[#6366f1]/20 rounded-full px-3.5 py-1.5 mb-8">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#6366f1] opacity-60" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#6366f1]" />
-                </span>
-                <span className="text-[#6366f1] text-xs font-medium tracking-wide">
-                  We&apos;re hiring — {vacancies.length} open {vacancies.length === 1 ? "role" : "roles"}
-                </span>
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left: copy */}
+              <div>
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 bg-[#6366f1]/10 border border-[#6366f1]/20 rounded-full px-3.5 py-1.5 mb-8">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#6366f1] opacity-60" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#6366f1]" />
+                  </span>
+                  <span className="text-[#6366f1] text-xs font-medium tracking-wide">
+                    We&apos;re hiring - {vacancies.length} open {vacancies.length === 1 ? "role" : "roles"}
+                  </span>
+                </div>
+
+                {/* Heading */}
+                <h1
+                  className="text-5xl md:text-6xl lg:text-7xl font-bold heading-gradient leading-[1.02] tracking-tight mb-6"
+                  style={{ fontFamily: '"Roobert TRIAL", sans-serif' }}
+                >
+                  Build the future
+                  <br />
+                  <span className="text-white/40">with us.</span>
+                </h1>
+
+                <p className="text-white/50 text-lg leading-relaxed mb-10 max-w-xl">
+                  Intagleo engineers work on real enterprise products, not internal tools or maintenance tickets.
+                  If you want ownership, craft, and clients who actually care about quality, you&apos;ll fit right in.
+                </p>
+
+                <div className="flex flex-wrap gap-4">
+                  <a
+                    href="#open-roles"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#6366f1] hover:bg-[#4f46e5] text-white text-sm font-medium transition-colors duration-200"
+                  >
+                    View open roles
+                    <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4" aria-hidden="true">
+                      <path d="M8 3v10M3 8l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </a>
+                  <Link
+                    href="/about"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white/70 text-sm font-medium hover:border-white/40 hover:text-white transition-all duration-200"
+                  >
+                    Learn about us
+                  </Link>
+                </div>
               </div>
 
-              {/* Heading */}
-              <h1
-                className="text-5xl md:text-6xl lg:text-7xl font-bold heading-gradient leading-[1.02] tracking-tight mb-6"
-                style={{ fontFamily: '"Roobert TRIAL", sans-serif' }}
-              >
-                Build the future
-                <br />
-                <span className="text-white/40">with us.</span>
-              </h1>
-
-              <p className="text-white/50 text-lg leading-relaxed mb-10 max-w-xl">
-                Intagleo engineers work on real enterprise products — not internal tools or maintenance tickets.
-                If you want ownership, craft, and clients who actually care about quality, you&apos;ll fit right in.
-              </p>
-
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href="#open-roles"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#6366f1] hover:bg-[#4f46e5] text-white text-sm font-medium transition-colors duration-200"
-                >
-                  View open roles
-                  <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4" aria-hidden="true">
-                    <path d="M8 3v10M3 8l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </a>
-                <Link
-                  href="/about"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white/70 text-sm font-medium hover:border-white/40 hover:text-white transition-all duration-200"
-                >
-                  Learn about us
-                </Link>
+              {/* Right: animated terminal */}
+              <div className="hidden lg:block">
+                <HeroTerminal />
               </div>
             </div>
 
             {/* Stats strip */}
             <div className="mt-20 pt-10 border-t border-white/[0.06] grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
-                { value: "40+", label: "Engineers" },
+                { value: "200+", label: "Engineers" },
                 { value: "18", label: "Countries" },
-                { value: "150+", label: "Projects shipped" },
-                { value: "8+", label: "Years building" },
+                { value: "200+", label: "Projects shipped" },
+                { value: "20+", label: "Years building" },
               ].map((s) => (
                 <div key={s.label}>
                   <p className="text-3xl font-bold text-white tracking-tight">{s.value}</p>
@@ -190,7 +200,7 @@ export default async function JoinUsPage() {
                 Why engineers choose us
               </h2>
               <p className="text-white/40 text-base max-w-xl">
-                We&apos;re not for everyone — and that&apos;s intentional. Here&apos;s what makes working here different.
+                We&apos;re not for everyone, and that&apos;s intentional. Here&apos;s what makes working here different.
               </p>
             </div>
 
@@ -240,22 +250,33 @@ export default async function JoinUsPage() {
         {/* -- Closing CTA ----------------------------------------------------- */}
         <section className="py-20 border-t border-white/[0.04]">
           <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-            <div className="rounded-3xl bg-[#0d0d10] border border-white/[0.06] p-12 md:p-16 text-center">
-              <p className="text-[#6366f1] text-xs font-medium tracking-widest uppercase mb-4">
-                Don&apos;t see your role?
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold heading-gradient tracking-tight mb-4">
-                Send us a speculative application
-              </h2>
-              <p className="text-white/40 text-base max-w-lg mx-auto mb-8">
-                If you&apos;re exceptional at what you do, we want to hear from you — even if there&apos;s no open role that fits right now.
-              </p>
-              <Link
-                href="/contact?type=general"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#6366f1] hover:bg-[#4f46e5] text-white text-sm font-medium transition-colors duration-200"
-              >
-                Get in touch
-              </Link>
+            <div className="grid lg:grid-cols-[1fr_480px] gap-12 items-start">
+              {/* Left: copy */}
+              <div className="pt-4">
+                <div className="inline-flex items-center gap-2 bg-[#6366f1]/10 border border-[#6366f1]/20 rounded-full px-3.5 py-1.5 mb-6">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1]" />
+                  <span className="text-[#6366f1] text-xs font-medium tracking-wide">Open Application</span>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold heading-gradient tracking-tight mb-4">
+                  Don&apos;t see your role?
+                </h2>
+                <p className="text-white/40 text-base leading-relaxed max-w-lg">
+                  If you&apos;re exceptional at what you do, we want to hear from you — even if there&apos;s no open role that fits right now. Tell us about yourself and we&apos;ll be in touch when the right opportunity comes up.
+                </p>
+              </div>
+
+              {/* Right: inline form */}
+              <div className="bg-[#0d0d10] border border-white/[0.08] rounded-2xl overflow-hidden">
+                <div className="px-7 pt-7 pb-5 border-b border-white/[0.06]">
+                  <p className="text-[#6366f1] text-xs font-medium tracking-widest uppercase mb-1">
+                    Apply now
+                  </p>
+                  <h3 className="text-lg font-semibold text-white leading-tight">
+                    Open Application
+                  </h3>
+                </div>
+                <VacancyApplyForm />
+              </div>
             </div>
           </div>
         </section>

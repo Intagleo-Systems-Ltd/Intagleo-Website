@@ -7,10 +7,10 @@ export default function DifferenceSection() {
   return (
     <section id="about" className="relative overflow-hidden" style={{ background: "#050914", marginTop: "-120px", zIndex: 1 }}>
 
-      {/* ── Wave - pulled up behind IndustriesSection (z-index lower) ── */}
+      {/* ── Wave - absolute background, doesn't affect layout ── */}
       <div
-        className="relative w-full pointer-events-none"
-        style={{ height: "503px" }}
+        className="absolute top-0 left-0 right-0 pointer-events-none"
+        style={{ height: "503px", zIndex: 0 }}
       >
         <img
           src="/wave-bg.png"
@@ -18,7 +18,6 @@ export default function DifferenceSection() {
           className="absolute inset-0 w-full h-full object-cover"
           style={{ objectPosition: "center 55%" }}
         />
-        {/* Figma gradient: dark at bottom, transparent at top */}
         <div
           className="absolute inset-0"
           style={{
@@ -27,8 +26,8 @@ export default function DifferenceSection() {
         />
       </div>
 
-      {/* ── Content ── */}
-      <div className="section-padding pb-24">
+      {/* ── Content - in normal flow, sits above wave ── */}
+      <div className="relative section-padding pt-56 pb-24" style={{ zIndex: 1 }}>
         <div className="mx-auto max-w-[1400px]">
 
           {/* Two-column intro */}

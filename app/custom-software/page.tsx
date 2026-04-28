@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
@@ -107,6 +107,78 @@ const supportOptions = [
   },
 ];
 
+/* ── Tech stack ───────────────────────────────────────────────────────── */
+const reactIcon = (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5">
+    <ellipse cx="12" cy="12" rx="10" ry="3.8"/>
+    <ellipse cx="12" cy="12" rx="10" ry="3.8" transform="rotate(60 12 12)"/>
+    <ellipse cx="12" cy="12" rx="10" ry="3.8" transform="rotate(120 12 12)"/>
+    <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/>
+  </svg>
+);
+const vueIcon = (
+  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+    <path d="M1.5 3h4.2L12 15.8 18.3 3H22.5L12 22 1.5 3z"/>
+    <path d="M6.5 3H9.8L12 7.2 14.2 3H17.5L12 13.5 6.5 3z" opacity="0.55"/>
+  </svg>
+);
+const nextIcon = (
+  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+    <path d="M4 4h3.5v10.2L18 4h3.5v16H18V9.8L7.5 20H4V4z"/>
+  </svg>
+);
+
+type TechItem = { name: string; abbr: string; color: string; bg: string; icon?: React.ReactNode };
+
+const techCategories: { label: string; glow: string; techs: TechItem[] }[] = [
+  {
+    label: "Frontend",
+    glow: "rgba(99,102,241,0.2)",
+    techs: [
+      { name: "React",      abbr: "Re",   color: "#61DAFB", bg: "rgba(97,218,251,0.10)",  icon: reactIcon },
+      { name: "Next.js",    abbr: "N",    color: "#e2e8f0", bg: "rgba(255,255,255,0.07)", icon: nextIcon  },
+      { name: "Vue.js",     abbr: "Vu",   color: "#42B883", bg: "rgba(66,184,131,0.12)",  icon: vueIcon   },
+      { name: "TypeScript", abbr: "TS",   color: "#3B82F6", bg: "rgba(59,130,246,0.12)"                  },
+      { name: "Tailwind",   abbr: "Tw",   color: "#06B6D4", bg: "rgba(6,182,212,0.12)"                   },
+    ],
+  },
+  {
+    label: "Backend",
+    glow: "rgba(74,222,128,0.15)",
+    techs: [
+      { name: "Node.js", abbr: "N",    color: "#4ADE80", bg: "rgba(74,222,128,0.10)"  },
+      { name: "Python",  abbr: "Py",   color: "#60A5FA", bg: "rgba(96,165,250,0.12)"  },
+      { name: ".NET",    abbr: ".NET", color: "#A78BFA", bg: "rgba(167,139,250,0.12)" },
+      { name: "Go",      abbr: "Go",   color: "#2DD4BF", bg: "rgba(45,212,191,0.12)"  },
+      { name: "Java",    abbr: "J",    color: "#FB923C", bg: "rgba(251,146,60,0.12)"  },
+    ],
+  },
+  {
+    label: "Cloud & Infra",
+    glow: "rgba(252,211,77,0.14)",
+    techs: [
+      { name: "AWS",        abbr: "AWS", color: "#FCD34D", bg: "rgba(252,211,77,0.10)"  },
+      { name: "Azure",      abbr: "Az",  color: "#60A5FA", bg: "rgba(96,165,250,0.12)"  },
+      { name: "GCP",        abbr: "G",   color: "#818CF8", bg: "rgba(129,140,248,0.12)" },
+      { name: "Docker",     abbr: "D",   color: "#38BDF8", bg: "rgba(56,189,248,0.12)"  },
+      { name: "Kubernetes", abbr: "K8s", color: "#7B8FD4", bg: "rgba(123,143,212,0.12)" },
+    ],
+  },
+  {
+    label: "Data & AI",
+    glow: "rgba(196,181,253,0.16)",
+    techs: [
+      { name: "PostgreSQL", abbr: "PG",  color: "#7DD3FC", bg: "rgba(125,211,252,0.10)" },
+      { name: "Redis",      abbr: "Re",  color: "#F87171", bg: "rgba(248,113,113,0.12)" },
+      { name: "MongoDB",    abbr: "MG",  color: "#4ADE80", bg: "rgba(74,222,128,0.12)"  },
+      { name: "OpenAI",     abbr: "OAI", color: "#C4B5FD", bg: "rgba(196,181,253,0.12)" },
+      { name: "LangChain",  abbr: "LC",  color: "#34D399", bg: "rgba(52,211,153,0.12)"  },
+    ],
+  },
+];
+
+const allTechsFlat: TechItem[] = techCategories.flatMap((c) => c.techs);
+
 /* ── Pain-point cards ──────────────────────────────────────────────────── */
 const painPoints = [
   {
@@ -132,6 +204,18 @@ const painPoints = [
 /* ── Page ──────────────────────────────────────────────────────────────── */
 export default function CustomSoftwarePage() {
   const [activeSupport, setActiveSupport] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [progressKey, setProgressKey] = useState(0);
+  const [resetKey, setResetKey] = useState(0);
+
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => {
+      setActiveSupport((prev) => (prev + 1) % supportOptions.length);
+      setProgressKey((k) => k + 1);
+    }, 3500);
+    return () => clearInterval(id);
+  }, [paused, resetKey]);
 
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
@@ -224,7 +308,7 @@ export default function CustomSoftwarePage() {
               href="/contact?type=custom-software"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/20 text-white text-sm font-medium hover:border-white/40 hover:bg-white/5 transition-all"
             >
-              Talk to a Data Engineer
+              Talk to a Product Expert
             </Link>
           </div>
 
@@ -404,7 +488,17 @@ export default function CustomSoftwarePage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       {/* HOW CAN WE SUPPORT YOU                                             */}
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="section-padding py-20">
+      <style>{`
+        @keyframes tabProgress {
+          from { width: 0%; }
+          to   { width: 100%; }
+        }
+      `}</style>
+      <section
+        className="section-padding py-20"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-3">How can we support you?</h2>
@@ -413,8 +507,12 @@ export default function CustomSoftwarePage() {
             {supportOptions.map((opt, i) => (
               <button
                 key={opt.label}
-                onClick={() => setActiveSupport(i)}
-                className={`flex items-center gap-3 px-6 py-3.5 rounded-full border text-sm font-medium transition-all ${
+                onClick={() => {
+                  setActiveSupport(i);
+                  setProgressKey((k) => k + 1);
+                  setResetKey((k) => k + 1);
+                }}
+                className={`relative flex items-center gap-3 px-6 py-3.5 rounded-full border text-sm font-medium transition-all overflow-hidden ${
                   activeSupport === i
                     ? "bg-[#6366f1] border-[#6366f1] text-white"
                     : "bg-[#0d0d10] border-white/[0.08] text-white/55 hover:border-white/20 hover:text-white"
@@ -424,6 +522,13 @@ export default function CustomSoftwarePage() {
                   {opt.icon}
                 </span>
                 {opt.label}
+                {activeSupport === i && !paused && (
+                  <span
+                    key={progressKey}
+                    className="absolute bottom-0 left-0 h-[3px] bg-white/40 rounded-full"
+                    style={{ animation: "tabProgress 3.5s linear forwards" }}
+                  />
+                )}
               </button>
             ))}
           </div>
@@ -531,86 +636,106 @@ export default function CustomSoftwarePage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       {/* TECH CAPABILITIES                                                  */}
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative section-padding py-20 overflow-hidden">
+      <section className="relative py-20 overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(99,102,241,0.06) 0%, transparent 60%)" }}
+          style={{ background: "radial-gradient(ellipse at 50% 40%, rgba(99,102,241,0.07) 0%, transparent 60%)" }}
         />
-        <div className="relative z-10 mx-auto max-w-6xl">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-3">Tech Capabilities</h2>
-            <p className="text-white/40 text-sm">Built across the modern stack</p>
-          </div>
 
-          {/* Stack categories */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-12">
-            {[
-              { cat: "Frontend", techs: ["React", "Next.js", "Vue", "TypeScript", "Tailwind"] },
-              { cat: "Backend", techs: ["Node.js", "Python", ".NET", "Go", "Java"] },
-              { cat: "Cloud & Infra", techs: ["AWS", "Azure", "GCP", "Docker", "Kubernetes"] },
-              { cat: "Data & AI", techs: ["PostgreSQL", "Redis", "MongoDB", "OpenAI", "LangChain"] },
-            ].map((col) => (
-              <div key={col.cat} className="rounded-2xl bg-[#0d0d10] border border-white/[0.06] p-5">
-                <p className="text-white/30 text-xs uppercase tracking-widest mb-4">{col.cat}</p>
-                <div className="flex flex-wrap gap-2">
-                  {col.techs.map((t) => (
-                    <span
-                      key={t}
-                      className="px-2.5 py-1 rounded-md bg-white/[0.05] border border-white/[0.06] text-xs text-white/55"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
+        <div className="relative z-10 mx-auto max-w-6xl section-padding">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <p className="text-xs text-white/30 uppercase tracking-widest mb-3">Built with the best</p>
+            <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-3">Tech Capabilities</h2>
+            <p className="text-white/40 text-sm">20+ technologies across the modern stack</p>
+          </div>
+        </div>
+
+        {/* ── Full-bleed marquee ── */}
+        <div className="overflow-hidden mb-12 py-1">
+          <div className="flex w-max marquee-scroll gap-3">
+            {[...allTechsFlat, ...allTechsFlat, ...allTechsFlat].map((tech, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-2.5 px-4 py-2 rounded-full flex-shrink-0 border"
+                style={{
+                  background: tech.bg,
+                  borderColor: `${tech.color}25`,
+                }}
+              >
+                {tech.icon ? (
+                  <span className="flex-shrink-0 w-4 h-4" style={{ color: tech.color }}>
+                    {tech.icon}
+                  </span>
+                ) : (
+                  <span
+                    className="flex-shrink-0 w-4 h-4 rounded flex items-center justify-center text-[8px] font-bold leading-none"
+                    style={{ background: `${tech.color}22`, color: tech.color }}
+                  >
+                    {tech.abbr.slice(0, 2)}
+                  </span>
+                )}
+                <span className="text-white/60 text-xs font-medium whitespace-nowrap">{tech.name}</span>
               </div>
             ))}
           </div>
+        </div>
 
-          {/* Product showcase strip */}
-          <div className="rounded-2xl bg-[#0d0d10] border border-white/[0.06] p-6 md:p-8 flex flex-col md:flex-row items-center gap-8">
-            {/* Mini dashboard preview */}
-            <div className="w-full md:w-1/2 rounded-xl bg-[#111116] border border-white/[0.06] p-4 flex-shrink-0">
-              <div className="flex items-center gap-2 mb-3">
-                <div className="w-2 h-2 rounded-full bg-[#00d944]" />
-                <span className="text-xs text-white/30">API Analytics</span>
+        {/* ── Enterprise-grade strip ── */}
+        <div className="relative z-10 mx-auto max-w-6xl section-padding">
+          {/* ── Enterprise-grade strip ── */}
+          <div className="mt-4 rounded-2xl bg-[#0d0d10] border border-white/[0.06] p-6 md:p-8 flex flex-col md:flex-row items-center gap-8">
+            {/* Mini metrics */}
+            <div className="w-full md:w-[45%] rounded-xl bg-[#111116] border border-white/[0.06] p-5 flex-shrink-0">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-[10px] text-white/30 uppercase tracking-widest">Live Metrics</span>
+                </div>
+                <span className="text-[9px] text-white/20 font-mono">99.98% uptime</span>
               </div>
-              <div className="grid grid-cols-2 gap-2 mb-3">
+              <div className="grid grid-cols-2 gap-2 mb-4">
                 {[
-                  { label: "API Calls / min", val: "12,450" },
-                  { label: "Response time", val: "42ms" },
-                  { label: "Uptime SLA", val: "99.98%" },
-                  { label: "Active tenants", val: "340+" },
+                  { label: "API Calls / min", val: "12,450", up: true },
+                  { label: "Response time",   val: "42ms",   up: false },
+                  { label: "Uptime SLA",      val: "99.98%", up: false },
+                  { label: "Active tenants",  val: "340+",   up: true  },
                 ].map((m) => (
                   <div key={m.label} className="bg-[#0d0d10] rounded-lg p-2.5 border border-white/[0.04]">
-                    <p className="text-[9px] text-white/25 mb-0.5">{m.label}</p>
+                    <p className="text-[9px] text-white/25 mb-1">{m.label}</p>
                     <p className="text-sm font-bold text-white">{m.val}</p>
                   </div>
                 ))}
               </div>
-              {/* Bar chart */}
-              <div className="flex items-end gap-1 h-10">
+              <div className="flex items-end gap-1 h-8">
                 {[60, 75, 55, 80, 65, 90, 70, 85, 72, 95, 78, 100].map((h, i) => (
                   <div
                     key={i}
-                    className="flex-1 rounded-sm"
+                    className="flex-1 rounded-sm transition-all"
                     style={{
                       height: `${h}%`,
-                      background: i >= 9 ? "linear-gradient(to top, #00d944, #137118)" : "rgba(255,255,255,0.06)",
+                      background: i >= 9 ? "linear-gradient(to top, #4ADE80, #166534)" : "rgba(255,255,255,0.06)",
                     }}
                   />
                 ))}
               </div>
             </div>
+
             <div>
               <h3 className="text-xl font-bold text-white mb-3">Enterprise-grade from day one</h3>
-              <p className="text-white/45 text-sm leading-relaxed mb-4">
-                Every system we build is designed for scale , multi-tenant architecture, 99.9%+ SLA,
-                automated CI/CD, and observability baked in.
+              <p className="text-white/45 text-sm leading-relaxed mb-5">
+                Every system we build ships with multi-tenant architecture, 99.9%+ SLA,
+                automated CI/CD, and full observability baked in — not bolted on later.
               </p>
-              <ul className="space-y-2">
-                {["Horizontal scaling built-in", "Automated test coverage", "Zero-downtime deployments", "Real-time monitoring & alerts"].map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-white/50">
-                    <span className="w-1 h-1 rounded-full bg-[#6366f1]" />
+              <ul className="space-y-2.5">
+                {[
+                  "Horizontal scaling built-in",
+                  "Automated test coverage",
+                  "Zero-downtime deployments",
+                  "Real-time monitoring & alerts",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-2.5 text-sm text-white/55">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1] flex-shrink-0" />
                     {item}
                   </li>
                 ))}

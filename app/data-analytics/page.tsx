@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollTimeline from "@/components/ScrollTimeline";
@@ -234,7 +234,22 @@ const stackCategories: { id: string; label: string; tabIcon: React.ReactNode; ce
 /* ── Page ───────────────────────────────────────────────────────────────── */
 export default function DataAnalyticsPage() {
   const [activeStack, setActiveStack] = useState("warehouses");
+  const [paused, setPaused] = useState(false);
+  const [progressKey, setProgressKey] = useState(0);
+  const [resetKey, setResetKey] = useState(0);
   const activeCategory = stackCategories.find((c) => c.id === activeStack)!;
+
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => {
+      setActiveStack((prev) => {
+        const idx = stackCategories.findIndex((c) => c.id === prev);
+        return stackCategories[(idx + 1) % stackCategories.length].id;
+      });
+      setProgressKey((k) => k + 1);
+    }, 3500);
+    return () => clearInterval(id);
+  }, [paused, resetKey]);
 
   return (
     <div className="relative min-h-screen bg-[#0a0a0a]">
@@ -270,10 +285,10 @@ export default function DataAnalyticsPage() {
 
         {/* Headline + CTAs */}
         <div className="relative z-10 max-w-3xl mx-auto pb-12">
-          <p className="text-xs text-white/35 uppercase tracking-widest mb-5">Data & Analytics</p>
+          {/* <p className="text-xs text-white/35 uppercase tracking-widest mb-5">Data & Analytics</p> */}
           <h1 className="text-4xl md:text-5xl lg:text-[52px] font-bold heading-gradient leading-[1.07] tracking-tight mb-5">
             Your data exists.<br />
-            <span className="text-white/35">The insight doesn&apos;t. Yet.</span>
+            <span className="text-white/35">The insight doesn&apos;t. Yet !</span>
           </h1>
 
           <p className="text-white/45 text-base md:text-lg max-w-lg mx-auto mb-9">
@@ -292,7 +307,7 @@ export default function DataAnalyticsPage() {
               href="/case-studies"
               className="px-6 py-3 rounded-full border border-white/[0.14] text-white/65 text-sm font-medium hover:text-white hover:border-white/30 transition-colors"
             >
-              See how we work
+              See Our Work
             </Link>
           </div>
 
@@ -304,7 +319,18 @@ export default function DataAnalyticsPage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       {/* MODERN DATA STACK                                                  */}
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="section-padding py-24" style={{ background: "#0a0a0a" }}>
+      <style>{`
+        @keyframes stackProgress {
+          from { width: 0%; }
+          to   { width: 100%; }
+        }
+      `}</style>
+      <section
+        className="section-padding py-24"
+        style={{ background: "#0a0a0a" }}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
         <div className="mx-auto max-w-6xl">
 
           {/* Gradient title */}
@@ -330,7 +356,11 @@ export default function DataAnalyticsPage() {
                 return (
                   <button
                     key={cat.id}
-                    onClick={() => setActiveStack(cat.id)}
+                    onClick={() => {
+                      setActiveStack(cat.id);
+                      setProgressKey((k) => k + 1);
+                      setResetKey((k) => k + 1);
+                    }}
                     className="relative flex items-center gap-4 p-[5.5px] rounded-[22px] text-left transition-all duration-200 overflow-hidden"
                   >
                     {/* Background */}
@@ -357,6 +387,14 @@ export default function DataAnalyticsPage() {
                     >
                       {cat.label}
                     </span>
+                    {/* Progress bar */}
+                    {isActive && !paused && (
+                      <span
+                        key={progressKey}
+                        className="absolute bottom-0 left-0 h-[3px] rounded-full bg-[#6366f1]/50"
+                        style={{ animation: "stackProgress 3.5s linear forwards" }}
+                      />
+                    )}
                   </button>
                 );
               })}
@@ -465,7 +503,7 @@ export default function DataAnalyticsPage() {
               href="/contact?type=data-analytics"
               className="w-fit px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
             >
-              Request a free data audit
+              Request a free data consultation
             </Link>
           </div>
 

@@ -223,127 +223,7 @@ export default function EmbeddedIoTPage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       {/* TECH STACK                                                         */}
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative py-16 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "conic-gradient(from 180deg at 50% 110%, rgba(175,77,68,0.35) 0%, rgba(90,43,44,0.12) 12%, transparent 28%)" }} />
-        <div className="absolute inset-y-0 left-0 w-64 pointer-events-none" style={{ background: "radial-gradient(ellipse at 0% 60%, rgba(175,50,40,0.28) 0%, transparent 70%)" }} />
-        <div className="absolute inset-y-0 right-0 w-64 pointer-events-none" style={{ background: "radial-gradient(ellipse at 100% 60%, rgba(175,50,40,0.28) 0%, transparent 70%)" }} />
-
-        <div className="relative z-10 mx-auto max-w-5xl px-6">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-3">Built across the embedded stack</h2>
-            <p className="text-white/40 text-sm">From bare-metal firmware to cloud-connected dashboards.</p>
-          </div>
-        </div>
-
-        <div className="relative w-full" style={{ aspectRatio: "1920 / 1117" }}>
-          <svg
-            className="absolute inset-0 w-full h-full pointer-events-none"
-            viewBox="0 0 1920 1117"
-            preserveAspectRatio="xMidYMid meet"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <linearGradient id="og1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#050914" stopOpacity="1"/><stop offset="100%" stopColor="#050914" stopOpacity="0"/></linearGradient>
-              <linearGradient id="og2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#050914" stopOpacity="1"/><stop offset="100%" stopColor="#050914" stopOpacity="0"/></linearGradient>
-              <linearGradient id="og3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#050914" stopOpacity="1"/><stop offset="100%" stopColor="#050914" stopOpacity="0"/></linearGradient>
-              <linearGradient id="og4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#050914" stopOpacity="0.4"/><stop offset="100%" stopColor="#050914" stopOpacity="0"/></linearGradient>
-              <linearGradient id="og5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#050914" stopOpacity="0.3"/><stop offset="100%" stopColor="#050914" stopOpacity="0"/></linearGradient>
-              <linearGradient id="ogInner" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#050914" stopOpacity="1"/><stop offset="100%" stopColor="#050914" stopOpacity="0"/></linearGradient>
-              <linearGradient id="ogBottom" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#050914" stopOpacity="0.8"/><stop offset="100%" stopColor="#050914" stopOpacity="0"/></linearGradient>
-            </defs>
-            <rect x="121"  y="89"  width="1678" height="1153" rx="191" fill="url(#og1)"      stroke="rgba(255,255,255,0.07)" strokeWidth="1"/>
-            <rect x="240"  y="209" width="1439" height="1033" rx="163" fill="url(#og2)"      stroke="rgba(255,255,255,0.07)" strokeWidth="1"/>
-            <rect x="366"  y="336" width="1188" height="906"  rx="145" fill="url(#og3)"      stroke="rgba(255,255,255,0.07)" strokeWidth="1"/>
-            <rect x="487"  y="457" width="946"  height="785"  rx="145" fill="url(#og4)"      stroke="rgba(255,255,255,0.07)" strokeWidth="1"/>
-            <rect x="619"  y="586" width="682"  height="656"  rx="116" fill="url(#og5)"      stroke="rgba(255,255,255,0.06)" strokeWidth="1"/>
-            <rect x="827"  y="372" width="266"  height="262"  rx="52"  fill="url(#ogInner)"  stroke="rgba(255,255,255,0.07)" strokeWidth="1"/>
-            <rect x="741"  y="684" width="438"  height="307"  rx="116" fill="url(#ogBottom)" stroke="rgba(255,255,255,0.05)" strokeWidth="1"/>
-            <path d="M960,503 C750,503 430,430 269,310"   stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M960,503 C1150,503 1540,440 1613,348" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M960,503 C750,503 500,475 384,475"   stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M960,503 C1150,503 1620,503 1699,566" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M960,503 C750,503 330,550 163,623"   stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M960,503 C1150,503 1360,580 1390,676" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M960,503 C750,503 540,640 480,728"   stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M960,503 C1150,503 1360,380 1405,302" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
-          </svg>
-
-          {[
-            { name: "C",           src: `${CDN}/c/c-original.svg`,                                                    lp: 14.0,  tp: 27.75 },
-            { name: "Rust",        src: `${CDN}/rust/rust-original.svg`,                                               lp: 84.0,  tp: 31.16 },
-            { name: "Python",      src: `${CDN}/python/python-original.svg`,                                           lp: 20.0,  tp: 42.52 },
-            { name: "Linux",       src: `${CDN}/linux/linux-original.svg`,                                             lp: 88.5,  tp: 50.67 },
-            { name: "Kafka",       src: `${CDN}/apachekafka/apachekafka-original.svg`,                                 lp:  8.5,  tp: 55.77 },
-            { name: "Kubernetes",  src: `${CDN}/kubernetes/kubernetes-plain.svg`,                                      lp: 72.38, tp: 60.52 },
-            { name: "React",       src: `${CDN}/react/react-original.svg`,                                             lp: 25.0,  tp: 65.18 },
-            { name: "AWS",         src: `${CDN}/amazonwebservices/amazonwebservices-plain-wordmark.svg`,               lp: 73.16, tp: 27.04 },
-          ].map((tech) => (
-            <div
-              key={tech.name}
-              className="absolute z-10"
-              style={{ left: `${tech.lp}%`, top: `${tech.tp}%`, transform: "translate(-50%,-50%)" }}
-            >
-              <div
-                className="rounded-[18px] flex items-center justify-center hover:scale-110 transition-transform duration-200"
-                style={{
-                  width: "clamp(52px, 4.22vw, 82px)",
-                  height: "clamp(52px, 4.22vw, 82px)",
-                  padding: "clamp(10px, 0.8vw, 16px)",
-                  backgroundImage: "linear-gradient(121deg, rgb(51,52,61) 41%, rgb(6,4,9) 109%)",
-                  border: "1px solid rgba(255,255,255,0.11)",
-                  boxShadow: "0px 1px 14px 0px rgba(255,255,255,0.10)",
-                  backdropFilter: "blur(3px)",
-                }}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={tech.src} alt={tech.name} className="w-full h-full object-contain" loading="lazy" />
-              </div>
-            </div>
-          ))}
-
-          <div className="absolute z-20" style={{ left: "49.9%", top: "45%", transform: "translate(-50%,-50%)" }}>
-            <div
-              className="rounded-[22px] flex items-center justify-center"
-              style={{
-                width: "clamp(80px, 12.66vw, 244px)",
-                height: "clamp(80px, 12.55vw, 241px)",
-                padding: "clamp(14px, 1.8vw, 30px)",
-                backgroundImage: "linear-gradient(121deg, rgb(51,52,61) 41%, rgb(6,4,9) 109%)",
-                border: "1px solid rgba(255,255,255,0.11)",
-                boxShadow: "0px 1px 14px 0px rgba(255,255,255,0.10)",
-                backdropFilter: "blur(3px)",
-              }}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo-static.png" alt="Intagleo" className="w-full h-full object-contain" />
-            </div>
-          </div>
-
-          <div className="absolute z-20" style={{ left: "50%", top: "78%", transform: "translate(-50%,-50%)" }}>
-            <div
-              className="rounded-[58px] flex items-center justify-center"
-              style={{
-                padding: "clamp(8px, 1.5vw, 29px) clamp(20px, 3vw, 58px)",
-                background: "linear-gradient(to bottom, #050914, rgba(5,9,20,0.6))",
-                border: "1px solid rgba(255,255,255,0.10)",
-              }}
-            >
-              <span
-                className="whitespace-nowrap font-normal"
-                style={{
-                  fontSize: "clamp(13px, 1.25vw, 24px)",
-                  backgroundImage: "linear-gradient(120deg, rgb(230,242,255) 20%, rgb(175,175,175) 41%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                Technologies
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
+   
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       {/* STATS                                                              */}
@@ -412,12 +292,8 @@ export default function EmbeddedIoTPage() {
             >
               Start a conversation
             </Link>
-            <Link
-              href="/contact?type=technical-call"
-              className="px-7 py-3 rounded-full border border-white/25 text-white/80 text-sm font-medium hover:text-white hover:border-white/45 transition-colors"
-            >
-              Schedule a Technical Call
-            </Link>
+                       <Link href="/case-studies" className="px-7 py-3 rounded-full border border-white/25 text-white/80 text-sm font-medium hover:text-white hover:border-white/45 transition-colors">See our Work</Link>
+
           </div>
 
           <p className="text-white/25 text-xs tracking-wide">
