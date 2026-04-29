@@ -1,0 +1,56 @@
+# Intagleo
+
+> A 20+ year enterprise software engineering firm. We design, build, and scale production-ready systems for enterprise teams and ambitious product companies — in 18 countries since 2003.
+
+Intagleo is a software engineering firm headquartered in Slough, UK, with a delivery hub in Islamabad, Pakistan. We work exclusively with senior engineers and take ownership of outcomes, not just tasks. Our clients include companies across fintech, healthcare, smart cities, digital signage, retail, and more.
+
+## Services
+
+- [Custom Software Development](https://intagleo.com/custom-software): Bespoke software engineered for your exact context — from architecture to production deployment.
+- [AI Transformation](https://intagleo.com/ai-transformation): Practical AI integration for enterprises: LLM-powered products, ML pipelines, and intelligent automation.
+- [Mobile Development](https://intagleo.com/mobile-dev): Native and cross-platform mobile apps built for scale and performance.
+- [Cloud & DevOps](https://intagleo.com/cloud-devops): Cloud architecture, CI/CD pipelines, Kubernetes, and infrastructure-as-code.
+- [QA & Testing Services](https://intagleo.com/qa-services): End-to-end quality assurance: automated testing, performance testing, and security audits.
+- [Staff Augmentation](https://intagleo.com/staff-augmentation): Senior engineers embedded into your team, on-demand — no ramp-up time.
+- [Legacy Modernization](https://intagleo.com/legacy-modernization): Safely migrate and rebuild legacy systems without shutting down operations.
+- [Data & Analytics](https://intagleo.com/data-analytics): Data pipelines, dashboards, and analytics infrastructure for data-driven decisions.
+- [Embedded & IoT](https://intagleo.com/embedded-iot): Firmware, embedded systems, and IoT platform development for connected products.
+
+## Industries
+
+- [Smart Cities & IoT](https://intagleo.com/smart-cities): Real-time sensor networks, urban data platforms, and smart infrastructure management.
+- [Fintech](https://intagleo.com/fintech): Payment platforms, trading systems, compliance automation, and financial analytics.
+- [Healthcare](https://intagleo.com/healthcare): EHR systems, telemedicine platforms, patient management, and AI-assisted diagnostics.
+- [Digital Signage](https://intagleo.com/digital-signage): Dynamic content management, multi-screen network control, and real-time audience analytics.
+- [Retail & E-commerce](https://intagleo.com/ecommerce-retail): Scalable commerce infrastructure, AI inventory intelligence, and marketplace modernization.
+- [HR & Recruitment](https://intagleo.com/hr-recruitment): Applicant tracking systems, AI resume screening, and onboarding automation.
+- [Facilities Management](https://intagleo.com/facilities-management): Asset lifecycle tracking, predictive maintenance AI, and work order automation.
+- [EdTech](https://intagleo.com/edtech): Learning management systems, adaptive platforms, and educational software.
+- [Real Estate](https://intagleo.com/real-estate): Property management platforms, listing systems, and PropTech solutions.
+- [Transportation](https://intagleo.com/transportation): Fleet management, logistics platforms, and transportation optimization software.
+- [Travel](https://intagleo.com/travel): Booking engines, travel tech platforms, and itinerary management systems.
+
+## Company
+
+- [About Intagleo](https://intagleo.com/about): Founded in 2003. 20+ years of history, mission, values, and our engineering philosophy.
+- [Case Studies](https://intagleo.com/case-studies): Real projects delivered — clients, challenges, solutions, and measurable results.
+- [Blog](https://intagleo.com/blog): Engineering insights, industry perspectives, and technical deep-dives from our team.
+- [Our Products](https://intagleo.com/our-products): Software products built and owned by Intagleo.
+- [Testimonials](https://intagleo.com/testimonials): What clients say about working with Intagleo.
+- [Careers](https://intagleo.com/join-us): Open engineering roles and what it's like to work at Intagleo.
+- [Contact](https://intagleo.com/contact): Start a project, request a consultation, or get in touch.
+
+## Key Facts
+
+- Founded: 2003
+- Headquarters: Slough, UK
+- Delivery hub: Islamabad, Pakistan
+- Team size: 50+ senior engineers
+- Countries served: 18
+- Projects delivered: 200+
+- Engagement types: Fixed-scope projects, dedicated teams, staff augmentation
+- Tech stack coverage: Web, mobile, cloud, AI/ML, embedded, IoT, data
+
+## Optional
+
+- [Full site content](https://intagleo.com/llms-full.txt)
