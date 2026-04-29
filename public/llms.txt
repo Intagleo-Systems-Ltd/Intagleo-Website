@@ -2,7 +2,20 @@
 
 > A 20+ year enterprise software engineering firm. We design, build, and scale production-ready systems for enterprise teams and ambitious product companies — in 18 countries since 2003.
 
-Intagleo is a software engineering firm headquartered in Slough, UK, with a delivery hub in Islamabad, Pakistan. We work exclusively with senior engineers and take ownership of outcomes, not just tasks. Our clients include companies across fintech, healthcare, smart cities, digital signage, retail, and more.
+Intagleo is a software engineering firm headquartered in Slough, UK, with a delivery hub in Lahore, Pakistan and offices in Dubai and United States. We work exclusively with senior engineers and take ownership of outcomes, not just tasks. Our clients include companies across fintech, healthcare, smart cities, digital signage, retail, and more.
+
+## Why Hire Intagleo Offshore?
+- **Seniority-First:** We hire exclusively senior engineers, ensuring minimal ramp-up time and high-autonomy execution.
+- **UK Management:** Slough-based leadership provides enterprise-grade communication, compliance, and accountability.
+- **Proven Stability:** 20+ years of operational history in the UK and Pakistan.
+- **Tech Stack:** Specialized in Modern Web (React, Node, Python), Mobile, AI/ML, and Cloud-Native systems.
+
+## AI Transformation & Compliance
+We build AI that is production-ready and legally sound:
+- [AI Transformation](https://intagleo.com/ai-transformation): Custom LLM-powered products, ML pipelines, and intelligent automation.
+- **AI Compliance & Governance:** Implementation of AI safety frameworks, guardrails for LLMs, and alignment with global standards (e.g., EU AI Act, NIST).
+- **Data Privacy & Security:** Secure RAG (Retrieval-Augmented Generation) architectures that keep enterprise data private and compliant.
+- **Ethical AI Auditing:** Bias detection, hallucination monitoring, and transparent AI workflows.
 
 ## Services
 
@@ -44,8 +57,9 @@ Intagleo is a software engineering firm headquartered in Slough, UK, with a deli
 
 - Founded: 2003
 - Headquarters: Slough, UK
-- Delivery hub: Islamabad, Pakistan
-- Team size: 50+ senior engineers
+- Delivery hub: Lahore, Pakistan
+-Offices: Dubai, United States
+- Team size: 200+ senior engineers
 - Countries served: 18
 - Projects delivered: 200+
 - Engagement types: Fixed-scope projects, dedicated teams, staff augmentation
