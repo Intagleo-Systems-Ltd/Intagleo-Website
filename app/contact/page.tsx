@@ -143,9 +143,9 @@ export default function ContactPage({
                 className="contact-fade-up mb-6"
                 style={{ animationDelay: "0.15s" }}
               >
-                <div className="inline-flex items-center gap-2 bg-[#6366f1]/10 border border-[#6366f1]/20 rounded-full px-3.5 py-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1]" />
-                  <span className="text-[#6366f1] text-xs font-medium tracking-wide">{config.badge}</span>
+                <div className="inline-flex items-center gap-2 bg-[#3B82F6]/10 border border-[#3B82F6]/20 rounded-full px-3.5 py-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />
+                  <span className="text-[#3B82F6] text-xs font-medium tracking-wide">{config.badge}</span>
                 </div>
               </div>
 
@@ -190,7 +190,7 @@ export default function ContactPage({
               >
                 {trustSignals.map((signal) => (
                   <li key={signal.label} className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-[#6366f1]/10 border border-[#6366f1]/20 flex items-center justify-center flex-shrink-0 text-[#6366f1]">
+                    <div className="w-8 h-8 rounded-lg bg-[#3B82F6]/10 border border-[#3B82F6]/20 flex items-center justify-center flex-shrink-0 text-[#3B82F6]">
                       {signal.icon}
                     </div>
                     <span className="text-white/55 text-sm">{signal.label}</span>

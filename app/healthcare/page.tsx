@@ -127,7 +127,7 @@ function Preview1_Telehealth() {
   useEffect(() => { const t = setInterval(() => setSecs(p => p.map(v => v + 1)), 1000); return () => clearInterval(t); }, []);
   const fmt = (s: number) => `${String(Math.floor(s / 60)).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}`;
   const sessions = [
-    { initials: "SJ", name: "Dr. Sarah J.", color: "#6366f1", qual: 3, live: true },
+    { initials: "SJ", name: "Dr. Sarah J.", color: "#3B82F6", qual: 3, live: true },
     { initials: "MP", name: "M. Patel", color: "#8b5cf6", qual: 3, live: true },
     { initials: "RK", name: "Dr. R. Khan", color: "#06b6d4", qual: 2, live: true },
     { initials: "AL", name: "A. Lawson", color: "#10b981", qual: 3, live: false },
@@ -169,7 +169,7 @@ function Preview2_DataAnalytics() {
   const [on, setOn] = useState(false);
   useEffect(() => { const t = setTimeout(() => setOn(true), 50); return () => clearTimeout(t); }, []);
   const pipelines = [
-    { label: "EHR → Population Analytics", pct: 94, rate: "1.2M rows/min", color: "#6366f1" },
+    { label: "EHR → Population Analytics", pct: 94, rate: "1.2M rows/min", color: "#3B82F6" },
     { label: "Risk Model Training", pct: 71, rate: "Epoch 4 / 12", color: "#8b5cf6" },
     { label: "HEDIS Report Generation", pct: 100, rate: "Complete", color: "#34d399" },
     { label: "Outcome Dashboard Sync", pct: 88, rate: "482 KPIs live", color: "#06b6d4" },
@@ -211,7 +211,7 @@ function Preview3_Compliance() {
   const r = 17; const circ = 2 * Math.PI * r;
   const scores = [
     { label: "HIPAA", pct: 100, color: "#34d399" },
-    { label: "SOC 2 T2", pct: 98, color: "#6366f1" },
+    { label: "SOC 2 T2", pct: 98, color: "#3B82F6" },
     { label: "ISO 27001", pct: 96, color: "#8b5cf6" },
     { label: "GDPR", pct: 94, color: "#06b6d4" },
   ];
@@ -265,7 +265,7 @@ function Preview3_Compliance() {
 function Preview4_Interop() {
   const hx = 118, hy = 102;
   const nodes = [
-    { x: 118, y: 22, label: "Lab & Radiology", sub: "3,240/min", color: "#6366f1" },
+    { x: 118, y: 22, label: "Lab & Radiology", sub: "3,240/min", color: "#3B82F6" },
     { x: 205, y: 75, label: "Pharmacy APIs", sub: "1,820/min", color: "#8b5cf6" },
     { x: 192, y: 162, label: "Insurance", sub: "482/hr", color: "#06b6d4" },
     { x: 30, y: 155, label: "HIE Network", sub: "892/min", color: "#10b981" },
@@ -309,19 +309,19 @@ function Preview5_AI() {
     { label: "Sepsis Risk", pct: 87, color: "#ef4444", level: "High" },
     { label: "Readmission Risk", pct: 62, color: "#f59e0b", level: "Medium" },
     { label: "Drug Interaction", pct: 94, color: "#ef4444", level: "Critical" },
-    { label: "Triage Priority", pct: 78, color: "#6366f1", level: "High" },
+    { label: "Triage Priority", pct: 78, color: "#3B82F6", level: "High" },
   ];
   const alerts = [
     { time: "now", text: "Drug interaction: Warfarin + Aspirin · Pt #3812", sev: "#ef4444" },
     { time: "2m", text: "Sepsis early warning · Patient #4421 · ICU", sev: "#f59e0b" },
-    { time: "5m", text: "Triage: 3 patients auto-escalated to Urgent", sev: "#6366f1" },
+    { time: "5m", text: "Triage: 3 patients auto-escalated to Urgent", sev: "#3B82F6" },
   ];
   return (
     <div style={{ height: "210px", background: "#0a0c14" }} className="flex overflow-hidden">
       <div className="flex-1 flex flex-col p-4 gap-3 border-r border-white/[0.06] min-w-0">
         <div className="flex items-center justify-between">
           <span className="text-[9px] text-white/25 font-mono uppercase tracking-widest">Model Inference</span>
-          <span className="text-[9px] text-[#6366f1] font-mono">94.7% accuracy</span>
+          <span className="text-[9px] text-[#3B82F6] font-mono">94.7% accuracy</span>
         </div>
         {inferences.map((inf, i) => (
           <div key={i} className="flex flex-col gap-1">
@@ -432,8 +432,8 @@ export default function HealthcarePage() {
   }, []);
 
   const vitals = [
-    { label: "Heart Rate", value: "72", unit: "bpm", color: "#6366f1" },
-    { label: "SpO2", value: "98", unit: "%", color: "#6366f1" },
+    { label: "Heart Rate", value: "72", unit: "bpm", color: "#3B82F6" },
+    { label: "SpO2", value: "98", unit: "%", color: "#3B82F6" },
     { label: "Resp Rate", value: "16", unit: "/min", color: "#10b981" },
     { label: "Temp", value: "36.6", unit: "°C", color: "#f59e0b" },
   ];
@@ -463,7 +463,7 @@ export default function HealthcarePage() {
             the healthcare technology that improves care delivery at scale.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link href="/contact?type=healthcare" className="px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=healthcare" className="px-6 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Talk to a Healthcare Engineer
             </Link>
             <a href="#process" className="px-6 py-3 rounded-full border border-white/[0.14] text-white/65 text-sm font-medium hover:text-white hover:border-white/30 transition-colors">
@@ -484,7 +484,7 @@ export default function HealthcarePage() {
             {/* Left nav */}
             <div className="flex flex-col gap-0.5">
               {techCaps.map((cap, i) => (
-                <button key={i} onClick={() => setActiveTab(i)} className={`text-left px-4 py-3.5 rounded-xl transition-all duration-150 border ${activeTab === i ? "bg-[#161b27] border-white/[0.14]" : "border-transparent hover:bg-white/[0.04]"} cursor-pointer`}>
+                <button key={i} onClick={() => setActiveTab(i)} className={`text-left px-4 py-3.5 rounded-full transition-all duration-150 border ${activeTab === i ? "bg-[#161b27] border-white/[0.14]" : "border-transparent hover:bg-white/[0.04]"} cursor-pointer`}>
                   <span className="font-semibold text-white text-sm">{cap.highlight}</span>
                   <span className={`text-sm transition-colors ${activeTab === i ? "text-white/55" : "text-white/35"}`}>{cap.rest}</span>
                 </button>
@@ -555,7 +555,7 @@ export default function HealthcarePage() {
               We conduct deep-dive healthcare architecture reviews - examining your EHR integrations,
               data security posture, and compliance gaps - before a regulatory audit forces the issue.
             </p>
-            <Link href="/contact?type=healthcare-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=healthcare-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Book a Clinical System Review
             </Link>
           </div>
@@ -638,7 +638,7 @@ export default function HealthcarePage() {
                   creates patient risk and clinician burden. Here&apos;s what changes.
                 </p>
               </div>
-              <Link href="/contact?type=healthcare" className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors cursor-pointer">
+              <Link href="/contact?type=healthcare" className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors cursor-pointer">
                 See results in action
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </Link>
@@ -652,7 +652,7 @@ export default function HealthcarePage() {
               { num: "04", title: "Care Continuity", desc: "Seamless data exchange across care settings ensures every clinician has the complete picture needed to make safe decisions." },
             ].map((item) => (
               <div key={item.title} className="flex-1 flex items-start gap-5 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-200">
-                <span className="text-xs font-mono text-[#6366f1]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
+                <span className="text-xs font-mono text-[#3B82F6]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
                 <div>
                   <h3 className="text-white font-semibold text-[15px] mb-1.5 leading-snug">{item.title}</h3>
                   <p className="text-white/55 text-sm leading-relaxed">{item.desc}</p>
@@ -718,7 +718,7 @@ export default function HealthcarePage() {
             clinical infrastructure that connects care and protects patients.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
-            <Link href="/contact?type=healthcare" className="px-7 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=healthcare" className="px-7 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Talk to a healthcare engineer
             </Link>
                         <Link href="/case-studies" className="px-7 py-3 rounded-full border border-white/25 text-white/80 text-sm font-medium hover:text-white hover:border-white/45 transition-colors">See our Work</Link>

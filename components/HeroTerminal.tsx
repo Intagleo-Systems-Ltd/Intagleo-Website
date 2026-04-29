@@ -39,7 +39,7 @@ function renderLine(line: Line) {
     case "cmd":
       return (
         <div className="flex items-center gap-2">
-          <span className="text-[#6366f1] select-none">$</span>
+          <span className="text-[#3B82F6] select-none">$</span>
           <span className="text-white/80">{line.text}</span>
         </div>
       );
@@ -119,7 +119,7 @@ export default function HeroTerminal() {
 
           {/* Blinking cursor */}
           <div className="flex items-center gap-2 mt-0.5">
-            {done && <span className="text-[#6366f1] select-none">$</span>}
+            {done && <span className="text-[#3B82F6] select-none">$</span>}
             <span
               className="text-white/70 transition-opacity duration-75"
               style={{ opacity: cursorOn ? 1 : 0 }}

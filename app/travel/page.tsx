@@ -49,7 +49,7 @@ const techCaps: CapItem[] = [
         { x: 118, y: 28,  label: "Amadeus GDS",     sub: "Full content",      color: "#5b7fff" },
         { x: 198, y: 72,  label: "NDC Airlines",    sub: "Direct connect",    color: "#a78bfa" },
         { x: 208, y: 148, label: "Hotel Bed Banks", sub: "Multi-aggregate",   color: "#34d399" },
-        { x: 140, y: 188, label: "Car & Transfers", sub: "Ground transport",  color: "#6366f1" },
+        { x: 140, y: 188, label: "Car & Transfers", sub: "Ground transport",  color: "#3B82F6" },
         { x: 42,  y: 152, label: "Sabre GDS",       sub: "Fallback rail",     color: "#f59e0b" },
       ],
       footer: "15+ GDS & supplier integrations",
@@ -71,7 +71,7 @@ const techCaps: CapItem[] = [
         { initials: "IT", name: "Itinerary Builder", color: "#5b7fff", qual: 3, live: true,  secs: 3600 },
         { initials: "NT", name: "In-trip Alerts",    color: "#34d399", qual: 3, live: true,  secs: 1800 },
         { initials: "MC", name: "Mobile Check-in",   color: "#a78bfa", qual: 2, live: true,  secs: 900  },
-        { initials: "LP", name: "Loyalty API",       color: "#6366f1", qual: 2, live: false, secs: 7200 },
+        { initials: "LP", name: "Loyalty API",       color: "#3B82F6", qual: 2, live: false, secs: 7200 },
       ],
       footerStats: ["80M+ bookings", "15+ suppliers", "Real-time"],
     },
@@ -91,7 +91,7 @@ const techCaps: CapItem[] = [
         { label: "Ancillary Attach", pct: 74, color: "#5b7fff" },
         { label: "Fare Utilisation", pct: 88, color: "#34d399" },
         { label: "Yield Score",      pct: 82, color: "#a78bfa" },
-        { label: "Commission Acc",   pct: 99, color: "#6366f1" },
+        { label: "Commission Acc",   pct: 99, color: "#3B82F6" },
       ],
       events: [
         { time: "09:14:02", text: "Seat upsell rate: 38% on LHR-DXB"         },
@@ -117,7 +117,7 @@ const techCaps: CapItem[] = [
         { label: "Agent Desktop",     pct: 100, rate: "Always-on",  color: "#5b7fff" },
         { label: "Disruption Engine", pct: 88,  rate: "Real-time",  color: "#34d399" },
         { label: "Supplier Recon",    pct: 76,  rate: "Daily batch", color: "#a78bfa" },
-        { label: "Reporting Suite",   pct: 94,  rate: "On demand",  color: "#6366f1" },
+        { label: "Reporting Suite",   pct: 94,  rate: "On demand",  color: "#3B82F6" },
       ],
       metrics: [
         { label: "Disruptions",    value: "24 active" },
@@ -142,7 +142,7 @@ const techCaps: CapItem[] = [
         { label: "Funnel Analysis", pct: 92, color: "#5b7fff", level: "High"   },
         { label: "Demand Forecast", pct: 87, color: "#34d399", level: "Strong" },
         { label: "Customer LTV",    pct: 84, color: "#a78bfa", level: "Strong" },
-        { label: "Route Perf AI",   pct: 89, color: "#6366f1", level: "High"   },
+        { label: "Route Perf AI",   pct: 89, color: "#3B82F6", level: "High"   },
       ],
       alertsLabel: "Intelligence Signals",
       alerts: [
@@ -214,7 +214,7 @@ export default function TravelPage() {
             we build the travel software that keeps every journey on track.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link href="/contact?type=travel" className="px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=travel" className="px-6 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Talk to a Travel Tech Engineer
             </Link>
             <a href="#process" className="px-6 py-3 rounded-full border border-white/[0.14] text-white/65 text-sm font-medium hover:text-white hover:border-white/30 transition-colors">
@@ -242,7 +242,7 @@ export default function TravelPage() {
               We audit your entire travel tech stack - booking engine latency, GDS connectivity,
               and supplier fallback logic - to pinpoint exactly where travellers drop off and revenue leaks.
             </p>
-            <Link href="/contact?type=travel-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=travel-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Book a Tech Stack Review
             </Link>
           </div>
@@ -251,7 +251,7 @@ export default function TravelPage() {
           <div className="relative rounded-2xl overflow-hidden bg-[#060810] border border-white/[0.07] p-5" style={{ height: "380px" }}>
             <div className="flex items-center justify-between mb-4 border-b border-white/[0.06] pb-3">
               <span className="text-[10px] text-white/30 uppercase tracking-widest font-mono">Departures</span>
-              <span className="text-[10px] text-[#6366f1]/60 font-mono animate-pulse">Live</span>
+              <span className="text-[10px] text-[#3B82F6]/60 font-mono animate-pulse">Live</span>
             </div>
             {/* Header row */}
             <div className="grid grid-cols-[60px_1fr_80px_50px_80px] gap-2 mb-2 px-1">
@@ -270,7 +270,7 @@ export default function TravelPage() {
                     className={`grid grid-cols-[60px_1fr_80px_50px_80px] gap-2 items-center px-2 py-2 rounded-lg transition-all duration-200 font-mono text-xs
                       ${isActive ? "bg-white/[0.06] border border-white/[0.1]" : "border border-transparent"}`}
                   >
-                    <span className={`font-bold ${isActive ? "text-[#6366f1]" : "text-white/70"}`}>
+                    <span className={`font-bold ${isActive ? "text-[#3B82F6]" : "text-white/70"}`}>
                       {isUpdating
                         ? dep.time.split("").map((c, ci) => <ScrambleChar key={ci} target={c} tick={tick + ci} />)
                         : dep.time}
@@ -284,7 +284,7 @@ export default function TravelPage() {
                     <span className="text-white/35">{dep.gate}</span>
                     <span className={`text-[10px] px-2 py-0.5 rounded font-mono text-center
                       ${dep.status === "Boarding" ? "bg-green-500/20 text-green-400" :
-                        dep.status === "Delayed" ? "bg-[#6366f1]/20 text-[#6366f1]" :
+                        dep.status === "Delayed" ? "bg-[#3B82F6]/20 text-[#3B82F6]" :
                         "bg-white/[0.06] text-white/40"}`}>
                       {dep.status}
                     </span>
@@ -335,7 +335,7 @@ export default function TravelPage() {
                   drives abandonment at every booking step. Here&apos;s what changes.
                 </p>
               </div>
-              <Link href="/contact?type=travel" className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors cursor-pointer">
+              <Link href="/contact?type=travel" className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors cursor-pointer">
                 See results in action
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </Link>
@@ -349,7 +349,7 @@ export default function TravelPage() {
               { num: "04", title: "Operational Efficiency", desc: "Automated disruption management, supplier reconciliation, and agent tooling reduce back-office cost per booking significantly." },
             ].map((item) => (
               <div key={item.title} className="flex-1 flex items-start gap-5 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-200">
-                <span className="text-xs font-mono text-[#6366f1]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
+                <span className="text-xs font-mono text-[#3B82F6]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
                 <div>
                   <h3 className="text-white font-semibold text-[15px] mb-1.5 leading-snug">{item.title}</h3>
                   <p className="text-white/55 text-sm leading-relaxed">{item.desc}</p>
@@ -415,7 +415,7 @@ export default function TravelPage() {
             travel infrastructure that converts searchers into passengers.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
-            <Link href="/contact?type=travel" className="px-7 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=travel" className="px-7 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Talk to a travel tech engineer
             </Link>
                         <Link href="/case-studies" className="px-7 py-3 rounded-full border border-white/25 text-white/80 text-sm font-medium hover:text-white hover:border-white/45 transition-colors">See our Work</Link>

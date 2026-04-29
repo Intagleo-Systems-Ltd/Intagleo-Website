@@ -25,7 +25,7 @@ const techCaps: CapItem[] = [
       headline: "4 pipelines active",
       pipelines: [
         { label: "Content Ingestion", pct: 92, rate: "18 MB/s", color: "#5b7fff" },
-        { label: "SCORM Processing", pct: 85, rate: "Real-time", color: "#6366f1" },
+        { label: "SCORM Processing", pct: 85, rate: "Real-time", color: "#3B82F6" },
         { label: "CDN Distribution", pct: 100, rate: "Global", color: "#34d399" },
         { label: "Tenant Sync", pct: 78, rate: "Event-driven", color: "#a78bfa" },
       ],
@@ -51,7 +51,7 @@ const techCaps: CapItem[] = [
         { label: "Engagement Rate", pct: 88, color: "#5b7fff" },
         { label: "Completion Rate", pct: 94, color: "#34d399" },
         { label: "Mastery Score", pct: 79, color: "#a78bfa" },
-        { label: "Path Accuracy", pct: 96, color: "#6366f1" },
+        { label: "Path Accuracy", pct: 96, color: "#3B82F6" },
       ],
       events: [
         { time: "11:42:08", text: "Pathway adjusted for Cohort-12" },
@@ -126,7 +126,7 @@ const techCaps: CapItem[] = [
         { initials: "DK", name: "Dr. Kim — React 101", color: "#5b7fff", qual: 3, live: true, secs: 2831 },
         { initials: "MP", name: "M. Patel — Data Sci", color: "#a78bfa", qual: 2, live: true, secs: 1203 },
         { initials: "JR", name: "J. Reyes — UX Design", color: "#34d399", qual: 3, live: true, secs: 4729 },
-        { initials: "AL", name: "A. Lee — ML Basics", color: "#6366f1", qual: 2, live: false, secs: 342 },
+        { initials: "AL", name: "A. Lee — ML Basics", color: "#3B82F6", qual: 2, live: false, secs: 342 },
       ],
       footerStats: ["Peak concurrent: 1,840", "CDN: 99.97%", "4 streams"],
     },
@@ -147,7 +147,7 @@ const techCaps: CapItem[] = [
         { x: 118, y: 28, label: "SIS / Banner", sub: "Student records", color: "#5b7fff" },
         { x: 198, y: 70, label: "HR Platform", sub: "Payroll sync", color: "#a78bfa" },
         { x: 208, y: 148, label: "SSO Provider", sub: "Okta / Azure AD", color: "#34d399" },
-        { x: 140, y: 188, label: "Content Lib", sub: "LinkedIn / Coursera", color: "#6366f1" },
+        { x: 140, y: 188, label: "Content Lib", sub: "LinkedIn / Coursera", color: "#3B82F6" },
         { x: 42, y: 152, label: "Zoom / Teams", sub: "Live session API", color: "#f59e0b" },
       ],
       footer: "5 integrations · real-time sync",
@@ -197,7 +197,7 @@ export default function EdtechPage() {
             measurable educational outcomes across millions of learners.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link href="/contact?type=edtech" className="px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=edtech" className="px-6 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Talk to an EdTech Engineer
             </Link>
             <a href="#process" className="px-6 py-3 rounded-full border border-white/[0.14] text-white/65 text-sm font-medium hover:text-white hover:border-white/30 transition-colors">
@@ -223,7 +223,7 @@ export default function EdtechPage() {
               performance, learner data pipelines, and scalability limits - to identify what&apos;s
               capping your growth.
             </p>
-            <Link href="/contact?type=edtech-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=edtech-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Book a Platform Review
             </Link>
           </div>
@@ -232,11 +232,11 @@ export default function EdtechPage() {
           <div className="relative rounded-2xl overflow-hidden bg-[#0d0e18] border border-white/[0.07] p-5" style={{ height: "380px" }}>
             <div className="flex items-center justify-between mb-4">
               <span className="text-[10px] text-white/30 uppercase tracking-widest font-mono">Course Dashboard</span>
-              <span className="text-[10px] text-[#6366f1]/70 font-mono">6 modules</span>
+              <span className="text-[10px] text-[#3B82F6]/70 font-mono">6 modules</span>
             </div>
             <div className="grid grid-cols-2 gap-2">
               {modules.map((mod, i) => (
-                <div key={mod.title} className={`rounded-xl border p-3 transition-all duration-300 ${activeModule === i ? "border-[#6366f1]/40 bg-[#6366f1]/[0.06]" : "border-white/[0.06] bg-[#111420]"}`}>
+                <div key={mod.title} className={`rounded-xl border p-3 transition-all duration-300 ${activeModule === i ? "border-[#3B82F6]/40 bg-[#3B82F6]/[0.06]" : "border-white/[0.06] bg-[#111420]"}`}>
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-sm text-white/50">{mod.icon}</span>
                     <span className="text-[9px] text-white/30 uppercase font-mono">{mod.type}</span>
@@ -244,7 +244,7 @@ export default function EdtechPage() {
                   <p className="text-white/75 text-xs font-medium mb-2 leading-snug">{mod.title}</p>
                   <div className="h-1 bg-white/[0.06] rounded-full overflow-hidden">
                     <div
-                      className={`h-full rounded-full transition-all duration-700 ${mod.progress === 100 ? "bg-green-500" : activeModule === i ? "bg-[#6366f1]" : "bg-white/20"}`}
+                      className={`h-full rounded-full transition-all duration-700 ${mod.progress === 100 ? "bg-green-500" : activeModule === i ? "bg-[#3B82F6]" : "bg-white/20"}`}
                       style={{ width: `${mod.progress}%` }}
                     />
                   </div>
@@ -295,7 +295,7 @@ export default function EdtechPage() {
                   and completion rates. Here&apos;s what changes.
                 </p>
               </div>
-              <Link href="/contact?type=edtech" className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors cursor-pointer">
+              <Link href="/contact?type=edtech" className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors cursor-pointer">
                 See results in action
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </Link>
@@ -309,7 +309,7 @@ export default function EdtechPage() {
               { num: "04", title: "Institutional Insight", desc: "Real-time dashboards give instructors and administrators the visibility to intervene before learners fall behind." },
             ].map((item) => (
               <div key={item.title} className="flex-1 flex items-start gap-5 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-200">
-                <span className="text-xs font-mono text-[#6366f1]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
+                <span className="text-xs font-mono text-[#3B82F6]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
                 <div>
                   <h3 className="text-white font-semibold text-[15px] mb-1.5 leading-snug">{item.title}</h3>
                   <p className="text-white/55 text-sm leading-relaxed">{item.desc}</p>
@@ -375,7 +375,7 @@ export default function EdtechPage() {
             that delivers education at scale.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
-            <Link href="/contact?type=edtech" className="px-7 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=edtech" className="px-7 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Talk to an EdTech engineer
             </Link>
                        <Link href="/case-studies" className="px-7 py-3 rounded-full border border-white/25 text-white/80 text-sm font-medium hover:text-white hover:border-white/45 transition-colors">See our Work</Link>

@@ -48,7 +48,7 @@ const techCaps: CapItem[] = [
       headline: "4 pipelines active",
       pipelines: [
         { label: "Lead Qualification", pct: 88, rate: "Auto-scored", color: "#5b7fff" },
-        { label: "Email Sequences", pct: 72, rate: "Drip sends", color: "#6366f1" },
+        { label: "Email Sequences", pct: 72, rate: "Drip sends", color: "#3B82F6" },
         { label: "Agent Assignment", pct: 100, rate: "Instant", color: "#34d399" },
         { label: "Deal Stage Sync", pct: 91, rate: "Real-time", color: "#a78bfa" },
       ],
@@ -75,7 +75,7 @@ const techCaps: CapItem[] = [
         { initials: "3D", name: "42 Oak St Walkthrough", color: "#5b7fff", qual: 3, live: true, secs: 384 },
         { initials: "VR", name: "Penthouse 12A Tour", color: "#a78bfa", qual: 2, live: true, secs: 1847 },
         { initials: "AR", name: "Floor Plan — Unit 7B", color: "#34d399", qual: 3, live: true, secs: 92 },
-        { initials: "VM", name: "Video — 18 Elm Close", color: "#6366f1", qual: 2, live: false, secs: 2310 },
+        { initials: "VM", name: "Video — 18 Elm Close", color: "#3B82F6", qual: 2, live: false, secs: 2310 },
       ],
       footerStats: ["Avg session: 4m 12s", "CDN: 99.98%", "4 active"],
     },
@@ -95,7 +95,7 @@ const techCaps: CapItem[] = [
         { label: "Docs Signed", pct: 94, color: "#5b7fff" },
         { label: "Escrow On Track", pct: 87, color: "#34d399" },
         { label: "Compliance Pass", pct: 100, color: "#a78bfa" },
-        { label: "Close Rate", pct: 68, color: "#6366f1" },
+        { label: "Close Rate", pct: 68, color: "#3B82F6" },
       ],
       events: [
         { time: "14:22:08", text: "Contract signed — 42 Oak St" },
@@ -148,7 +148,7 @@ const techCaps: CapItem[] = [
         { x: 118, y: 28, label: "Tenant Portal", sub: "Self-service hub", color: "#5b7fff" },
         { x: 198, y: 70, label: "Maintenance", sub: "Work orders", color: "#a78bfa" },
         { x: 208, y: 148, label: "Rent Ledger", sub: "Auto-collect", color: "#34d399" },
-        { x: 140, y: 188, label: "Owner App", sub: "Financial reports", color: "#6366f1" },
+        { x: 140, y: 188, label: "Owner App", sub: "Financial reports", color: "#3B82F6" },
         { x: 42, y: 152, label: "Contractors", sub: "Vendor network", color: "#f59e0b" },
       ],
       footer: "180 units · 6 properties",
@@ -187,7 +187,7 @@ export default function RealEstatePage() {
             the platforms that move buyers, sellers, and agents through every deal with confidence.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link href="/contact?type=real-estate" className="px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=real-estate" className="px-6 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Talk to a PropTech Engineer
             </Link>
             <a href="#process" className="px-6 py-3 rounded-full border border-white/[0.14] text-white/65 text-sm font-medium hover:text-white hover:border-white/30 transition-colors">
@@ -212,7 +212,7 @@ export default function RealEstatePage() {
               We conduct deep-dive PropTech architecture reviews - examining your listing pipelines,
               CRM integrations, and transaction workflows - to identify what&apos;s slowing deals down.
             </p>
-            <Link href="/contact?type=real-estate-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=real-estate-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Book a Platform Review
             </Link>
           </div>
@@ -221,7 +221,7 @@ export default function RealEstatePage() {
           <div className="relative rounded-2xl overflow-hidden bg-[#0d0e18] border border-white/[0.07] p-5 flex flex-col" style={{ height: "380px" }}>
             <div className="flex items-center justify-between mb-4">
               <span className="text-[10px] text-white/30 uppercase tracking-widest font-mono">Building Overview</span>
-              <span className="text-[10px] text-[#6366f1]/70 font-mono">{FLOORS} floors · {FLOORS * UNITS_PER_FLOOR} units</span>
+              <span className="text-[10px] text-[#3B82F6]/70 font-mono">{FLOORS} floors · {FLOORS * UNITS_PER_FLOOR} units</span>
             </div>
             <div className="flex-1 flex flex-col justify-end gap-1">
               {Array.from({ length: FLOORS })
@@ -236,7 +236,7 @@ export default function RealEstatePage() {
                       onMouseEnter={() => setHoveredFloor(floorIdx)}
                       onMouseLeave={() => setHoveredFloor(null)}
                     >
-                      <div className={`rounded border transition-all duration-200 p-2 flex items-center gap-2 ${isHovered ? "border-[#6366f1]/50 bg-[#6366f1]/[0.07]" : "border-white/[0.07] bg-white/[0.02]"}`}>
+                      <div className={`rounded border transition-all duration-200 p-2 flex items-center gap-2 ${isHovered ? "border-[#3B82F6]/50 bg-[#3B82F6]/[0.07]" : "border-white/[0.07] bg-white/[0.02]"}`}>
                         <span className="text-[9px] font-mono text-white/30 w-8 flex-shrink-0">F{floorIdx + 1}</span>
                         <div className="flex gap-1 flex-1">
                           {Array.from({ length: UNITS_PER_FLOOR }).map((_, ui) => {
@@ -244,13 +244,13 @@ export default function RealEstatePage() {
                             return (
                               <div
                                 key={ui}
-                                className={`flex-1 rounded-sm transition-all duration-200 ${unitOccupied ? (isHovered ? "bg-[#6366f1]/60" : "bg-white/20") : "bg-white/[0.04] border border-white/[0.06]"}`}
+                                className={`flex-1 rounded-sm transition-all duration-200 ${unitOccupied ? (isHovered ? "bg-[#3B82F6]/60" : "bg-white/20") : "bg-white/[0.04] border border-white/[0.06]"}`}
                                 style={{ height: "20px" }}
                               />
                             );
                           })}
                         </div>
-                        <span className={`text-[9px] font-mono w-8 text-right flex-shrink-0 transition-colors ${isHovered ? "text-[#6366f1]/80" : "text-white/25"}`}>{occupancy}%</span>
+                        <span className={`text-[9px] font-mono w-8 text-right flex-shrink-0 transition-colors ${isHovered ? "text-[#3B82F6]/80" : "text-white/25"}`}>{occupancy}%</span>
                       </div>
                     </div>
                   );
@@ -259,7 +259,7 @@ export default function RealEstatePage() {
             {hoveredFloor !== null && (
               <div className="mt-3 border-t border-white/[0.06] pt-3 flex items-center gap-4">
                 <span className="text-[10px] text-white/40 font-mono">Floor {hoveredFloor + 1}</span>
-                <span className="text-[10px] text-[#6366f1]/70 font-mono">{[75, 100, 50, 88, 62, 100][hoveredFloor]}% occupancy</span>
+                <span className="text-[10px] text-[#3B82F6]/70 font-mono">{[75, 100, 50, 88, 62, 100][hoveredFloor]}% occupancy</span>
                 <span className="text-[10px] text-white/30 font-mono">{UNITS_PER_FLOOR} units</span>
               </div>
             )}
@@ -306,7 +306,7 @@ export default function RealEstatePage() {
                   and erodes margins. Here&apos;s what changes.
                 </p>
               </div>
-              <Link href="/contact?type=real-estate" className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors cursor-pointer">
+              <Link href="/contact?type=real-estate" className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors cursor-pointer">
                 See results in action
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </Link>
@@ -320,7 +320,7 @@ export default function RealEstatePage() {
               { num: "04", title: "Portfolio Intelligence", desc: "Real-time occupancy, maintenance, and financial dashboards give property managers the visibility to act before issues become costs." },
             ].map((item) => (
               <div key={item.title} className="flex-1 flex items-start gap-5 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-200">
-                <span className="text-xs font-mono text-[#6366f1]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
+                <span className="text-xs font-mono text-[#3B82F6]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
                 <div>
                   <h3 className="text-white font-semibold text-[15px] mb-1.5 leading-snug">{item.title}</h3>
                   <p className="text-white/55 text-sm leading-relaxed">{item.desc}</p>
@@ -386,7 +386,7 @@ export default function RealEstatePage() {
             that accelerates every step from enquiry to close.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
-            <Link href="/contact?type=real-estate" className="px-7 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=real-estate" className="px-7 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Talk to a PropTech engineer
             </Link>
                       <Link href="/case-studies" className="px-7 py-3 rounded-full border border-white/25 text-white/80 text-sm font-medium hover:text-white hover:border-white/45 transition-colors">See our Work</Link>

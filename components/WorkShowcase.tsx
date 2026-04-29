@@ -6,7 +6,7 @@ const projects = [
     category: "Web Application",
     description: "Real-time portfolio analytics and trading platform for retail investors.",
     tags: ["React", "Node.js", "PostgreSQL"],
-    bg: "from-blue-900/30 to-indigo-900/20",
+    bg: "from-blue-900/30 to-blue-900/20",
   },
   {
     title: "HealthCare Portal",

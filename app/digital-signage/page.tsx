@@ -50,7 +50,7 @@ const techCaps: CapItem[] = [
         { x: 118, y: 28, label: "EU-North Zone", sub: "2,400 screens", color: "#5b7fff" },
         { x: 198, y: 70, label: "US-East Zone", sub: "1,840 screens", color: "#a78bfa" },
         { x: 208, y: 148, label: "APAC Zone", sub: "920 screens", color: "#34d399" },
-        { x: 140, y: 188, label: "ME Zone", sub: "640 screens", color: "#6366f1" },
+        { x: 140, y: 188, label: "ME Zone", sub: "640 screens", color: "#3B82F6" },
         { x: 42, y: 152, label: "OTA Server", sub: "Firmware hub", color: "#f59e0b" },
       ],
       footer: "5,800 devices · 4 regions",
@@ -72,7 +72,7 @@ const techCaps: CapItem[] = [
         { label: "Android Player v14", pct: 100, rate: "Deployed", color: "#34d399" },
         { label: "Linux Player v9", pct: 88, rate: "Staged", color: "#5b7fff" },
         { label: "Windows Player v7", pct: 72, rate: "QA testing", color: "#a78bfa" },
-        { label: "WebOS Player v3", pct: 55, rate: "In review", color: "#6366f1" },
+        { label: "WebOS Player v3", pct: 55, rate: "In review", color: "#3B82F6" },
       ],
       metrics: [
         { label: "Crash Rate", value: "0.04%" },
@@ -96,7 +96,7 @@ const techCaps: CapItem[] = [
         { label: "Play Accuracy", pct: 99, color: "#34d399" },
         { label: "Uptime SLA", pct: 100, color: "#5b7fff" },
         { label: "Audience Reach", pct: 87, color: "#a78bfa" },
-        { label: "Report Delivery", pct: 98, color: "#6366f1" },
+        { label: "Report Delivery", pct: 98, color: "#3B82F6" },
       ],
       events: [
         { time: "09:15:00", text: "Campaign A proof delivered" },
@@ -122,7 +122,7 @@ const techCaps: CapItem[] = [
         { label: "REST Latency", pct: 98, color: "#34d399", level: "Excellent" },
         { label: "WebSocket Uptime", pct: 100, color: "#5b7fff", level: "Optimal" },
         { label: "Feed Parse Rate", pct: 94, color: "#a78bfa", level: "High" },
-        { label: "Ad-tech Match", pct: 89, color: "#6366f1", level: "Strong" },
+        { label: "Ad-tech Match", pct: 89, color: "#3B82F6", level: "Strong" },
       ],
       alertsLabel: "API Signals",
       alerts: [
@@ -149,7 +149,7 @@ const techCaps: CapItem[] = [
         { initials: "EU", name: "EU-North NOC", color: "#5b7fff", qual: 3, live: true, secs: 86400 },
         { initials: "US", name: "US-East NOC", color: "#34d399", qual: 3, live: true, secs: 86400 },
         { initials: "AP", name: "APAC NOC", color: "#a78bfa", qual: 2, live: true, secs: 86400 },
-        { initials: "ME", name: "ME NOC", color: "#6366f1", qual: 2, live: false, secs: 86400 },
+        { initials: "ME", name: "ME NOC", color: "#3B82F6", qual: 2, live: false, secs: 86400 },
       ],
       footerStats: ["SLA: 99.95%", "Incidents: 0 open", "4 regions"],
     },
@@ -257,7 +257,7 @@ export default function DigitalSignagePage() {
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/contact?type=digital-signage"
-              className="px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
+              className="px-6 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
             >
               Talk to Signage Expert
             </Link>
@@ -293,7 +293,7 @@ export default function DigitalSignagePage() {
             </p>
             <Link
               href="/contact?type=signage-review"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
             >
               Book an Architecture Review
             </Link>
@@ -430,7 +430,7 @@ export default function DigitalSignagePage() {
               </div>
               <Link
                 href="/contact?type=digital-signage"
-                className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors cursor-pointer"
+                className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors cursor-pointer"
               >
                 Start Getting Results
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
@@ -450,7 +450,7 @@ export default function DigitalSignagePage() {
                 key={item.title}
                 className="flex-1 flex items-start gap-5 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-200"
               >
-                <span className="text-xs font-mono text-[#6366f1]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
+                <span className="text-xs font-mono text-[#3B82F6]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
                 <div>
                   <h3 className="text-white font-semibold text-[15px] mb-1.5 leading-snug">{item.title}</h3>
                   <p className="text-white/55 text-sm leading-relaxed">{item.desc}</p>
@@ -553,7 +553,7 @@ export default function DigitalSignagePage() {
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
             <Link
               href="/contact?type=digital-signage"
-              className="px-7 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
+              className="px-7 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
             >
               Talk to a Signage Expert
             </Link>

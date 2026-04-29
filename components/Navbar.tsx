@@ -286,13 +286,13 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 section-padding transition-all duration-300 ${
         scrolled
           ? "bg-[#06080f]/95 backdrop-blur-md"
           : "bg-[#06080f]/80 backdrop-blur-sm"
       }`}
     >
-      <div className="section-padding mx-auto max-w-[1400px] flex items-center justify-between h-[72px]">
+      <div className="mx-auto max-w-[1400px] flex items-center justify-between h-[72px]">
         {/* Logo */}
         <Link
           href="/"
@@ -305,7 +305,7 @@ export default function Navbar() {
             {/* <span className="text-white font-medium text-[13px] tracking-[0.2em] uppercase leading-none">
               INTAGLEO
             </span>
-            <span className="text-[#6366f1] text-[10px] tracking-[0.18em] font-normal leading-none">
+            <span className="text-[#3B82F6] text-[10px] tracking-[0.18em] font-normal leading-none">
               systems
             </span> */}
           </div>
@@ -405,7 +405,7 @@ export default function Navbar() {
                     <Link
                       href="/contact"
                       onClick={() => setServicesOpen(false)}
-                      className="text-xs text-[#6366f1] hover:text-[#4f46e5] transition-colors font-medium"
+                      className="text-xs text-[#3B82F6] hover:text-[#2563EB] transition-colors font-medium"
                     >
                       Talk to us →
                     </Link>
@@ -487,7 +487,7 @@ export default function Navbar() {
                     <Link
                       href="/contact"
                       onClick={() => setIndustriesOpen(false)}
-                      className="text-xs text-[#6366f1] hover:text-[#4f46e5] transition-colors font-medium"
+                      className="text-xs text-[#3B82F6] hover:text-[#2563EB] transition-colors font-medium"
                     >
                       Talk to us →
                     </Link>
@@ -586,7 +586,7 @@ export default function Navbar() {
         {/* CTA */}
         <Link
           href="/contact"
-          className="group hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] hover:bg-[#4f46e5] text-white text-sm font-medium relative overflow-hidden transition-colors duration-300"
+          className="group hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm font-medium relative overflow-hidden transition-colors duration-300"
         >
           {/* Shimmer sweep on hover */}
           <span

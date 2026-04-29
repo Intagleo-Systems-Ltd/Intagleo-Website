@@ -11,8 +11,8 @@ const SOURCE_OPTIONS = ["LinkedIn", "Google search", "Referral from colleague", 
 const ALLOWED_EXTENSIONS = [".pdf", ".doc", ".docx"];
 const MAX_FILE_BYTES = 10 * 1024 * 1024;
 
-const FIELD = "w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#6366f1]/60 focus:bg-white/[0.06] transition-colors duration-200";
-const SELECT_FIELD = "w-full px-4 py-3 rounded-xl bg-[#0d0f1c] border border-white/[0.08] text-white text-sm focus:outline-none focus:border-[#6366f1]/60 transition-colors duration-200 cursor-pointer appearance-none";
+const FIELD = "w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#3B82F6]/60 focus:bg-white/[0.06] transition-colors duration-200";
+const SELECT_FIELD = "w-full px-4 py-3 rounded-xl bg-[#0d0f1c] border border-white/[0.08] text-white text-sm focus:outline-none focus:border-[#3B82F6]/60 transition-colors duration-200 cursor-pointer appearance-none";
 
 export default function VacancyApplyForm({ vacancyTitle = "Open Application" }: { vacancyTitle?: string }) {
   const [form, setForm] = useState({
@@ -52,6 +52,7 @@ export default function VacancyApplyForm({ vacancyTitle = "Open Application" }: 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (SITE_KEY && !captchaToken) { setErrorMsg("Please complete the CAPTCHA."); return; }
+    if (!resumeFile) { setResumeError("Please upload your resume before submitting."); return; }
     setStatus("submitting");
     setErrorMsg("");
     try {
@@ -82,8 +83,8 @@ export default function VacancyApplyForm({ vacancyTitle = "Open Application" }: 
   if (status === "success") {
     return (
       <div className="px-7 py-14 flex flex-col items-center text-center">
-        <div className="w-12 h-12 rounded-full bg-[#6366f1]/10 border border-[#6366f1]/20 flex items-center justify-center mb-4">
-          <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-[#6366f1]" aria-hidden="true">
+        <div className="w-12 h-12 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/20 flex items-center justify-center mb-4">
+          <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-[#3B82F6]" aria-hidden="true">
             <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </div>
@@ -100,14 +101,14 @@ export default function VacancyApplyForm({ vacancyTitle = "Open Application" }: 
       <div className="grid grid-cols-2 gap-3">
         <div>
           <label htmlFor="vaf-name" className="block text-white/50 text-xs font-medium mb-1.5">
-            Full Name <span className="text-[#6366f1]">*</span>
+            Full Name <span className="text-[#3B82F6]">*</span>
           </label>
           <input id="vaf-name" type="text" required placeholder="Jane Smith"
             value={form.name} onChange={(e) => set("name", e.target.value)} className={FIELD} />
         </div>
         <div>
           <label htmlFor="vaf-email" className="block text-white/50 text-xs font-medium mb-1.5">
-            Email <span className="text-[#6366f1]">*</span>
+            Email <span className="text-[#3B82F6]">*</span>
           </label>
           <input id="vaf-email" type="email" required placeholder="jane@company.com"
             value={form.email} onChange={(e) => set("email", e.target.value)} className={FIELD} />
@@ -154,7 +155,7 @@ export default function VacancyApplyForm({ vacancyTitle = "Open Application" }: 
       {/* Resume upload */}
       <div>
         <label className="block text-white/50 text-xs font-medium mb-1.5">
-          Resume / CV <span className="text-white/25 font-normal">(PDF or Word, max 10 MB)</span>
+          Resume / CV <span className="text-red-400 ml-0.5">*</span> <span className="text-white/25 font-normal">(PDF or Word, max 10 MB)</span>
         </label>
         <div
           className="relative flex items-center gap-3 px-4 py-3 rounded-xl border border-dashed border-white/[0.10] hover:border-white/20 transition-colors cursor-pointer"
@@ -204,7 +205,7 @@ export default function VacancyApplyForm({ vacancyTitle = "Open Application" }: 
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#6366f1] hover:bg-[#4f46e5] disabled:opacity-60 disabled:cursor-not-allowed text-white text-sm font-medium transition-colors duration-200 cursor-pointer"
+        className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#3B82F6] hover:bg-[#2563EB] disabled:opacity-60 disabled:cursor-not-allowed text-white text-sm font-medium transition-colors duration-200 cursor-pointer"
       >
         {status === "submitting" ? (
           <>

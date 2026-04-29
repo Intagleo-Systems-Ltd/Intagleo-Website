@@ -27,7 +27,7 @@ const techCaps: CapItem[] = [
         { label: "Job Distribution",    pct: 100, rate: "18 boards",  color: "#5b7fff" },
         { label: "CV Parsing",          pct: 94,  rate: "Real-time",  color: "#34d399" },
         { label: "Interview Scheduler", pct: 87,  rate: "Automated",  color: "#a78bfa" },
-        { label: "Offer Management",    pct: 72,  rate: "In progress", color: "#6366f1" },
+        { label: "Offer Management",    pct: 72,  rate: "In progress", color: "#3B82F6" },
       ],
       metrics: [
         { label: "Active Roles",  value: "142"    },
@@ -52,7 +52,7 @@ const techCaps: CapItem[] = [
         { label: "CV Parsing",   pct: 97, color: "#5b7fff", level: "Excellent" },
         { label: "Skills Match", pct: 91, color: "#34d399", level: "High"      },
         { label: "Bias Check",   pct: 99, color: "#a78bfa", level: "Verified"  },
-        { label: "Score & Rank", pct: 88, color: "#6366f1", level: "Strong"    },
+        { label: "Score & Rank", pct: 88, color: "#3B82F6", level: "Strong"    },
       ],
       alertsLabel: "Screening Signals",
       alerts: [
@@ -79,7 +79,7 @@ const techCaps: CapItem[] = [
         { x: 118, y: 28,  label: "Employee Data", sub: "300K+ records",      color: "#5b7fff" },
         { x: 198, y: 72,  label: "Org Chart",     sub: "Hierarchy sync",     color: "#a78bfa" },
         { x: 208, y: 148, label: "Benefits Admin", sub: "Enrolment engine",  color: "#34d399" },
-        { x: 140, y: 188, label: "Payroll Sync",   sub: "Daily reconcile",   color: "#6366f1" },
+        { x: 140, y: 188, label: "Payroll Sync",   sub: "Daily reconcile",   color: "#3B82F6" },
         { x: 42,  y: 152, label: "SSO / IAM",      sub: "Identity layer",    color: "#f59e0b" },
       ],
       footer: "300K+ employees · 5 integrations",
@@ -101,7 +101,7 @@ const techCaps: CapItem[] = [
         { initials: "DO", name: "Digital Onboarding",  color: "#5b7fff", qual: 3, live: true,  secs: 86400 },
         { initials: "DC", name: "Doc Collection",      color: "#34d399", qual: 3, live: true,  secs: 43200 },
         { initials: "AP", name: "Access Provisioning", color: "#a78bfa", qual: 2, live: true,  secs: 21600 },
-        { initials: "MS", name: "Milestone Tracking",  color: "#6366f1", qual: 2, live: false, secs: 7200  },
+        { initials: "MS", name: "Milestone Tracking",  color: "#3B82F6", qual: 2, live: false, secs: 7200  },
       ],
       footerStats: ["Day-1 ready", "4 workflows", "Auto-triggered"],
     },
@@ -121,7 +121,7 @@ const techCaps: CapItem[] = [
         { label: "OKR Completion", pct: 78, color: "#5b7fff" },
         { label: "Feedback Score", pct: 84, color: "#34d399" },
         { label: "Engagement",     pct: 72, color: "#a78bfa" },
-        { label: "Retention Rate", pct: 91, color: "#6366f1" },
+        { label: "Retention Rate", pct: 91, color: "#3B82F6" },
       ],
       events: [
         { time: "09:14:02", text: "Q2 OKR review cycle completed"          },
@@ -220,7 +220,7 @@ export default function HrRecruitmentPage() {
             we build the people technology that turns hiring into a competitive advantage.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link href="/contact?type=hr-recruitment" className="px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=hr-recruitment" className="px-6 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Talk to an HR Tech Engineer
             </Link>
             <a href="#process" className="px-6 py-3 rounded-full border border-white/[0.14] text-white/65 text-sm font-medium hover:text-white hover:border-white/30 transition-colors">
@@ -246,7 +246,7 @@ export default function HrRecruitmentPage() {
               We conduct deep-dive HR tech reviews - mapping your ATS configuration, HRIS integration
               gaps, and the hiring workflow friction that&apos;s adding days to your time-to-offer.
             </p>
-            <Link href="/contact?type=hr-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=hr-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Book an HR Tech Review
             </Link>
           </div>
@@ -255,7 +255,7 @@ export default function HrRecruitmentPage() {
           <div className="relative rounded-2xl overflow-hidden bg-[#0d0e18] border border-white/[0.07] p-4" style={{ height: "380px" }}>
             <div className="flex items-center justify-between mb-3">
               <span className="text-[10px] text-white/30 uppercase tracking-widest font-mono">Hiring Pipeline</span>
-              <span className="text-[10px] text-[#6366f1]/60 font-mono">{INITIAL_CARDS.length} candidates</span>
+              <span className="text-[10px] text-[#3B82F6]/60 font-mono">{INITIAL_CARDS.length} candidates</span>
             </div>
             <div className="grid grid-cols-4 gap-2 h-[calc(100%-36px)]">
               {STAGES.map((stage) => {
@@ -275,13 +275,13 @@ export default function HrRecruitmentPage() {
                           <div
                             key={card.id}
                             className={`rounded-lg border p-2 transition-all duration-500
-                              ${isMoving ? "border-[#6366f1]/60 bg-[#6366f1]/[0.08] scale-[1.02]" : "border-white/[0.07] bg-white/[0.02]"}`}
+                              ${isMoving ? "border-[#3B82F6]/60 bg-[#3B82F6]/[0.08] scale-[1.02]" : "border-white/[0.07] bg-white/[0.02]"}`}
                           >
                             <p className="text-[10px] text-white/70 font-medium leading-snug">{card.name}</p>
                             <p className="text-[8px] text-white/30 mt-0.5">{card.role}</p>
                             {isMoving && (
-                              <div className="mt-1.5 h-0.5 bg-[#6366f1]/40 rounded-full overflow-hidden">
-                                <div className="h-full bg-[#6366f1] rounded-full animate-pulse w-full" />
+                              <div className="mt-1.5 h-0.5 bg-[#3B82F6]/40 rounded-full overflow-hidden">
+                                <div className="h-full bg-[#3B82F6] rounded-full animate-pulse w-full" />
                               </div>
                             )}
                           </div>
@@ -335,7 +335,7 @@ export default function HrRecruitmentPage() {
                   that costs you top candidates and keeps teams from scaling. Here&apos;s what changes.
                 </p>
               </div>
-              <Link href="/contact?type=hr-recruitment" className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors cursor-pointer">
+              <Link href="/contact?type=hr-recruitment" className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors cursor-pointer">
                 See results in action
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </Link>
@@ -349,7 +349,7 @@ export default function HrRecruitmentPage() {
               { num: "04", title: "Retention Intelligence", desc: "Continuous engagement signals and predictive retention modelling identify flight risk before high-performers start looking elsewhere." },
             ].map((item) => (
               <div key={item.title} className="flex-1 flex items-start gap-5 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-200">
-                <span className="text-xs font-mono text-[#6366f1]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
+                <span className="text-xs font-mono text-[#3B82F6]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
                 <div>
                   <h3 className="text-white font-semibold text-[15px] mb-1.5 leading-snug">{item.title}</h3>
                   <p className="text-white/55 text-sm leading-relaxed">{item.desc}</p>
@@ -415,7 +415,7 @@ export default function HrRecruitmentPage() {
             that gives you a measurable edge in every talent market.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
-            <Link href="/contact?type=hr-recruitment" className="px-7 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=hr-recruitment" className="px-7 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Talk to an HR tech engineer
             </Link>
                         <Link href="/case-studies" className="px-7 py-3 rounded-full border border-white/25 text-white/80 text-sm font-medium hover:text-white hover:border-white/45 transition-colors">See our Work</Link>

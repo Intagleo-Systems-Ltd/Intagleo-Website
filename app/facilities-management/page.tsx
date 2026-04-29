@@ -26,7 +26,7 @@ const techCaps: CapItem[] = [
         { x: 118, y: 28,  label: "HVAC Control", sub: "Climate automation",  color: "#5b7fff" },
         { x: 198, y: 72,  label: "Lighting Net",  sub: "6,200 units",        color: "#a78bfa" },
         { x: 208, y: 148, label: "Energy Mgmt",   sub: "84.2 MW monitored",  color: "#34d399" },
-        { x: 140, y: 188, label: "IoT Sensors",   sub: "12K sensor nodes",   color: "#6366f1" },
+        { x: 140, y: 188, label: "IoT Sensors",   sub: "12K sensor nodes",   color: "#3B82F6" },
         { x: 42,  y: 152, label: "Security Hub",  sub: "Access & CCTV",      color: "#f59e0b" },
       ],
       footer: "500+ buildings · 15+ BMS integrations",
@@ -48,7 +48,7 @@ const techCaps: CapItem[] = [
         { label: "Work Order Queue",    pct: 94,  rate: "Auto-assigned", color: "#5b7fff" },
         { label: "Preventive Schedule", pct: 100, rate: "On schedule",   color: "#34d399" },
         { label: "Asset Tracking",      pct: 88,  rate: "Real-time",    color: "#a78bfa" },
-        { label: "Vendor Dispatch",     pct: 72,  rate: "In progress",  color: "#6366f1" },
+        { label: "Vendor Dispatch",     pct: 72,  rate: "In progress",  color: "#3B82F6" },
       ],
       metrics: [
         { label: "Open WOs", value: "142"   },
@@ -73,7 +73,7 @@ const techCaps: CapItem[] = [
         { initials: "HQ", name: "HQ Tower",    color: "#5b7fff", qual: 3, live: true,  secs: 86400 },
         { initials: "DT", name: "Data Centre", color: "#34d399", qual: 3, live: true,  secs: 43200 },
         { initials: "WH", name: "Warehouse A", color: "#a78bfa", qual: 2, live: true,  secs: 28800 },
-        { initials: "RT", name: "Retail Zones", color: "#6366f1", qual: 2, live: false, secs: 14400 },
+        { initials: "RT", name: "Retail Zones", color: "#3B82F6", qual: 2, live: false, secs: 14400 },
       ],
       footerStats: ["RBAC enabled", "4 sites", "Zero breaches"],
     },
@@ -93,7 +93,7 @@ const techCaps: CapItem[] = [
         { label: "Energy Efficiency", pct: 78, color: "#34d399" },
         { label: "Carbon Reduction",  pct: 64, color: "#5b7fff" },
         { label: "Utility Cost Save", pct: 82, color: "#a78bfa" },
-        { label: "Green Score",       pct: 91, color: "#6366f1" },
+        { label: "Green Score",       pct: 91, color: "#3B82F6" },
       ],
       events: [
         { time: "09:14:22", text: "HVAC power reduced 12% — Floor 4"     },
@@ -141,7 +141,7 @@ const techCaps: CapItem[] = [
         { label: "Regulatory Check", pct: 99,  color: "#34d399", level: "Compliant" },
         { label: "Incident Classify", pct: 94, color: "#5b7fff", level: "High"      },
         { label: "Cert Validity",    pct: 100, color: "#a78bfa", level: "Valid"     },
-        { label: "SLA Compliance",   pct: 97,  color: "#6366f1", level: "Strong"   },
+        { label: "SLA Compliance",   pct: 97,  color: "#3B82F6", level: "Strong"   },
       ],
       alertsLabel: "Compliance Signals",
       alerts: [
@@ -181,7 +181,7 @@ export default function FacilitiesManagementPage() {
             running efficiently, safely, and at scale.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link href="/contact?type=facilities" className="px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=facilities" className="px-6 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Talk to a Facilities Expert
             </Link>
             <a href="#process" className="px-6 py-3 rounded-full border border-white/[0.14] text-white/65 text-sm font-medium hover:text-white hover:border-white/30 transition-colors">
@@ -207,7 +207,7 @@ export default function FacilitiesManagementPage() {
               We offer deep-dive platform architecture reviews to identify inefficiencies in your
               building management stack - from legacy BMS integrations to IoT sensor overload.
             </p>
-            <Link href="/contact?type=facilities-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=facilities-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Book an Architecture Review
             </Link>
           </div>
@@ -243,8 +243,8 @@ export default function FacilitiesManagementPage() {
             ].map((spot) => (
               <div key={spot.label} className="absolute group cursor-pointer" style={{ top: spot.top, left: (spot as any).left, right: (spot as any).right, bottom: spot.bottom }}>
                 <div className="relative">
-                  <div className="w-3 h-3 rounded-full bg-[#6366f1] relative z-10" />
-                  <div className="absolute inset-0 rounded-full bg-[#6366f1]/40 animate-ping" />
+                  <div className="w-3 h-3 rounded-full bg-[#3B82F6] relative z-10" />
+                  <div className="absolute inset-0 rounded-full bg-[#3B82F6]/40 animate-ping" />
                   <div className="absolute bottom-5 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-30">
                     <div className="bg-[#13141a] border border-white/[0.12] rounded-lg px-3 py-2 text-center whitespace-nowrap">
                       <p className="text-white text-xs font-medium">{spot.label}</p>
@@ -298,7 +298,7 @@ export default function FacilitiesManagementPage() {
                   operational margin. Here&apos;s what changes.
                 </p>
               </div>
-              <Link href="/contact?type=facilities" className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors cursor-pointer">
+              <Link href="/contact?type=facilities" className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors cursor-pointer">
                 See results in action
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </Link>
@@ -312,7 +312,7 @@ export default function FacilitiesManagementPage() {
               { num: "04", title: "Predictive Maintenance", desc: "Sensor-driven insights catch equipment failures before they cause downtime or costly emergency repairs." },
             ].map((item) => (
               <div key={item.title} className="flex-1 flex items-start gap-5 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-200">
-                <span className="text-xs font-mono text-[#6366f1]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
+                <span className="text-xs font-mono text-[#3B82F6]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
                 <div>
                   <h3 className="text-white font-semibold text-[15px] mb-1.5 leading-snug">{item.title}</h3>
                   <p className="text-white/55 text-sm leading-relaxed">{item.desc}</p>
@@ -377,7 +377,7 @@ export default function FacilitiesManagementPage() {
             We build the software that makes every floor, system, and sensor manageable from a single platform.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
-            <Link href="/contact?type=facilities" className="px-7 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=facilities" className="px-7 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Talk to a facilities engineer
             </Link>
                         <Link href="/case-studies" className="px-7 py-3 rounded-full border border-white/25 text-white/80 text-sm font-medium hover:text-white hover:border-white/45 transition-colors">See our Work</Link>

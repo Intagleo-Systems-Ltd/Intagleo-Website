@@ -18,6 +18,11 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Intagleo: Production-Ready Software That Scales",
   description: "We design, build, and scale software products for ambitious startups and enterprises. Custom software development, AI/ML, cloud architecture, and more.",
+  icons: {
+    icon: "/logo-static.png",
+    shortcut: "/logo-static.png",
+    apple: "/logo-static.png",
+  },
 };
 
 export default function RootLayout({

@@ -251,7 +251,7 @@ function InferenceView({ accuracyLabel, inferences, alertsLabel, alerts, footer 
       <div className="flex-1 flex flex-col p-4 gap-3 border-r border-white/[0.06] min-w-0">
         <div className="flex items-center justify-between">
           <span className="text-[9px] text-white/25 font-mono uppercase tracking-widest">Model Output</span>
-          <span className="text-[9px] text-[#6366f1] font-mono">{accuracyLabel}</span>
+          <span className="text-[9px] text-[#3B82F6] font-mono">{accuracyLabel}</span>
         </div>
         {inferences.map((inf, i) => (
           <div key={i} className="flex flex-col gap-1">

@@ -5,8 +5,8 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ffffff;
-  --accent: #6366f1;
-  --accent-hover: #4f46e5;
+  --accent: #3B82F6;
+  --accent-hover: #2563EB;
   --border: rgba(255, 255, 255, 0.08);
   --card-bg: #111111;
   --muted: #888888;
@@ -47,9 +47,15 @@ summary {
 /* ── Focus accessibility ──────────────────────────────────────────────────── */
 
 :focus-visible {
-  outline: 2px solid rgba(99, 102, 241, 0.7);
+  outline: 2px solid rgba(59, 130, 246, 0.7);
   outline-offset: 3px;
   border-radius: 4px;
+}
+
+/* ── Prevent heading orphans site-wide ───────────────────────────────────── */
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
 }
 
 /* ── Reduced motion — respect user OS preference ─────────────────────────── */
@@ -145,6 +151,23 @@ summary {
   .card-hover {
     @apply transition-all duration-200 hover:border-white/20 hover:bg-white/[0.03];
   }
+}
+
+/* ── About page animations ────────────────────────────────────────────────── */
+
+@keyframes aboutFadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes aboutFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.2; transform: scaleY(1);    }
+  50%       { opacity: 0.5; transform: scaleY(0.85); }
 }
 
 /* ── Custom scrollbar ─────────────────────────────────────────────────────── */

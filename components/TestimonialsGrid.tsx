@@ -24,7 +24,7 @@ export default function TestimonialsGrid({ testimonials }: { testimonials: Testi
             >
               {/* Quote mark */}
               <svg
-                className="w-6 h-6 text-[#6366f1]/40 mb-4 flex-shrink-0"
+                className="w-6 h-6 text-[#3B82F6]/40 mb-4 flex-shrink-0"
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 aria-hidden="true"
@@ -51,7 +51,7 @@ export default function TestimonialsGrid({ testimonials }: { testimonials: Testi
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-[#6366f1]/20 to-transparent flex items-center justify-center">
+                    <div className="w-full h-full bg-gradient-to-br from-[#3B82F6]/20 to-transparent flex items-center justify-center">
                       <span className="text-white/30 text-sm font-medium">
                         {testimonial.name[0]}
                       </span>
@@ -62,7 +62,7 @@ export default function TestimonialsGrid({ testimonials }: { testimonials: Testi
                 <div className="min-w-0">
                   <p className="text-white font-medium text-sm">{testimonial.name}</p>
                   <p className="text-white/40 text-xs">{testimonial.title}</p>
-                  <p className="text-[#6366f1] text-xs font-medium">{testimonial.company}</p>
+                  <p className="text-[#3B82F6] text-xs font-medium">{testimonial.company}</p>
                 </div>
               </div>
             </div>

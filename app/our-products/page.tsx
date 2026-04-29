@@ -135,7 +135,7 @@ export default function OurProductsPage() {
           animation: productFadeUp 0.72s cubic-bezier(0.16,1,0.3,1) forwards;
         }
         .shimmer-text {
-          background: linear-gradient(90deg, #6366f1 0%, #ff6b4a 40%, #a78bfa 70%, #6366f1 100%);
+          background: linear-gradient(90deg, #3B82F6 0%, #ff6b4a 40%, #a78bfa 70%, #3B82F6 100%);
           background-size: 200% auto;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -195,7 +195,7 @@ export default function OurProductsPage() {
             style={{ animationDelay: "0.05s" }}
           >
             <div className="inline-flex items-center gap-2 border border-white/[0.08] bg-white/[0.03] rounded-full px-4 py-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />
               <span className="text-white/50 text-xs tracking-widest uppercase">Our Software Solutions</span>
             </div>
             <div className="inline-flex items-center gap-2 border border-green-500/20 bg-green-500/[0.05] rounded-full px-3.5 py-1.5">
@@ -331,7 +331,7 @@ export default function OurProductsPage() {
                     {/* Stat pills — color-accented */}
                     <div className="grid grid-cols-3 gap-3 mb-10">
                       {[
-                        { value: "AI", sub: "Candidate scoring", color: "#6366f1" },
+                        { value: "AI", sub: "Candidate scoring", color: "#3B82F6" },
                         { value: "100%", sub: "Web-based", color: "#8b5cf6" },
                         { value: "3×", sub: "Faster screening", color: "#06b6d4" },
                       ].map((s) => (
@@ -372,7 +372,7 @@ export default function OurProductsPage() {
                       href="https://www.intvue.com/Home/app"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-[#6366f1] hover:bg-[#4f46e5] text-white px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200 cursor-pointer"
+                      className="inline-flex items-center gap-2 bg-[#3B82F6] hover:bg-[#2563EB] text-white px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200 cursor-pointer"
                     >
                       Discover IntVue
                       <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -436,7 +436,7 @@ export default function OurProductsPage() {
 
                   {/* Caption */}
                   <div className="flex items-center gap-3 px-1">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#6366f1] flex-shrink-0" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] flex-shrink-0" />
                     <span className="text-white/25 text-xs">
                       Schedule, record &amp; review — all in one place
                     </span>
@@ -468,7 +468,7 @@ export default function OurProductsPage() {
               title="Candidate Recommendations"
               body="AI surfaces best-fit candidates automatically based on role requirements, saving hours of manual shortlisting."
               icon="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"
-              color="#6366f1"
+              color="#3B82F6"
               className="col-span-2"
               mini={
                 <div className="flex gap-3">
@@ -484,7 +484,7 @@ export default function OurProductsPage() {
                       <div className="text-[10px] text-white/30 mb-2">{bar.label}</div>
                       <div className="h-1.5 rounded-full bg-white/[0.06]">
                         <div
-                          className="h-full rounded-full bg-[#6366f1]/60"
+                          className="h-full rounded-full bg-[#3B82F6]/60"
                           style={{ width: `${bar.pct}%` }}
                         />
                       </div>
@@ -611,7 +611,7 @@ export default function OurProductsPage() {
                           borderColor:
                             i === 0 ? "rgba(99,102,241,0.5)" : "rgba(255,255,255,0.08)",
                           color:
-                            i === 0 ? "#6366f1" : "rgba(255,255,255,0.22)",
+                            i === 0 ? "#3B82F6" : "rgba(255,255,255,0.22)",
                         }}
                       >
                         {s.step}
@@ -664,18 +664,18 @@ export default function OurProductsPage() {
           <div className="grid md:grid-cols-3 gap-4">
             {[
               {
-                label: "Coming Q3 2025",
-                hint: "Enterprise analytics platform",
+                label: "Coming Q2 2026",
+                hint: "AI-Onboarding Agent",
                 glowColor: "rgba(99,102,241,0.07)",
               },
               {
                 label: "In Stealth",
-                hint: "Compliance automation tool",
+                hint: "Smart Signage Solution",
                 glowColor: "rgba(139,92,246,0.07)",
               },
               {
-                label: "Coming 2026",
-                hint: "AI operations intelligence",
+                label: "Coming Q3 2026",
+                hint: "AI-Powered HRM System",
                 glowColor: "rgba(6,182,212,0.07)",
               },
             ].map((p, i) => (
@@ -716,7 +716,7 @@ export default function OurProductsPage() {
                       />
                     </svg>
                   </div>
-                  <span className="text-[#6366f1]/50 text-[10px] uppercase tracking-widest mb-2.5">
+                  <span className="text-[#3B82F6]/50 text-[10px] uppercase tracking-widest mb-2.5">
                     {p.label}
                   </span>
                   <p

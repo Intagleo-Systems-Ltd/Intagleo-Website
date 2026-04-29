@@ -124,7 +124,7 @@ export default function CloudDevOpsPage() {
           <div className="flex flex-wrap items-center justify-center gap-3 mb-14">
             <Link
               href="/contact?type=cloud-devops"
-              className="px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
+              className="px-6 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
             >
               Start a conversation
             </Link>
@@ -198,7 +198,7 @@ export default function CloudDevOpsPage() {
           {/* Left , text */}
           <div className="flex flex-col justify-center px-8 py-16 md:px-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-1 leading-tight">
-              <span className="text-[#6366f1]">The hidden cost of<br />slow infrastructure:</span>
+              <span className="text-[#3B82F6]">The hidden cost of<br />slow infrastructure:</span>
             </h2>
             <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-4">
               What are you actually losing?
@@ -208,7 +208,7 @@ export default function CloudDevOpsPage() {
             </p>
             <Link
               href="/contact?type=cloud-devops"
-              className="w-fit px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
+              className="w-fit px-6 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
             >
               Request a free infrastructure assessment
             </Link>
@@ -429,7 +429,7 @@ export default function CloudDevOpsPage() {
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
             <Link
               href="/contact?type=start-project"
-              className="px-7 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
+              className="px-7 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
             >
               Start a conversation
             </Link>

@@ -121,9 +121,9 @@ export default function IndustriesSection() {
         <div className="text-center max-w-2xl mx-auto mb-14">
           <p className="text-xs text-white/40 uppercase tracking-widest mb-4">Industries We Serve</p>
           <h2 className="text-3xl md:text-4xl font-bold heading-gradient leading-tight mb-4">
-            Different industries,{" "}
+            Different Industries  !{" "}
             <span style={{ WebkitTextFillColor: "rgba(255,255,255,0.35)", backgroundImage: "none" }}>
-              different pressures.
+              Different Pressures !
             </span>
             <br />
             One standard for excellence.
@@ -191,7 +191,10 @@ export default function IndustriesSection() {
 
                     {/* Top: icon + title */}
                     <div>
-                      <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/[0.08] flex items-center justify-center text-white/70 mb-5">
+                      <div
+                        className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/[0.08] flex items-center justify-center mb-5"
+                        style={{ color: ind.iconColor, filter: `drop-shadow(0 0 6px ${ind.iconColor})` }}
+                      >
                         {ind.icon}
                       </div>
                       <h3 className="text-2xl font-semibold text-white leading-tight">
@@ -209,7 +212,7 @@ export default function IndustriesSection() {
                     <ul className="space-y-3 flex-1">
                       {ind.bullets.map((b) => (
                         <li key={b} className="flex items-center gap-3 text-white/60 text-sm">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#6366f1] flex-shrink-0" />
+                          <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: ind.iconColor }} />
                           {b}
                         </li>
                       ))}

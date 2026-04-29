@@ -307,7 +307,7 @@ export default function ServicesSection() {
 
             {/* Technology row */}
             <div className="flex items-center gap-3 mb-6">
-              <span className="text-sm font-medium text-[#6366f1]">Technology</span>
+              <span className="text-sm font-medium text-[#3B82F6]">Technology</span>
               <div className="flex-1 border-t border-dashed border-white/15" />
             </div>
 
@@ -342,7 +342,7 @@ export default function ServicesSection() {
               {servicePageUrls[svc.name] && (
                 <a
                   href={servicePageUrls[svc.name]}
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#6366f1]/10 border border-[#6366f1]/30 text-[#818cf8] text-sm font-medium hover:bg-[#6366f1]/20 hover:border-[#6366f1]/60 hover:text-white transition-all duration-200"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/30 text-[#818cf8] text-sm font-medium hover:bg-[#3B82F6]/20 hover:border-[#3B82F6]/60 hover:text-white transition-all duration-200"
                 >
                   Learn More
                   <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

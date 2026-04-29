@@ -123,7 +123,7 @@ export default function QAServicesPage() {
           <div className="flex flex-wrap items-center justify-center gap-3 mb-14">
             <Link
               href="/contact?type=qa-services"
-              className="px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
+              className="px-6 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
             >
               Start a conversation
             </Link>
@@ -197,7 +197,7 @@ export default function QAServicesPage() {
           {/* Left - text */}
           <div className="flex flex-col justify-center px-8 py-16 md:px-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-1 leading-tight">
-              <span className="text-[#6366f1]">Do you know</span>
+              <span className="text-[#3B82F6]">Do you know</span>
             </h2>
             <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-4">
               how many bugs are hiding in production right now?
@@ -208,7 +208,7 @@ export default function QAServicesPage() {
             </p>
             <Link
               href="/contact?type=qa-services"
-              className="w-fit px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
+              className="w-fit px-6 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
             >
               Request a free coverage consultation
             </Link>
@@ -425,7 +425,7 @@ export default function QAServicesPage() {
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
             <Link
               href="/contact?type=start-project"
-              className="px-7 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
+              className="px-7 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
             >
               Start a conversation
             </Link>

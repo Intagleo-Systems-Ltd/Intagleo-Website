@@ -36,10 +36,10 @@ function confirmationHtml(name: string, role: string): string {
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#0a0a0a;padding:40px 20px;">
     <tr><td align="center">
       <table width="580" cellpadding="0" cellspacing="0" style="background:#0d0d10;border-radius:16px;border:1px solid rgba(255,255,255,0.07);overflow:hidden;max-width:580px;">
-        <tr><td style="background:#6366f1;padding:4px 0;"></td></tr>
+        <tr><td style="background:#3B82F6;padding:4px 0;"></td></tr>
         <tr><td style="padding:36px 40px 0;">
           <table cellpadding="0" cellspacing="0"><tr>
-            <td style="background:#6366f1;border-radius:6px;width:28px;height:28px;text-align:center;vertical-align:middle;">
+            <td style="background:#3B82F6;border-radius:6px;width:28px;height:28px;text-align:center;vertical-align:middle;">
               <span style="color:white;font-weight:700;font-size:14px;">I</span>
             </td>
             <td style="padding-left:8px;"><span style="color:white;font-weight:600;font-size:15px;letter-spacing:-0.3px;">intagleo</span></td>
@@ -47,7 +47,7 @@ function confirmationHtml(name: string, role: string): string {
         </td></tr>
         <tr><td style="padding:32px 40px 40px;">
           <div style="display:inline-block;background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.25);border-radius:100px;padding:4px 14px;margin-bottom:24px;">
-            <span style="color:#6366f1;font-size:12px;font-weight:500;">Application Received</span>
+            <span style="color:#3B82F6;font-size:12px;font-weight:500;">Application Received</span>
           </div>
           <h1 style="color:white;font-size:26px;font-weight:700;margin:0 0 12px;line-height:1.2;letter-spacing:-0.5px;">
             Thanks for applying, ${name}.
@@ -81,7 +81,7 @@ function confirmationHtml(name: string, role: string): string {
             </td></tr>
           </table>
           <div style="margin-top:32px;">
-            <a href="https://intagleo.com" style="display:inline-block;background:#6366f1;color:white;text-decoration:none;padding:12px 28px;border-radius:100px;font-size:14px;font-weight:500;">Visit our website</a>
+            <a href="https://intagleo.com" style="display:inline-block;background:#3B82F6;color:white;text-decoration:none;padding:12px 28px;border-radius:100px;font-size:14px;font-weight:500;">Visit our website</a>
           </div>
         </td></tr>
         <tr><td style="padding:20px 40px;border-top:1px solid rgba(255,255,255,0.06);">
@@ -105,10 +105,10 @@ function notificationHtml(fields: {
   const rows = [
     ["Role",       fields.role],
     ["Name",       fields.name],
-    ["Email",      `<a href="mailto:${fields.email}" style="color:#6366f1;">${fields.email}</a>`],
+    ["Email",      `<a href="mailto:${fields.email}" style="color:#3B82F6;">${fields.email}</a>`],
     ["Phone",      fields.phone || "—"],
-    ["LinkedIn",   fields.linkedin ? `<a href="${fields.linkedin}" style="color:#6366f1;">${fields.linkedin}</a>` : "—"],
-    ["Portfolio",  fields.portfolio ? `<a href="${fields.portfolio}" style="color:#6366f1;">${fields.portfolio}</a>` : "—"],
+    ["LinkedIn",   fields.linkedin ? `<a href="${fields.linkedin}" style="color:#3B82F6;">${fields.linkedin}</a>` : "—"],
+    ["Portfolio",  fields.portfolio ? `<a href="${fields.portfolio}" style="color:#3B82F6;">${fields.portfolio}</a>` : "—"],
     ["Experience", fields.experience || "—"],
     ["Source",     fields.source || "—"],
     ["Resume",     fields.hasResume ? "Attached to this email" : "Not provided"],
@@ -121,7 +121,7 @@ function notificationHtml(fields: {
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#0a0a0a;padding:40px 20px;">
     <tr><td align="center">
       <table width="580" cellpadding="0" cellspacing="0" style="background:#0d0d10;border-radius:16px;border:1px solid rgba(255,255,255,0.07);overflow:hidden;max-width:580px;">
-        <tr><td style="background:#6366f1;padding:4px 0;"></td></tr>
+        <tr><td style="background:#3B82F6;padding:4px 0;"></td></tr>
         <tr><td style="padding:36px 40px 40px;">
           <h1 style="color:white;font-size:22px;font-weight:700;margin:0 0 6px;">New application: ${fields.role}</h1>
           <p style="color:rgba(255,255,255,0.35);font-size:14px;margin:0 0 28px;">
@@ -140,7 +140,7 @@ function notificationHtml(fields: {
           </div>
           <div style="margin-top:24px;">
             <a href="mailto:${fields.email}?subject=Re: Your application for ${fields.role} — Intagleo"
-               style="display:inline-block;background:#6366f1;color:white;text-decoration:none;padding:11px 24px;border-radius:100px;font-size:13px;font-weight:500;">
+               style="display:inline-block;background:#3B82F6;color:white;text-decoration:none;padding:11px 24px;border-radius:100px;font-size:13px;font-weight:500;">
               Reply to ${fields.name}
             </a>
           </div>

@@ -44,7 +44,7 @@ export default function HeroSection() {
         >
           We Build Production-Ready<br />
           <span style={{
-            background: 'linear-gradient(90deg, #6366f1 0%, #ff6b4a 100%)',
+            background: 'linear-gradient(90deg, #3B82F6 0%, #ff6b4a 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text'
@@ -57,21 +57,21 @@ export default function HeroSection() {
           className="text-white max-w-xl mb-10 leading-relaxed drop-shadow"
           style={{
             color: '#D6D8D8',
-            fontSize: '22px',
-            fontWeight: 400,
-            lineHeight: '31px',
+            fontSize: '18px',
+            fontWeight: 200,
+            lineHeight: '30px',
             fontFamily: '"Roobert TRIAL", sans-serif'
           }}
         >
           Elite development team trusted by CTOs to deliver complex systems, modernize
-          legacy infrastructure, and ship reliable products right on schedule.
+          infrastructure, and ship reliable products right on schedule.
         </p>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center gap-3">
           <Link
             href="/contact?type=general"
-            className="bg-[#6366f1] hover:bg-[#4f46e5] text-white px-7 py-3 rounded-full text-sm font-medium transition-colors duration-200 w-full sm:w-auto text-center shadow-lg"
+            className="bg-[#3B82F6] hover:bg-[#2563EB] text-white px-7 py-3 rounded-full text-sm font-medium transition-colors duration-200 w-full sm:w-auto text-center shadow-lg"
           >
             Get Started
           </Link>

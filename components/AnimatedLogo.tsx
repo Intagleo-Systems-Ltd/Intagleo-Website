@@ -78,7 +78,7 @@ export default function AnimatedLogo() {
             <rect x="-150" y="-150" width="300" height="300" fill="black" />
 
             {/* Spokes with depth-based effects */}
-            <g stroke="#6366f1" fill="none" strokeLinecap="round">
+            <g stroke="#3B82F6" fill="none" strokeLinecap="round">
               {spokes_data.map((spoke) => {
                 // Calculate depth factor for this spoke
                 // This creates the Z-axis depth illusion as spokes rotate
@@ -107,7 +107,7 @@ export default function AnimatedLogo() {
               cy="0"
               r="50"
               fill="none"
-              stroke="#6366f1"
+              stroke="#3B82F6"
               strokeWidth="3"
               style={{
                 filter: "drop-shadow(0 0 12px rgba(59, 130, 246, 0.9))",
@@ -120,7 +120,7 @@ export default function AnimatedLogo() {
               cy="0"
               r="45"
               fill="none"
-              stroke="#6366f1"
+              stroke="#3B82F6"
               strokeWidth="1"
               opacity="0.35"
               style={{
@@ -133,7 +133,7 @@ export default function AnimatedLogo() {
               cx="0"
               cy="0"
               r="8"
-              fill="#6366f1"
+              fill="#3B82F6"
               style={{
                 filter: "drop-shadow(0 0 16px rgba(59, 130, 246, 1))",
               }}
@@ -145,7 +145,7 @@ export default function AnimatedLogo() {
               cy="0"
               r="130"
               fill="none"
-              stroke="#6366f1"
+              stroke="#3B82F6"
               strokeWidth="0.5"
               opacity="0.15"
             />

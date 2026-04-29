@@ -21,8 +21,8 @@ interface Props {
 
 export default function ScrollTimeline({
   steps,
-  numColor = "#6366f1",
-  numGradient = "linear-gradient(135deg, #6366f1 0%, #a78bfa 100%)",
+  numColor = "#3B82F6",
+  numGradient = "linear-gradient(135deg, #3B82F6 0%, #a78bfa 100%)",
   lineColor = "linear-gradient(to bottom, rgba(99,102,241,0.8), rgba(167,139,250,0.4), rgba(99,102,241,0.05))",
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);

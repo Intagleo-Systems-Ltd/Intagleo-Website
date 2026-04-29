@@ -86,8 +86,8 @@ export default function ContactForm({ config, type }: Props) {
   if (success) {
     return (
       <div className="flex flex-col items-center justify-center text-center py-16 px-8 h-full min-h-[480px]">
-        <div className="w-16 h-16 rounded-full bg-[#6366f1]/10 border border-[#6366f1]/20 flex items-center justify-center mb-6">
-          <svg className="w-7 h-7 text-[#6366f1]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <div className="w-16 h-16 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/20 flex items-center justify-center mb-6">
+          <svg className="w-7 h-7 text-[#3B82F6]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
@@ -182,7 +182,7 @@ export default function ContactForm({ config, type }: Props) {
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-[#6366f1] hover:bg-[#4f46e5] disabled:bg-[#6366f1]/40 text-white font-medium text-sm py-3.5 rounded-xl transition-colors duration-200 flex items-center justify-center gap-2 cursor-pointer"
+        className="w-full bg-[#3B82F6] hover:bg-[#2563EB] disabled:bg-[#3B82F6]/40 text-white font-medium text-sm py-3.5 rounded-xl transition-colors duration-200 flex items-center justify-center gap-2 cursor-pointer"
       >
         {loading ? (
           <>

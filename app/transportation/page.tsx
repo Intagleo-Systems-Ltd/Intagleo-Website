@@ -27,7 +27,7 @@ const techCaps: CapItem[] = [
         { x: 118, y: 28,  label: "GPS Tracking",   sub: "50K vehicles live",  color: "#5b7fff" },
         { x: 198, y: 72,  label: "Driver Analytics", sub: "Behaviour scores", color: "#a78bfa" },
         { x: 208, y: 148, label: "Vehicle Health",  sub: "OBD telemetry",     color: "#34d399" },
-        { x: 140, y: 188, label: "Route Alerts",    sub: "ETA deviations",    color: "#6366f1" },
+        { x: 140, y: 188, label: "Route Alerts",    sub: "ETA deviations",    color: "#3B82F6" },
         { x: 42,  y: 152, label: "Fuel Monitor",    sub: "Efficiency model",  color: "#f59e0b" },
       ],
       footer: "50K vehicles · 6 continents",
@@ -49,7 +49,7 @@ const techCaps: CapItem[] = [
         { label: "Traffic Data Ingest", pct: 100, rate: "Real-time",    color: "#5b7fff" },
         { label: "Route Calc Engine",   pct: 96,  rate: "<200ms",       color: "#34d399" },
         { label: "Fuel Model",          pct: 88,  rate: "Per vehicle",  color: "#a78bfa" },
-        { label: "ETA Engine",          pct: 92,  rate: "Continuous",   color: "#6366f1" },
+        { label: "ETA Engine",          pct: 92,  rate: "Continuous",   color: "#3B82F6" },
       ],
       metrics: [
         { label: "Routes/min", value: "12K" },
@@ -74,7 +74,7 @@ const techCaps: CapItem[] = [
         { initials: "EU", name: "EU Dispatch",  color: "#5b7fff", qual: 3, live: true,  secs: 28800 },
         { initials: "US", name: "US-East Ops",  color: "#34d399", qual: 3, live: true,  secs: 14400 },
         { initials: "AS", name: "APAC Fleet",   color: "#a78bfa", qual: 2, live: true,  secs: 43200 },
-        { initials: "ME", name: "ME Dispatch",  color: "#6366f1", qual: 2, live: false, secs: 7200  },
+        { initials: "ME", name: "ME Dispatch",  color: "#3B82F6", qual: 2, live: false, secs: 7200  },
       ],
       footerStats: ["Auto-assigned", "4 regions", "SLA: 99.8%"],
     },
@@ -116,7 +116,7 @@ const techCaps: CapItem[] = [
         { label: "On-time Rate",   pct: 94, color: "#34d399" },
         { label: "Fuel Efficiency", pct: 81, color: "#5b7fff" },
         { label: "Utilisation",    pct: 87, color: "#a78bfa" },
-        { label: "CO2 Reduction",  pct: 68, color: "#6366f1" },
+        { label: "CO2 Reduction",  pct: 68, color: "#3B82F6" },
       ],
       events: [
         { time: "09:15:22", text: "Route #8821 optimised — saved 14%"      },
@@ -142,7 +142,7 @@ const techCaps: CapItem[] = [
         { label: "TMS Connector", pct: 99,  color: "#5b7fff", level: "Optimal" },
         { label: "ERP Sync",      pct: 97,  color: "#34d399", level: "Healthy" },
         { label: "Carrier API",   pct: 94,  color: "#a78bfa", level: "High"    },
-        { label: "Customs Check", pct: 100, color: "#6366f1", level: "Clear"   },
+        { label: "Customs Check", pct: 100, color: "#3B82F6", level: "Clear"   },
       ],
       alertsLabel: "API Signals",
       alerts: [
@@ -188,7 +188,7 @@ export default function TransportationPage() {
             keep transportation networks moving efficiently, at any scale.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link href="/contact?type=transportation" className="px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=transportation" className="px-6 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Talk to a Logistics Engineer
             </Link>
             <a href="#process" className="px-6 py-3 rounded-full border border-white/[0.14] text-white/65 text-sm font-medium hover:text-white hover:border-white/30 transition-colors">
@@ -216,7 +216,7 @@ export default function TransportationPage() {
               We review your logistics platform end-to-end - from tracking latency to dispatch
               bottlenecks - and deliver a roadmap to handle the complexity of a growing network.
             </p>
-            <Link href="/contact?type=transport-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=transport-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Book a Logistics Review
             </Link>
           </div>
@@ -249,7 +249,7 @@ export default function TransportationPage() {
               ].map((node) => (
                 <g key={node.label}>
                   <circle cx={node.cx} cy={node.cy} r={node.r + 6} fill="rgba(99,102,241,0.06)" />
-                  <circle cx={node.cx} cy={node.cy} r={node.r} fill={node.major ? "#6366f1" : "#1c1d24"} stroke={node.major ? "rgba(99,102,241,0.5)" : "rgba(255,255,255,0.2)"} strokeWidth="1.5" />
+                  <circle cx={node.cx} cy={node.cy} r={node.r} fill={node.major ? "#3B82F6" : "#1c1d24"} stroke={node.major ? "rgba(99,102,241,0.5)" : "rgba(255,255,255,0.2)"} strokeWidth="1.5" />
                   <text x={node.cx} y={node.cy + node.r + 14} textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="9" fontFamily="monospace">{node.label}</text>
                 </g>
               ))}
@@ -298,7 +298,7 @@ export default function TransportationPage() {
                   fleet efficiency. Here&apos;s what changes.
                 </p>
               </div>
-              <Link href="/contact?type=transportation" className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors cursor-pointer">
+              <Link href="/contact?type=transportation" className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors cursor-pointer">
                 See results in action
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </Link>
@@ -312,7 +312,7 @@ export default function TransportationPage() {
               { num: "04", title: "Customer Visibility", desc: "Real-time tracking portals and proactive exception notifications reduce inbound enquiries and improve satisfaction." },
             ].map((item) => (
               <div key={item.title} className="flex-1 flex items-start gap-5 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-200">
-                <span className="text-xs font-mono text-[#6366f1]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
+                <span className="text-xs font-mono text-[#3B82F6]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
                 <div>
                   <h3 className="text-white font-semibold text-[15px] mb-1.5 leading-snug">{item.title}</h3>
                   <p className="text-white/55 text-sm leading-relaxed">{item.desc}</p>
@@ -364,7 +364,7 @@ export default function TransportationPage() {
             infrastructure that scales with your operation.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
-            <Link href="/contact?type=transportation" className="px-7 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=transportation" className="px-7 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Talk to a logistics engineer
             </Link>
                        <Link href="/case-studies" className="px-7 py-3 rounded-full border border-white/25 text-white/80 text-sm font-medium hover:text-white hover:border-white/45 transition-colors">See our Work</Link>

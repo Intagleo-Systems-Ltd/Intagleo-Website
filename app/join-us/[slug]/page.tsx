@@ -119,7 +119,7 @@ export default async function VacancyPage({ params }: { params: { slug: string }
                     <ul className="space-y-3">
                       {vacancy.responsibilities.map((item, i) => (
                         <li key={i} className="flex gap-3 text-white/55 text-sm leading-relaxed">
-                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#6366f1] flex-shrink-0" />
+                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#3B82F6] flex-shrink-0" />
                           {item}
                         </li>
                       ))}
@@ -133,7 +133,7 @@ export default async function VacancyPage({ params }: { params: { slug: string }
                     <ul className="space-y-3">
                       {vacancy.requirements.map((item, i) => (
                         <li key={i} className="flex gap-3 text-white/55 text-sm leading-relaxed">
-                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#6366f1] flex-shrink-0" />
+                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#3B82F6] flex-shrink-0" />
                           {item}
                         </li>
                       ))}
@@ -161,7 +161,7 @@ export default async function VacancyPage({ params }: { params: { slug: string }
             <div className="lg:sticky lg:top-28">
               <div className="bg-[#0d0d10] border border-white/[0.08] rounded-2xl overflow-hidden">
                 <div className="px-7 pt-7 pb-5 border-b border-white/[0.06]">
-                  <p className="text-[#6366f1] text-xs font-medium tracking-widest uppercase mb-1">
+                  <p className="text-[#3B82F6] text-xs font-medium tracking-widest uppercase mb-1">
                     Apply now
                   </p>
                   <h2 className="text-lg font-semibold text-white leading-tight">

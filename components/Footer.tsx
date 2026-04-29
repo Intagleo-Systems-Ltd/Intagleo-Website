@@ -181,7 +181,7 @@ const socials = [
 
 /* shared link className - contrast-safe, focus ring, smooth transition */
 const linkCls =
-  "text-white/50 hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6366f1]/60 rounded-sm";
+  "text-white/50 hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]/60 rounded-sm";
 
 /* ─── Component ─────────────────────────────────────────────── */
 
@@ -219,10 +219,10 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
                 Whether you&apos;re launching a new product or scaling an existing platform, we have the team to make it happen.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button href="/contact?type=start-project" variant="primary" className="px-8 py-3.5 rounded-md">
+                <Button href="/contact?type=start-project" variant="primary" className="px-8 py-3.5 rounded-full">
                   Start a Conversation
                 </Button>
-                <Button href="/case-studies" variant="secondary" className="px-8 py-3.5 rounded-md">
+                <Button href="/case-studies" variant="secondary" className="px-8 py-3.5 rounded-full">
                   See Our Work
                 </Button>
               </div>
@@ -251,7 +251,7 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
                       {link.badge && (
                         <span
                           aria-label="New"
-                          className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-[#6366f1]/15 text-[#6366f1] leading-none select-none"
+                          className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-[#3B82F6]/15 text-[#3B82F6] leading-none select-none"
                         >
                           {link.badge}
                         </span>
@@ -355,7 +355,7 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
                     aria-label={`Intagleo on ${s.label}`}
                     role="listitem"
                     /* 44×44 touch target */
-                    className="w-11 h-11 rounded-xl border border-white/[0.1] flex items-center justify-center text-white/45 hover:text-white hover:border-white/30 transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6366f1]/60"
+                    className="w-11 h-11 rounded-xl border border-white/[0.1] flex items-center justify-center text-white/45 hover:text-white hover:border-white/30 transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]/60"
                   >
                     {s.icon}
                   </a>
@@ -402,7 +402,7 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
                     <button
                       type="submit"
                       disabled={status === "loading" || !email}
-                      className="px-4 py-3 bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors duration-200 flex-shrink-0 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6366f1]/60"
+                      className="px-4 py-3 bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors duration-200 flex-shrink-0 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]/60"
                       aria-label={status === "loading" ? "Subscribing…" : "Subscribe"}
                     >
                       {status === "loading" ? (
@@ -464,7 +464,7 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
               <Link
                 key={l.href}
                 href={l.href}
-                className="text-white/40 hover:text-white/70 text-xs transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6366f1]/60 rounded-sm"
+                className="text-white/40 hover:text-white/70 text-xs transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]/60 rounded-sm"
               >
                 {l.label}
               </Link>

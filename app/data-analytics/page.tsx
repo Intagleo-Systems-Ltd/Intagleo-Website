@@ -299,7 +299,7 @@ export default function DataAnalyticsPage() {
           <div className="flex flex-wrap items-center justify-center gap-3 mb-14">
             <Link
               href="/contact?type=data-analytics"
-              className="px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
+              className="px-6 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
             >
               Audit My Data
             </Link>
@@ -375,7 +375,7 @@ export default function DataAnalyticsPage() {
                       className="relative z-10 flex-shrink-0 w-[52px] h-[52px] rounded-[14px] flex items-center justify-center"
                       style={{
                         background: isActive ? "#20232f" : "#323645",
-                        color: isActive ? "#6366f1" : "rgba(255,255,255,0.35)",
+                        color: isActive ? "#3B82F6" : "rgba(255,255,255,0.35)",
                       }}
                     >
                       {cat.tabIcon}
@@ -391,7 +391,7 @@ export default function DataAnalyticsPage() {
                     {isActive && !paused && (
                       <span
                         key={progressKey}
-                        className="absolute bottom-0 left-0 h-[3px] rounded-full bg-[#6366f1]/50"
+                        className="absolute bottom-0 left-0 h-[3px] rounded-full bg-[#3B82F6]/50"
                         style={{ animation: "stackProgress 3.5s linear forwards" }}
                       />
                     )}
@@ -491,7 +491,7 @@ export default function DataAnalyticsPage() {
           {/* Left , text */}
           <div className="flex flex-col justify-center px-8 py-16 md:px-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-1">
-              <span className="text-[#6366f1]">Do you know</span>
+              <span className="text-[#3B82F6]">Do you know</span>
             </h2>
             <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-4">
               where your data-link is broken?
@@ -501,7 +501,7 @@ export default function DataAnalyticsPage() {
             </p>
             <Link
               href="/contact?type=data-analytics"
-              className="w-fit px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
+              className="w-fit px-6 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
             >
               Request a free data consultation
             </Link>
@@ -774,7 +774,7 @@ export default function DataAnalyticsPage() {
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
             <Link
               href="/contact?type=data-analytics"
-              className="px-7 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors"
+              className="px-7 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
             >
               Start a conversation
             </Link>

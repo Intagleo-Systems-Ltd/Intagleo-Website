@@ -20,7 +20,7 @@ function getClient() {
 
 const blogFields = `
   "slug": slug.current,
-  title, date, author,
+  title, date, author, category,
   cover_image,
   excerpt, seo_description,
   show_on_homepage,

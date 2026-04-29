@@ -35,7 +35,7 @@ export default function CaseStudiesGrid({ studies }: { studies: CaseStudy[] }) {
               onClick={() => handleIndustry(industry)}
               className={`px-4 py-1.5 rounded-full text-xs font-medium border transition-all duration-200 cursor-pointer ${
                 activeIndustry === industry
-                  ? "bg-[#6366f1]/15 border-[#6366f1]/40 text-[#6366f1]"
+                  ? "bg-[#3B82F6]/15 border-[#3B82F6]/40 text-[#3B82F6]"
                   : "bg-white/[0.03] border-white/[0.08] text-white/50 hover:border-white/20 hover:text-white/70"
               }`}
             >
@@ -66,7 +66,7 @@ export default function CaseStudiesGrid({ studies }: { studies: CaseStudy[] }) {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-[#6366f1]/10 via-[#6366f1]/5 to-transparent" />
+                  <div className="w-full h-full bg-gradient-to-br from-[#3B82F6]/10 via-[#3B82F6]/5 to-transparent" />
                 )}
               </div>
 
@@ -74,7 +74,7 @@ export default function CaseStudiesGrid({ studies }: { studies: CaseStudy[] }) {
               <div className="p-8 lg:p-10 flex flex-col justify-between">
                 <div>
                   <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="text-xs text-[#6366f1] bg-[#6366f1]/10 border border-[#6366f1]/20 rounded-full px-3 py-1">
+                    <span className="text-xs text-[#3B82F6] bg-[#3B82F6]/10 border border-[#3B82F6]/20 rounded-full px-3 py-1">
                       {study.industry}
                     </span>
                     <span className="text-xs text-white/40 bg-white/5 border border-white/10 rounded-full px-3 py-1">
@@ -94,7 +94,7 @@ export default function CaseStudiesGrid({ studies }: { studies: CaseStudy[] }) {
                     <span className="text-white/70 font-medium">Results: </span>
                     {study.results}
                   </p>
-                  <div className="flex items-center gap-1.5 text-[#6366f1] text-xs font-medium flex-shrink-0 ml-6">
+                  <div className="flex items-center gap-1.5 text-[#3B82F6] text-xs font-medium flex-shrink-0 ml-6">
                     Read more
                     <svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none">
                       <path

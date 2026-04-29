@@ -9,6 +9,7 @@ export interface BlogPost {
   title: string;
   date: string;
   author: string;
+  category?: string;
   cover_image?: string;
   excerpt: string;
   seo_description: string;

@@ -27,7 +27,7 @@ const techCaps: CapItem[] = [
         { x: 118, y: 28,  label: "Device Provisioning", sub: "Zero-touch onboarding", color: "#5b7fff" },
         { x: 198, y: 72,  label: "OTA Firmware",        sub: "Remote update pipeline", color: "#a78bfa" },
         { x: 208, y: 148, label: "Fleet Monitor",        sub: "28K devices online",    color: "#34d399" },
-        { x: 140, y: 188, label: "Edge Compute",         sub: "On-device processing",  color: "#6366f1" },
+        { x: 140, y: 188, label: "Edge Compute",         sub: "On-device processing",  color: "#3B82F6" },
         { x: 42,  y: 152, label: "Device Registry",      sub: "Provisioning DB",       color: "#f59e0b" },
       ],
       footer: "5M+ devices · 4 zones",
@@ -49,7 +49,7 @@ const techCaps: CapItem[] = [
         { label: "MQTT Broker",      pct: 98,  rate: "12K msg/s",    color: "#5b7fff" },
         { label: "Time-series DB",   pct: 100, rate: "Real-time",    color: "#34d399" },
         { label: "Stream Processor", pct: 87,  rate: "Event-driven", color: "#a78bfa" },
-        { label: "Data Lake Ingest", pct: 74,  rate: "Batch hourly", color: "#6366f1" },
+        { label: "Data Lake Ingest", pct: 74,  rate: "Batch hourly", color: "#3B82F6" },
       ],
       metrics: [
         { label: "Events/s",  value: "1.8M" },
@@ -95,7 +95,7 @@ const techCaps: CapItem[] = [
         { label: "Urban Mobility",   pct: 87, color: "#5b7fff" },
         { label: "Predictive Maint", pct: 73, color: "#34d399" },
         { label: "Energy Opt AI",    pct: 91, color: "#a78bfa" },
-        { label: "Citizen Services", pct: 78, color: "#6366f1" },
+        { label: "Citizen Services", pct: 78, color: "#3B82F6" },
       ],
       events: [
         { time: "09:14:22", text: "Traffic anomaly detected — Sector 7"     },
@@ -121,7 +121,7 @@ const techCaps: CapItem[] = [
         { label: "Device Auth",      pct: 99,  color: "#34d399", level: "Secure"  },
         { label: "Data Encryption",  pct: 100, color: "#5b7fff", level: "Optimal" },
         { label: "Access Control",   pct: 95,  color: "#a78bfa", level: "High"    },
-        { label: "Audit Compliance", pct: 88,  color: "#6366f1", level: "Strong"  },
+        { label: "Audit Compliance", pct: 88,  color: "#3B82F6", level: "Strong"  },
       ],
       alertsLabel: "Security Signals",
       alerts: [
@@ -148,7 +148,7 @@ const techCaps: CapItem[] = [
         { initials: "FW", name: "FIWARE API",   color: "#5b7fff", qual: 3, live: true,  secs: 3640  },
         { initials: "DT", name: "Digital Twin", color: "#a78bfa", qual: 3, live: true,  secs: 1820  },
         { initials: "GI", name: "GIS Mapping",  color: "#34d399", qual: 2, live: true,  secs: 7200  },
-        { initials: "CA", name: "Citizen Apps", color: "#6366f1", qual: 2, live: true,  secs: 5400  },
+        { initials: "CA", name: "Citizen Apps", color: "#3B82F6", qual: 2, live: true,  secs: 5400  },
       ],
       footerStats: ["FIWARE v1.4", "4 standards", "Open APIs"],
     },
@@ -190,10 +190,10 @@ export default function SmartCitiesPage() {
   }, [particles.length]);
 
   const streams = [
-    { label: "Traffic", value: "1,247", unit: "vehicles/min", color: "#6366f1" },
+    { label: "Traffic", value: "1,247", unit: "vehicles/min", color: "#3B82F6" },
     { label: "Energy", value: "84.2", unit: "MW consumed", color: "#10b981" },
     { label: "Air Quality", value: "42", unit: "AQI index", color: "#f59e0b" },
-    { label: "Incidents", value: "3", unit: "active alerts", color: "#6366f1" },
+    { label: "Incidents", value: "3", unit: "active alerts", color: "#3B82F6" },
   ];
 
   return (
@@ -221,7 +221,7 @@ export default function SmartCitiesPage() {
             control, we build the IoT software that connects cities and drives efficiency at scale.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link href="/contact?type=smart-cities" className="px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=smart-cities" className="px-6 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Talk to an IoT Engineer
             </Link>
             <a href="#process" className="px-6 py-3 rounded-full border border-white/[0.14] text-white/65 text-sm font-medium hover:text-white hover:border-white/30 transition-colors">
@@ -247,7 +247,7 @@ export default function SmartCitiesPage() {
               We audit your IoT architecture end-to-end - device management, data pipelines, and
               operational dashboards - to identify the gaps between data collected and decisions made.
             </p>
-            <Link href="/contact?type=smart-cities-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=smart-cities-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Book an IoT Architecture Review
             </Link>
           </div>
@@ -283,7 +283,7 @@ export default function SmartCitiesPage() {
                 <circle
                   key={i}
                   cx={p.x} cy={p.y} r={p.size}
-                  fill={i % 5 === 0 ? "#6366f1" : i % 3 === 0 ? "#6366f1" : "rgba(255,255,255,0.6)"}
+                  fill={i % 5 === 0 ? "#3B82F6" : i % 3 === 0 ? "#3B82F6" : "rgba(255,255,255,0.6)"}
                   opacity={p.opacity}
                 />
               ))}
@@ -341,7 +341,7 @@ export default function SmartCitiesPage() {
                   intelligence that makes cities genuinely efficient. Here&apos;s what changes.
                 </p>
               </div>
-              <Link href="/contact?type=smart-cities" className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors cursor-pointer">
+              <Link href="/contact?type=smart-cities" className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors cursor-pointer">
                 See results in action
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </Link>
@@ -355,7 +355,7 @@ export default function SmartCitiesPage() {
               { num: "04", title: "Citizen Services", desc: "Data-driven service delivery means faster response times, more transparent public reporting, and measurable improvements in quality of life." },
             ].map((item) => (
               <div key={item.title} className="flex-1 flex items-start gap-5 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-200">
-                <span className="text-xs font-mono text-[#6366f1]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
+                <span className="text-xs font-mono text-[#3B82F6]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
                 <div>
                   <h3 className="text-white font-semibold text-[15px] mb-1.5 leading-snug">{item.title}</h3>
                   <p className="text-white/55 text-sm leading-relaxed">{item.desc}</p>
@@ -421,7 +421,7 @@ export default function SmartCitiesPage() {
             infrastructure that turns sensor data into operational decisions.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
-            <Link href="/contact?type=smart-cities" className="px-7 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=smart-cities" className="px-7 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Talk to an IoT engineer
             </Link>
                         <Link href="/case-studies" className="px-7 py-3 rounded-full border border-white/25 text-white/80 text-sm font-medium hover:text-white hover:border-white/45 transition-colors">See our Work</Link>

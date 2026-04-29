@@ -77,7 +77,7 @@ export default async function BlogPostPage({ params }: Props) {
             <span>{post.author}</span>
           </div>
 
-          <p className="text-white/55 text-lg leading-relaxed border-l-2 border-[#6366f1]/60 pl-5">
+          <p className="text-white/55 text-lg leading-relaxed border-l-2 border-[#3B82F6]/60 pl-5">
             {post.excerpt}
           </p>
         </div>
@@ -104,12 +104,12 @@ export default async function BlogPostPage({ params }: Props) {
             className="prose prose-invert prose-sm md:prose-base max-w-none
               prose-headings:text-white prose-headings:font-semibold
               prose-p:text-white/60 prose-p:leading-relaxed
-              prose-a:text-[#6366f1] prose-a:no-underline hover:prose-a:underline
+              prose-a:text-[#3B82F6] prose-a:no-underline hover:prose-a:underline
               prose-strong:text-white/90
               prose-li:text-white/60
               prose-hr:border-white/10
-              prose-blockquote:border-l-[#6366f1] prose-blockquote:text-white/50
-              prose-code:text-[#6366f1] prose-code:bg-white/5 prose-code:px-1 prose-code:rounded"
+              prose-blockquote:border-l-[#3B82F6] prose-blockquote:text-white/50
+              prose-code:text-[#3B82F6] prose-code:bg-white/5 prose-code:px-1 prose-code:rounded"
             dangerouslySetInnerHTML={{ __html: contentHtml }}
           />
         </div>

@@ -7,41 +7,65 @@ import Pagination from "@/components/Pagination";
 const PER_PAGE = 9;
 
 export default function BlogGrid({ posts }: { posts: BlogPost[] }) {
-  const authors = Array.from(new Set(posts.map((p) => p.author).filter(Boolean)));
-  const hasMultipleAuthors = authors.length > 1;
+  const [query, setQuery] = useState("");
+  const [page, setPage]   = useState(1);
 
-  const [activeAuthor, setActiveAuthor] = useState("All");
-  const [page, setPage] = useState(1);
+  const q = query.trim().toLowerCase();
 
-  const filtered =
-    activeAuthor === "All" ? posts : posts.filter((p) => p.author === activeAuthor);
+  const filtered = posts.filter((p) => {
+    if (!q) return true;
+    return (
+      p.title.toLowerCase().includes(q) ||
+      p.excerpt.toLowerCase().includes(q) ||
+      (p.author ?? "").toLowerCase().includes(q) ||
+      (p.category ?? "").toLowerCase().includes(q)
+    );
+  });
+
   const totalPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
-  const visible = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+  const visible    = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
 
-  function handleAuthor(author: string) {
-    setActiveAuthor(author);
+  function handleSearch(v: string) {
+    setQuery(v);
     setPage(1);
   }
 
   return (
     <>
-      {/* Author filter */}
-      {hasMultipleAuthors && (
-        <div className="flex flex-wrap gap-2 mb-10">
-          {["All", ...authors].map((author) => (
-            <button
-              key={author}
-              onClick={() => handleAuthor(author)}
-              className={`px-4 py-1.5 rounded-full text-xs font-medium border transition-all duration-200 cursor-pointer ${
-                activeAuthor === author
-                  ? "bg-[#6366f1]/15 border-[#6366f1]/40 text-[#6366f1]"
-                  : "bg-white/[0.03] border-white/[0.08] text-white/50 hover:border-white/20 hover:text-white/70"
-              }`}
-            >
-              {author}
-            </button>
-          ))}
-        </div>
+      {/* Search */}
+      <div className="relative mb-10">
+        <svg
+          className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30 pointer-events-none"
+          viewBox="0 0 16 16" fill="none"
+        >
+          <circle cx="6.5" cy="6.5" r="4" stroke="currentColor" strokeWidth="1.5" />
+          <path d="M11 11l3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        </svg>
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => handleSearch(e.target.value)}
+          placeholder="Search posts by title, author, or category…"
+          className="w-full bg-white/[0.03] border border-white/[0.08] rounded-full pl-11 pr-4 py-3 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-[#3B82F6]/50 focus:bg-white/[0.05] transition-all duration-200"
+        />
+        {query && (
+          <button
+            onClick={() => handleSearch("")}
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 hover:text-white/60 transition-colors"
+            aria-label="Clear search"
+          >
+            <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
+              <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+          </button>
+        )}
+      </div>
+
+      {/* Results count when searching */}
+      {q && (
+        <p className="text-white/30 text-xs mb-6">
+          {filtered.length} {filtered.length === 1 ? "result" : "results"} for &ldquo;{query}&rdquo;
+        </p>
       )}
 
       {/* Grid */}
@@ -64,7 +88,7 @@ export default function BlogGrid({ posts }: { posts: BlogPost[] }) {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-[#6366f1]/10 via-transparent to-transparent" />
+                  <div className="w-full h-full bg-gradient-to-br from-[#3B82F6]/10 via-transparent to-transparent" />
                 )}
               </div>
 
@@ -73,6 +97,12 @@ export default function BlogGrid({ posts }: { posts: BlogPost[] }) {
                   <span>{post.date}</span>
                   <span>·</span>
                   <span>{post.author}</span>
+                  {post.category && (
+                    <>
+                      <span>·</span>
+                      <span className="text-[#3B82F6]/70">{post.category}</span>
+                    </>
+                  )}
                 </div>
                 <h2 className="heading-gradient font-semibold text-base leading-snug mb-3 line-clamp-2">
                   {post.title}
@@ -80,7 +110,7 @@ export default function BlogGrid({ posts }: { posts: BlogPost[] }) {
                 <p className="text-white/40 text-sm leading-relaxed line-clamp-3">
                   {post.excerpt}
                 </p>
-                <div className="mt-4 flex items-center gap-1.5 text-[#6366f1] text-xs font-medium">
+                <div className="mt-4 flex items-center gap-1.5 text-[#3B82F6] text-xs font-medium">
                   Read post
                   <svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none">
                     <path

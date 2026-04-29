@@ -49,7 +49,7 @@ const techCaps: CapItem[] = [
         { label: "Stock Sync", pct: 100, rate: "Real-time", color: "#34d399" },
         { label: "Order Routing", pct: 88, rate: "Automated", color: "#5b7fff" },
         { label: "3PL Handoff", pct: 72, rate: "On-demand", color: "#a78bfa" },
-        { label: "Returns Processing", pct: 65, rate: "Batch", color: "#6366f1" },
+        { label: "Returns Processing", pct: 65, rate: "Batch", color: "#3B82F6" },
       ],
       metrics: [
         { label: "Orders Today", value: "14.2K" },
@@ -100,7 +100,7 @@ const techCaps: CapItem[] = [
         { label: "CVR Overall", pct: 3, color: "#5b7fff" },
         { label: "Cart Recovery", pct: 18, color: "#a78bfa" },
         { label: "Repeat Purchase", pct: 42, color: "#34d399" },
-        { label: "AOV Growth", pct: 12, color: "#6366f1" },
+        { label: "AOV Growth", pct: 12, color: "#3B82F6" },
       ],
       events: [
         { time: "10:45:00", text: "Funnel CVR improved 0.4%" },
@@ -126,7 +126,7 @@ const techCaps: CapItem[] = [
         { x: 118, y: 28, label: "Amazon", sub: "Marketplace sync", color: "#f59e0b" },
         { x: 198, y: 70, label: "POS / Till", sub: "In-store integration", color: "#5b7fff" },
         { x: 208, y: 148, label: "Instagram", sub: "Social commerce", color: "#a78bfa" },
-        { x: 140, y: 188, label: "eBay", sub: "Catalogue sync", color: "#6366f1" },
+        { x: 140, y: 188, label: "eBay", sub: "Catalogue sync", color: "#3B82F6" },
         { x: 42, y: 152, label: "TikTok Shop", sub: "Live commerce", color: "#ef4444" },
       ],
       footer: "5 channels · unified inventory",
@@ -148,7 +148,7 @@ const techCaps: CapItem[] = [
         { initials: "US", name: "US-East (Cloudflare)", color: "#5b7fff", qual: 3, live: true, secs: 86400 },
         { initials: "EU", name: "EU-West (Cloudflare)", color: "#34d399", qual: 3, live: true, secs: 86400 },
         { initials: "AP", name: "APAC (Fastly)", color: "#a78bfa", qual: 2, live: true, secs: 86400 },
-        { initials: "ME", name: "ME-South (Akamai)", color: "#6366f1", qual: 2, live: false, secs: 86400 },
+        { initials: "ME", name: "ME-South (Akamai)", color: "#3B82F6", qual: 2, live: false, secs: 86400 },
       ],
       footerStats: ["Cache hit: 98.4%", "LCP: 0.9s", "4 PoPs"],
     },
@@ -191,7 +191,7 @@ export default function EcommerceRetailPage() {
             that turns browsers into buyers - and buyers into loyal customers.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link href="/contact?type=ecommerce" className="px-6 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=ecommerce" className="px-6 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Talk to a Commerce Engineer
             </Link>
             <a href="#process" className="px-6 py-3 rounded-full border border-white/[0.14] text-white/65 text-sm font-medium hover:text-white hover:border-white/30 transition-colors">
@@ -217,7 +217,7 @@ export default function EcommerceRetailPage() {
               to order pipeline bottlenecks - and map the exact points where revenue
               is being left on the table.
             </p>
-            <Link href="/contact?type=ecommerce-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=ecommerce-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Book a Commerce Review
             </Link>
           </div>
@@ -226,7 +226,7 @@ export default function EcommerceRetailPage() {
           <div className="relative rounded-2xl overflow-hidden bg-[#0d0e18] border border-white/[0.07] p-5" style={{ height: "380px" }}>
             <div className="flex items-center justify-between mb-4">
               <span className="text-[10px] text-white/30 uppercase tracking-widest font-mono">Warehouse Grid View</span>
-              <span className="text-[10px] text-[#6366f1]/70 font-mono">{GRID_COLS * GRID_ROWS} locations</span>
+              <span className="text-[10px] text-[#3B82F6]/70 font-mono">{GRID_COLS * GRID_ROWS} locations</span>
             </div>
             <div
               className="grid gap-1.5"
@@ -240,13 +240,13 @@ export default function EcommerceRetailPage() {
                   <div
                     key={i}
                     className={`rounded transition-all duration-200 flex items-center justify-center
-                      ${isActive ? "bg-[#6366f1]/30 border border-[#6366f1]/60" :
-                        isPrev ? "bg-[#6366f1]/10 border border-[#6366f1]/20" :
+                      ${isActive ? "bg-[#3B82F6]/30 border border-[#3B82F6]/60" :
+                        isPrev ? "bg-[#3B82F6]/10 border border-[#3B82F6]/20" :
                         fill ? "bg-white/[0.06] border border-white/[0.05]" : "bg-transparent border border-white/[0.03]"}`}
                   >
                     {fill && !isActive && <span className="text-[6px] text-white/20 font-mono">SKU</span>}
                     {isActive && (
-                      <svg className="w-3 h-3 text-[#6366f1]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <svg className="w-3 h-3 text-[#3B82F6]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     )}
@@ -297,7 +297,7 @@ export default function EcommerceRetailPage() {
                   and customer lifetime value. Here&apos;s what changes.
                 </p>
               </div>
-              <Link href="/contact?type=ecommerce" className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors cursor-pointer">
+              <Link href="/contact?type=ecommerce" className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors cursor-pointer">
                 See results in action
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </Link>
@@ -311,7 +311,7 @@ export default function EcommerceRetailPage() {
               { num: "04", title: "Customer Intelligence", desc: "Unified purchase history and behavioural data power personalisation that increases average order value and repeat purchase rate." },
             ].map((item) => (
               <div key={item.title} className="flex-1 flex items-start gap-5 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-200">
-                <span className="text-xs font-mono text-[#6366f1]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
+                <span className="text-xs font-mono text-[#3B82F6]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
                 <div>
                   <h3 className="text-white font-semibold text-[15px] mb-1.5 leading-snug">{item.title}</h3>
                   <p className="text-white/55 text-sm leading-relaxed">{item.desc}</p>
@@ -377,7 +377,7 @@ export default function EcommerceRetailPage() {
             that converts at every touchpoint.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
-            <Link href="/contact?type=ecommerce" className="px-7 py-3 rounded-full bg-[#6366f1] text-white text-sm font-semibold hover:bg-[#4f46e5] transition-colors">
+            <Link href="/contact?type=ecommerce" className="px-7 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Talk to a commerce engineer
             </Link>
                         <Link href="/case-studies" className="px-7 py-3 rounded-full border border-white/25 text-white/80 text-sm font-medium hover:text-white hover:border-white/45 transition-colors">See our Work</Link>
