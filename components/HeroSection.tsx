@@ -44,7 +44,7 @@ export default function HeroSection() {
         >
           We Build Production-Ready<br />
           <span style={{
-            background: 'linear-gradient(90deg, #3B82F6 0%, #ff6b4a 100%)',
+            background: 'linear-gradient(90deg, #3B82F6 0%, #c6b2ad 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text'
