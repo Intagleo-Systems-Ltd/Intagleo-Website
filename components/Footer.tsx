@@ -236,7 +236,7 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
         <div className="mx-auto max-w-[1400px]">
 
           {/* 6-col grid: 4 services + company + legal */}
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-x-6 gap-y-10">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-x-6 gap-y-10">
             {serviceColumns.map((col) => (
               <div key={col.heading}>
                 <p className="text-white/40 text-[10px] font-semibold uppercase tracking-widest mb-4">

@@ -249,7 +249,7 @@ export default function AboutPage() {
             About Intagleo
           </p>
           <h1
-            className="text-5xl md:text-6xl lg:text-[72px] font-bold leading-[1.03] tracking-tight mb-8 max-w-3xl opacity-0"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-bold leading-[1.03] tracking-tight mb-8 max-w-3xl opacity-0"
             style={{ animation: "aboutFadeUp 0.8s ease-out 0.4s forwards" }}
           >
             <span className="heading-gradient">Twenty years of building</span>
@@ -257,7 +257,7 @@ export default function AboutPage() {
             <span className="heading-gradient">software that works.</span>
           </h1>
           <p
-            className="text-white/50 text-lg leading-relaxed max-w-xl mb-10 opacity-0"
+            className="text-white/50 text-base md:text-lg leading-relaxed max-w-xl mb-10 opacity-0"
             style={{ animation: "aboutFadeUp 0.8s ease-out 0.6s forwards" }}
           >
             Senior engineers. Owned outcomes. Production-grade systems, delivered to enterprises and ambitious product teams in 18 countries since 2003.
@@ -320,7 +320,7 @@ export default function AboutPage() {
                 <h2 className="text-4xl md:text-5xl font-bold heading-gradient leading-tight mb-6">
                   Close the gap between idea and production.
                 </h2>
-                <p className="text-white/50 text-lg leading-relaxed mb-5">
+                <p className="text-white/50 text-base md:text-lg leading-relaxed mb-5">
                   Most software projects fail not because of bad ideas, but because the team executing them lacks the depth to navigate real complexity. Legacy debt, unclear specs, scaling surprises, these derail well-funded initiatives every day.
                 </p>
                 <p className="text-white/35 text-base leading-relaxed">

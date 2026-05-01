@@ -151,7 +151,7 @@ export default function ContactPage({
 
               {/* Heading */}
               <h1
-                className="contact-fade-up text-5xl md:text-6xl lg:text-7xl font-bold heading-gradient leading-[1.02] tracking-tight mb-6"
+                className="contact-fade-up text-4xl sm:text-5xl md:text-6xl font-bold heading-gradient leading-[1.02] tracking-tight mb-6"
                 style={{ fontFamily: '"Roobert TRIAL", sans-serif', animationDelay: "0.25s" }}
               >
                 {headingLines.map((line, i) => (
@@ -172,7 +172,7 @@ export default function ContactPage({
 
               {/* Stats strip */}
               <div
-                className="contact-fade-up flex gap-8 mb-10 pb-10 border-b border-white/[0.06]"
+                className="contact-fade-up flex flex-wrap gap-6 md:gap-8 mb-10 pb-10 border-b border-white/[0.06]"
                 style={{ animationDelay: "0.45s" }}
               >
                 {stats.map((s) => (

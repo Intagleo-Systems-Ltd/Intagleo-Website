@@ -12,10 +12,10 @@ export default function AIStrategySection() {
             <h2
               className="heading-gradient mb-6"
               style={{
-                fontSize: '42px',
+                fontSize: 'clamp(24px, 3.5vw, 42px)',
                 fontWeight: 500,
-                lineHeight: '48px',
-                letterSpacing: '-1.74px',
+                lineHeight: '1.2',
+                letterSpacing: '-1px',
                 fontFamily: '"Roobert TRIAL", sans-serif'
               }}
             >
@@ -25,9 +25,9 @@ export default function AIStrategySection() {
               className="mb-8 max-w-md"
               style={{
                 color: '#D6D8D8',
-                fontSize: '22px',
+                fontSize: 'clamp(15px, 1.8vw, 22px)',
                 fontWeight: 400,
-                lineHeight: '31px',
+                lineHeight: '1.55',
                 fontFamily: '"Roobert TRIAL", sans-serif'
               }}
             >

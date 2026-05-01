@@ -3,17 +3,6 @@ import { useState, useEffect } from "react";
 
 const CDN = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons";
 
-const serviceContactTypes: Record<string, string> = {
-  "Custom Software Development": "custom-software",
-  "Legacy Modernization":        "legacy-modernization",
-  "Mobile Development":          "mobile-dev",
-  "Cloud & DevOps":              "cloud-devops",
-  "AI & Machine Learning":       "ai-ml",
-  "Staff Augmentation":          "staff-augmentation",
-  "Data & Analytics":            "data-analytics",
-  "QA & Testing":                "qa-testing",
-  "Embedded & IoT":              "embedded-iot",
-};
 
 const servicePageUrls: Record<string, string> = {
   "Custom Software Development": "/custom-software",
@@ -255,7 +244,7 @@ export default function ServicesSection() {
     <section id="services" className="bg-[#0a0a0a] section-padding py-24">
       <div className="mx-auto max-w-[1400px]">
         {/* Top row */}
-        <div className="flex items-start justify-between mb-12 gap-6">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-10 gap-4">
           <h2 className="text-3xl md:text-4xl leading-tight max-w-lg">
             <span className="font-bold heading-gradient">Engineered</span>
             <span className="font-light text-white/50"> To Scale.</span>
@@ -265,16 +254,33 @@ export default function ServicesSection() {
           </h2>
           <a
             href="/contact?type=services"
-            className="flex-shrink-0 mt-1 px-5 py-2.5 rounded-full border border-white/20 text-white/70 text-sm hover:border-white/50 hover:text-white transition-all"
+            className="flex-shrink-0 sm:mt-1 px-5 py-2.5 rounded-full border border-white/20 text-white/70 text-sm hover:border-white/50 hover:text-white transition-all w-fit"
           >
             Get Our Services
           </a>
         </div>
 
-        {/* Two-column */}
+        {/* Service tabs — horizontal scroll on mobile */}
+        <div className="flex gap-2 overflow-x-auto pb-2 mb-4 lg:hidden scrollbar-none snap-x">
+          {services.map((s, i) => (
+            <button
+              key={s.name}
+              onClick={() => handleSelect(i)}
+              className={`flex-shrink-0 snap-start px-4 py-2 rounded-full border text-sm font-medium transition-all duration-200 whitespace-nowrap ${
+                i === active
+                  ? "border-[#3B82F6]/60 bg-[#3B82F6]/10 text-white"
+                  : "border-white/[0.08] bg-transparent text-white/50 hover:text-white/80"
+              }`}
+            >
+              {s.name}
+            </button>
+          ))}
+        </div>
+
+        {/* Two-column (desktop) */}
         <div className="grid lg:grid-cols-[1fr_1.1fr] gap-6 items-stretch">
-          {/* Left - service list */}
-          <div className="flex flex-col gap-2">
+          {/* Left - service list (desktop only) */}
+          <div className="hidden lg:flex flex-col gap-2">
             {services.map((s, i) => (
               <button
                 key={s.name}
@@ -291,7 +297,7 @@ export default function ServicesSection() {
           </div>
 
           {/* Right - detail panel */}
-          <div className="bg-[#0d0f12] border border-white/[0.06] rounded-2xl p-8 flex flex-col">
+          <div className="bg-[#0d0f12] border border-white/[0.06] rounded-2xl p-6 md:p-8 flex flex-col">
             {/* Title */}
             <h3 className="text-2xl font-bold text-white mb-3">
               {svc.name.split(" ").slice(0, 1).join(" ")}{" "}
@@ -312,7 +318,7 @@ export default function ServicesSection() {
             </div>
 
             {/* Tech logos */}
-            <div className="grid grid-cols-8 gap-3 mb-10">
+            <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-3 mb-8 md:mb-10">
               {svc.tech.map((t) => (
                 <div key={t.name} className="flex flex-col items-center gap-2">
                   <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-white/5 border border-white/[0.06] p-2.5">

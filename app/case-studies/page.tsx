@@ -20,7 +20,7 @@ export default async function CaseStudiesPage() {
       <Navbar />
 
       {/* Header */}
-      <section className="section-padding pt-32 pb-16 border-b border-white/5">
+      <section className="section-padding pt-24 md:pt-32 pb-16 border-b border-white/5">
         <div className="mx-auto max-w-[1400px]">
           <p className="text-xs text-white/40 uppercase tracking-widest mb-4">
             Our Work

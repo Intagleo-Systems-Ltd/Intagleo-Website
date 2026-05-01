@@ -340,9 +340,26 @@ export default function CapabilityCardSection({ caps, sectionTitle = "Core Capab
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">{sectionTitle}</h2>
           {sectionSubtitle && <p className="text-white/40 text-base">{sectionSubtitle}</p>}
         </div>
+        {/* Mobile: horizontal scroll tab strip */}
+        <div className="flex gap-2 overflow-x-auto pb-2 mb-4 lg:hidden scrollbar-none snap-x">
+          {caps.map((cap, i) => (
+            <button
+              key={i}
+              onClick={() => handleSelect(i)}
+              className={`flex-shrink-0 snap-start px-4 py-2 rounded-full border text-sm font-medium whitespace-nowrap cursor-pointer transition-all duration-150 ${
+                activeTab === i
+                  ? "bg-[#161b27] border-white/[0.14] text-white"
+                  : "border-white/[0.08] text-white/50 hover:text-white/80"
+              }`}
+            >
+              {cap.highlight}{cap.rest}
+            </button>
+          ))}
+        </div>
+
         <div className="grid lg:grid-cols-[248px_1fr] gap-4 items-center">
-          {/* Left nav */}
-          <div className="flex flex-col gap-0.5">
+          {/* Left nav — desktop only */}
+          <div className="hidden lg:flex flex-col gap-0.5">
             {caps.map((cap, i) => (
               <button key={i} onClick={() => handleSelect(i)}
                 className={`text-left px-4 py-3.5 rounded-xl transition-all duration-150 border cursor-pointer ${activeTab === i ? "bg-[#161b27] border-white/[0.14]" : "border-transparent hover:bg-white/[0.04]"}`}>

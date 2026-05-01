@@ -37,8 +37,8 @@ export default function HeroSection() {
           className="heading-gradient leading-[1.1] tracking-tight mb-6 max-w-4xl drop-shadow-lg font-medium"
           style={{
             fontFamily: '"Roobert TRIAL", sans-serif',
-            fontSize: '68px',
-            letterSpacing: '-2.74px',
+            fontSize: 'clamp(34px, 6.5vw, 68px)',
+            letterSpacing: '-1.5px',
             lineHeight: '1.1'
           }}
         >
@@ -54,12 +54,12 @@ export default function HeroSection() {
         </h1>
 
         <p
-          className="text-white max-w-xl mb-10 leading-relaxed drop-shadow"
+          className="text-white max-w-xl mb-10 leading-relaxed drop-shadow px-2 sm:px-0"
           style={{
             color: '#D6D8D8',
-            fontSize: '18px',
+            fontSize: 'clamp(15px, 2vw, 18px)',
             fontWeight: 200,
-            lineHeight: '30px',
+            lineHeight: '1.7',
             fontFamily: '"Roobert TRIAL", sans-serif'
           }}
         >

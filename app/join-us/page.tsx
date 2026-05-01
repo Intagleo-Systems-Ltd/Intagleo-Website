@@ -134,7 +134,7 @@ export default async function JoinUsPage() {
 
                 {/* Heading */}
                 <h1
-                  className="text-5xl md:text-6xl lg:text-7xl font-bold heading-gradient leading-[1.02] tracking-tight mb-6"
+                  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold heading-gradient leading-[1.02] tracking-tight mb-6"
                   style={{ fontFamily: '"Roobert TRIAL", sans-serif' }}
                 >
                   Build the future
@@ -142,7 +142,7 @@ export default async function JoinUsPage() {
                   <span className="text-white/40">with us.</span>
                 </h1>
 
-                <p className="text-white/50 text-lg leading-relaxed mb-10 max-w-xl">
+                <p className="text-white/50 text-base md:text-lg leading-relaxed mb-10 max-w-xl">
                   Intagleo engineers work on real enterprise products, not internal tools or maintenance tickets.
                   If you want ownership, craft, and clients who actually care about quality, you&apos;ll fit right in.
                 </p>
@@ -181,7 +181,7 @@ export default async function JoinUsPage() {
                 { value: "20+", label: "Years building" },
               ].map((s) => (
                 <div key={s.label}>
-                  <p className="text-3xl font-bold text-white tracking-tight">{s.value}</p>
+                  <p className="text-2xl md:text-3xl font-bold text-white tracking-tight">{s.value}</p>
                   <p className="text-white/35 text-sm mt-1">{s.label}</p>
                 </div>
               ))}

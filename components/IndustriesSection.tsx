@@ -134,8 +134,68 @@ export default function IndustriesSection() {
           </p>
         </div>
 
-        {/* Accordion */}
-        <div className="flex gap-2 items-stretch h-[420px]">
+        {/* Mobile: vertical accordion */}
+        <div className="lg:hidden flex flex-col gap-2">
+          {industries.map((ind, i) => {
+            const isOpen = i === active;
+            return (
+              <div
+                key={`mob-${ind.name}`}
+                onClick={() => setActive(i)}
+                className={`rounded-2xl border overflow-hidden cursor-pointer transition-all duration-300 ${
+                  isOpen ? "border-white/[0.10]" : "border-white/[0.05]"
+                } bg-[#0d0d10]`}
+              >
+                <div className="flex items-center gap-3 px-5 py-4">
+                  <div
+                    className="w-8 h-8 rounded-lg bg-white/[0.05] border border-white/[0.08] flex items-center justify-center flex-shrink-0"
+                    style={{ color: ind.iconColor }}
+                  >
+                    {ind.icon}
+                  </div>
+                  <span className="text-white/80 text-sm font-medium flex-1">
+                    {ind.name}
+                    {ind.nameSub && <span className="text-white/40 font-normal"> {ind.nameSub}</span>}
+                  </span>
+                  <svg
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    className={`w-4 h-4 text-white/30 flex-shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                    aria-hidden="true"
+                  >
+                    <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                {isOpen && (
+                  <div className="px-5 pb-5 pt-1 border-t border-white/[0.05]">
+                    <p className="text-white/40 text-sm leading-relaxed mb-4">{ind.desc}</p>
+                    <ul className="space-y-2 mb-4">
+                      {ind.bullets.map((b) => (
+                        <li key={b} className="flex items-center gap-2 text-white/55 text-sm">
+                          <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: ind.iconColor }} />
+                          {b}
+                        </li>
+                      ))}
+                    </ul>
+                    <a
+                      href={ind.url}
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center gap-2 text-white/50 text-sm hover:text-white transition-colors duration-200 group"
+                    >
+                      Explore {ind.name}
+                      <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" aria-hidden="true">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </a>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Desktop: horizontal accordion */}
+        <div className="hidden lg:flex gap-2 items-stretch h-[420px]">
           {industries.map((ind, i) => {
             const isOpen = i === active;
             return (

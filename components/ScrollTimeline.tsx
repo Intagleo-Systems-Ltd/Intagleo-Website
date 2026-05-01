@@ -87,8 +87,8 @@ export default function ScrollTimeline({
 
   return (
     <div className="relative" ref={ref}>
-      {/* Animated vertical line */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 overflow-hidden">
+      {/* Animated vertical line — left-6 on mobile, centered on desktop */}
+      <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px md:-translate-x-1/2 overflow-hidden">
         <div
           className="stl-line w-full h-full origin-top"
           style={{
@@ -114,8 +114,8 @@ export default function ScrollTimeline({
         return (
           <div
             key={step.num}
-            className={`stl-step relative flex items-start mb-20 last:mb-0 ${
-              isRight ? "flex-row-reverse" : ""
+            className={`stl-step relative flex items-start mb-10 md:mb-20 last:mb-0 ${
+              isRight ? "md:flex-row-reverse" : ""
             }`}
             style={{
               opacity: 0,
@@ -123,14 +123,14 @@ export default function ScrollTimeline({
               transition: `opacity 0.65s ease-out ${delay}ms, transform 0.65s ease-out ${delay}ms`,
             }}
           >
-            {/* Content */}
+            {/* Content — always left-aligned on mobile, alternating on desktop */}
             <div
-              className={`flex-1 ${
-                isRight ? "text-left pl-10" : "text-right pr-10"
+              className={`flex-1 pl-12 text-left ${
+                !isRight ? "md:pl-0 md:pr-10 md:text-right" : "md:pl-10"
               }`}
             >
               <div
-                className="text-7xl font-bold leading-none mb-3"
+                className="text-5xl md:text-7xl font-bold leading-none mb-3"
                 style={numStyle}
               >
                 {step.num}
@@ -143,11 +143,10 @@ export default function ScrollTimeline({
               </p>
             </div>
 
-            {/* Animated center dot */}
+            {/* Animated dot — left-6 on mobile, centered on desktop */}
             <div
-              className="stl-dot absolute z-10 mt-3 w-3 h-3 rounded-full"
+              className="stl-dot absolute z-10 mt-3 w-3 h-3 rounded-full left-6 md:left-1/2"
               style={{
-                left: "50%",
                 transform: "translate(-50%, 0) scale(0)",
                 background: numColor,
                 opacity: 0.7,
@@ -156,8 +155,8 @@ export default function ScrollTimeline({
               }}
             />
 
-            {/* Spacer for the other half */}
-            <div className="flex-1" />
+            {/* Spacer — desktop only */}
+            <div className="flex-1 hidden md:block" />
           </div>
         );
       })}

@@ -460,16 +460,16 @@ export default function OurProductsPage() {
           </div>
 
           {/* Bento: 3-col grid, wide + narrow pattern */}
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 
-            {/* 01 — wide (2 cols), with mini pipeline preview */}
+            {/* 01 — wide (2 cols on desktop), with mini pipeline preview */}
             <FeatureCard
               num="01"
               title="Candidate Recommendations"
               body="AI surfaces best-fit candidates automatically based on role requirements, saving hours of manual shortlisting."
               icon="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"
               color="#3B82F6"
-              className="col-span-2"
+              className="md:col-span-2"
               mini={
                 <div className="flex gap-3">
                   {[
@@ -515,14 +515,14 @@ export default function OurProductsPage() {
               className="col-span-1"
             />
 
-            {/* 04 — wide (2 cols), with mini calendar preview */}
+            {/* 04 — wide (2 cols on desktop), with mini calendar preview */}
             <FeatureCard
               num="04"
               title="Schedule & Review"
               body="Centralised dashboard to schedule, record, replay, and collaboratively review every interview with your team."
               icon="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
               color="#10b981"
-              className="col-span-2"
+              className="md:col-span-2"
               mini={
                 <div className="grid grid-cols-4 gap-2">
                   {["Mon", "Tue", "Wed", "Thu"].map((day, i) => (
