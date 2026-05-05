@@ -158,7 +158,7 @@ export default function StaffAugmentationPage() {
 
         {/* ── Headline + CTAs ───────────────────────────────────────────── */}
         <div className="relative z-10 max-w-3xl mx-auto pb-12">
-          <h1 className="text-4xl md:text-5xl lg:text-[52px] font-bold heading-gradient leading-[1.07] tracking-tight mb-5">
+          <h1 className="text-4xl md:text-5xl lg:text-[52px] font-medium customHeading leading-[1.07] tracking-tight mb-5">
             The talent you need.<br />Without the overhead.
           </h1>
 
@@ -196,7 +196,7 @@ export default function StaffAugmentationPage() {
         />
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-4">What We Deliver</h2>
+            <h2 className="text-3xl md:text-4xl font-medium customHeading mb-4">What We Deliver</h2>
             <p className="text-white/40 max-w-xl mx-auto">
               See how we&apos;ve helped businesses turn complex challenges into scalable digital solutions.
             </p>
@@ -251,7 +251,7 @@ export default function StaffAugmentationPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-1">
               <span className="text-[#3B82F6]">Not sure</span>
             </h2>
-            <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-4">
+            <h2 className="text-3xl md:text-4xl font-medium customHeading mb-4">
               What role you need?
             </h2>
             <p className="text-white/45 text-sm leading-relaxed max-w-xs mb-8">
@@ -289,7 +289,7 @@ export default function StaffAugmentationPage() {
       <section className="relative section-padding py-28">
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-5xl font-bold heading-gradient mb-4">
+            <h2 className="text-3xl md:text-5xl font-medium customHeading mb-4">
               From brief to billable in days,{" "}
               <span className="font-light text-white/50">not months.</span>
             </h2>
@@ -396,7 +396,7 @@ export default function StaffAugmentationPage() {
         <div className="absolute inset-0 bg-[#06080f]/65 pointer-events-none" />
 
         <div className="relative z-10 mx-auto max-w-2xl">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold heading-gradient leading-tight mb-5">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium customHeading leading-tight mb-5">
             Your Next Sprint Shouldn&apos;t<br />Wait On Hiring.
           </h2>
           <p className="text-white/45 mb-10">Let&apos;s get your architecture right.</p>

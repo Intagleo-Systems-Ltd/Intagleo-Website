@@ -211,7 +211,7 @@ export default function AdminPanel() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center p-4">
         <div className="bg-slate-800 p-8 rounded-lg shadow-xl w-full max-w-md border border-slate-700">
-          <h1 className="text-3xl font-bold heading-gradient mb-8 text-center">
+          <h1 className="text-3xl font-medium customHeading mb-8 text-center">
             Admin Login
           </h1>
 
@@ -268,7 +268,7 @@ export default function AdminPanel() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-bold heading-gradient">Admin Panel</h1>
+          <h1 className="text-4xl font-medium customHeading">Admin Panel</h1>
           <button
             onClick={handleLogout}
             className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded transition"
@@ -292,7 +292,7 @@ export default function AdminPanel() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Create User Form */}
           <div className="bg-slate-800 p-6 rounded-lg border border-slate-700">
-            <h2 className="text-2xl font-bold heading-gradient mb-6">Create User</h2>
+            <h2 className="text-2xl font-medium customHeading mb-6">Create User</h2>
             <form onSubmit={handleCreateUser} className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
@@ -361,7 +361,7 @@ export default function AdminPanel() {
 
           {/* Update Password Form */}
           <div className="bg-slate-800 p-6 rounded-lg border border-slate-700">
-            <h2 className="text-2xl font-bold heading-gradient mb-6">
+            <h2 className="text-2xl font-medium customHeading mb-6">
               Update Password
             </h2>
             <form onSubmit={handleUpdatePassword} className="space-y-4">
@@ -410,7 +410,7 @@ export default function AdminPanel() {
 
         {/* Users List */}
         <div className="mt-8 bg-slate-800 p-6 rounded-lg border border-slate-700">
-          <h2 className="text-2xl font-bold heading-gradient mb-6">Users</h2>
+          <h2 className="text-2xl font-medium customHeading mb-6">Users</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-left">
               <thead>

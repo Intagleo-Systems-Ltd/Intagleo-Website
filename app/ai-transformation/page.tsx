@@ -244,8 +244,7 @@ export default function AITransformationPage() {
           </div> */}
 
           <h1
-            className="text-4xl md:text-5xl lg:text-[52px] font-bold heading-gradient leading-[1.07] tracking-tight mb-6"
-            style={{ }}
+            className="text-4xl md:text-5xl lg:text-[52px] font-medium text-white leading-[1.07] tracking-tight mb-6"
           >
             AI is Moving Fast!!<br />
             <span
@@ -315,7 +314,7 @@ export default function AITransformationPage() {
         <div className="relative z-10 mx-auto max-w-6xl">
           {/* Header */}
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-[42px] font-bold heading-gradient mb-4 leading-tight">
+            <h2 className="text-3xl md:text-[42px] font-medium text-white mb-4 leading-tight">
               What actually changes<br />when you add AI.
             </h2>
           </div>
@@ -495,7 +494,7 @@ export default function AITransformationPage() {
               <p className="text-xs uppercase tracking-[0.2em]" style={{ color: "rgba(251,146,60,0.6)" }}>Solutions</p>
               <div className="w-5 h-px" style={{ background: "rgba(232,52,28,0.5)" }} />
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-4" style={{ }}>What We Build</h2>
+            <h2 className="text-3xl md:text-4xl font-medium text-white mb-4">What We Build</h2>
             <p className="text-white/40 max-w-xl mx-auto text-sm leading-relaxed">
               AI solutions designed for production, not just demos.
             </p>
@@ -566,7 +565,7 @@ export default function AITransformationPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-1 leading-tight" style={{ }}>
               <span style={{ color: "#8B5CF6" }}>Do you know</span>
             </h2>
-            <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-4" style={{ }}>
+            <h2 className="text-3xl md:text-4xl font-medium text-white mb-4">
               which of your workflows AI could eliminate this quarter?
             </h2>
             <p className="text-white/45 text-sm leading-relaxed max-w-xs mb-8">
@@ -612,7 +611,7 @@ export default function AITransformationPage() {
               <p className="text-xs uppercase tracking-[0.2em]" style={{ color: "rgba(196,181,253,0.5)" }}>Our process</p>
               <div className="w-5 h-px" style={{ background: "rgba(139,92,246,0.5)" }} />
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold heading-gradient mb-4" style={{ }}>
+            <h2 className="text-3xl md:text-5xl font-medium text-white mb-4">
               From idea to shipped AI,{" "}
               <span style={{ fontWeight: 300, color: "rgba(255,255,255,0.35)" }}>in weeks.</span>
             </h2>
@@ -781,8 +780,7 @@ export default function AITransformationPage() {
           </div>
 
           <h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold heading-gradient leading-tight mb-5"
-            style={{ }}
+            className="text-4xl md:text-5xl lg:text-6xl font-medium leading-tight mb-5 text-white"
           >
             The best time to start<br />
             <span
@@ -796,31 +794,29 @@ export default function AITransformationPage() {
               building with AI
             </span>
             <br />
-            was last year.
+            <span style={{ color: "rgba(255,255,255,0.45)" }}>was last year.</span>
           </h2>
-          <p className="text-white/45 mb-10 text-lg leading-relaxed">
+          <p className="text-white/45 font-normal mb-10 leading-relaxed" style={{ fontSize: '16px' }}>
             The second best time is a conversation with us.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
             <Link
               href="/contact?type=ai-transformation"
-              className="px-8 py-3.5 rounded-full text-white text-sm font-semibold transition-all duration-200 hover:opacity-90 hover:scale-[1.02]"
+              className="px-6 py-2.5 rounded-full text-white text-sm font-medium transition-all duration-200 hover:opacity-90"
               style={{
                 background: "linear-gradient(135deg, #e8341c 0%, #8B5CF6 100%)",
                 boxShadow: "0 0 32px rgba(139,92,246,0.35), 0 2px 12px rgba(0,0,0,0.5)",
-                
               }}
             >
               Book an AI strategy call
             </Link>
             <Link
               href="/contact?type=technical-call"
-              className="px-8 py-3.5 rounded-full text-sm font-medium transition-colors hover:text-white"
+              className="px-6 py-2.5 rounded-full text-sm font-medium transition-colors hover:text-white"
               style={{
                 border: "1px solid rgba(139,92,246,0.25)",
                 color: "rgba(196,181,253,0.7)",
-                
               }}
             >
               See case studies first

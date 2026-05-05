@@ -18,12 +18,6 @@ const doubled = [...Array(3)].flatMap(() => [
 export default function ClientsSection() {
   return (
     <section className="relative bg-[#0a0a0a] pt-20 pb-28 overflow-hidden">
-      {/* Gradient bridge from hero (#050914) to this section (#0a0a0a) */}
-      <div
-        className="absolute top-0 left-0 right-0 h-28 pointer-events-none"
-        style={{ background: 'linear-gradient(180deg, #050914 0%, #0a0a0a 100%)' }}
-      />
-
       <div className="relative z-10 text-center mb-16 pt-4">
         <p className="text-xl text-white/30 uppercase tracking-widest mb-3">Our Solutions Power the World</p>
       </div>
@@ -57,7 +51,7 @@ export default function ClientsSection() {
       {/* Bottom fade to next section */}
       <div
         className="absolute bottom-0 left-0 right-0 h-20 pointer-events-none"
-        style={{ background: 'linear-gradient(180deg, transparent 0%, rgba(15,18,26,0.9) 100%)' }}
+        style={{ background: 'linear-gradient(180deg, transparent 0%, #0a0a0a 100%)' }}
       />
     </section>
   );

@@ -109,7 +109,7 @@ export default function QAServicesPage() {
         {/* Headline + CTAs */}
         <div className="relative z-10 max-w-3xl mx-auto pb-12">
           {/* <p className="text-xs text-white/35 uppercase tracking-widest mb-5">QA & Testing</p> */}
-          <h1 className="text-4xl md:text-5xl lg:text-[52px] font-bold heading-gradient leading-[1.07] tracking-tight mb-5">
+          <h1 className="text-4xl md:text-5xl lg:text-[52px] font-medium customHeading leading-[1.07] tracking-tight mb-5">
             Find bugs before<br />
             your users do.<br />
             <span className="text-white/35">Ship with confidence.</span>
@@ -149,7 +149,7 @@ export default function QAServicesPage() {
         />
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-4">What We Deliver</h2>
+            <h2 className="text-3xl md:text-4xl font-medium customHeading mb-4">What We Deliver</h2>
             <p className="text-white/40 max-w-xl mx-auto">
               End-to-end QA coverage built for teams that need confidence at every release.
             </p>
@@ -199,7 +199,7 @@ export default function QAServicesPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-1 leading-tight">
               <span className="text-[#3B82F6]">Do you know</span>
             </h2>
-            <h2 className="text-3xl md:text-4xl font-bold heading-gradient mb-4">
+            <h2 className="text-3xl md:text-4xl font-medium customHeading mb-4">
               how many bugs are hiding in production right now?
             </h2>
             <p className="text-white/45 text-sm leading-relaxed max-w-xs mb-8">
@@ -237,7 +237,7 @@ export default function QAServicesPage() {
       <section id="how-it-works" className="relative section-padding py-28">
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-5xl font-bold heading-gradient mb-4">
+            <h2 className="text-3xl md:text-5xl font-medium customHeading mb-4">
               From zero coverage to{" "}
               <span className="font-light text-white/50">production confidence.</span>
             </h2>
@@ -415,7 +415,7 @@ export default function QAServicesPage() {
         <div className="absolute inset-0 bg-[#06080f]/65 pointer-events-none" />
 
         <div className="relative z-10 mx-auto max-w-2xl">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold heading-gradient leading-tight mb-5">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium customHeading leading-tight mb-5">
             Your next release should<br />ship without surprises.
           </h2>
           <p className="text-white/45 mb-10">

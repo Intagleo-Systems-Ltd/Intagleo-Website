@@ -98,7 +98,7 @@ export default async function VacancyPage({ params }: { params: { slug: string }
               </div>
 
               {/* Title */}
-              <h1 className="text-4xl md:text-5xl font-bold heading-gradient tracking-tight leading-[1.05] mb-4">
+              <h1 className="text-4xl md:text-5xl font-medium customHeading tracking-tight leading-[1.05] mb-4">
                 {vacancy.title}
               </h1>
 

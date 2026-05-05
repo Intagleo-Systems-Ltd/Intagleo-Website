@@ -20,16 +20,16 @@ export default function CTABanner({
   return (
     <section className="relative bg-[#0a0a0a] section-padding py-16">
       <div className="mx-auto max-w-[1400px]">
-        <div className="grid lg:grid-cols-2 items-stretch relative overflow-hidden border border-white/[0.06]" style={{borderRadius: '32px', background: '#0E121D', backdropFilter: 'blur(3px)'}}>
+        <div className="grid lg:grid-cols-2 items-stretch relative overflow-hidden border border-white/[0.06]" style={{borderRadius: '32px', background: '#0E121D', backdropFilter: 'blur(3px)', minHeight: '520px'}}>
           {/* Left , text content */}
-          <div className="p-10 lg:p-14 flex flex-col justify-center relative z-10">
-            <h2 className="text-5xl md:text-6xl font-extrabold text-[#3B82F6] mb-2 leading-none">
+          <div className="p-10 lg:p-16 flex flex-col justify-center relative z-10">
+            <h2 className="font-semibold text-[#3B82F6] mb-1 leading-none" style={{ fontSize: 'clamp(40px, 5vw, 62px)' }}>
               {accentText}
             </h2>
-            <p className="text-2xl md:text-3xl font-semibold text-white mb-4 leading-snug">
+            <p className="font-semibold text-white mb-5 leading-snug" style={{ fontSize: 'clamp(22px, 2.8vw, 34px)' }}>
               {headline}
             </p>
-            <p className="text-white/60 text-sm md:text-base leading-relaxed mb-8 max-w-sm">
+            <p className="text-white/60 font-normal leading-relaxed mb-8 max-w-sm" style={{ fontSize: '16px' }}>
               {body}
             </p>
             <Link

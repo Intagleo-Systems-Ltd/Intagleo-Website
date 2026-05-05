@@ -81,7 +81,7 @@ export default function CaseStudiesGrid({ studies }: { studies: CaseStudy[] }) {
                       {study.client}
                     </span>
                   </div>
-                  <h2 className="heading-gradient font-semibold text-xl leading-snug mb-3">
+                  <h2 className="customHeading font-medium text-xl leading-snug mb-3">
                     {study.title}
                   </h2>
                   <p className="text-white/40 text-sm leading-relaxed line-clamp-2">

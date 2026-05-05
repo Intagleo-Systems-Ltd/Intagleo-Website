@@ -559,7 +559,7 @@ export default function OurProductsPage() {
             <div className="lg:sticky lg:top-28">
               <p className="text-xs text-white/30 uppercase tracking-widest mb-4">How it works</p>
               <h2
-                className="text-3xl md:text-4xl font-bold heading-gradient leading-tight mb-4"
+                className="text-3xl md:text-4xl font-medium customHeading leading-tight mb-4"
                 style={{ fontFamily: '"Roobert TRIAL", sans-serif', letterSpacing: "-1px" }}
               >
                 From post to<br />

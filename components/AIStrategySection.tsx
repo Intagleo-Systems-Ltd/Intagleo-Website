@@ -10,7 +10,7 @@ export default function AIStrategySection() {
           {/* Left , text content */}
           <div className="p-10 lg:p-14 flex flex-col justify-center relative z-10">
             <h2
-              className="heading-gradient mb-6"
+              className="customHeading mb-6"
               style={{
                 fontSize: 'clamp(24px, 3.5vw, 42px)',
                 fontWeight: 500,
@@ -21,21 +21,12 @@ export default function AIStrategySection() {
             >
               If your AI strategy is moving fast but your governance isn&apos;t keeping pace, let&apos;s fix that.
             </h2>
-            <p
-              className="mb-8 max-w-md"
-              style={{
-                color: '#D6D8D8',
-                fontSize: 'clamp(15px, 1.8vw, 22px)',
-                fontWeight: 400,
-                lineHeight: '1.55',
-                fontFamily: '"Roobert TRIAL", sans-serif'
-              }}
-            >
+            <p className="text-white/60 font-normal leading-relaxed mb-8 max-w-sm" style={{ fontSize: '16px' }}>
               We help companies build the readiness, security, and compliance foundations needed for responsible AI adoption at scale.
             </p>
             <Link
               href="/contact?type=ai-strategy"
-              className="self-start inline-flex items-center gap-2 bg-[#3B82F6] hover:bg-[#2563EB] text-white px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200"
+              className="self-start px-6 py-2.5 rounded-full bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm font-medium transition-colors duration-200"
             >
               Explore More
             </Link>

@@ -59,7 +59,7 @@ export default function TestimonialsSection() {
                 </svg>
               </div>
 
-              <h2 className="text-3xl md:text-4xl font-bold heading-gradient leading-tight mb-4">
+              <h2 className="text-3xl md:text-4xl font-medium customHeading leading-tight mb-4">
                 What makes Intagleo<br />different?
               </h2>
               <p className="text-white/70 text-base leading-relaxed">

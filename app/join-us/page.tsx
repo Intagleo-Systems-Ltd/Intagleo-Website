@@ -134,7 +134,7 @@ export default async function JoinUsPage() {
 
                 {/* Heading */}
                 <h1
-                  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold heading-gradient leading-[1.02] tracking-tight mb-6"
+                  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium customHeading leading-[1.02] tracking-tight mb-6"
                   style={{ fontFamily: '"Roobert TRIAL", sans-serif' }}
                 >
                   Build the future
@@ -196,7 +196,7 @@ export default async function JoinUsPage() {
               <p className="text-[#3B82F6] text-xs font-medium tracking-widest uppercase mb-4">
                 Life at Intagleo
               </p>
-              <h2 className="text-3xl md:text-4xl font-bold heading-gradient tracking-tight mb-4">
+              <h2 className="text-3xl md:text-4xl font-medium customHeading tracking-tight mb-4">
                 Why engineers choose us
               </h2>
               <p className="text-white/40 text-base max-w-xl">
@@ -257,7 +257,7 @@ export default async function JoinUsPage() {
                   <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />
                   <span className="text-[#3B82F6] text-xs font-medium tracking-wide">Open Application</span>
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold heading-gradient tracking-tight mb-4">
+                <h2 className="text-3xl md:text-4xl font-medium customHeading tracking-tight mb-4">
                   Don&apos;t see your role?
                 </h2>
                 <p className="text-white/40 text-base leading-relaxed max-w-lg mb-10">

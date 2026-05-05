@@ -14,13 +14,13 @@ export default function PrivacyPolicyPage() {
       <Navbar />
 
       <main className="relative z-10 section-padding pt-32 pb-24 mx-auto max-w-3xl">
-        <h1 className="text-4xl md:text-5xl font-bold heading-gradient mb-3 tracking-tight">Privacy Policy</h1>
+        <h1 className="text-4xl md:text-5xl font-medium customHeading mb-3 tracking-tight">Privacy Policy</h1>
         <p className="text-white/35 text-sm mb-12">Last updated: August 9, 2023</p>
 
         <div className="prose prose-invert prose-sm max-w-none space-y-10 text-white/60 leading-relaxed">
 
           <section>
-            <h2 className="text-xl font-semibold heading-gradient mb-3">1. Who We Are</h2>
+            <h2 className="text-xl font-medium customHeading mb-3">1. Who We Are</h2>
             <p>
               Intagleo Systems UK Limited (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;) is the data controller responsible for your personal data.
               We are registered at 268 Bath Road, Slough, SL1 4DX, United Kingdom, and operate the website at{" "}
@@ -33,7 +33,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold heading-gradient mb-3">2. Legal Basis for Processing</h2>
+            <h2 className="text-xl font-medium customHeading mb-3">2. Legal Basis for Processing</h2>
             <p>We only process your personal information within the boundaries of applicable Data Protection Law. We will process your data when:</p>
             <ul className="list-disc pl-5 mt-3 space-y-1.5">
               <li>It is necessary to fulfil a contract we have with you, or to take steps at your request before entering into a contract.</li>
@@ -44,7 +44,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold heading-gradient mb-3">3. What Data We Collect</h2>
+            <h2 className="text-xl font-medium customHeading mb-3">3. What Data We Collect</h2>
             <p>We may collect and process the following categories of personal data about you:</p>
             <ul className="list-disc pl-5 mt-3 space-y-1.5">
               <li><span className="text-white/80">Identity data:</span> first name, last name, username, or similar identifier.</li>
@@ -61,7 +61,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold heading-gradient mb-3">4. How We Collect Your Data</h2>
+            <h2 className="text-xl font-medium customHeading mb-3">4. How We Collect Your Data</h2>
             <p>We collect data through:</p>
             <ul className="list-disc pl-5 mt-3 space-y-1.5">
               <li><span className="text-white/80">Direct interactions:</span> information you provide by filling in forms, corresponding with us by email or phone, or otherwise contacting us.</li>
@@ -71,7 +71,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold heading-gradient mb-3">5. How We Use Your Data</h2>
+            <h2 className="text-xl font-medium customHeading mb-3">5. How We Use Your Data</h2>
             <p>We use your personal data for the following purposes:</p>
             <ul className="list-disc pl-5 mt-3 space-y-1.5">
               <li>To register you as a new customer or enquiry.</li>
@@ -85,7 +85,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold heading-gradient mb-3">6. Data Sharing</h2>
+            <h2 className="text-xl font-medium customHeading mb-3">6. Data Sharing</h2>
             <p>
               We do not share your personal data with third parties except with group subsidiaries and only where necessary to deliver our services. We require all third parties to respect the security of your data and to treat it in accordance with the law.
             </p>
@@ -95,7 +95,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold heading-gradient mb-3">7. Data Retention</h2>
+            <h2 className="text-xl font-medium customHeading mb-3">7. Data Retention</h2>
             <p>
               We will only retain your personal data for as long as reasonably necessary to fulfil the purposes we collected it for, including for the purposes of satisfying any legal, regulatory, tax, accounting, or reporting requirements.
             </p>
@@ -105,7 +105,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold heading-gradient mb-3">8. Your Rights</h2>
+            <h2 className="text-xl font-medium customHeading mb-3">8. Your Rights</h2>
             <p>Under data protection law, you have the following rights in relation to your personal data:</p>
             <ul className="list-disc pl-5 mt-3 space-y-2">
               <li><span className="text-white/80">Right to access:</span> request a copy of the personal data we hold about you.</li>
@@ -123,7 +123,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold heading-gradient mb-3">9. Cookies</h2>
+            <h2 className="text-xl font-medium customHeading mb-3">9. Cookies</h2>
             <p>
               Our website uses cookies to distinguish you from other users. This helps us provide a good experience and allows us to improve our site. For full details of every cookie we use, please see our{" "}
               <a href="/cookie-policy" className="text-[#3B82F6] hover:text-[#2563EB] transition-colors">Cookie Policy</a>.
@@ -131,21 +131,21 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold heading-gradient mb-3">10. Security</h2>
+            <h2 className="text-xl font-medium customHeading mb-3">10. Security</h2>
             <p>
               We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used, or accessed in an unauthorised way, altered, or disclosed. We limit access to your personal data to those employees, agents, contractors, and other third parties who have a business need to know.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold heading-gradient mb-3">11. Changes to This Policy</h2>
+            <h2 className="text-xl font-medium customHeading mb-3">11. Changes to This Policy</h2>
             <p>
               We reserve the right to update this privacy policy at any time. Any changes we make will be posted on this page with an updated revision date. Where appropriate, we will notify you by email. We encourage you to review this page periodically.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold heading-gradient mb-3">12. Contact & Complaints</h2>
+            <h2 className="text-xl font-medium customHeading mb-3">12. Contact & Complaints</h2>
             <p>If you have any questions about this privacy policy or our privacy practices, please contact us:</p>
             <div className="mt-4 p-5 rounded-xl bg-white/[0.03] border border-white/[0.07] space-y-1.5">
               <p><span className="text-white/80">Email:</span>{" "}<a href="mailto:dpo@intagleo.com" className="text-[#3B82F6] hover:text-[#2563EB] transition-colors">dpo@intagleo.com</a></p>

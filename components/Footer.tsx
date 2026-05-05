@@ -211,20 +211,20 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
           <div className="relative z-10 section-padding py-24">
             <div className="mx-auto max-w-[1400px] text-center">
               <p className="text-xs text-white/50 uppercase tracking-widest mb-6">Get Started</p>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              <h2 className="customHeading font-medium mb-6 leading-tight" style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}>
                 Your Next Chapter is a<br />
-                <span className="text-white/35">Technical Decision.</span>
+                <span style={{ WebkitTextFillColor: "rgba(255,255,255,0.35)", backgroundImage: "none" }}>Technical Decision.</span>
               </h2>
-              <p className="text-white/50 text-base max-w-md mx-auto mb-10 leading-relaxed">
+              <p className="text-white/60 font-normal max-w-md mx-auto mb-10 leading-relaxed" style={{ fontSize: '16px' }}>
                 Whether you&apos;re launching a new product or scaling an existing platform, we have the team to make it happen.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button href="/contact?type=start-project" variant="primary" className="px-8 py-3.5 rounded-full">
+                <a href="/contact?type=start-project" className="px-6 py-2.5 rounded-full bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm font-medium transition-colors duration-200">
                   Start a Conversation
-                </Button>
-                <Button href="/case-studies" variant="secondary" className="px-8 py-3.5 rounded-full">
+                </a>
+                <a href="/case-studies" className="px-6 py-2.5 rounded-full border border-white/20 text-white/70 text-sm hover:border-white/50 hover:text-white transition-all">
                   See Our Work
-                </Button>
+                </a>
               </div>
             </div>
           </div>

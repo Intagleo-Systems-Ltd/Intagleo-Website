@@ -32,8 +32,8 @@ export default function DifferenceSection() {
 
           {/* Two-column intro */}
           <div className="grid lg:grid-cols-2 gap-12 items-start mb-16">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold heading-gradient leading-tight mb-6">
+            <div className="flex flex-col items-start gap-8">
+              <h2 className="text-3xl md:text-4xl font-medium customHeading leading-tight">
                 Engineering tomorrow.<br />Delivering today.
               </h2>
               <a

@@ -120,17 +120,15 @@ export default function IndustriesSection() {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
           <p className="text-xs text-white/40 uppercase tracking-widest mb-4">Industries We Serve</p>
-          <h2 className="text-3xl md:text-4xl font-bold heading-gradient leading-tight mb-4">
-            Different Industries  !{" "}
-            <span style={{ WebkitTextFillColor: "rgba(255,255,255,0.35)", backgroundImage: "none" }}>
-              Different Pressures !
-            </span>
+          <h2 className="font-medium customHeading leading-tight mb-4" style={{ fontSize: 'clamp(22px, 2.8vw, 36px)' }}>
+            <span style={{ whiteSpace: 'nowrap' }}>Different Industries ! Different Pressures !</span>
             <br />
-            One standard for excellence.
+            <span style={{ WebkitTextFillColor: "rgba(255,255,255,0.35)", backgroundImage: "none" }}>
+              One standard for excellence.
+            </span>
           </h2>
-          <p className="text-white/40 text-sm leading-relaxed">
-            We don&apos;t believe in &ldquo;one size fits all.&rdquo; We build around your context,
-            your users, and the realities of your operations.
+          <p className="text-white/40 text-sm leading-relaxed text-balance">
+            We don&apos;t believe in &ldquo;one size fits all.&rdquo; We build around your context, your users, and the realities of your operations.
           </p>
         </div>
 
@@ -257,7 +255,7 @@ export default function IndustriesSection() {
                       >
                         {ind.icon}
                       </div>
-                      <h3 className="text-2xl font-semibold text-white leading-tight">
+                      <h3 className="text-2xl font-medium text-white leading-tight">
                         {ind.name}
                         {ind.nameSub && (
                           <span className="font-light text-white/50"> {ind.nameSub}</span>

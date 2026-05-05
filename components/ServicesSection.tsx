@@ -245,12 +245,9 @@ export default function ServicesSection() {
       <div className="mx-auto max-w-[1400px]">
         {/* Top row */}
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-10 gap-4">
-          <h2 className="text-3xl md:text-4xl leading-tight max-w-lg">
-            <span className="font-bold heading-gradient">Engineered</span>
-            <span className="font-light text-white/50"> To Scale.</span>
-            <br />
-            <span className="font-bold heading-gradient">Built</span>
-            <span className="font-light text-white/50"> To Win</span>
+          <h2 className="text-3xl customHeading md:text-4xl font-medium leading-tight max-w-lg">
+            Engineered To Scale.<br />
+            Built To Win
           </h2>
           <a
             href="/contact?type=services"
@@ -269,7 +266,7 @@ export default function ServicesSection() {
               className={`flex-shrink-0 snap-start px-4 py-2 rounded-full border text-sm font-medium transition-all duration-200 whitespace-nowrap ${
                 i === active
                   ? "border-[#3B82F6]/60 bg-[#3B82F6]/10 text-white"
-                  : "border-white/[0.08] bg-transparent text-white/50 hover:text-white/80"
+                  : "border-white/[0.08] bg-transparent text-[#E6F2FF]/50 hover:text-[#E6F2FF]/80"
               }`}
             >
               {s.name}
@@ -288,7 +285,7 @@ export default function ServicesSection() {
                 className={`w-full text-left px-6 py-4 rounded-2xl border border-white/[0.06] transition-all duration-200 ${
                   i === active
                     ? "bg-[#0d0f12] text-white"
-                    : "bg-[#0d0f12]/60 text-white/45 hover:bg-[#0d0f12] hover:text-white/80"
+                    : "bg-[#0d0f12]/60 text-[#E6F2FF]/45 hover:bg-[#0d0f12] hover:text-[#E6F2FF]/80"
                 }`}
               >
                 <span className="text-base font-medium">{s.name}</span>
@@ -299,11 +296,8 @@ export default function ServicesSection() {
           {/* Right - detail panel */}
           <div className="bg-[#0d0f12] border border-white/[0.06] rounded-2xl p-6 md:p-8 flex flex-col">
             {/* Title */}
-            <h3 className="text-2xl font-bold text-white mb-3">
-              {svc.name.split(" ").slice(0, 1).join(" ")}{" "}
-              <span className="font-light text-white/55">
-                {svc.name.split(" ").slice(1).join(" ")}
-              </span>
+            <h3 className="text-2xl font-medium customHeading mb-3">
+              {svc.name}
             </h3>
 
             {/* Description */}
@@ -348,7 +342,7 @@ export default function ServicesSection() {
               {servicePageUrls[svc.name] && (
                 <a
                   href={servicePageUrls[svc.name]}
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#3B82F6]/10 border border-[#3B82F6]/30 text-[#818cf8] text-sm font-medium hover:bg-[#3B82F6]/20 hover:border-[#3B82F6]/60 hover:text-white transition-all duration-200"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/20 text-white/70 text-sm hover:border-white/50 hover:text-white transition-all"
                 >
                   Learn More
                   <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

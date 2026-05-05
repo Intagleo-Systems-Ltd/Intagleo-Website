@@ -12,7 +12,7 @@ const stats = [
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex flex-col overflow-hidden bg-[#000000]">
+    <section className="relative min-h-screen flex flex-col overflow-hidden bg-[#0a0a0a]">
 
       {/* GIF background - full cover */}
       <div className="absolute inset-0 z-0">
@@ -26,7 +26,7 @@ export default function HeroSection() {
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(0deg, #050914 15%, rgba(5, 9, 20, 0.15) 55%, rgba(5, 9, 20, 0.00) 75%)'
+            background: 'linear-gradient(0deg, #0a0a0a 20%, rgba(10, 10, 10, 0.15) 55%, rgba(10, 10, 10, 0.00) 75%)'
           }}
         />
       </div>
@@ -34,50 +34,43 @@ export default function HeroSection() {
       {/* Main content - sits in the upper sky area of the GIF */}
       <div className="relative z-10 flex flex-col items-center justify-center flex-1 px-6 text-center pt-28 pb-0">
         <h1
-          className="heading-gradient leading-[1.1] tracking-tight mb-6 max-w-4xl drop-shadow-lg font-medium"
+          className="customHeading leading-[1.1] tracking-tight mb-4 drop-shadow-lg font-medium"
           style={{
             fontFamily: '"Roobert TRIAL", sans-serif',
-            fontSize: 'clamp(34px, 6.5vw, 68px)',
+            fontSize: 'clamp(42px, 7vw, 82px)',
             letterSpacing: '-1.5px',
             lineHeight: '1.1'
           }}
         >
-          We Build Production-Ready<br />
-          <span style={{
-            background: 'linear-gradient(90deg, #3B82F6 0%, #c6b2ad 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text'
-          }}>
-            Software That Scales
-          </span>
+          <span style={{whiteSpace: 'nowrap'}}>We Build Production-Ready</span><br />
+          Software That Scales
         </h1>
 
         <p
-          className="text-white max-w-xl mb-10 leading-relaxed drop-shadow px-2 sm:px-0"
+          className="text-white max-w-3xl mb-10 leading-relaxed drop-shadow px-2 sm:px-0"
           style={{
             color: '#D6D8D8',
-            fontSize: 'clamp(15px, 2vw, 18px)',
+            fontSize: 'clamp(16px, 2.5vw, 22px)',
             fontWeight: 200,
-            lineHeight: '1.7',
+            lineHeight: '1.4',
             fontFamily: '"Roobert TRIAL", sans-serif'
           }}
         >
-          Elite development team trusted by CTOs to deliver complex systems, modernize
-          infrastructure, and ship reliable products right on schedule.
+          Elite development team trusted by CTOs to deliver complex systems,<br />
+          modernize infrastructure, and ship reliable products right on schedule.
         </p>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center gap-3">
           <Link
             href="/contact?type=general"
-            className="bg-[#3B82F6] hover:bg-[#2563EB] text-white px-7 py-3 rounded-full text-sm font-medium transition-colors duration-200 w-full sm:w-auto text-center shadow-lg"
+            className="bg-[#3B82F6] hover:bg-[#2563EB] text-white px-6 py-3 rounded-full text-[16px] font-medium transition-colors duration-200 w-full sm:w-auto text-center shadow-lg"
           >
             Get Started
           </Link>
           <Link
             href="#services"
-            className="border border-white/25 hover:border-white/50 text-white/85 hover:text-white px-7 py-3 rounded-full text-sm font-medium transition-all duration-200 w-full sm:w-auto text-center bg-white/5 backdrop-blur-sm"
+            className="border border-white/25 hover:border-white/50 text-white/85 hover:text-white px-6 py-3 rounded-full text-[16px] font-medium transition-all duration-200 w-full sm:w-auto text-center bg-white/5 backdrop-blur-sm"
           >
             How we work
           </Link>

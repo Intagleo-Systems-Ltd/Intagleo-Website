@@ -337,7 +337,7 @@ export default function CapabilityCardSection({ caps, sectionTitle = "Core Capab
     <section className="section-padding py-24" id="capabilities">
       <div className="mx-auto max-w-6xl">
         <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">{sectionTitle}</h2>
+          <h2 className="text-3xl md:text-4xl font-medium customHeading mb-3">{sectionTitle}</h2>
           {sectionSubtitle && <p className="text-white/40 text-base">{sectionSubtitle}</p>}
         </div>
         {/* Mobile: horizontal scroll tab strip */}

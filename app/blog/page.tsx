@@ -25,7 +25,7 @@ export default async function BlogPage() {
           <p className="text-xs text-white/40 uppercase tracking-widest mb-4">
             Intagleo Blog
           </p>
-          <h1 className="text-4xl md:text-5xl font-bold heading-gradient leading-tight mb-4">
+          <h1 className="text-4xl md:text-5xl font-medium customHeading leading-tight mb-4">
             Engineering Insights
           </h1>
           <p className="text-white/45 text-base max-w-lg">

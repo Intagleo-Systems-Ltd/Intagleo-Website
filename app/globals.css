@@ -54,13 +54,19 @@ summary {
 
 /* ── Prevent heading orphans site-wide ───────────────────────────────────── */
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-wrap: balance;
 }
 
 /* ── Reduced motion — respect user OS preference ─────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -77,24 +83,45 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ── Gradient headings ────────────────────────────────────────────────────── */
-
-.heading-gradient {
-  background: linear-gradient(135deg, #c7d2fe 0%, #ffffff 100%);
+.customHeading {
+  background: linear-gradient(to right, #ffffff 10%, #808080 60%);
+  background-size: 100% 1.2em;
+  background-repeat: repeat-y;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  display: inline;
 }
+
+/* .heading-gradient {
+  background: linear-gradient(120deg, #E6F2FF 0%, #AFAFAF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 500;
+  display: inline-block;
+} */
 
 /* ── Marquee animations ───────────────────────────────────────────────────── */
 
 @keyframes marquee {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-33.333%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-33.333%);
+  }
 }
 
 @keyframes marquee-reverse {
-  0%   { transform: translateX(-33.333%); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(-33.333%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .marquee-scroll {
@@ -110,17 +137,20 @@ h1, h2, h3, h4, h5, h6 {
 /* ── Skeleton shimmer ─────────────────────────────────────────────────────── */
 
 @keyframes shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 .skeleton {
-  background: linear-gradient(
-    90deg,
-    rgba(255,255,255,0.04) 25%,
-    rgba(255,255,255,0.08) 50%,
-    rgba(255,255,255,0.04) 75%
-  );
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0.04) 25%,
+      rgba(255, 255, 255, 0.08) 50%,
+      rgba(255, 255, 255, 0.04) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.6s ease-in-out infinite;
   border-radius: var(--radius);
@@ -156,18 +186,39 @@ h1, h2, h3, h4, h5, h6 {
 /* ── About page animations ────────────────────────────────────────────────── */
 
 @keyframes aboutFadeUp {
-  from { opacity: 0; transform: translateY(22px); }
-  to   { opacity: 1; transform: translateY(0);    }
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes aboutFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes scrollPulse {
-  0%, 100% { opacity: 0.2; transform: scaleY(1);    }
-  50%       { opacity: 0.5; transform: scaleY(0.85); }
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scaleY(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scaleY(0.85);
+  }
 }
 
 /* ── Custom scrollbar ─────────────────────────────────────────────────────── */
@@ -175,9 +226,11 @@ h1, h2, h3, h4, h5, h6 {
 ::-webkit-scrollbar {
   width: 4px;
 }
+
 ::-webkit-scrollbar-track {
   background: #0a0a0a;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #333;
   border-radius: 2px;

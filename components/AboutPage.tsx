@@ -252,9 +252,9 @@ export default function AboutPage() {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-bold leading-[1.03] tracking-tight mb-8 max-w-3xl opacity-0"
             style={{ animation: "aboutFadeUp 0.8s ease-out 0.4s forwards" }}
           >
-            <span className="heading-gradient">Twenty years of building</span>
+            <span className="customHeading">Twenty years of building</span>
             <br />
-            <span className="heading-gradient">software that works.</span>
+            <span className="customHeading">software that works.</span>
           </h1>
           <p
             className="text-white/50 text-base md:text-lg leading-relaxed max-w-xl mb-10 opacity-0"
@@ -317,7 +317,7 @@ export default function AboutPage() {
             <Reveal className="space-y-8">
               <div>
                 <p className="text-[#3B82F6] text-xs uppercase tracking-widest font-semibold mb-5">Our mission</p>
-                <h2 className="text-4xl md:text-5xl font-bold heading-gradient leading-tight mb-6">
+                <h2 className="text-4xl md:text-5xl font-medium customHeading leading-tight mb-6">
                   Close the gap between idea and production.
                 </h2>
                 <p className="text-white/50 text-base md:text-lg leading-relaxed mb-5">
@@ -364,7 +364,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-[1400px]">
           <Reveal className="mb-20">
             <p className="text-[#3B82F6] text-xs uppercase tracking-widest font-semibold mb-4">Our story</p>
-            <h2 className="text-4xl md:text-5xl font-bold heading-gradient leading-tight max-w-2xl">
+            <h2 className="text-4xl md:text-5xl font-medium customHeading leading-tight max-w-2xl">
               Two decades of building the hard stuff.
             </h2>
           </Reveal>
@@ -390,7 +390,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-[1400px]">
           <Reveal className="mb-14">
             <p className="text-[#3B82F6] text-xs uppercase tracking-widest font-semibold mb-4">How we operate</p>
-            <h2 className="text-4xl md:text-5xl font-bold heading-gradient leading-tight max-w-xl">
+            <h2 className="text-4xl md:text-5xl font-medium customHeading leading-tight max-w-xl">
               Principles that show up in every line of code.
             </h2>
           </Reveal>
@@ -439,7 +439,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 flex items-center justify-center text-center section-padding">
           <div>
             <p className="text-white/30 text-xs uppercase tracking-widest mb-4">Our team</p>
-            <p className="text-white text-2xl md:text-4xl font-bold max-w-2xl leading-tight heading-gradient">
+            <p className="text-white text-2xl md:text-4xl font-medium max-w-2xl leading-tight customHeading">
               Real engineers. Real ownership. Real outcomes.
             </p>
           </div>

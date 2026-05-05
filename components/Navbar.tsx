@@ -292,7 +292,7 @@ export default function Navbar() {
           : "bg-[#06080f]/80 backdrop-blur-sm"
       }`}
     >
-      <div className="mx-auto max-w-[1400px] flex items-center justify-between h-[72px]">
+      <div className="mx-auto max-w-[1400px] flex items-center justify-between h-[100px]">
         {/* Logo */}
         <Link
           href="/"
@@ -317,7 +317,7 @@ export default function Navbar() {
           <a
             href="/"
             onClick={(e) => handleNavClick(e, "/")}
-            className="text-sm text-white/60 hover:text-white transition-colors duration-200 whitespace-nowrap"
+            className="text-[18px] text-white/60 hover:text-white transition-colors duration-200 whitespace-nowrap"
           >
             Home
           </a>
@@ -325,7 +325,7 @@ export default function Navbar() {
           {/* AI Transformation - highlighted */}
           <a
             href="/ai-transformation"
-            className="relative flex items-center gap-1.5 text-sm font-medium whitespace-nowrap transition-opacity duration-200 hover:opacity-90"
+            className="relative flex items-center gap-1.5 text-[18px] font-medium whitespace-nowrap transition-opacity duration-200 hover:opacity-90"
             style={{
               backgroundImage: "linear-gradient(135deg, #e8341c 0%, #8B5CF6 100%)",
               WebkitBackgroundClip: "text",
@@ -344,7 +344,7 @@ export default function Navbar() {
           >
             <button
               onClick={() => setServicesOpen((v) => !v)}
-              className="flex items-center gap-1 text-sm text-white/60 hover:text-white transition-colors duration-200 whitespace-nowrap"
+              className="flex items-center gap-1 text-[18px] text-white/60 hover:text-white transition-colors duration-200 whitespace-nowrap"
             >
               Our Services
               <svg
@@ -364,7 +364,7 @@ export default function Navbar() {
                   transition={{ duration: 0.18 }}
                   className="fixed rounded-2xl overflow-hidden"
                   style={{
-                    top: "80px",
+                    top: "102px",
                     left: "max(112px, calc((100vw - 800px) / 2 + 112px))",                    width: "760px",
                     background: "#0d0f1c",
                     border: "1px solid rgba(255,255,255,0.12)",
@@ -424,7 +424,7 @@ export default function Navbar() {
           >
             <button
               onClick={() => setIndustriesOpen((v) => !v)}
-              className="flex items-center gap-1 text-sm text-white/60 hover:text-white transition-colors duration-200 whitespace-nowrap"
+              className="flex items-center gap-1 text-[18px] text-white/60 hover:text-white transition-colors duration-200 whitespace-nowrap"
             >
               Industries
               <svg
@@ -444,7 +444,7 @@ export default function Navbar() {
                   transition={{ duration: 0.18 }}
                   className="fixed rounded-2xl overflow-hidden"
                   style={{
-                    top: "80px",
+                    top: "102px",
                     left: "max(112px, calc((100vw - 800px) / 2 + 112px))",
                     width: "760px",
                     background: "#0d0f1c",
@@ -500,7 +500,7 @@ export default function Navbar() {
           {/* Our Products */}
           <a
             href="/our-products"
-            className="text-sm text-white/60 hover:text-white transition-colors duration-200 whitespace-nowrap"
+            className="text-[18px] text-white/60 hover:text-white transition-colors duration-200 whitespace-nowrap"
           >
             Our Products
           </a>
@@ -516,7 +516,7 @@ export default function Navbar() {
           >
             <button
               onClick={() => setCompanyOpen((v) => !v)}
-              className="flex items-center gap-1 text-sm text-white/60 hover:text-white transition-colors duration-200 whitespace-nowrap"
+              className="flex items-center gap-1 text-[18px] text-white/60 hover:text-white transition-colors duration-200 whitespace-nowrap"
             >
               Company
               <svg
@@ -536,7 +536,7 @@ export default function Navbar() {
                   transition={{ duration: 0.18 }}
                   className="fixed rounded-2xl overflow-hidden"
                   style={{
-                    top: "80px",
+                    top: "102px",
                     right: "max(112px, calc((100vw - 1400px) / 2 + 112px))",
                     width: "480px",
                     background: "#0d0f1c",
@@ -577,7 +577,7 @@ export default function Navbar() {
             {/* Careers */}
           <a
             href="/join-us"
-            className="text-sm text-white/60 hover:text-white transition-colors duration-200 whitespace-nowrap"
+            className="text-[18px] text-white/60 hover:text-white transition-colors duration-200 whitespace-nowrap"
           >
             Careers
           </a>
@@ -586,7 +586,11 @@ export default function Navbar() {
         {/* CTA */}
         <Link
           href="/contact"
-          className="group hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm font-medium relative overflow-hidden transition-colors duration-300"
+          className="group hidden lg:inline-flex items-center gap-2 px-6 py-3 rounded-full text-white text-[16px] font-medium relative overflow-hidden transition-all duration-300"
+          style={pathname === "/ai-transformation"
+            ? { background: "linear-gradient(135deg, #e8341c 0%, #8B5CF6 100%)", boxShadow: "0 0 24px rgba(139,92,246,0.3)" }
+            : { background: "#3B82F6" }
+          }
         >
           {/* Shimmer sweep on hover */}
           <span

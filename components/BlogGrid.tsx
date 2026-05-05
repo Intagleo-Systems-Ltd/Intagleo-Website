@@ -104,7 +104,7 @@ export default function BlogGrid({ posts }: { posts: BlogPost[] }) {
                     </>
                   )}
                 </div>
-                <h2 className="heading-gradient font-semibold text-base leading-snug mb-3 line-clamp-2">
+                <h2 className="customHeading font-medium text-base leading-snug mb-3 line-clamp-2">
                   {post.title}
                 </h2>
                 <p className="text-white/40 text-sm leading-relaxed line-clamp-3">

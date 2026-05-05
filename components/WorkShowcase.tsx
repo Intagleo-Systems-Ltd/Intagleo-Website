@@ -39,7 +39,7 @@ export default function WorkShowcase() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div>
             <p className="text-xs text-white/40 uppercase tracking-widest mb-4">Case Studies</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+            <h2 className="text-3xl md:text-4xl font-medium customHeading leading-tight">
               The work speaks<br />for itself.
             </h2>
           </div>

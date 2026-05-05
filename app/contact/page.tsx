@@ -151,7 +151,7 @@ export default function ContactPage({
 
               {/* Heading */}
               <h1
-                className="contact-fade-up text-4xl sm:text-5xl md:text-6xl font-bold heading-gradient leading-[1.02] tracking-tight mb-6"
+                className="contact-fade-up text-4xl sm:text-5xl md:text-6xl font-medium customHeading leading-[1.02] tracking-tight mb-6"
                 style={{ fontFamily: '"Roobert TRIAL", sans-serif', animationDelay: "0.25s" }}
               >
                 {headingLines.map((line, i) => (

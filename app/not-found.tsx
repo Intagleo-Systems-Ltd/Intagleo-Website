@@ -33,7 +33,7 @@ export default function NotFound() {
               <p className="text-[#3B82F6] text-xs uppercase tracking-widest font-semibold mb-5">
                 Page not found
               </p>
-              <h1 className="text-3xl md:text-4xl font-bold heading-gradient leading-tight mb-5 max-w-sm">
+              <h1 className="text-3xl md:text-4xl font-medium customHeading leading-tight mb-5 max-w-sm">
                 This page doesn&apos;t exist yet.
               </h1>
               <p className="text-white/40 text-base leading-relaxed max-w-sm mb-10">
