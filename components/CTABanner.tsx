@@ -20,9 +20,9 @@ export default function CTABanner({
   return (
     <section className="relative bg-[#0a0a0a] section-padding py-16">
       <div className="mx-auto max-w-[1400px]">
-        <div className="grid lg:grid-cols-2 items-stretch relative overflow-hidden border border-white/[0.06]" style={{borderRadius: '32px', background: '#0E121D', backdropFilter: 'blur(3px)', minHeight: '520px'}}>
+        <div className="grid lg:grid-cols-2 items-stretch relative overflow-hidden border border-white/[0.06]" style={{borderRadius: '32px', background: '#0E121D', backdropFilter: 'blur(3px)', minHeight: 'clamp(380px, 50vw, 520px)'}}>
           {/* Left , text content */}
-          <div className="p-10 lg:p-16 flex flex-col justify-center relative z-10">
+          <div className="p-6 sm:p-10 lg:p-16 flex flex-col justify-center relative z-10">
             <h2 className="font-semibold text-[#3B82F6] mb-1 leading-none" style={{ fontSize: 'clamp(40px, 5vw, 62px)' }}>
               {accentText}
             </h2>
@@ -34,7 +34,7 @@ export default function CTABanner({
             </p>
             <Link
               href={ctaHref}
-              className="self-start inline-flex items-center gap-2 bg-[#3B82F6] hover:bg-[#2563EB] text-white px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200"
+              className="self-start inline-flex items-center gap-2 btn-shimmer bg-[#3B82F6] hover:bg-[#2563EB] text-white px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200"
             >
               {ctaLabel}
             </Link>

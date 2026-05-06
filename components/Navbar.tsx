@@ -5,8 +5,10 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 
 import Button from "@/components/ui/Button";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const serviceLinks = [
   {
@@ -238,11 +240,16 @@ export default function Navbar() {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mobileIndustriesOpen, setMobileIndustriesOpen] = useState(false);
   const [mobileCompanyOpen, setMobileCompanyOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const servicesRef = useRef<HTMLDivElement>(null);
   const industriesRef = useRef<HTMLDivElement>(null);
   const companyRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const { resolvedTheme } = useTheme();
+  const isLight = mounted && resolvedTheme === "light";
+
+  useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -287,17 +294,21 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 section-padding transition-all duration-300 ${
-        scrolled
-          ? "bg-[#06080f]/95 backdrop-blur-md"
-          : "bg-[#06080f]/80 backdrop-blur-sm"
+        isLight
+          ? scrolled
+            ? "bg-slate-50/95 backdrop-blur-md border-b border-slate-200/60"
+            : "bg-slate-50/80 backdrop-blur-sm"
+          : scrolled
+            ? "bg-[#06080f]/95 backdrop-blur-md"
+            : "bg-[#06080f]/80 backdrop-blur-sm"
       }`}
     >
-      <div className="mx-auto max-w-[1400px] flex items-center justify-between h-[100px]">
+      <div className="mx-auto max-w-[1400px] flex items-center justify-between h-[72px] lg:h-[90px] xl:h-[100px]">
         {/* Logo */}
         <Link
           href="/"
           onClick={(e) => handleNavClick(e, "/")}
-          className="flex items-center gap-2 w-[170px] h-[52px]"
+          className="flex items-center gap-2 w-[140px] sm:w-[170px] h-[44px] sm:h-[52px] flex-shrink-0"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo-nav.png" alt="Intagleo icon" className="h-full w-auto flex-shrink-0" />
@@ -312,12 +323,12 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-7">
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-7 min-w-0">
           {/* Home */}
           <a
             href="/"
             onClick={(e) => handleNavClick(e, "/")}
-            className="text-[18px] text-white/60 hover:text-white transition-colors duration-200 whitespace-nowrap"
+            className={`text-[15px] xl:text-[18px] transition-colors duration-200 whitespace-nowrap ${isLight ? "text-slate-500 hover:text-slate-900" : "text-white/60 hover:text-white"}`}
           >
             Home
           </a>
@@ -325,7 +336,7 @@ export default function Navbar() {
           {/* AI Transformation - highlighted */}
           <a
             href="/ai-transformation"
-            className="relative flex items-center gap-1.5 text-[18px] font-medium whitespace-nowrap transition-opacity duration-200 hover:opacity-90"
+            className="relative flex items-center gap-1.5 text-[15px] xl:text-[18px] font-medium whitespace-nowrap transition-opacity duration-200 hover:opacity-90"
             style={{
               backgroundImage: "linear-gradient(135deg, #e8341c 0%, #8B5CF6 100%)",
               WebkitBackgroundClip: "text",
@@ -344,7 +355,7 @@ export default function Navbar() {
           >
             <button
               onClick={() => setServicesOpen((v) => !v)}
-              className="flex items-center gap-1 text-[18px] text-white/60 hover:text-white transition-colors duration-200 whitespace-nowrap"
+              className={`flex items-center gap-1 text-[15px] xl:text-[18px] transition-colors duration-200 whitespace-nowrap ${isLight ? "text-slate-500 hover:text-slate-900" : "text-white/60 hover:text-white"}`}
             >
               Our Services
               <svg
@@ -364,17 +375,18 @@ export default function Navbar() {
                   transition={{ duration: 0.18 }}
                   className="fixed rounded-2xl overflow-hidden"
                   style={{
-                    top: "102px",
-                    left: "max(112px, calc((100vw - 800px) / 2 + 112px))",                    width: "760px",
-                    background: "#0d0f1c",
-                    border: "1px solid rgba(255,255,255,0.12)",
-                    boxShadow: "0 8px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04)",
+                    top: "94px",
+                    left: "max(112px, calc((100vw - 800px) / 2 + 112px))",
+                    width: "760px",
+                    background: isLight ? "#FFFFFF" : "#0d0f1c",
+                    border: isLight ? "1px solid rgba(15,23,42,0.10)" : "1px solid rgba(255,255,255,0.12)",
+                    boxShadow: isLight ? "0 8px 40px rgba(0,0,0,0.08), 0 0 0 1px rgba(15,23,42,0.04)" : "0 8px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04)",
                     zIndex: 200,
                   }}
                 >
                   {/* Header row */}
-                  <div className="px-5 pt-3 pb-2" style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
-                    <p className="text-[11px] text-white/40 uppercase tracking-widest">Our Services</p>
+                  <div className="px-5 pt-3 pb-2" style={{ borderBottom: isLight ? "1px solid rgba(15,23,42,0.07)" : "1px solid rgba(255,255,255,0.08)" }}>
+                    <p className={`text-[11px] uppercase tracking-widest ${isLight ? "text-slate-400" : "text-white/40"}`}>Our Services</p>
                   </div>
                   {/* Grid of services */}
                   <div className="grid grid-cols-2 gap-0.5 p-1.5">
@@ -383,16 +395,16 @@ export default function Navbar() {
                         key={link.label}
                         href={link.href}
                         onClick={() => setServicesOpen(false)}
-                        className="group flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-white/[0.05] transition-colors duration-150"
+                        className={`group flex items-center gap-3 px-4 py-2.5 rounded-xl transition-colors duration-150 ${isLight ? "hover:bg-slate-50" : "hover:bg-white/[0.05]"}`}
                       >
-                        <span className="text-white/40 group-hover:text-white/70 transition-colors flex-shrink-0">
+                        <span className={`transition-colors flex-shrink-0 ${isLight ? "text-slate-400 group-hover:text-slate-600" : "text-white/40 group-hover:text-white/70"}`}>
                           {link.icon}
                         </span>
                         <span className="flex flex-col gap-0.5 min-w-0">
-                          <span className="text-sm font-medium text-white/80 group-hover:text-white transition-colors leading-none">
+                          <span className={`text-sm font-medium transition-colors leading-none ${isLight ? "text-slate-700 group-hover:text-slate-900" : "text-white/80 group-hover:text-white"}`}>
                             {link.label}
                           </span>
-                          <span className="text-xs text-white/35 group-hover:text-white/50 transition-colors leading-snug">
+                          <span className={`text-xs transition-colors leading-snug ${isLight ? "text-slate-400 group-hover:text-slate-500" : "text-white/35 group-hover:text-white/50"}`}>
                             {link.desc}
                           </span>
                         </span>
@@ -400,12 +412,12 @@ export default function Navbar() {
                     ))}
                   </div>
                   {/* Footer row */}
-                  <div className="px-4 py-2.5 border-t border-white/[0.06] flex items-center justify-between">
-                    <span className="text-xs text-white/25">Not sure where to start?</span>
+                  <div className={`px-4 py-2.5 border-t flex items-center justify-between ${isLight ? "border-slate-100" : "border-white/[0.06]"}`}>
+                    <span className={`text-xs ${isLight ? "text-slate-400" : "text-white/25"}`}>Not sure where to start?</span>
                     <Link
                       href="/contact"
                       onClick={() => setServicesOpen(false)}
-                      className="text-xs text-[#3B82F6] hover:text-[#2563EB] transition-colors font-medium"
+                      className="text-xs text-[#2563EB] hover:text-[#1D4ED8] transition-colors font-medium"
                     >
                       Talk to us →
                     </Link>
@@ -424,7 +436,7 @@ export default function Navbar() {
           >
             <button
               onClick={() => setIndustriesOpen((v) => !v)}
-              className="flex items-center gap-1 text-[18px] text-white/60 hover:text-white transition-colors duration-200 whitespace-nowrap"
+              className={`flex items-center gap-1 text-[15px] xl:text-[18px] transition-colors duration-200 whitespace-nowrap ${isLight ? "text-slate-500 hover:text-slate-900" : "text-white/60 hover:text-white"}`}
             >
               Industries
               <svg
@@ -444,17 +456,17 @@ export default function Navbar() {
                   transition={{ duration: 0.18 }}
                   className="fixed rounded-2xl overflow-hidden"
                   style={{
-                    top: "102px",
+                    top: "94px",
                     left: "max(112px, calc((100vw - 800px) / 2 + 112px))",
                     width: "760px",
-                    background: "#0d0f1c",
-                    border: "1px solid rgba(255,255,255,0.12)",
-                    boxShadow: "0 8px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04)",
+                    background: isLight ? "#FFFFFF" : "#0d0f1c",
+                    border: isLight ? "1px solid rgba(15,23,42,0.10)" : "1px solid rgba(255,255,255,0.12)",
+                    boxShadow: isLight ? "0 8px 40px rgba(0,0,0,0.08), 0 0 0 1px rgba(15,23,42,0.04)" : "0 8px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04)",
                     zIndex: 200,
                   }}
                 >
-                  <div className="px-5 pt-3 pb-2" style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
-                    <p className="text-[11px] text-white/40 uppercase tracking-widest">Industries</p>
+                  <div className="px-5 pt-3 pb-2" style={{ borderBottom: isLight ? "1px solid rgba(15,23,42,0.07)" : "1px solid rgba(255,255,255,0.08)" }}>
+                    <p className={`text-[11px] uppercase tracking-widest ${isLight ? "text-slate-400" : "text-white/40"}`}>Industries</p>
                   </div>
                   {industryLinks.length > 0 ? (
                     <div className="grid grid-cols-2 gap-0.5 p-1.5">
@@ -463,16 +475,16 @@ export default function Navbar() {
                           key={link.label}
                           href={link.href}
                           onClick={() => setIndustriesOpen(false)}
-                          className="group flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-white/[0.05] transition-colors duration-150"
+                          className={`group flex items-center gap-3 px-4 py-2.5 rounded-xl transition-colors duration-150 ${isLight ? "hover:bg-slate-50" : "hover:bg-white/[0.05]"}`}
                         >
-                          <span className="text-white/40 group-hover:text-white/70 transition-colors flex-shrink-0">
+                          <span className={`transition-colors flex-shrink-0 ${isLight ? "text-slate-400 group-hover:text-slate-600" : "text-white/40 group-hover:text-white/70"}`}>
                             {link.icon}
                           </span>
                           <span className="flex flex-col gap-0.5 min-w-0">
-                            <span className="text-sm font-medium text-white/80 group-hover:text-white transition-colors leading-none">
+                            <span className={`text-sm font-medium transition-colors leading-none ${isLight ? "text-slate-700 group-hover:text-slate-900" : "text-white/80 group-hover:text-white"}`}>
                               {link.label}
                             </span>
-                            <span className="text-xs text-white/35 group-hover:text-white/50 transition-colors leading-snug">
+                            <span className={`text-xs transition-colors leading-snug ${isLight ? "text-slate-400 group-hover:text-slate-500" : "text-white/35 group-hover:text-white/50"}`}>
                               {link.desc}
                             </span>
                           </span>
@@ -480,14 +492,14 @@ export default function Navbar() {
                       ))}
                     </div>
                   ) : (
-                    <div className="px-5 py-6 text-xs text-white/30">Coming soon</div>
+                    <div className={`px-5 py-6 text-xs ${isLight ? "text-slate-400" : "text-white/30"}`}>Coming soon</div>
                   )}
-                  <div className="px-4 py-2.5 border-t border-white/[0.06] flex items-center justify-between">
-                    <span className="text-xs text-white/25">Explore by industry</span>
+                  <div className={`px-4 py-2.5 border-t flex items-center justify-between ${isLight ? "border-slate-100" : "border-white/[0.06]"}`}>
+                    <span className={`text-xs ${isLight ? "text-slate-400" : "text-white/25"}`}>Explore by industry</span>
                     <Link
                       href="/contact"
                       onClick={() => setIndustriesOpen(false)}
-                      className="text-xs text-[#3B82F6] hover:text-[#2563EB] transition-colors font-medium"
+                      className="text-xs text-[#2563EB] hover:text-[#1D4ED8] transition-colors font-medium"
                     >
                       Talk to us →
                     </Link>
@@ -500,7 +512,7 @@ export default function Navbar() {
           {/* Our Products */}
           <a
             href="/our-products"
-            className="text-[18px] text-white/60 hover:text-white transition-colors duration-200 whitespace-nowrap"
+            className={`text-[15px] xl:text-[18px] transition-colors duration-200 whitespace-nowrap ${isLight ? "text-slate-500 hover:text-slate-900" : "text-white/60 hover:text-white"}`}
           >
             Our Products
           </a>
@@ -516,7 +528,7 @@ export default function Navbar() {
           >
             <button
               onClick={() => setCompanyOpen((v) => !v)}
-              className="flex items-center gap-1 text-[18px] text-white/60 hover:text-white transition-colors duration-200 whitespace-nowrap"
+              className={`flex items-center gap-1 text-[15px] xl:text-[18px] transition-colors duration-200 whitespace-nowrap ${isLight ? "text-slate-500 hover:text-slate-900" : "text-white/60 hover:text-white"}`}
             >
               Company
               <svg
@@ -536,17 +548,17 @@ export default function Navbar() {
                   transition={{ duration: 0.18 }}
                   className="fixed rounded-2xl overflow-hidden"
                   style={{
-                    top: "102px",
+                    top: "94px",
                     right: "max(112px, calc((100vw - 1400px) / 2 + 112px))",
                     width: "480px",
-                    background: "#0d0f1c",
-                    border: "1px solid rgba(255,255,255,0.12)",
-                    boxShadow: "0 8px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04)",
+                    background: isLight ? "#FFFFFF" : "#0d0f1c",
+                    border: isLight ? "1px solid rgba(15,23,42,0.10)" : "1px solid rgba(255,255,255,0.12)",
+                    boxShadow: isLight ? "0 8px 40px rgba(0,0,0,0.08), 0 0 0 1px rgba(15,23,42,0.04)" : "0 8px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04)",
                     zIndex: 200,
                   }}
                 >
-                  <div className="px-5 pt-3 pb-2" style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
-                    <p className="text-[11px] text-white/40 uppercase tracking-widest">Company</p>
+                  <div className="px-5 pt-3 pb-2" style={{ borderBottom: isLight ? "1px solid rgba(15,23,42,0.07)" : "1px solid rgba(255,255,255,0.08)" }}>
+                    <p className={`text-[11px] uppercase tracking-widest ${isLight ? "text-slate-400" : "text-white/40"}`}>Company</p>
                   </div>
                   <div className="grid grid-cols-2 gap-0.5 p-1.5">
                     {companyLinks.map((link) => (
@@ -554,16 +566,16 @@ export default function Navbar() {
                         key={link.label}
                         href={link.href}
                         onClick={() => setCompanyOpen(false)}
-                        className="group flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-white/[0.05] transition-colors duration-150"
+                        className={`group flex items-center gap-3 px-4 py-2.5 rounded-xl transition-colors duration-150 ${isLight ? "hover:bg-slate-50" : "hover:bg-white/[0.05]"}`}
                       >
-                        <span className="text-white/40 group-hover:text-white/70 transition-colors flex-shrink-0">
+                        <span className={`transition-colors flex-shrink-0 ${isLight ? "text-slate-400 group-hover:text-slate-600" : "text-white/40 group-hover:text-white/70"}`}>
                           {link.icon}
                         </span>
                         <span className="flex flex-col gap-0.5 min-w-0">
-                          <span className="text-sm font-medium text-white/80 group-hover:text-white transition-colors leading-none">
+                          <span className={`text-sm font-medium transition-colors leading-none ${isLight ? "text-slate-700 group-hover:text-slate-900" : "text-white/80 group-hover:text-white"}`}>
                             {link.label}
                           </span>
-                          <span className="text-xs text-white/35 group-hover:text-white/50 transition-colors leading-snug">
+                          <span className={`text-xs transition-colors leading-snug ${isLight ? "text-slate-400 group-hover:text-slate-500" : "text-white/35 group-hover:text-white/50"}`}>
                             {link.desc}
                           </span>
                         </span>
@@ -577,7 +589,7 @@ export default function Navbar() {
             {/* Careers */}
           <a
             href="/join-us"
-            className="text-[18px] text-white/60 hover:text-white transition-colors duration-200 whitespace-nowrap"
+            className={`text-[15px] xl:text-[18px] transition-colors duration-200 whitespace-nowrap ${isLight ? "text-slate-500 hover:text-slate-900" : "text-white/60 hover:text-white"}`}
           >
             Careers
           </a>
@@ -586,7 +598,7 @@ export default function Navbar() {
         {/* CTA */}
         <Link
           href="/contact"
-          className="group hidden lg:inline-flex items-center gap-2 px-6 py-3 rounded-full text-white text-[16px] font-medium relative overflow-hidden transition-all duration-300"
+          className="group hidden lg:inline-flex flex-shrink-0 items-center gap-2 px-4 xl:px-6 py-2.5 xl:py-3 rounded-full text-white text-[14px] xl:text-[16px] font-medium relative overflow-hidden transition-all duration-300"
           style={pathname === "/ai-transformation"
             ? { background: "linear-gradient(135deg, #e8341c 0%, #8B5CF6 100%)", boxShadow: "0 0 24px rgba(139,92,246,0.3)" }
             : { background: "#3B82F6" }
@@ -610,7 +622,7 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <motion.button
-          className="lg:hidden text-white/70 hover:text-white p-1"
+          className={`lg:hidden p-1 ${isLight ? "text-slate-500 hover:text-slate-900" : "text-white/70 hover:text-white"}`}
           onClick={() => setMenuOpen((v) => !v)}
           aria-label="Toggle menu"
           whileTap={{ scale: 0.9 }}
@@ -644,7 +656,7 @@ export default function Navbar() {
       </div>
 
       {/* Bottom border */}
-      <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div className={`h-px bg-gradient-to-r from-transparent to-transparent ${isLight ? "via-slate-200" : "via-white/10"}`} />
 
       {/* Mobile drawer */}
       <AnimatePresence>
@@ -655,7 +667,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:hidden overflow-hidden bg-[#06080f]/98 border-t border-white/5"
+            className={`lg:hidden overflow-hidden border-t ${isLight ? "bg-slate-50/98 border-slate-200/60" : "bg-[#06080f]/98 border-white/5"}`}
           >
             <nav className="flex flex-col gap-1 px-6 py-5">
               {/* Home */}
@@ -665,7 +677,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0, duration: 0.22 }}
-                className="text-white/65 hover:text-white transition-colors py-2.5 text-sm"
+                className={`transition-colors py-2.5 text-sm ${isLight ? "text-slate-600 hover:text-slate-900" : "text-white/65 hover:text-white"}`}
               >
                 Home
               </motion.a>
@@ -694,7 +706,7 @@ export default function Navbar() {
               >
                 <button
                   onClick={() => setMobileServicesOpen((v) => !v)}
-                  className="flex items-center justify-between w-full text-white/65 hover:text-white transition-colors py-2.5 text-sm"
+                  className={`flex items-center justify-between w-full transition-colors py-2.5 text-sm ${isLight ? "text-slate-600 hover:text-slate-900" : "text-white/65 hover:text-white"}`}
                 >
                   Services
                   <svg
@@ -711,14 +723,14 @@ export default function Navbar() {
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.2 }}
-                      className="overflow-hidden pl-4 border-l border-white/8"
+                      className={`overflow-hidden pl-4 border-l ${isLight ? "border-slate-200" : "border-white/8"}`}
                     >
                       {serviceLinks.map((link) => (
                         <Link
                           key={link.label}
                           href={link.href}
                           onClick={() => setMenuOpen(false)}
-                          className="block text-white/50 hover:text-white transition-colors py-2 text-sm"
+                          className={`block transition-colors py-2 text-sm ${isLight ? "text-slate-500 hover:text-slate-800" : "text-white/50 hover:text-white"}`}
                         >
                           {link.label}
                         </Link>
@@ -736,7 +748,7 @@ export default function Navbar() {
               >
                 <button
                   onClick={() => setMobileIndustriesOpen((v) => !v)}
-                  className="flex items-center justify-between w-full text-white/65 hover:text-white transition-colors py-2.5 text-sm"
+                  className={`flex items-center justify-between w-full transition-colors py-2.5 text-sm ${isLight ? "text-slate-600 hover:text-slate-900" : "text-white/65 hover:text-white"}`}
                 >
                   Industries
                   <svg
@@ -753,14 +765,14 @@ export default function Navbar() {
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.2 }}
-                      className="overflow-hidden pl-4 border-l border-white/8"
+                      className={`overflow-hidden pl-4 border-l ${isLight ? "border-slate-200" : "border-white/8"}`}
                     >
                       {industryLinks.map((link) => (
                         <Link
                           key={link.label}
                           href={link.href}
                           onClick={() => setMenuOpen(false)}
-                          className="block text-white/50 hover:text-white transition-colors py-2 text-sm"
+                          className={`block transition-colors py-2 text-sm ${isLight ? "text-slate-500 hover:text-slate-800" : "text-white/50 hover:text-white"}`}
                         >
                           {link.label}
                         </Link>
@@ -776,7 +788,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3, duration: 0.22 }}
-                className="text-white/65 hover:text-white transition-colors py-2.5 text-sm"
+                className={`transition-colors py-2.5 text-sm ${isLight ? "text-slate-600 hover:text-slate-900" : "text-white/65 hover:text-white"}`}
               >
                 Our Products
               </motion.a>
@@ -787,7 +799,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.33, duration: 0.22 }}
-                className="text-white/65 hover:text-white transition-colors py-2.5 text-sm"
+                className={`transition-colors py-2.5 text-sm ${isLight ? "text-slate-600 hover:text-slate-900" : "text-white/65 hover:text-white"}`}
               >
                 Careers
               </motion.a>
@@ -800,7 +812,7 @@ export default function Navbar() {
               >
                 <button
                   onClick={() => setMobileCompanyOpen((v) => !v)}
-                  className="flex items-center justify-between w-full text-white/65 hover:text-white transition-colors py-2.5 text-sm"
+                  className={`flex items-center justify-between w-full transition-colors py-2.5 text-sm ${isLight ? "text-slate-600 hover:text-slate-900" : "text-white/65 hover:text-white"}`}
                 >
                   Company
                   <svg
@@ -817,14 +829,14 @@ export default function Navbar() {
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.2 }}
-                      className="overflow-hidden pl-4 border-l border-white/8"
+                      className={`overflow-hidden pl-4 border-l ${isLight ? "border-slate-200" : "border-white/8"}`}
                     >
                       {companyLinks.map((link) => (
                         <Link
                           key={link.label}
                           href={link.href}
                           onClick={() => setMenuOpen(false)}
-                          className="block text-white/50 hover:text-white transition-colors py-2 text-sm"
+                          className={`block transition-colors py-2 text-sm ${isLight ? "text-slate-500 hover:text-slate-800" : "text-white/50 hover:text-white"}`}
                         >
                           {link.label}
                         </Link>

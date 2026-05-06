@@ -14,6 +14,28 @@
   --transition-fast: 150ms ease;
   --transition-base: 200ms ease;
   --transition-slow: 300ms ease;
+  /* Orb layer — dark defaults */
+  --orb-1: rgba(20, 60, 180, 0.13);
+  --orb-2: rgba(10, 35, 130, 0.11);
+  --orb-3: rgba(8, 25, 90, 0.09);
+  --orb-4: rgba(15, 50, 160, 0.11);
+}
+
+/* ── Light mode token overrides ──────────────────────────────────────────── */
+
+html.light {
+  --background: #F8FAFC;
+  --foreground: #1E293B;
+  --accent: #2563EB;
+  --accent-hover: #1D4ED8;
+  --border: rgba(15, 23, 42, 0.08);
+  --card-bg: #FFFFFF;
+  --muted: #64748B;
+  /* Orb layer — soft blue tints for light bg */
+  --orb-1: rgba(59, 130, 246, 0.07);
+  --orb-2: rgba(37, 99, 235, 0.05);
+  --orb-3: rgba(29, 78, 216, 0.04);
+  --orb-4: rgba(99, 102, 241, 0.06);
 }
 
 * {
@@ -117,6 +139,15 @@ h6 {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   display: inline;
+}
+
+html.light .customHeading {
+  background: linear-gradient(to right, #1E293B 10%, #64748B 60%);
+  background-size: 100% 1.2em;
+  background-repeat: repeat-y;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* .heading-gradient {
@@ -247,6 +278,34 @@ h6 {
   }
 }
 
+/* ── Light mode utility overrides ─────────────────────────────────────────── */
+
+html.light .gradient-text {
+  background: linear-gradient(135deg, #1E293B 0%, #64748B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+html.light .border-subtle {
+  border-color: rgba(15, 23, 42, 0.08);
+}
+
+html.light .card-hover:hover {
+  border-color: rgba(15, 23, 42, 0.14);
+  background-color: rgba(15, 23, 42, 0.02);
+}
+
+html.light .skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(15, 23, 42, 0.04) 25%,
+    rgba(15, 23, 42, 0.08) 50%,
+    rgba(15, 23, 42, 0.04) 75%
+  );
+  background-size: 200% 100%;
+}
+
 /* ── Custom scrollbar ─────────────────────────────────────────────────────── */
 
 ::-webkit-scrollbar {
@@ -257,7 +316,15 @@ h6 {
   background: #0a0a0a;
 }
 
+html.light ::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
 ::-webkit-scrollbar-thumb {
   background: #333;
   border-radius: 2px;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #94A3B8;
 }

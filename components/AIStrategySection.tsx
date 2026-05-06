@@ -8,7 +8,7 @@ export default function AIStrategySection() {
       <div className="mx-auto max-w-[1400px]">
         <div className="grid lg:grid-cols-2 items-stretch relative overflow-hidden border border-white/[0.06]" style={{borderRadius: '32px', background: '#0E121D', backdropFilter: 'blur(3px)'}}>
           {/* Left , text content */}
-          <div className="p-10 lg:p-14 flex flex-col justify-center relative z-10">
+          <div className="p-6 sm:p-10 lg:p-14 flex flex-col justify-center relative z-10">
             <h2
               className="customHeading mb-6"
               style={{
@@ -26,7 +26,7 @@ export default function AIStrategySection() {
             </p>
             <Link
               href="/contact?type=ai-strategy"
-              className="self-start px-6 py-2.5 rounded-full bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm font-medium transition-colors duration-200"
+              className="self-start px-6 py-2.5 rounded-full btn-shimmer bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm font-medium transition-colors duration-200"
             >
               Explore More
             </Link>

@@ -119,7 +119,7 @@ export default async function VacancyPage({ params }: { params: { slug: string }
                     <ul className="space-y-3">
                       {vacancy.responsibilities.map((item, i) => (
                         <li key={i} className="flex gap-3 text-white/55 text-sm leading-relaxed">
-                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#3B82F6] flex-shrink-0" />
+                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full btn-shimmer bg-[#3B82F6] flex-shrink-0" />
                           {item}
                         </li>
                       ))}
@@ -133,7 +133,7 @@ export default async function VacancyPage({ params }: { params: { slug: string }
                     <ul className="space-y-3">
                       {vacancy.requirements.map((item, i) => (
                         <li key={i} className="flex gap-3 text-white/55 text-sm leading-relaxed">
-                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#3B82F6] flex-shrink-0" />
+                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full btn-shimmer bg-[#3B82F6] flex-shrink-0" />
                           {item}
                         </li>
                       ))}

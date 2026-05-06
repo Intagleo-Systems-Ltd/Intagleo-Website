@@ -124,8 +124,8 @@ export default async function JoinUsPage() {
                 {/* Badge */}
                 <div className="inline-flex items-center gap-2 bg-[#3B82F6]/10 border border-[#3B82F6]/20 rounded-full px-3.5 py-1.5 mb-8">
                   <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#3B82F6] opacity-60" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#3B82F6]" />
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full btn-shimmer bg-[#3B82F6] opacity-60" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 btn-shimmer bg-[#3B82F6]" />
                   </span>
                   <span className="text-[#3B82F6] text-xs font-medium tracking-wide">
                     We&apos;re hiring - {vacancies.length} open {vacancies.length === 1 ? "role" : "roles"}
@@ -134,10 +134,10 @@ export default async function JoinUsPage() {
 
                 {/* Heading */}
                 <h1
-                  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium customHeading leading-[1.02] tracking-tight mb-6"
+                  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium leading-[1.02] tracking-tight mb-6"
                   style={{ fontFamily: '"Roobert TRIAL", sans-serif' }}
                 >
-                  Build the future
+                  <span className="customHeading">Build the future</span>
                   <br />
                   <span className="text-white/40">with us.</span>
                 </h1>
@@ -150,7 +150,7 @@ export default async function JoinUsPage() {
                 <div className="flex flex-wrap gap-4">
                   <a
                     href="#open-roles"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm font-medium transition-colors duration-200"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full btn-shimmer bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm font-medium transition-colors duration-200"
                   >
                     View open roles
                     <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4" aria-hidden="true">
@@ -196,8 +196,8 @@ export default async function JoinUsPage() {
               <p className="text-[#3B82F6] text-xs font-medium tracking-widest uppercase mb-4">
                 Life at Intagleo
               </p>
-              <h2 className="text-3xl md:text-4xl font-medium customHeading tracking-tight mb-4">
-                Why engineers choose us
+              <h2 className="text-3xl md:text-4xl font-medium tracking-tight mb-4">
+                <span className="customHeading">Why engineers choose us</span>
               </h2>
               <p className="text-white/40 text-base max-w-xl">
                 We&apos;re not for everyone, and that&apos;s intentional. Here&apos;s what makes working here different.
@@ -233,7 +233,7 @@ export default async function JoinUsPage() {
                   key={p.label}
                   className="bg-[#0a0a0a] px-6 py-6 hover:bg-[#0d0d10] transition-colors duration-200"
                 >
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] mb-3" />
+                  <div className="w-1.5 h-1.5 rounded-full btn-shimmer bg-[#3B82F6] mb-3" />
                   <p className="text-white/80 text-sm font-medium mb-1">{p.label}</p>
                   <p className="text-white/30 text-xs leading-relaxed">{p.sub}</p>
                 </div>
@@ -257,8 +257,8 @@ export default async function JoinUsPage() {
                   <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />
                   <span className="text-[#3B82F6] text-xs font-medium tracking-wide">Open Application</span>
                 </div>
-                <h2 className="text-3xl md:text-4xl font-medium customHeading tracking-tight mb-4">
-                  Don&apos;t see your role?
+                <h2 className="text-3xl md:text-4xl font-medium tracking-tight mb-4">
+                  <span className="customHeading">Don&apos;t see your role?</span>
                 </h2>
                 <p className="text-white/40 text-base leading-relaxed max-w-lg mb-10">
                   If you&apos;re exceptional at what you do, we want to hear from you — even if there&apos;s no open role that fits right now. Tell us about yourself and we&apos;ll be in touch when the right opportunity comes up.

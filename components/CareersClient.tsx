@@ -71,7 +71,7 @@ function VacancyCard({ vacancy }: { vacancy: Vacancy }) {
         ) : (
           <span />
         )}
-        <span className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#3B82F6] group-hover:bg-[#2563EB] text-white text-sm font-medium transition-colors duration-200">
+        <span className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full btn-shimmer bg-[#3B82F6] group-hover:bg-[#2563EB] text-white text-sm font-medium transition-colors duration-200">
           View Role
           <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5" aria-hidden="true">
             <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -102,7 +102,7 @@ function FilterTabs({
           onClick={() => onChange(d)}
           className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors duration-200 cursor-pointer ${
             active === d
-              ? "bg-[#3B82F6] text-white"
+              ? "btn-shimmer bg-[#3B82F6] text-white"
               : "border border-white/[0.08] text-white/50 hover:border-white/20 hover:text-white/80"
           }`}
         >

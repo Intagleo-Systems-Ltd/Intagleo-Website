@@ -268,7 +268,7 @@ export default function AboutPage() {
           >
             <Link
               href="/contact?type=start-project"
-              className="bg-[#3B82F6] hover:bg-[#2563EB] text-white px-7 py-3.5 rounded-full text-sm font-medium transition-colors duration-200"
+              className="btn-shimmer bg-[#3B82F6] hover:bg-[#2563EB] text-white px-7 py-3.5 rounded-full text-sm font-medium transition-colors duration-200"
             >
               Start a project
             </Link>

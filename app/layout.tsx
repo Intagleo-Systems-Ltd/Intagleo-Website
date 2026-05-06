@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import MouseGlow from "@/components/MouseGlow";
 import CookieConsent from "@/components/CookieConsent";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -81,7 +82,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -91,9 +92,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <MouseGlow />
-        {children}
-        <CookieConsent />
+        <ThemeProvider>
+          <MouseGlow />
+          {children}
+          <CookieConsent />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -322,7 +322,7 @@ export default function StaffAugmentationPage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       {/* PROCESS , From brief to billable                                   */}
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative section-padding py-28">
+      <section id="how-it-works" className="relative section-padding py-28">
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-20">
             <h2 className="text-3xl md:text-5xl font-medium customHeading mb-4">

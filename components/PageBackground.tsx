@@ -1,9 +1,3 @@
-/**
- * Subtle ambient gradient layer for the homepage.
- * Fixed-position so the orbs stay anchored as you scroll - giving
- * a sense of depth without overpowering the content.
- * All colours are the existing site blues (#050914 family) at very low opacity.
- */
 export default function PageBackground() {
   return (
     <div
@@ -19,8 +13,7 @@ export default function PageBackground() {
           width: "55vw",
           height: "55vw",
           borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(20,60,180,0.13) 0%, transparent 65%)",
+          background: "radial-gradient(circle, var(--orb-1) 0%, transparent 65%)",
         }}
       />
 
@@ -33,8 +26,7 @@ export default function PageBackground() {
           width: "45vw",
           height: "45vw",
           borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(10,35,130,0.11) 0%, transparent 65%)",
+          background: "radial-gradient(circle, var(--orb-2) 0%, transparent 65%)",
         }}
       />
 
@@ -48,8 +40,7 @@ export default function PageBackground() {
           width: "70vw",
           height: "40vw",
           borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(8,25,90,0.09) 0%, transparent 65%)",
+          background: "radial-gradient(circle, var(--orb-3) 0%, transparent 65%)",
         }}
       />
 
@@ -62,8 +53,7 @@ export default function PageBackground() {
           width: "38vw",
           height: "38vw",
           borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(15,50,160,0.11) 0%, transparent 65%)",
+          background: "radial-gradient(circle, var(--orb-4) 0%, transparent 65%)",
         }}
       />
     </div>

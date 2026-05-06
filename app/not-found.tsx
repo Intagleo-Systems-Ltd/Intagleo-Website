@@ -43,7 +43,7 @@ export default function NotFound() {
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/"
-                  className="inline-flex items-center justify-center gap-2 bg-[#3B82F6] hover:bg-[#2563EB] text-white px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200"
+                  className="inline-flex items-center justify-center gap-2 btn-shimmer bg-[#3B82F6] hover:bg-[#2563EB] text-white px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200"
                 >
                   <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5" aria-hidden="true">
                     <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>

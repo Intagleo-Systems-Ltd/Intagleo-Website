@@ -205,7 +205,7 @@ export default function VacancyApplyForm({ vacancyTitle = "Open Application" }: 
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#3B82F6] hover:bg-[#2563EB] disabled:opacity-60 disabled:cursor-not-allowed text-white text-sm font-medium transition-colors duration-200 cursor-pointer"
+        className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full btn-shimmer bg-[#3B82F6] hover:bg-[#2563EB] disabled:opacity-60 disabled:cursor-not-allowed text-white text-sm font-medium transition-colors duration-200 cursor-pointer"
       >
         {status === "submitting" ? (
           <>

@@ -1,6 +1,9 @@
 "use client";
 
-const doubled = [...Array(3)].flatMap(() => [
+import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
+
+const clients = [
   { name: "IBM",          src: "/logos/ibm.png",          invert: true  },
   { name: "McDonald's",   src: "/logos/mcdonalds.png",    invert: true  },
   { name: "Samsung",      src: "/logos/samsung.png",      invert: true  },
@@ -12,19 +15,35 @@ const doubled = [...Array(3)].flatMap(() => [
   { name: "dnata",        src: "/logos/dnata.png",        invert: true  },
   { name: "Krispy Kreme", src: "/logos/krispy-kreme.png", invert: true  },
   { name: "Alpha Tauri",  src: "/logos/alpha-tauri.png",  invert: true  },
-]);
+];
 
+const doubled = [...Array(3)].flatMap(() => clients);
 
 export default function ClientsSection() {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
+  const isLight = mounted && resolvedTheme === "light";
+
+  const bgColor = isLight ? "#F8FAFC" : "#0a0a0a";
+
   return (
-    <section className="relative bg-[#0a0a0a] pt-20 pb-28 overflow-hidden">
+    <section className={`relative pt-20 pb-28 overflow-hidden ${isLight ? "bg-slate-50" : "bg-[#0a0a0a]"}`}>
       <div className="relative z-10 text-center mb-16 pt-4">
-        <p className="text-xl text-white/30 uppercase tracking-widest mb-3">Our Solutions Power the World</p>
+        <p className={`text-xl uppercase tracking-widest mb-3 ${isLight ? "text-slate-400" : "text-white/30"}`}>
+          Our Solutions Power the World
+        </p>
       </div>
 
       <div className="relative">
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+        <div
+          className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
+          style={{ background: `linear-gradient(to right, ${bgColor}, transparent)` }}
+        />
+        <div
+          className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
+          style={{ background: `linear-gradient(to left, ${bgColor}, transparent)` }}
+        />
 
         <div className="flex items-center marquee-scroll">
           {doubled.map((client, i) => (
@@ -39,7 +58,9 @@ export default function ClientsSection() {
                 alt={client.name}
                 className="h-10 w-auto object-contain"
                 style={{
-                  filter: client.invert ? "brightness(0) invert(1)" : "none",
+                  filter: client.invert
+                    ? isLight ? "brightness(0)" : "brightness(0) invert(1)"
+                    : "none",
                   maxWidth: "140px",
                 }}
               />
@@ -51,7 +72,7 @@ export default function ClientsSection() {
       {/* Bottom fade to next section */}
       <div
         className="absolute bottom-0 left-0 right-0 h-20 pointer-events-none"
-        style={{ background: 'linear-gradient(180deg, transparent 0%, #0a0a0a 100%)' }}
+        style={{ background: `linear-gradient(180deg, transparent 0%, ${bgColor} 100%)` }}
       />
     </section>
   );

@@ -314,10 +314,10 @@ export default function DataAnalyticsPage() {
                 Audit My Data
               </Link>
               <Link
-                href="/case-studies"
+                href="#how-it-works"
                 className="px-7 py-3.5 rounded-full border border-white/[0.14] text-white/65 text-sm font-medium hover:text-white hover:border-white/30 transition-colors"
               >
-                See Our Work
+                See How we Work
               </Link>
             </div>
 
@@ -565,7 +565,7 @@ export default function DataAnalyticsPage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       {/* PROCESS                                                            */}
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative section-padding py-28">
+      <section id="how-it-works" className="relative section-padding py-28">
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-20">
             <h2 className="text-3xl md:text-5xl font-medium customHeading mb-4">

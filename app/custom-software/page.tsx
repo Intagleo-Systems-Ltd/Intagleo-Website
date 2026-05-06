@@ -272,10 +272,10 @@ export default function CustomSoftwarePage() {
                 Start a Project
               </Link>
               <Link
-                href="/contact?type=technical-call"
+                href="#how-it-works"
                 className="px-7 py-3.5 rounded-full border border-white/[0.12] text-white/70 text-sm font-medium hover:text-white hover:border-white/25 transition-colors"
               >
-                Schedule a Technical Call
+                See How We Work
               </Link>
             </div>
 
@@ -640,7 +640,7 @@ export default function CustomSoftwarePage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       {/* PROCESS , We design systems, not just features                     */}
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative section-padding py-24">
+      <section id="how-it-works" className="relative section-padding py-24">
         <div className="mx-auto max-w-3xl">
           {/* Heading */}
           <div className="text-center mb-16">

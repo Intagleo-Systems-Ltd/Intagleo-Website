@@ -27,7 +27,7 @@ export default function DifferenceSection() {
       </div>
 
       {/* ── Content - in normal flow, sits above wave ── */}
-      <div className="relative section-padding pt-56 pb-24" style={{ zIndex: 1 }}>
+      <div className="relative section-padding pt-32 md:pt-44 lg:pt-56 pb-16 md:pb-24" style={{ zIndex: 1 }}>
         <div className="mx-auto max-w-[1400px]">
 
           {/* Two-column intro */}
@@ -58,43 +58,40 @@ export default function DifferenceSection() {
           </div>
 
           {/* Stat cards */}
-          <div
-            className="grid gap-3"
-            style={{ gridTemplateColumns: "1fr 1fr 1fr", gridTemplateRows: "auto auto" }}
-          >
-            {/* 200+ */}
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
+            {/* 200+ — spans both rows on desktop */}
             <div
-              className="rounded-2xl p-8 flex flex-col justify-center items-center text-center min-h-[280px]"
-              style={{ background: "#161618", backgroundImage: dotGrid, gridColumn: "1", gridRow: "1 / 3" }}
+              className="rounded-2xl p-6 md:p-8 flex flex-col justify-center items-center text-center min-h-[160px] lg:min-h-[280px] lg:row-span-2"
+              style={{ background: "#161618", backgroundImage: dotGrid }}
             >
-              <div className="text-6xl md:text-7xl font-light text-white mb-2">200+</div>
+              <div className="text-5xl md:text-6xl lg:text-7xl font-light text-white mb-2">200+</div>
               <div className="text-white/50 text-sm">Engineers &amp; Specialists</div>
             </div>
 
             {/* 04 */}
             <div
-              className="rounded-2xl p-8 flex flex-col justify-center items-center text-center min-h-[130px]"
+              className="rounded-2xl p-6 md:p-8 flex flex-col justify-center items-center text-center min-h-[160px] lg:min-h-[130px]"
               style={{ background: "#161618", backgroundImage: dotGrid }}
             >
-              <div className="text-5xl md:text-6xl font-light text-white mb-2">04</div>
+              <div className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-2">04</div>
               <div className="text-white/50 text-sm">Global Offices</div>
             </div>
 
-            {/* 20+ */}
+            {/* 20+ — spans both rows on desktop, explicitly placed at col 3 */}
             <div
-              className="rounded-2xl p-8 flex flex-col justify-center items-center text-center min-h-[280px]"
-              style={{ background: "#161618", backgroundImage: dotGrid, gridColumn: "3", gridRow: "1 / 3" }}
+              className="rounded-2xl p-6 md:p-8 flex flex-col justify-center items-center text-center min-h-[160px] lg:min-h-[280px] lg:row-span-2 lg:col-start-3"
+              style={{ background: "#161618", backgroundImage: dotGrid }}
             >
-              <div className="text-6xl md:text-7xl font-light text-white mb-2">20+</div>
+              <div className="text-5xl md:text-6xl lg:text-7xl font-light text-white mb-2">20+</div>
               <div className="text-white/50 text-sm">Years of service</div>
             </div>
 
-            {/* 99% */}
+            {/* 99% — auto-places at col 2, row 2 on desktop */}
             <div
-              className="rounded-2xl p-8 flex flex-col justify-center items-center text-center min-h-[130px]"
-              style={{ background: "#161618", backgroundImage: dotGrid, gridColumn: "2", gridRow: "2" }}
+              className="rounded-2xl p-6 md:p-8 flex flex-col justify-center items-center text-center min-h-[160px] lg:min-h-[130px]"
+              style={{ background: "#161618", backgroundImage: dotGrid }}
             >
-              <div className="text-5xl md:text-6xl font-light text-white mb-2">99%</div>
+              <div className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-2">99%</div>
               <div className="text-white/50 text-sm">Client Satisfaction</div>
             </div>
           </div>

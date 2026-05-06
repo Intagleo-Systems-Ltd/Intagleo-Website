@@ -182,7 +182,7 @@ export default function ContactForm({ config, type }: Props) {
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-[#3B82F6] hover:bg-[#2563EB] disabled:bg-[#3B82F6]/40 text-white font-medium text-sm py-3.5 rounded-xl transition-colors duration-200 flex items-center justify-center gap-2 cursor-pointer"
+        className="w-full btn-shimmer bg-[#3B82F6] hover:bg-[#2563EB] disabled:bg-[#3B82F6]/40 text-white font-medium text-sm py-3.5 rounded-xl transition-colors duration-200 flex items-center justify-center gap-2 cursor-pointer"
       >
         {loading ? (
           <>

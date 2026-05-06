@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 
 const CDN = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons";
 
@@ -229,6 +230,11 @@ const services = [
 export default function ServicesSection() {
   const [active, setActive] = useState(0);
   const [userPaused, setUserPaused] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme } = useTheme();
+  const isLight = mounted && resolvedTheme === "light";
+
+  useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
     if (userPaused) return;
@@ -241,7 +247,7 @@ export default function ServicesSection() {
   const svc = services[active];
 
   return (
-    <section id="services" className="bg-[#0a0a0a] section-padding py-24">
+    <section id="services" className={`section-padding py-24 ${isLight ? "bg-white" : "bg-[#0a0a0a]"}`}>
       <div className="mx-auto max-w-[1400px]">
         {/* Top row */}
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-10 gap-4">
@@ -251,7 +257,11 @@ export default function ServicesSection() {
           </h2>
           <a
             href="/contact?type=services"
-            className="flex-shrink-0 sm:mt-1 px-5 py-2.5 rounded-full border border-white/20 text-white/70 text-sm hover:border-white/50 hover:text-white transition-all w-fit"
+            className={`flex-shrink-0 sm:mt-1 px-5 py-2.5 rounded-full border text-sm transition-all w-fit ${
+              isLight
+                ? "border-slate-200 text-slate-600 hover:border-slate-300 hover:text-slate-900"
+                : "border-white/20 text-white/70 hover:border-white/50 hover:text-white"
+            }`}
           >
             Get Our Services
           </a>
@@ -265,8 +275,10 @@ export default function ServicesSection() {
               onClick={() => handleSelect(i)}
               className={`flex-shrink-0 snap-start px-4 py-2 rounded-full border text-sm font-medium transition-all duration-200 whitespace-nowrap ${
                 i === active
-                  ? "border-[#3B82F6]/60 bg-[#3B82F6]/10 text-white"
-                  : "border-white/[0.08] bg-transparent text-[#E6F2FF]/50 hover:text-[#E6F2FF]/80"
+                  ? "border-[#3B82F6]/60 bg-[#3B82F6]/10 text-[#2563EB]"
+                  : isLight
+                    ? "border-slate-200 bg-transparent text-slate-500 hover:text-slate-800"
+                    : "border-white/[0.08] bg-transparent text-[#E6F2FF]/50 hover:text-[#E6F2FF]/80"
               }`}
             >
               {s.name}
@@ -282,10 +294,14 @@ export default function ServicesSection() {
               <button
                 key={s.name}
                 onClick={() => handleSelect(i)}
-                className={`w-full text-left px-6 py-4 rounded-2xl border border-white/[0.06] transition-all duration-200 ${
-                  i === active
-                    ? "bg-[#0d0f12] text-white"
-                    : "bg-[#0d0f12]/60 text-[#E6F2FF]/45 hover:bg-[#0d0f12] hover:text-[#E6F2FF]/80"
+                className={`w-full text-left px-6 py-4 rounded-2xl border transition-all duration-200 ${
+                  isLight
+                    ? i === active
+                      ? "border-slate-200 bg-slate-50 text-slate-900"
+                      : "border-slate-100 bg-transparent text-slate-400 hover:bg-slate-50 hover:text-slate-700"
+                    : i === active
+                      ? "border-white/[0.06] bg-[#0d0f12] text-white"
+                      : "border-white/[0.06] bg-[#0d0f12]/60 text-[#E6F2FF]/45 hover:bg-[#0d0f12] hover:text-[#E6F2FF]/80"
                 }`}
               >
                 <span className="text-base font-medium">{s.name}</span>
@@ -294,28 +310,32 @@ export default function ServicesSection() {
           </div>
 
           {/* Right - detail panel */}
-          <div className="bg-[#0d0f12] border border-white/[0.06] rounded-2xl p-6 md:p-8 flex flex-col">
+          <div className={`border rounded-2xl p-6 md:p-8 flex flex-col ${
+            isLight ? "bg-slate-50 border-slate-200" : "bg-[#0d0f12] border-white/[0.06]"
+          }`}>
             {/* Title */}
             <h3 className="text-2xl font-medium customHeading mb-3">
               {svc.name}
             </h3>
 
             {/* Description */}
-            <p className="text-white/45 text-sm leading-relaxed mb-8">
+            <p className={`text-sm leading-relaxed mb-8 ${isLight ? "text-slate-500" : "text-white/45"}`}>
               {svc.description}
             </p>
 
             {/* Technology row */}
             <div className="flex items-center gap-3 mb-6">
-              <span className="text-sm font-medium text-[#3B82F6]">Technology</span>
-              <div className="flex-1 border-t border-dashed border-white/15" />
+              <span className="text-sm font-medium text-[#2563EB]">Technology</span>
+              <div className={`flex-1 border-t border-dashed ${isLight ? "border-slate-200" : "border-white/15"}`} />
             </div>
 
             {/* Tech logos */}
             <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-3 mb-8 md:mb-10">
               {svc.tech.map((t) => (
                 <div key={t.name} className="flex flex-col items-center gap-2">
-                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-white/5 border border-white/[0.06] p-2.5">
+                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center border p-2.5 ${
+                    isLight ? "bg-white border-slate-100" : "bg-white/5 border-white/[0.06]"
+                  }`}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={t.logo}
@@ -324,7 +344,7 @@ export default function ServicesSection() {
                       loading="lazy"
                     />
                   </div>
-                  <span className="text-xs text-white/40 text-center leading-tight max-w-[56px]">
+                  <span className={`text-xs text-center leading-tight max-w-[56px] ${isLight ? "text-slate-400" : "text-white/40"}`}>
                     {t.name}
                   </span>
                 </div>
@@ -333,16 +353,14 @@ export default function ServicesSection() {
 
             {/* Actions */}
             <div className="flex items-center gap-3 flex-wrap mt-auto">
-              {/* <a
-                href={`/contact?type=${serviceContactTypes[svc.name] ?? "general"}`}
-                className="inline-block px-6 py-2.5 rounded-full border border-white/20 text-white/70 text-sm hover:border-white/50 hover:text-white transition-all"
-              >
-                Get Started
-              </a> */}
               {servicePageUrls[svc.name] && (
                 <a
                   href={servicePageUrls[svc.name]}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/20 text-white/70 text-sm hover:border-white/50 hover:text-white transition-all"
+                  className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full border text-sm transition-all ${
+                    isLight
+                      ? "border-slate-200 text-slate-600 hover:border-slate-300 hover:text-slate-900"
+                      : "border-white/20 text-white/70 hover:border-white/50 hover:text-white"
+                  }`}
                 >
                   Learn More
                   <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

@@ -120,8 +120,8 @@ export default function IndustriesSection() {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
           <p className="text-xs text-white/40 uppercase tracking-widest mb-4">Industries We Serve</p>
-          <h2 className="font-medium customHeading leading-tight mb-4" style={{ fontSize: 'clamp(22px, 2.8vw, 36px)' }}>
-            <span style={{ whiteSpace: 'nowrap' }}>Different Industries ! Different Pressures !</span>
+          <h2 className="font-medium customHeading leading-tight mb-4" style={{ fontSize: 'clamp(20px, 2.8vw, 36px)' }}>
+            Different Industries ! Different Pressures !
             <br />
             <span style={{ WebkitTextFillColor: "rgba(255,255,255,0.35)", backgroundImage: "none" }}>
               One standard for excellence.

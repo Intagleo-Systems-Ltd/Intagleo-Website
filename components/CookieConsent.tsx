@@ -84,7 +84,7 @@ export default function CookieConsent() {
           </button>
           <button
             onClick={() => dismiss("accepted")}
-            className="px-4 py-2 rounded-full bg-[#3B82F6] text-white text-xs font-semibold hover:bg-[#2563EB] transition-colors cursor-pointer"
+            className="px-4 py-2 rounded-full btn-shimmer bg-[#3B82F6] text-white text-xs font-semibold hover:bg-[#2563EB] transition-colors cursor-pointer"
           >
             Accept all
           </button>
