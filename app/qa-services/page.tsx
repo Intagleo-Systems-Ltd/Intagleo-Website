@@ -82,7 +82,7 @@ export default function QAServicesPage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       {/* HERO                                                               */}
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative min-h-[85vh] flex flex-col items-center pt-32 pb-24 px-6 text-center overflow-hidden">
+      <section className="relative min-h-screen flex flex-col overflow-hidden">
 
         {/* Hero background */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -106,35 +106,72 @@ export default function QAServicesPage() {
           <div className="absolute inset-y-0 right-0 w-24" style={{ background: "linear-gradient(to left, rgba(7,8,15,0.6), transparent)" }} />
         </div>
 
-        {/* Headline + CTAs */}
-        <div className="relative z-10 max-w-3xl mx-auto pb-12">
-          {/* <p className="text-xs text-white/35 uppercase tracking-widest mb-5">QA & Testing</p> */}
-          <h1 className="text-4xl md:text-5xl lg:text-[52px] font-medium customHeading leading-[1.07] tracking-tight mb-5">
-            Find bugs before<br />
-            your users do.<br />
-            <span className="text-white/35">Ship with confidence.</span>
-          </h1>
+        {/* Centre content */}
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 pt-28 pb-10 text-center">
+          <div className="max-w-3xl mx-auto flex flex-col items-center gap-7">
 
-          <p className="text-white/45 text-base md:text-lg max-w-lg mx-auto mb-9">
-            We build and run the test coverage your product needs, automated suites,
-            performance checks, and manual edge-case testing, so nothing breaks in production.
-          </p>
+            {/* Category badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#3B82F6]/25 bg-[#3B82F6]/[0.07] text-[#3B82F6] text-xs font-medium tracking-wide">
+              <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5 flex-shrink-0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M13 3L6 10l-3-3" />
+                <rect x="1" y="1" width="14" height="14" rx="2" />
+              </svg>
+              QA & Testing
+            </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-14">
-            <Link
-              href="/contact?type=qa-services"
-              className="px-6 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
-            >
-              Start a conversation
-            </Link>
-            <Link
-              href="#how-it-works"
-              className="px-6 py-3 rounded-full border border-white/[0.14] text-white/65 text-sm font-medium hover:text-white hover:border-white/30 transition-colors"
-            >
-              See how it works
-            </Link>
+            <h1 className="text-4xl md:text-5xl lg:text-[56px] font-medium customHeading leading-[1.07] tracking-tight">
+              Find bugs before your users do.<br />
+              <span className="text-white/35">Ship with confidence.</span>
+            </h1>
+
+            <p className="text-white/50 text-base md:text-[17px] max-w-lg leading-relaxed">
+              We build and run the test coverage your product needs — automated suites,
+              performance checks, and manual edge-case testing, so nothing breaks in production.
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <Link
+                href="/contact?type=qa-services"
+                className="px-7 py-3.5 rounded-full btn-shimmer bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
+              >
+                Start a conversation
+              </Link>
+              <Link
+                href="#how-it-works"
+                className="px-7 py-3.5 rounded-full border border-white/[0.14] text-white/65 text-sm font-medium hover:text-white hover:border-white/30 transition-colors"
+              >
+                See how it works
+              </Link>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
+              {["Automated Test Suites", "Performance Testing", "Manual Edge-Case QA", "CI/CD Integration", "Security Testing"].map((feat) => (
+                <span key={feat} className="px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.07] text-white/40 text-[11px] font-medium">
+                  {feat}
+                </span>
+              ))}
+            </div>
+
           </div>
+        </div>
 
+        {/* Stats strip */}
+        <div className="relative z-10 px-6 pb-12 section-padding">
+          <div className="mx-auto max-w-3xl">
+            <div className="border-t border-white/[0.07] pt-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              {[
+                { value: "95%",  label: "Bug Detection Rate" },
+                { value: "3×",   label: "Faster Releases" },
+                { value: "10K+", label: "Test Cases Delivered" },
+                { value: "0",    label: "Showstoppers in Prod" },
+              ].map((s) => (
+                <div key={s.label}>
+                  <div className="text-2xl md:text-3xl font-semibold text-white mb-1 customHeading">{s.value}</div>
+                  <div className="text-white/35 text-xs">{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
       </section>
@@ -208,7 +245,7 @@ export default function QAServicesPage() {
             </p>
             <Link
               href="/contact?type=qa-services"
-              className="w-fit px-6 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
+              className="w-fit px-6 py-3 rounded-full btn-shimmer bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
             >
               Request a free coverage consultation
             </Link>
@@ -414,8 +451,8 @@ export default function QAServicesPage() {
         />
         <div className="absolute inset-0 bg-[#06080f]/65 pointer-events-none" />
 
-        <div className="relative z-10 mx-auto max-w-2xl">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium customHeading leading-tight mb-5">
+        <div className="relative z-10 mx-auto max-w-3xl">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium customHeading leading-tight mb-5">
             Your next release should<br />ship without surprises.
           </h2>
           <p className="text-white/45 mb-10">
@@ -425,7 +462,7 @@ export default function QAServicesPage() {
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
             <Link
               href="/contact?type=start-project"
-              className="px-7 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
+              className="px-7 py-3 rounded-full btn-shimmer bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
             >
               Start a conversation
             </Link>

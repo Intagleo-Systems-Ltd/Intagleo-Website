@@ -287,7 +287,7 @@ export default function OurProductsPage() {
               <div className="relative z-10 grid lg:grid-cols-2 gap-0">
 
                 {/* Left: identity */}
-                <div className="p-10 lg:p-16 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/[0.06]">
+                <div className="p-6 sm:p-10 lg:p-16 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/[0.06]">
                   <div>
                     {/* Status + year */}
                     <div className="flex items-center gap-2.5 mb-10">
@@ -372,7 +372,7 @@ export default function OurProductsPage() {
                       href="https://www.intvue.com/Home/app"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-[#3B82F6] hover:bg-[#2563EB] text-white px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200 cursor-pointer"
+                      className="inline-flex items-center gap-2 btn-shimmer bg-[#3B82F6] hover:bg-[#2563EB] text-white px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200 cursor-pointer"
                     >
                       Discover IntVue
                       <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -389,7 +389,7 @@ export default function OurProductsPage() {
                 </div>
 
                 {/* Right: browser-chrome mockup */}
-                <div className="p-10 lg:p-12 flex flex-col justify-center gap-6">
+                <div className="p-6 sm:p-10 lg:p-12 flex flex-col justify-center gap-6">
                   <div className="relative">
                     {/* Glow behind */}
                     <div
@@ -436,7 +436,7 @@ export default function OurProductsPage() {
 
                   {/* Caption */}
                   <div className="flex items-center gap-3 px-1">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] flex-shrink-0" />
+                    <div className="w-1.5 h-1.5 rounded-full btn-shimmer bg-[#3B82F6] flex-shrink-0" />
                     <span className="text-white/25 text-xs">
                       Schedule, record &amp; review — all in one place
                     </span>

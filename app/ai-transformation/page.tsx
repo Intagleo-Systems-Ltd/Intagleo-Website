@@ -207,7 +207,7 @@ export default function AITransformationPage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       {/* HERO                                                               */}
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative min-h-[85vh] flex flex-col items-center pt-32 pb-24 px-6 text-center overflow-hidden">
+      <section className="relative min-h-screen flex flex-col overflow-hidden">
 
         {/* Background layers */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -217,80 +217,102 @@ export default function AITransformationPage() {
           className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
           style={{ opacity: 0.55 }}
         />
-        {/* Dark base overlay */}
         <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(5,9,20,0.6)" }} />
-        {/* Central purple glow */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: "radial-gradient(ellipse 70% 55% at 50% 35%, rgba(139,92,246,0.22) 0%, transparent 65%)" }}
         />
-        {/* Subtle red accent bottom-left */}
         <div
           className="absolute left-0 bottom-0 w-[50%] h-[60%] pointer-events-none"
           style={{ background: "radial-gradient(ellipse at 10% 90%, rgba(232,52,28,0.08) 0%, transparent 55%)" }}
         />
-        {/* Bottom fade into page bg */}
         <div
           className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
           style={{ background: "linear-gradient(to bottom, transparent, #050914)" }}
         />
 
-        {/* Headline content */}
-        <div className="relative z-10 max-w-4xl mx-auto pb-12">
-          {/* Badge pill */}
-          {/* <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full mb-8 backdrop-blur-sm" style={{ background: "rgba(139,92,246,0.1)", border: "1px solid rgba(139,92,246,0.25)" }}>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#8B5CF6] animate-pulse" />
-            <span className="text-xs tracking-widest uppercase" style={{ color: "rgba(196,181,253,0.8)" }}>AI Transformation</span>
-          </div> */}
+        {/* Centre content */}
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 pt-28 pb-10 text-center">
+          <div className="max-w-3xl mx-auto flex flex-col items-center gap-7">
 
-          <h1
-            className="text-4xl md:text-5xl lg:text-[52px] font-medium text-white leading-[1.07] tracking-tight mb-6"
-          >
-            AI is Moving Fast!!<br />
-            <span
-              style={{
-                backgroundImage: "linear-gradient(135deg, #e8341c 0%, #f97316 35%, #8B5CF6 80%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                filter: "drop-shadow(0 0 32px rgba(139,92,246,0.35))",
-              }}
-            >
-              Are You?
-            </span>
-            <br />
-            {/* <span style={{ color: "rgba(255,255,255,0.22)" }}>operating system.</span> */}
-          </h1>
+            {/* Badge pill — purple theme */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full" style={{ background: "rgba(139,92,246,0.08)", border: "1px solid rgba(139,92,246,0.22)" }}>
+              <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5 flex-shrink-0" style={{ color: "rgba(196,181,253,0.9)" }} stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M8 1l1.5 3h3l-2.5 2 1 3L8 7.5 5 9l1-3L3.5 4h3z" />
+              </svg>
+              <span className="text-xs font-medium tracking-wide" style={{ color: "rgba(196,181,253,0.85)" }}>AI Transformation</span>
+            </div>
 
-          <p className="text-white/50 text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-            We help businesses identify, build, and deploy AI solutions that compound over time,
-            reducing cost, accelerating output, and opening revenue channels that didn&apos;t exist before.
-          </p>
+            <h1 className="text-4xl md:text-5xl lg:text-[56px] font-medium text-white leading-[1.07] tracking-tight">
+              AI is moving fast.<br />
+              <span
+                style={{
+                  backgroundImage: "linear-gradient(135deg, #e8341c 0%, #f97316 35%, #8B5CF6 80%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  filter: "drop-shadow(0 0 32px rgba(139,92,246,0.35))",
+                }}
+              >
+                Are you?
+              </span>
+            </h1>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-14">
-            <Link
-              href="/contact?type=ai-transformation"
-              className="px-7 py-3.5 rounded-full text-white text-sm font-semibold transition-all duration-200 hover:opacity-90 hover:scale-[1.02]"
-              style={{
-                background: "linear-gradient(135deg, #e8341c 0%, #8B5CF6 100%)",
-                boxShadow: "0 0 24px rgba(139,92,246,0.3), 0 2px 8px rgba(0,0,0,0.4)",
-                
-              }}
-            >
-              Book an AI strategy call
-            </Link>
-            <Link
-              href="#what-changes"
-              className="px-7 py-3.5 rounded-full text-sm font-medium transition-colors"
-              style={{
-                border: "1px solid rgba(139,92,246,0.2)",
-                color: "rgba(196,181,253,0.7)",
-                
-              }}
-            >
-              See what changes
-            </Link>
+            <p className="text-white/50 text-base md:text-[17px] max-w-lg leading-relaxed">
+              We help businesses identify, build, and deploy AI solutions that compound over time —
+              reducing cost, accelerating output, and opening revenue channels that didn&apos;t exist before.
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <Link
+                href="/contact?type=ai-transformation"
+                className="px-7 py-3.5 rounded-full text-white text-sm font-semibold transition-all duration-200 hover:opacity-90"
+                style={{
+                  background: "linear-gradient(135deg, #e8341c 0%, #8B5CF6 100%)",
+                  boxShadow: "0 0 24px rgba(139,92,246,0.3), 0 2px 8px rgba(0,0,0,0.4)",
+                }}
+              >
+                Book an AI strategy call
+              </Link>
+              <Link
+                href="#what-changes"
+                className="px-7 py-3.5 rounded-full text-sm font-medium transition-colors"
+                style={{
+                  border: "1px solid rgba(139,92,246,0.2)",
+                  color: "rgba(196,181,253,0.7)",
+                }}
+              >
+                See what changes
+              </Link>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
+              {["AI Strategy & Roadmap", "LLM Integration", "ML Ops & Deployment", "AI Governance & Ethics", "Workflow Automation"].map((feat) => (
+                <span key={feat} className="px-3 py-1 rounded-full text-[11px] font-medium" style={{ background: "rgba(139,92,246,0.06)", border: "1px solid rgba(139,92,246,0.12)", color: "rgba(196,181,253,0.5)" }}>
+                  {feat}
+                </span>
+              ))}
+            </div>
+
           </div>
+        </div>
 
+        {/* Stats strip */}
+        <div className="relative z-10 px-6 pb-12 section-padding">
+          <div className="mx-auto max-w-3xl">
+            <div className="pt-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center" style={{ borderTop: "1px solid rgba(139,92,246,0.12)" }}>
+              {[
+                { value: "10×",  label: "Productivity Gains" },
+                { value: "60%",  label: "Manual Work Eliminated" },
+                { value: "3mo",  label: "Avg. Time to First ROI" },
+                { value: "50+",  label: "AI Projects Delivered" },
+              ].map((s) => (
+                <div key={s.label}>
+                  <div className="text-2xl md:text-3xl font-semibold text-white mb-1 customHeading">{s.value}</div>
+                  <div className="text-xs" style={{ color: "rgba(196,181,253,0.35)" }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
       </section>

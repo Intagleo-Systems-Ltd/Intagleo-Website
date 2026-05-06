@@ -224,8 +224,8 @@ export default function CustomSoftwarePage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       {/* HERO                                                               */}
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative min-h-[85vh] flex flex-col items-center justify-center pt-36 pb-24 px-6 text-center overflow-hidden">
-        {/* hex-mesh background image , same as staff aug */}
+      <section className="relative min-h-screen flex flex-col overflow-hidden">
+        {/* hex-mesh background image */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/hex-mesh-bg.png"
@@ -233,58 +233,82 @@ export default function CustomSoftwarePage() {
           className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
           style={{ opacity: 0.55 }}
         />
-        {/* Dark base overlay */}
         <div className="absolute inset-0 bg-[#06080f]/60 pointer-events-none" />
-        {/* Subtle red glow bottom-left */}
         <div
           className="absolute left-0 bottom-0 w-[50%] h-[60%] pointer-events-none"
           style={{ background: "radial-gradient(ellipse at 10% 90%, rgba(99,102,241,0.10) 0%, transparent 55%)" }}
         />
-        {/* Bottom fade to page bg */}
         <div
           className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
           style={{ background: "linear-gradient(to bottom, transparent, #0a0a0a)" }}
         />
 
-        <div className="relative z-10 max-w-3xl mx-auto">
-          {/* Badge */}
-          {/* <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#3B82F6]/30 bg-[#3B82F6]/10 mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] animate-pulse" />
-            <span className="text-[#3B82F6] text-xs font-medium tracking-wide uppercase">
+        {/* Centre content */}
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 pt-28 pb-10 text-center">
+          <div className="max-w-3xl mx-auto flex flex-col items-center gap-7">
+
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#3B82F6]/25 bg-[#3B82F6]/[0.07] text-[#3B82F6] text-xs font-medium tracking-wide">
+              <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5 flex-shrink-0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 3l-3 5 3 5M11 3l3 5-3 5M9 2l-2 12" />
+              </svg>
               Custom Software Development
-            </span>
-          </div> */}
+            </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-[52px] font-medium customHeading leading-[1.07] mb-6">
-            Built for your workflows.{" "}
-            Engineered for scale.{" "}
-            Delivered your way.
-          </h1>
+            <h1 className="text-4xl md:text-5xl lg:text-[56px] font-medium customHeading leading-[1.07] tracking-tight">
+              Built for your workflows.<br />
+              <span className="text-white/35">Engineered for scale.</span>
+            </h1>
 
-          <p className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto mb-10">
-            Move beyond isolated features. We design and develop high-performance systems
-            aligned with how your business runs, from MVP to enterprise scale.
-          </p>
+            <p className="text-white/50 text-base md:text-[17px] max-w-lg leading-relaxed">
+              Move beyond isolated features. We design and develop high-performance systems
+              aligned with how your business runs — from MVP to enterprise scale.
+            </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 mb-10">
-            <Link
-              href="/contact?type=custom-software"
-              className="px-6 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
-            >
-              Start a Project
-            </Link>
-            <Link
-              href="/contact?type=technical-call"
-              className="px-6 py-3 rounded-full border border-white/[0.12] text-white/70 text-sm font-medium hover:text-white hover:border-white/25 transition-colors"
-            >
-              Schedule a Technical Call
-            </Link>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <Link
+                href="/contact?type=custom-software"
+                className="px-7 py-3.5 rounded-full btn-shimmer bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
+              >
+                Start a Project
+              </Link>
+              <Link
+                href="/contact?type=technical-call"
+                className="px-7 py-3.5 rounded-full border border-white/[0.12] text-white/70 text-sm font-medium hover:text-white hover:border-white/25 transition-colors"
+              >
+                Schedule a Technical Call
+              </Link>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
+              {["Bespoke Architecture", "MVP to Enterprise", "API & Integrations", "Legacy Modernisation", "Full-Stack Delivery"].map((feat) => (
+                <span key={feat} className="px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.07] text-white/40 text-[11px] font-medium">
+                  {feat}
+                </span>
+              ))}
+            </div>
+
           </div>
-
-          <p className="text-white/25 text-sm tracking-wide">
-            MVPs &nbsp;·&nbsp; Enterprise Systems &nbsp;·&nbsp; Integrations &nbsp;·&nbsp; AI-enabled Platforms
-          </p>
         </div>
+
+        {/* Stats strip */}
+        <div className="relative z-10 px-6 pb-12 section-padding">
+          <div className="mx-auto max-w-3xl">
+            <div className="border-t border-white/[0.07] pt-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              {[
+                { value: "150+", label: "Products Shipped" },
+                { value: "98%",  label: "On-Time Delivery" },
+                { value: "20+",  label: "Years of Expertise" },
+                { value: "50+",  label: "Enterprise Clients" },
+              ].map((s) => (
+                <div key={s.label}>
+                  <div className="text-2xl md:text-3xl font-semibold text-white mb-1 customHeading">{s.value}</div>
+                  <div className="text-white/35 text-xs">{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
@@ -467,7 +491,7 @@ export default function CustomSoftwarePage() {
           {/* CTA */}
           <div className="text-center">
             <Link
-              href="/services"
+              href="/#services"
               className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-white/[0.12] text-white/70 text-sm font-medium hover:border-white/25 hover:text-white transition-all"
             >
               View our Services
@@ -514,7 +538,7 @@ export default function CustomSoftwarePage() {
                 }}
                 className={`relative flex items-center gap-3 px-6 py-3.5 rounded-full border text-sm font-medium transition-all overflow-hidden ${
                   activeSupport === i
-                    ? "bg-[#3B82F6] border-[#3B82F6] text-white"
+                    ? "btn-shimmer bg-[#3B82F6] border-[#3B82F6] text-white"
                     : "bg-[#0d0d10] border-white/[0.08] text-white/55 hover:border-white/20 hover:text-white"
                 }`}
               >
@@ -544,7 +568,7 @@ export default function CustomSoftwarePage() {
                     Whether you have a detailed spec or just a rough concept, we&apos;ll help you validate,
                     architect, and build a system that scales , starting with an MVP that proves your market.
                   </p>
-                  <Link href="/contact?type=custom-software" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
+                  <Link href="/contact?type=custom-software" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full btn-shimmer bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
                     Start Building
                   </Link>
                 </div>
@@ -567,7 +591,7 @@ export default function CustomSoftwarePage() {
                     Your product is live and growing, but velocity is slowing. We audit your codebase,
                     identify bottlenecks, and add the engineering capacity to ship features faster.
                   </p>
-                  <Link href="/contact?type=custom-software" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
+                  <Link href="/contact?type=custom-software" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full btn-shimmer bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
                     Take Your Product To Next Level
                   </Link>
                 </div>
@@ -590,7 +614,7 @@ export default function CustomSoftwarePage() {
                     Legacy systems hold your business back. We map your current architecture, design a
                     migration path, and execute it in phases , zero downtime, full continuity.
                   </p>
-                  <Link href="/contact?type=legacy-modernization" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
+                  <Link href="/contact?type=legacy-modernization" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full btn-shimmer bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
                     Upgrade Your System
                   </Link>
                 </div>
@@ -735,7 +759,7 @@ export default function CustomSoftwarePage() {
                   "Real-time monitoring & alerts",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-2.5 text-sm text-white/55">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] flex-shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full btn-shimmer bg-[#3B82F6] flex-shrink-0" />
                     {item}
                   </li>
                 ))}
@@ -813,21 +837,21 @@ export default function CustomSoftwarePage() {
         <img src="/footer_CTA.gif" alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none" />
         <div className="absolute inset-0 bg-[#06080f]/65 pointer-events-none" />
 
-        <div className="relative z-10 mx-auto max-w-2xl">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium customHeading leading-tight mb-5">
-            Tell Us What You Want To Build.{" "}
+        <div className="relative z-10 mx-auto max-w-3xl">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium customHeading leading-tight mb-5">
+            Tell Us What You Want To Build.<br />
             <span className="text-white/50">We&apos;ll Take It From There.</span>
           </h2>
-          <p className="text-white/40 mb-3 max-w-lg mx-auto">
+          {/* <p className="text-white/40 mb-3 max-w-lg mx-auto">
             Whether you&apos;re scaling for the next 10 million users, modernizing a legacy core, or
             solving the bottleneck that&apos;s slowing your roadmap, we&apos;ve helped teams navigate these transitions before.
-          </p>
+          </p> */}
           <p className="text-white/25 text-sm mb-10">No long onboarding. No unnecessary delays.</p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
             <Link
               href="/contact?type=custom-software"
-              className="px-6 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
+              className="px-6 py-3 rounded-full btn-shimmer bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
             >
               Start a project
             </Link>

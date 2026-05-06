@@ -75,7 +75,7 @@ export default function EmbeddedIoTPage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       {/* HERO                                                               */}
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative min-h-[85vh] flex flex-col items-center pt-32 pb-24 px-6 text-center overflow-hidden">
+      <section className="relative min-h-screen flex flex-col overflow-hidden">
 
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -92,29 +92,70 @@ export default function EmbeddedIoTPage() {
           <div className="absolute inset-y-0 right-0 w-24" style={{ background: "linear-gradient(to left, rgba(7,8,15,0.6), transparent)" }} />
         </div>
 
-        <div className="relative z-10 max-w-3xl mx-auto pb-12">
-          <h1 className="text-4xl md:text-5xl lg:text-[52px] font-medium customHeading leading-[1.07] tracking-tight mb-5">
-            Hardware that talks.<br />Platforms that listen.
-          </h1>
+        {/* Centre content */}
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 pt-28 pb-10 text-center">
+          <div className="max-w-3xl mx-auto flex flex-col items-center gap-7">
 
-          <p className="text-white/45 text-base md:text-lg max-w-lg mx-auto mb-9">
-            We build firmware, device management platforms, and cloud integrations for embedded
-            systems, from industrial sensors and BMS to drive-through detection and fleet telemetry.
-          </p>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#3B82F6]/25 bg-[#3B82F6]/[0.07] text-[#3B82F6] text-xs font-medium tracking-wide">
+              <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5 flex-shrink-0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="8" cy="8" r="2" />
+                <path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M11.54 4.46l-1.41 1.41M4.46 11.54l-1.41 1.41" />
+              </svg>
+              Embedded & IoT
+            </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-14">
-            <Link
-              href="/contact?type=embedded-iot"
-              className="px-6 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
-            >
-              Start a project
-            </Link>
-            <Link
-              href="#how-it-works"
-              className="px-6 py-3 rounded-full border border-white/[0.14] text-white/65 text-sm font-medium hover:text-white hover:border-white/30 transition-colors"
-            >
-              See how it works
-            </Link>
+            <h1 className="text-4xl md:text-5xl lg:text-[56px] font-medium customHeading leading-[1.07] tracking-tight">
+              Hardware that talks.<br />
+              <span className="text-white/35">Platforms that listen.</span>
+            </h1>
+
+            <p className="text-white/50 text-base md:text-[17px] max-w-lg leading-relaxed">
+              We build firmware, device management platforms, and cloud integrations for embedded
+              systems — from industrial sensors and BMS to drive-through detection and fleet telemetry.
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <Link
+                href="/contact?type=embedded-iot"
+                className="px-7 py-3.5 rounded-full btn-shimmer bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
+              >
+                Start a project
+              </Link>
+              <Link
+                href="#how-it-works"
+                className="px-7 py-3.5 rounded-full border border-white/[0.14] text-white/65 text-sm font-medium hover:text-white hover:border-white/30 transition-colors"
+              >
+                See how it works
+              </Link>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
+              {["Firmware Development", "Device Management", "Protocol Integration", "Cloud Connectivity", "Edge Computing"].map((feat) => (
+                <span key={feat} className="px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.07] text-white/40 text-[11px] font-medium">
+                  {feat}
+                </span>
+              ))}
+            </div>
+
+          </div>
+        </div>
+
+        {/* Stats strip */}
+        <div className="relative z-10 px-6 pb-12 section-padding">
+          <div className="mx-auto max-w-3xl">
+            <div className="border-t border-white/[0.07] pt-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              {[
+                { value: "1M+",  label: "Devices Managed" },
+                { value: "50+",  label: "Hardware Platforms" },
+                { value: "15+",  label: "Protocols Supported" },
+                { value: "99.5%", label: "Fleet Uptime" },
+              ].map((s) => (
+                <div key={s.label}>
+                  <div className="text-2xl md:text-3xl font-semibold text-white mb-1 customHeading">{s.value}</div>
+                  <div className="text-white/35 text-xs">{s.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -180,7 +221,7 @@ export default function EmbeddedIoTPage() {
             </p>
             <Link
               href="/contact?type=embedded-iot"
-              className="w-fit px-6 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
+              className="w-fit px-6 py-3 rounded-full btn-shimmer bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
             >
               Request a technical assessment
             </Link>
@@ -279,8 +320,8 @@ export default function EmbeddedIoTPage() {
         <img src="/footer_CTA.gif" alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none" />
         <div className="absolute inset-0 bg-[#06080f]/65 pointer-events-none" />
 
-        <div className="relative z-10 mx-auto max-w-2xl">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium customHeading leading-tight mb-5">
+        <div className="relative z-10 mx-auto max-w-3xl">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium customHeading leading-tight mb-5">
             Your hardware is ready.<br />Let&apos;s build the software around it.
           </h2>
           <p className="text-white/45 mb-10">From firmware to dashboard, we own the full stack.</p>
@@ -288,7 +329,7 @@ export default function EmbeddedIoTPage() {
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
             <Link
               href="/contact?type=embedded-iot"
-              className="px-7 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
+              className="px-7 py-3 rounded-full btn-shimmer bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
             >
               Start a conversation
             </Link>

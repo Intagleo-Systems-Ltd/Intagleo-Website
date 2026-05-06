@@ -195,7 +195,7 @@ export default function TravelPage() {
       <Navbar />
 
       {/* HERO */}
-      <section className="relative min-h-[85vh] flex flex-col items-center pt-32 pb-24 px-6 text-center overflow-hidden">
+      <section className="relative min-h-screen flex flex-col overflow-hidden">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/hex-mesh-bg.png" alt="" className="absolute inset-0 w-full h-full object-cover object-center" style={{ opacity: 0.85 }} />
@@ -205,25 +205,69 @@ export default function TravelPage() {
           <div className="absolute inset-y-0 left-0 w-24" style={{ background: "linear-gradient(to right, rgba(10,10,10,0.6), transparent)" }} />
           <div className="absolute inset-y-0 right-0 w-24" style={{ background: "linear-gradient(to left, rgba(10,10,10,0.6), transparent)" }} />
         </div>
-        <div className="relative z-10 max-w-4xl mx-auto pb-16">
-          <h1 className="text-4xl md:text-5xl lg:text-[52px] font-medium customHeading leading-[1.07] tracking-tight mb-5">
-            Travel technology that<br />moves as fast as your travellers.
-          </h1>
-          <p className="text-white/45 text-base md:text-lg max-w-xl mx-auto mb-9">
-            From booking engine architecture to GDS integration and in-trip experience platforms,
-            we build the travel software that keeps every journey on track.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link href="/contact?type=travel" className="px-6 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
-              Talk to a Travel Tech Engineer
-            </Link>
-            <a href="#process" className="px-6 py-3 rounded-full border border-white/[0.14] text-white/65 text-sm font-medium hover:text-white hover:border-white/30 transition-colors">
-              See How We Work
-            </a>
+
+        {/* Centre content */}
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 pt-28 pb-10 text-center">
+          <div className="max-w-3xl mx-auto flex flex-col items-center gap-7">
+
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#3B82F6]/25 bg-[#3B82F6]/[0.07] text-[#3B82F6] text-xs font-medium tracking-wide">
+              <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5 flex-shrink-0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M2 10l2-6h8l2 6H2z" />
+                <path d="M6 10v3M10 10v3M1 13h14" />
+                <circle cx="8" cy="5" r="1" />
+              </svg>
+              Travel Technology
+            </div>
+
+            <h1 className="text-4xl md:text-5xl lg:text-[56px] font-medium customHeading leading-[1.07] tracking-tight">
+              Travel tech that moves<br />
+              <span className="text-white/35">as fast as your travellers.</span>
+            </h1>
+
+            <p className="text-white/50 text-base md:text-[17px] max-w-lg leading-relaxed">
+              From booking engine architecture to GDS integration and in-trip experience platforms,
+              we build the travel software that keeps every journey on track.
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <Link href="/contact?type=travel" className="px-7 py-3.5 rounded-full btn-shimmer bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
+                Talk to a Travel Tech Engineer
+              </Link>
+              <a href="#process" className="px-7 py-3.5 rounded-full border border-white/[0.14] text-white/65 text-sm font-medium hover:text-white hover:border-white/30 transition-colors">
+                See How We Work
+              </a>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
+              {["Booking Engine Architecture", "GDS & API Integration", "In-Trip Experience Apps", "Dynamic Pricing", "Loyalty Platform"].map((feat) => (
+                <span key={feat} className="px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.07] text-white/40 text-[11px] font-medium">
+                  {feat}
+                </span>
+              ))}
+            </div>
+
           </div>
         </div>
-       
-      
+
+        {/* Stats strip */}
+        <div className="relative z-10 px-6 pb-12 section-padding">
+          <div className="mx-auto max-w-3xl">
+            <div className="border-t border-white/[0.07] pt-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              {[
+                { value: "50M+",   label: "Bookings Processed" },
+                { value: "200ms",  label: "Avg. API Response" },
+                { value: "99.9%",  label: "Platform Availability" },
+                { value: "30+",    label: "Travel Platforms Built" },
+              ].map((s) => (
+                <div key={s.label}>
+                  <div className="text-2xl md:text-3xl font-semibold text-white mb-1 customHeading">{s.value}</div>
+                  <div className="text-white/35 text-xs">{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
       </section>
 
       {/* TECH CAPABILITIES */}
@@ -242,7 +286,7 @@ export default function TravelPage() {
               We audit your entire travel tech stack - booking engine latency, GDS connectivity,
               and supplier fallback logic - to pinpoint exactly where travellers drop off and revenue leaks.
             </p>
-            <Link href="/contact?type=travel-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
+            <Link href="/contact?type=travel-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full btn-shimmer bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Book a Tech Stack Review
             </Link>
           </div>
@@ -335,7 +379,7 @@ export default function TravelPage() {
                   drives abandonment at every booking step. Here&apos;s what changes.
                 </p>
               </div>
-              <Link href="/contact?type=travel" className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors cursor-pointer">
+              <Link href="/contact?type=travel" className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full btn-shimmer bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors cursor-pointer">
                 See results in action
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </Link>
@@ -405,8 +449,8 @@ export default function TravelPage() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/footer_CTA.gif" alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale-[20%] opacity-50" />
         <div className="absolute inset-0 bg-[#0a0a0a]/65 pointer-events-none" />
-        <div className="relative z-10 mx-auto max-w-2xl">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium customHeading leading-tight mb-5">
+        <div className="relative z-10 mx-auto max-w-3xl">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium customHeading leading-tight mb-5">
             Slow search results<br />
             <span className="text-white/35">send travellers to competitors.</span>
           </h2>
@@ -415,7 +459,7 @@ export default function TravelPage() {
             travel infrastructure that converts searchers into passengers.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
-            <Link href="/contact?type=travel" className="px-7 py-3 rounded-full bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
+            <Link href="/contact?type=travel" className="px-7 py-3 rounded-full btn-shimmer bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
               Talk to a travel tech engineer
             </Link>
                         <Link href="/case-studies" className="px-7 py-3 rounded-full border border-white/25 text-white/80 text-sm font-medium hover:text-white hover:border-white/45 transition-colors">See our Work</Link>

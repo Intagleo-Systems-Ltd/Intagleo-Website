@@ -219,7 +219,7 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
                 Whether you&apos;re launching a new product or scaling an existing platform, we have the team to make it happen.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="/contact?type=start-project" className="px-6 py-2.5 rounded-full bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm font-medium transition-colors duration-200">
+                <a href="/contact?type=start-project" className="px-6 py-2.5 rounded-full btn-shimmer bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm font-medium transition-colors duration-200">
                   Start a Conversation
                 </a>
                 <a href="/case-studies" className="px-6 py-2.5 rounded-full border border-white/20 text-white/70 text-sm hover:border-white/50 hover:text-white transition-all">
@@ -236,7 +236,7 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
         <div className="mx-auto max-w-[1400px]">
 
           {/* 6-col grid: 4 services + company + legal */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-x-6 gap-y-10">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-10">
             {serviceColumns.map((col) => (
               <div key={col.heading}>
                 <p className="text-white/40 text-[10px] font-semibold uppercase tracking-widest mb-4">
@@ -402,7 +402,7 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
                     <button
                       type="submit"
                       disabled={status === "loading" || !email}
-                      className="px-4 py-3 bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors duration-200 flex-shrink-0 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]/60"
+                      className="px-4 py-3 btn-shimmer bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors duration-200 flex-shrink-0 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]/60"
                       aria-label={status === "loading" ? "Subscribing…" : "Subscribe"}
                     >
                       {status === "loading" ? (
