@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getAllTestimonials } from "@/lib/content";
+import { getAllTestimonialsAsync } from "@/lib/providers/sanity";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+
+export const revalidate = 60;
 
 interface Props {
   params: { slug: string };
@@ -10,14 +12,16 @@ interface Props {
 
 // ─── Static paths ──────────────────────────────────────────────────────────────
 
-export function generateStaticParams() {
-  return getAllTestimonials().map((t) => ({ slug: t.slug }));
+export async function generateStaticParams() {
+  const testimonials = await getAllTestimonialsAsync();
+  return testimonials.map((t) => ({ slug: t.slug }));
 }
 
 // ─── SEO metadata ──────────────────────────────────────────────────────────────
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const testimonial = getAllTestimonials().find((t) => t.slug === params.slug);
+  const testimonials = await getAllTestimonialsAsync();
+  const testimonial = testimonials.find((t) => t.slug === params.slug);
   if (!testimonial) return {};
 
   return {
@@ -40,8 +44,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
-export default function TestimonialPage({ params }: Props) {
-  const testimonial = getAllTestimonials().find((t) => t.slug === params.slug);
+export default async function TestimonialPage({ params }: Props) {
+  const testimonials = await getAllTestimonialsAsync();
+  const testimonial = testimonials.find((t) => t.slug === params.slug);
   if (!testimonial) notFound();
 
   return (
