@@ -1,8 +1,10 @@
 ﻿import type { Metadata } from "next";
-import { getAllTestimonials } from "@/lib/content";
+import { getAllTestimonialsAsync } from "@/lib/providers/sanity";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TestimonialsGrid from "@/components/TestimonialsGrid";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Testimonials , Intagleo",
@@ -10,8 +12,8 @@ export const metadata: Metadata = {
     "What our clients and partners say about working with Intagleo.",
 };
 
-export default function TestimonialsPage() {
-  const testimonials = getAllTestimonials();
+export default async function TestimonialsPage() {
+  const testimonials = await getAllTestimonialsAsync();
 
   return (
     <main className="bg-[#0a0a0a] min-h-screen">

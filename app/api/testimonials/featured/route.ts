@@ -1,6 +1,6 @@
 import { getFeaturedTestimonialsAsync } from "@/lib/providers/sanity";
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 export async function GET() {
   try {
