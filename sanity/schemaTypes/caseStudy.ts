@@ -9,7 +9,7 @@ export const caseStudy = defineType({
     defineField({ name: "slug", title: "Slug", type: "slug", options: { source: "title" }, validation: (r) => r.required() }),
     defineField({ name: "client", title: "Client Name", type: "string" }),
     defineField({ name: "industry", title: "Industry", type: "string" }),
-    defineField({ name: "cover_image", title: "Cover Image URL", type: "url" }),
+    defineField({ name: "cover_image", title: "Cover Image", type: "image", options: { hotspot: true } }),
     defineField({ name: "rive_url", title: "Rive Animation URL", type: "url" }),
     defineField({ name: "challenge", title: "Challenge", type: "text", rows: 4 }),
     defineField({ name: "solution", title: "Solution", type: "text", rows: 4 }),
@@ -49,6 +49,6 @@ export const caseStudy = defineType({
     defineField({ name: "body", title: "Body (Markdown)", type: "text" }),
   ],
   preview: {
-    select: { title: "title", subtitle: "client" },
+    select: { title: "title", subtitle: "client", media: "cover_image" },
   },
 });

@@ -21,7 +21,7 @@ function getClient() {
 const blogFields = `
   "slug": slug.current,
   title, date, author, category,
-  cover_image,
+  "cover_image": cover_image.asset->url,
   excerpt, seo_description,
   show_on_homepage,
   pages,
@@ -31,7 +31,7 @@ const blogFields = `
 const caseStudyFields = `
   "slug": slug.current,
   title, client, industry,
-  cover_image,
+  "cover_image": cover_image.asset->url,
   rive_url, challenge, solution, results,
   seo_description, show_on_homepage, pages,
   body
