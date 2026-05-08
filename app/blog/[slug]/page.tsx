@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getBlogSlugsAsync, getPostBySlugAsync } from "@/lib/providers/sanity";
-import { markdownToHtml } from "@/lib/content";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PortableTextBody from "@/components/PortableTextBody";
 
 export const revalidate = 60;
 
@@ -49,8 +49,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function BlogPostPage({ params }: Props) {
   const post = await getPostBySlugAsync(params.slug);
   if (!post) notFound();
-
-  const contentHtml = await markdownToHtml(post.body);
 
   return (
     <main className="bg-[#0a0a0a] min-h-screen">
@@ -100,18 +98,7 @@ export default async function BlogPostPage({ params }: Props) {
       {/* Body */}
       <section className="section-padding pb-24">
         <div className="mx-auto max-w-[800px]">
-          <article
-            className="prose prose-invert prose-sm md:prose-base max-w-none
-              prose-headings:text-white prose-headings:font-semibold
-              prose-p:text-white/60 prose-p:leading-relaxed
-              prose-a:text-[#3B82F6] prose-a:no-underline hover:prose-a:underline
-              prose-strong:text-white/90
-              prose-li:text-white/60
-              prose-hr:border-white/10
-              prose-blockquote:border-l-[#3B82F6] prose-blockquote:text-white/50
-              prose-code:text-[#3B82F6] prose-code:bg-white/5 prose-code:px-1 prose-code:rounded"
-            dangerouslySetInnerHTML={{ __html: contentHtml }}
-          />
+          <PortableTextBody value={post.body} />
         </div>
       </section>
 

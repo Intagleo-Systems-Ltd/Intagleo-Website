@@ -27,7 +27,8 @@
       "Bash(node -e \"const fs=require\\('fs'\\);const c=fs.readFileSync\\('C:/Users/arslan/.claude/projects/C--Users-arslan-Intagleo-2-0/e03c6b4e-a773-4562-a31c-d75cf42d8746/tool-results/mcp-3693eb44-2345-4cba-aaac-5b7e8e3f4f16-get_metadata-1776279225168.txt','utf8'\\);console.log\\(c.slice\\(126000,130000\\)\\);\")",
       "Bash(node -e \"const fs=require\\('fs'\\);const c=fs.readFileSync\\('C:/Users/arslan/.claude/projects/C--Users-arslan-Intagleo-2-0/e03c6b4e-a773-4562-a31c-d75cf42d8746/tool-results/mcp-3693eb44-2345-4cba-aaac-5b7e8e3f4f16-get_metadata-1776279225168.txt','utf8'\\);const idx=c.indexOf\\('3406:68558'\\);console.log\\(c.slice\\(idx-500,idx+100\\)\\);\")",
       "Bash(node -e \"const fs=require\\('fs'\\);const c=fs.readFileSync\\('C:/Users/arslan/.claude/projects/C--Users-arslan-Intagleo-2-0/e03c6b4e-a773-4562-a31c-d75cf42d8746/tool-results/mcp-3693eb44-2345-4cba-aaac-5b7e8e3f4f16-get_metadata-1776279225168.txt','utf8'\\);const idx=c.indexOf\\('3406:68558'\\);console.log\\(c.slice\\(idx-3000,idx-400\\)\\);\")",
-      "Bash(cmd.exe /c \"dir /b /s C:\\\\Users\\\\arslan\\\\Intagleo_2.0\\\\public\")"
+      "Bash(cmd.exe /c \"dir /b /s C:\\\\Users\\\\arslan\\\\Intagleo_2.0\\\\public\")",
+      "Bash(npx tsx *)"
     ]
   }
 }

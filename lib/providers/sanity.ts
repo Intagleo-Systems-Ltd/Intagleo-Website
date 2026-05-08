@@ -25,7 +25,10 @@ const blogFields = `
   excerpt, seo_description,
   show_on_homepage,
   pages,
-  body
+  "body": body[]{
+    ...,
+    _type == "image" => { ..., "url": asset->url }
+  }
 `;
 
 const caseStudyFields = `
@@ -34,7 +37,10 @@ const caseStudyFields = `
   "cover_image": cover_image.asset->url,
   rive_url, challenge, solution, results,
   seo_description, show_on_homepage, pages,
-  body
+  "body": body[]{
+    ...,
+    _type == "image" => { ..., "url": asset->url }
+  }
 `;
 
 const testimonialFields = `

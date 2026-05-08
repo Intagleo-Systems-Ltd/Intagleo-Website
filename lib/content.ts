@@ -1,5 +1,8 @@
 import { remark } from "remark";
 import html from "remark-html";
+import type { PortableTextBlock } from "@portabletext/react";
+
+export type { PortableTextBlock };
 import filesProvider from "./providers/files";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -15,7 +18,7 @@ export interface BlogPost {
   seo_description: string;
   show_on_homepage?: boolean;
   pages?: string[];
-  body: string;
+  body: PortableTextBlock[] | string;
 }
 
 export interface CaseStudy {
@@ -31,7 +34,7 @@ export interface CaseStudy {
   seo_description?: string;
   show_on_homepage?: boolean;
   pages?: string[];
-  body: string;
+  body: PortableTextBlock[] | string;
 }
 
 export interface Testimonial {
