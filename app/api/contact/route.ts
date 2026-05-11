@@ -16,10 +16,25 @@ function getTransporter() {
 }
 
 const FROM_EMAIL = process.env.SMTP_FROM ?? process.env.SMTP_USER ?? "noreply@intagleo.com";
-const NOTIFY_EMAILS = (process.env.CONTACT_NOTIFY_EMAILS ?? "arslan@intagleo.com")
-  .split(",")
-  .map((e) => e.trim())
-  .filter(Boolean);
+
+const TYPE_ENV_MAP: Record<string, string> = {
+  "general":               "CONTACT_NOTIFY_EMAILS",
+  "start-project":         "CONTACT_START_PROJECT_EMAILS",
+  "technical-call":        "CONTACT_TECHNICAL_CALL_EMAILS",
+  "ai-strategy":           "CONTACT_AI_STRATEGY_EMAILS",
+  "staff-augmentation":    "CONTACT_STAFF_AUG_EMAILS",
+  "legacy-modernization":  "CONTACT_LEGACY_MOD_EMAILS",
+  "mobile-dev":            "CONTACT_MOBILE_DEV_EMAILS",
+  "cloud-devops":          "CONTACT_CLOUD_DEVOPS_EMAILS",
+  "ai-ml":                 "CONTACT_AI_ML_EMAILS",
+  "custom-software":       "CONTACT_CUSTOM_SOFTWARE_EMAILS",
+};
+
+function getNotifyEmails(type?: string): string[] {
+  const envKey = type ? (TYPE_ENV_MAP[type] ?? "CONTACT_NOTIFY_EMAILS") : "CONTACT_NOTIFY_EMAILS";
+  const raw = process.env[envKey] ?? process.env.CONTACT_NOTIFY_EMAILS ?? "arslan@intagleo.com";
+  return raw.split(",").map((e) => e.trim()).filter(Boolean);
+}
 
 /* ── HTML helpers ────────────────────────────────────────────────────────── */
 function confirmationHtml(name: string, badge: string): string {
@@ -246,6 +261,7 @@ export async function POST(request: Request) {
 
     const config = getContactConfig(type);
     const badge = config.badge;
+    const notifyEmails = getNotifyEmails(type);
 
     const transporter = getTransporter();
 
@@ -260,7 +276,7 @@ export async function POST(request: Request) {
     // ── 2. Notification email → internal team ────────────────────────────
     await transporter.sendMail({
       from: `Intagleo Contact <${FROM_EMAIL}>`,
-      to: NOTIFY_EMAILS,
+      to: notifyEmails,
       replyTo: email,
       subject: `New contact: ${badge} - ${name}${company ? ` (${company})` : ""}`,
       html: notificationHtml({
