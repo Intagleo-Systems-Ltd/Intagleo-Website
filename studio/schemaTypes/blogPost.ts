@@ -9,7 +9,7 @@ export const blogPost = defineType({
     defineField({ name: "slug", title: "Slug", type: "slug", options: { source: "title" }, validation: (r) => r.required() }),
     defineField({ name: "date", title: "Date", type: "date", validation: (r) => r.required() }),
     defineField({ name: "author", title: "Author", type: "string" }),
-    defineField({ name: "cover_image", title: "Cover Image URL", type: "url" }),
+    defineField({ name: "cover_image", title: "Cover Image", type: "image", options: { hotspot: true } }),
     defineField({ name: "excerpt", title: "Excerpt", type: "text", rows: 3 }),
     defineField({ name: "seo_description", title: "SEO Description", type: "text", rows: 2 }),
     defineField({ name: "show_on_homepage", title: "Show on Homepage", type: "boolean", initialValue: true }),
@@ -43,9 +43,57 @@ export const blogPost = defineType({
         ],
       },
     }),
-    defineField({ name: "body", title: "Body (Markdown)", type: "text" }),
+    defineField({
+      name: "body",
+      title: "Body",
+      type: "array",
+      of: [
+        {
+          type: "block",
+          styles: [
+            { title: "Normal", value: "normal" },
+            { title: "H2", value: "h2" },
+            { title: "H3", value: "h3" },
+            { title: "H4", value: "h4" },
+            { title: "Quote", value: "blockquote" },
+          ],
+          marks: {
+            decorators: [
+              { title: "Bold", value: "strong" },
+              { title: "Italic", value: "em" },
+              { title: "Code", value: "code" },
+            ],
+            annotations: [
+              {
+                name: "link",
+                type: "object",
+                title: "Link",
+                fields: [{ name: "href", type: "url", title: "URL" }],
+              },
+            ],
+          },
+        },
+        {
+          type: "image",
+          options: { hotspot: true },
+          fields: [
+            { name: "alt", type: "string", title: "Alt text" },
+            { name: "caption", type: "string", title: "Caption" },
+          ],
+        },
+        {
+          type: "object",
+          name: "codeBlock",
+          title: "Code Block",
+          fields: [
+            { name: "language", type: "string", title: "Language" },
+            { name: "code", type: "text", title: "Code" },
+          ],
+        },
+      ],
+    }),
   ],
   preview: {
-    select: { title: "title", subtitle: "date" },
+    select: { title: "title", subtitle: "date", media: "cover_image" },
   },
 });

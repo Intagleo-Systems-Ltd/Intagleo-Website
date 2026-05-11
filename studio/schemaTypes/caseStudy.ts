@@ -9,7 +9,7 @@ export const caseStudy = defineType({
     defineField({ name: "slug", title: "Slug", type: "slug", options: { source: "title" }, validation: (r) => r.required() }),
     defineField({ name: "client", title: "Client Name", type: "string" }),
     defineField({ name: "industry", title: "Industry", type: "string" }),
-    defineField({ name: "cover_image", title: "Cover Image URL", type: "url" }),
+    defineField({ name: "cover_image", title: "Cover Image", type: "image", options: { hotspot: true } }),
     defineField({ name: "rive_url", title: "Rive Animation URL", type: "url" }),
     defineField({ name: "challenge", title: "Challenge", type: "text", rows: 4 }),
     defineField({ name: "solution", title: "Solution", type: "text", rows: 4 }),
@@ -46,9 +46,57 @@ export const caseStudy = defineType({
         ],
       },
     }),
-    defineField({ name: "body", title: "Body (Markdown)", type: "text" }),
+    defineField({
+      name: "body",
+      title: "Body",
+      type: "array",
+      of: [
+        {
+          type: "block",
+          styles: [
+            { title: "Normal", value: "normal" },
+            { title: "H2", value: "h2" },
+            { title: "H3", value: "h3" },
+            { title: "H4", value: "h4" },
+            { title: "Quote", value: "blockquote" },
+          ],
+          marks: {
+            decorators: [
+              { title: "Bold", value: "strong" },
+              { title: "Italic", value: "em" },
+              { title: "Code", value: "code" },
+            ],
+            annotations: [
+              {
+                name: "link",
+                type: "object",
+                title: "Link",
+                fields: [{ name: "href", type: "url", title: "URL" }],
+              },
+            ],
+          },
+        },
+        {
+          type: "image",
+          options: { hotspot: true },
+          fields: [
+            { name: "alt", type: "string", title: "Alt text" },
+            { name: "caption", type: "string", title: "Caption" },
+          ],
+        },
+        {
+          type: "object",
+          name: "codeBlock",
+          title: "Code Block",
+          fields: [
+            { name: "language", type: "string", title: "Language" },
+            { name: "code", type: "text", title: "Code" },
+          ],
+        },
+      ],
+    }),
   ],
   preview: {
-    select: { title: "title", subtitle: "client" },
+    select: { title: "title", subtitle: "client", media: "cover_image" },
   },
 });
