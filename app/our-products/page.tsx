@@ -87,7 +87,7 @@ const steps = [
     step: "01",
     title: "Post the role & define criteria",
     description:
-      "Define the role, set your screening questions, and configure the AI scoring rubric — takes under 10 minutes.",
+      "Define the role, set your screening questions, and configure the AI scoring rubric. Takes under 10 minutes.",
   },
   {
     step: "02",
@@ -105,7 +105,7 @@ const steps = [
     step: "04",
     title: "Collaborate, decide & hire",
     description:
-      "Share replays with your team, leave timestamped notes, and move top candidates to offer — all from one dashboard.",
+      "Share replays with your team, leave timestamped notes, and move top candidates to offer, all from one dashboard.",
   },
 ];
 
@@ -228,7 +228,7 @@ export default function OurProductsPage() {
               animationDelay: "0.25s",
             }}
           >
-            Alongside client work, we build our own products — solving real problems
+            Alongside client work, we build our own products, solving real problems
             with the same engineering rigour we bring to every engagement.
           </p>
 
@@ -324,7 +324,7 @@ export default function OurProductsPage() {
                     >
                       IntVue is a smart, web-based platform that enables businesses to
                       conduct virtual video interviews. AI-powered features streamline
-                      and enrich the full recruitment experience — from first screening
+                      and enrich the full recruitment experience, from first screening
                       to final decision.
                     </p>
 
@@ -438,7 +438,7 @@ export default function OurProductsPage() {
                   <div className="flex items-center gap-3 px-1">
                     <div className="w-1.5 h-1.5 rounded-full btn-shimmer bg-[#3B82F6] flex-shrink-0" />
                     <span className="text-white/25 text-xs">
-                      Schedule, record &amp; review — all in one place
+                      Schedule, record &amp; review, all in one place
                     </span>
                   </div>
                 </div>
@@ -453,10 +453,11 @@ export default function OurProductsPage() {
       <section className="section-padding py-20">
         <div className="mx-auto max-w-[1400px]">
 
-          <div className="flex items-center gap-4 mb-12">
-            <span className="text-xs text-white/25 uppercase tracking-widest">Capabilities</span>
-            <div className="h-px flex-1 bg-white/[0.06]" />
-            <span className="text-xs text-white/25 uppercase tracking-widest">4 core features</span>
+          <div className="mb-12">
+            <h2 className="text-3xl md:text-4xl font-medium customHeading mb-3">Core Capabilities</h2>
+            <p className="text-white/40 text-sm max-w-lg">
+              Everything you need to run a faster, smarter hiring process, from first screening to final offer.
+            </p>
           </div>
 
           {/* Bento: 3-col grid, wide + narrow pattern */}
@@ -557,14 +558,17 @@ export default function OurProductsPage() {
 
             {/* Left sticky label */}
             <div className="lg:sticky lg:top-28">
-              <p className="text-xs text-white/30 uppercase tracking-widest mb-4">How it works</p>
               <h2
                 className="text-3xl md:text-4xl font-medium customHeading leading-tight mb-4"
-                style={{ fontFamily: '"Roobert TRIAL", sans-serif', letterSpacing: "-1px" }}
               >
-                From post to<br />
-                <span className="text-white/25">hired — fast.</span>
+                How It Works
               </h2>
+              <p
+                className="text-2xl font-medium leading-tight mb-4"
+                style={{ color: "rgba(255,255,255,0.25)" }}
+              >
+                From post to hired. Fast.
+              </p>
               <p className="text-white/35 text-sm leading-relaxed mb-8">
                 IntVue compresses your hiring pipeline into a structured,
                 insight-rich process that takes days, not weeks.
@@ -655,10 +659,9 @@ export default function OurProductsPage() {
       <section className="section-padding py-20 border-t border-white/[0.04]">
         <div className="mx-auto max-w-[1400px]">
 
-          <div className="flex items-center gap-4 mb-12">
-            <span className="text-xs text-white/25 uppercase tracking-widest">02</span>
-            <div className="h-px flex-1 bg-white/[0.06]" />
-            <span className="text-xs text-white/25 uppercase tracking-widest">In Development</span>
+          <div className="mb-12">
+            <h2 className="text-3xl md:text-4xl font-medium customHeading mb-3">In Development</h2>
+            <p className="text-white/40 text-sm">More products are in the pipeline. We&apos;re building. Check back soon.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-4">
