@@ -70,6 +70,7 @@ const offices = [
   {
     country: "USA",
     address: "2670 S White Road Suite #125,\nSan Jose, CA 95148",
+    phone: "+1 949 400 1942",
     icon: (
       // Golden Gate Bridge — two towers, catenary cable, hangers, road
       <svg viewBox="0 0 24 16" fill="none" className="w-6 h-[18px] text-white/60" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
@@ -92,6 +93,7 @@ const offices = [
   {
     country: "United Kingdom",
     address: "268 Bath Road, Slough\nSL1 4DX",
+    phone: "+44 20 8123 8991",
     icon: (
       // Big Ben — spire, belfry, clock face, tower body, base
       <svg viewBox="0 0 14 22" fill="none" className="w-[14px] h-[22px] text-white/60" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
@@ -111,6 +113,7 @@ const offices = [
   {
     country: "United Arab Emirates",
     address: "IFZA Business Park,\nDDP",
+    phone: "+971 050 4369055",
     icon: (
       // Burj Khalifa — needle, stepped setbacks tapering to wide base
       <svg viewBox="0 0 14 24" fill="none" className="w-[14px] h-[24px] text-white/60" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
@@ -128,6 +131,7 @@ const offices = [
   {
     country: "Pakistan",
     address: "13-CCA, DHA Phase 8 – Ex Park View\nLahore, 54792",
+    phone: "+92 42 35708250",
     icon: (
       // Badshahi Mosque — two minarets, central onion dome, platform
       <svg viewBox="0 0 24 20" fill="none" className="w-6 h-[20px] text-white/60" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
@@ -440,6 +444,11 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
                 <div>
                   <p className="text-white/70 text-sm font-medium mb-1">{o.country}</p>
                   <p className="text-white/40 text-xs leading-relaxed whitespace-pre-line">{o.address}</p>
+                  {o.phone && (
+                    <a href={`tel:${o.phone.replace(/\s/g, "")}`} className="text-white/40 text-xs hover:text-white/70 transition-colors duration-200 mt-1 block">
+                      {o.phone}
+                    </a>
+                  )}
                 </div>
               </address>
             ))}
