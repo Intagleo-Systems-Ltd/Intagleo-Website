@@ -73,7 +73,7 @@ const offices = [
     phone: "+1 949 400 1942",
     icon: (
       // Golden Gate Bridge — two towers, catenary cable, hangers, road
-      <svg viewBox="0 0 24 16" fill="none" className="w-6 h-[18px] text-white/60" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 24 16" fill="none" className="w-6 h-auto text-white/60" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
         <line x1="0" y1="14" x2="24" y2="14"/>
         <line x1="7" y1="5" x2="7" y2="14"/>
         <line x1="9" y1="5" x2="9" y2="14"/>
@@ -96,7 +96,7 @@ const offices = [
     phone: "+44 20 8123 8991",
     icon: (
       // Big Ben — spire, belfry, clock face, tower body, base
-      <svg viewBox="0 0 14 22" fill="none" className="w-[14px] h-[22px] text-white/60" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 14 22" fill="none" className="w-[18px] h-auto text-white/60" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
         <line x1="7" y1="0" x2="7" y2="2"/>
         <path d="M4 2 L7 0 L10 2"/>
         <rect x="4" y="2" width="6" height="4"/>
@@ -116,7 +116,7 @@ const offices = [
     phone: "+971 050 4369055",
     icon: (
       // Burj Khalifa — needle, stepped setbacks tapering to wide base
-      <svg viewBox="0 0 14 24" fill="none" className="w-[14px] h-[24px] text-white/60" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 14 24" fill="none" className="w-[16px] h-auto text-white/60" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
         <line x1="7" y1="0" x2="7" y2="3"/>
         <path d="M5.5 3 L7 0 L8.5 3 Z"/>
         <rect x="5.5" y="3" width="3" height="3"/>
@@ -134,7 +134,7 @@ const offices = [
     phone: "+92 42 35708250",
     icon: (
       // Badshahi Mosque — two minarets, central onion dome, platform
-      <svg viewBox="0 0 24 20" fill="none" className="w-6 h-[20px] text-white/60" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 24 20" fill="none" className="w-6 h-auto text-white/60" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
         <line x1="3" y1="1" x2="3" y2="14"/>
         <line x1="5" y1="1" x2="5" y2="14"/>
         <path d="M3 1 Q4 0 5 1"/>
@@ -433,19 +433,19 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
       {/* ── Office locations ── */}
       <div className="section-padding py-10 border-b border-white/[0.06]">
         <div className="mx-auto max-w-[1400px]">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {offices.map((o) => (
-              <address key={o.country} className="not-italic flex gap-3">
-                {/* Icon column */}
-                <div className="flex-shrink-0 w-10 h-10 rounded-lg border border-white/[0.08] bg-white/[0.03] flex items-center justify-center p-1.5">
+              <address key={o.country} className="not-italic rounded-2xl border border-white/[0.07] bg-white/[0.02] p-4 flex flex-col gap-3">
+                {/* Icon */}
+                <div className="w-10 h-10 rounded-xl border border-white/[0.08] bg-white/[0.04] flex items-center justify-center flex-shrink-0">
                   {o.icon}
                 </div>
-                {/* Text column */}
-                <div>
-                  <p className="text-white/70 text-sm font-medium mb-1">{o.country}</p>
+                {/* Text */}
+                <div className="flex flex-col gap-1">
+                  <p className="text-white/80 text-sm font-medium">{o.country}</p>
                   <p className="text-white/40 text-xs leading-relaxed whitespace-pre-line">{o.address}</p>
                   {o.phone && (
-                    <a href={`tel:${o.phone.replace(/\s/g, "")}`} className="text-white/40 text-xs hover:text-white/70 transition-colors duration-200 mt-1 block">
+                    <a href={`tel:${o.phone.replace(/\s/g, "")}`} className="text-white/50 text-xs hover:text-white/75 transition-colors duration-200 mt-0.5 cursor-pointer">
                       {o.phone}
                     </a>
                   )}
