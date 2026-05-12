@@ -1,5 +1,5 @@
 {
-  "createdAt": "2026-04-27T08:12:18.517Z",
+  "createdAt": "2026-05-08T11:55:55.492Z",
   "studioVersion": "5.21.0",
   "version": 3,
   "workspaces": [
@@ -13,7 +13,7 @@
       },
       "name": "intagleo",
       "projectId": "212gkasf",
-      "schema": "c5072a3a.create-schema.json",
+      "schema": "0bc1809d.create-schema.json",
       "title": "Intagleo CMS",
       "tools": "a1fd46b5.create-tools.json"
     }
