@@ -34,12 +34,10 @@ export default function AIStrategySection() {
 
           {/* Right , AI Chip GIF */}
           <div className="relative min-h-[300px] lg:min-h-0 overflow-hidden">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/AI.gif"
-              alt="AI Circuit Chip"
-              className="absolute inset-0 w-full h-full object-cover grayscale-[20%] opacity-50"
-            />
+            <video autoPlay loop muted playsInline aria-hidden="true" className="absolute inset-0 w-full h-full object-cover grayscale-[20%] opacity-50">
+              <source src="/AI.webm" type="video/webm" />
+              <source src="/AI.mp4" type="video/mp4" />
+            </video>
             {/* Fade blend into left panel */}
             <div className="absolute top-0 bottom-0 bg-gradient-to-r from-[#0E121D] to-transparent" style={{left: '0%', right: '0%'}} />
           </div>

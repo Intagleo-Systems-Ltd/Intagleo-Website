@@ -422,12 +422,10 @@ export default function StaffAugmentationPage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="relative overflow-hidden py-32 px-6 text-center">
         {/* Background GIF */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/footer_CTA.gif"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-        />
+        <video autoPlay loop muted playsInline aria-hidden="true" className="absolute inset-0 w-full h-full object-cover pointer-events-none">
+          <source src="/footer_CTA.webm" type="video/webm" />
+          <source src="/footer_CTA.mp4" type="video/mp4" />
+        </video>
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-[#06080f]/65 pointer-events-none" />
 

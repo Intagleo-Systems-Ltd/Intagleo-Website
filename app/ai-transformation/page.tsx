@@ -783,12 +783,10 @@ export default function AITransformationPage() {
       {/* FINAL CTA                                                          */}
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="relative overflow-hidden py-24 px-6 text-center">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/footer_CTA.gif"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale-[20%] opacity-50"
-        />
+        <video autoPlay loop muted playsInline aria-hidden="true" className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale-[20%] opacity-50">
+          <source src="/footer_CTA.webm" type="video/webm" />
+          <source src="/footer_CTA.mp4" type="video/mp4" />
+        </video>
         {/* Purple-tinted dark overlay */}
         <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(5,9,20,0.82) 0%, rgba(15,7,40,0.72) 50%, rgba(5,9,20,0.82) 100%)" }} />
         {/* Central glow */}

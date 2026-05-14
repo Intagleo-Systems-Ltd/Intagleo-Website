@@ -22,12 +22,17 @@ export default function HeroSection() {
 
       {/* GIF background - full cover */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="/hero.gif"
-          alt=""
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
           aria-hidden="true"
           className={`w-full h-full object-cover object-center ${isLight ? "opacity-40 grayscale" : ""}`}
-        />
+        >
+          <source src="/hero.webm" type="video/webm" />
+          <source src="/hero.mp4" type="video/mp4" />
+        </video>
         {/* Overlay - fade at bottom to blend into page background */}
         <div
           className="absolute inset-0"
