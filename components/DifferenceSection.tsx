@@ -13,7 +13,7 @@ export default function DifferenceSection() {
         style={{ height: "503px", zIndex: 0 }}
       >
         <img
-          src="/wave-bg.png"
+          src="/wave-bg.webp"
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
           style={{ objectPosition: "center 55%" }}

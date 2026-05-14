@@ -206,7 +206,7 @@ export default function CloudDevOpsPage() {
                 <div className="absolute inset-0">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="/wave-bg.png"
+                    src="/wave-bg.webp"
                     alt=""
                     className="w-full h-full object-cover object-center opacity-30"
                   />

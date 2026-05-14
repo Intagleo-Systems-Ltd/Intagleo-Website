@@ -169,7 +169,7 @@ export default function LegacyModernizationPage() {
               <div key={svc.title} className="relative rounded-2xl overflow-hidden flex flex-col justify-between p-7 group" style={{ minHeight: "220px" }}>
                 <div className="absolute inset-0">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/wave-bg.png" alt="" className="w-full h-full object-cover object-center opacity-30" />
+                  <img src="/wave-bg.webp" alt="" className="w-full h-full object-cover object-center opacity-30" />
                   <div className="absolute inset-0" style={{ background: "linear-gradient(160deg, #13141f 0%, #0d0e18 60%, #0a0b14 100%)", opacity: 0.85 }} />
                 </div>
                 <h3 className="relative z-10 text-white font-semibold text-base leading-snug">{svc.title}</h3>
