@@ -150,15 +150,6 @@ html.light .customHeading {
   background-clip: text;
 }
 
-/* .heading-gradient {
-  background: linear-gradient(120deg, #E6F2FF 0%, #AFAFAF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 500;
-  display: inline-block;
-} */
-
 /* ── Marquee animations ───────────────────────────────────────────────────── */
 
 @keyframes marquee {
