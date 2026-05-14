@@ -263,7 +263,540 @@ export default function DataAnalyticsPage() {
 
         {/* Hero background */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <video autoPlay loop muted playsInline aria-hidden="true" className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale-[20%] opacity-50"><source src="/footer_CTA.webm" type="video/webm" /><source src="/footer_CTA.mp4" type="video/mp4" /></video>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/hex-mesh-bg.png"
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            style={{ opacity: 0.85 }}
+          />
+          <div className="absolute inset-0" style={{ background: "rgba(7,8,15,0.55)" }} />
+          <div
+            className="absolute top-0 left-0 right-0 h-40"
+            style={{ background: "linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)" }}
+          />
+          <div
+            className="absolute bottom-0 left-0 right-0 h-72"
+            style={{ background: "linear-gradient(to bottom, transparent, #0a0a0a)" }}
+          />
+          <div className="absolute inset-y-0 left-0 w-24" style={{ background: "linear-gradient(to right, rgba(7,8,15,0.6), transparent)" }} />
+          <div className="absolute inset-y-0 right-0 w-24" style={{ background: "linear-gradient(to left, rgba(7,8,15,0.6), transparent)" }} />
+        </div>
+
+        {/* Centre content */}
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 pt-28 pb-10 text-center">
+          <div className="max-w-3xl mx-auto flex flex-col items-center gap-7">
+
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#3B82F6]/25 bg-[#3B82F6]/[0.07] text-[#3B82F6] text-xs font-medium tracking-wide">
+              <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5 flex-shrink-0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="1" y="9" width="3" height="6" rx="0.5" />
+                <rect x="6" y="5" width="3" height="10" rx="0.5" />
+                <rect x="11" y="1" width="3" height="14" rx="0.5" />
+              </svg>
+              Data & Analytics
+            </div>
+
+            <h1 className="text-4xl md:text-5xl lg:text-[56px] font-medium customHeading leading-[1.07] tracking-tight">
+              Your data exists.<br />
+              <span className="text-white/35">The insight doesn&apos;t. Yet.</span>
+            </h1>
+
+            <p className="text-white/50 text-base md:text-[17px] max-w-lg leading-relaxed">
+              We help businesses turn scattered data into reliable infrastructure,
+              clear reporting, and decisions that don&apos;t rely on gut feel.
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <Link
+                href="/contact?type=data-analytics"
+                className="px-7 py-3.5 rounded-full btn-shimmer bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
+              >
+                Audit My Data
+              </Link>
+              <Link
+                href="#how-it-works"
+                className="px-7 py-3.5 rounded-full border border-white/[0.14] text-white/65 text-sm font-medium hover:text-white hover:border-white/30 transition-colors"
+              >
+                See How we Work
+              </Link>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
+              {["Data Pipeline Engineering", "BI & Reporting", "Real-Time Dashboards", "ML & Predictive Models", "Data Governance"].map((feat) => (
+                <span key={feat} className="px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.07] text-white/40 text-[11px] font-medium">
+                  {feat}
+                </span>
+              ))}
+            </div>
+
+          </div>
+        </div>
+
+        {/* Stats strip */}
+        <div className="relative z-10 px-6 pb-12 section-padding">
+          <div className="mx-auto max-w-3xl">
+            <div className="border-t border-white/[0.07] pt-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              {[
+                { value: "10×",   label: "Faster Reporting" },
+                { value: "99%",   label: "Pipeline Uptime" },
+                { value: "500TB+", label: "Data Processed" },
+                { value: "40+",   label: "BI Implementations" },
+              ].map((s) => (
+                <div key={s.label}>
+                  <div className="text-2xl md:text-3xl font-semibold text-white mb-1 customHeading">{s.value}</div>
+                  <div className="text-white/35 text-xs">{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      {/* MODERN DATA STACK                                                  */}
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <style>{`
+        @keyframes stackProgress {
+          from { width: 0%; }
+          to   { width: 100%; }
+        }
+      `}</style>
+      <section
+        className="section-padding py-24"
+        style={{ background: "#0a0a0a" }}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
+        <div className="mx-auto max-w-6xl">
+
+          {/* Gradient title */}
+          <div className="text-center mb-12">
+            <h2
+              className="text-3xl md:text-[42px] font-semibold tracking-tight"
+              style={{
+                backgroundImage: "linear-gradient(172deg, rgb(230,242,255) 46%, rgb(175,175,175) 69%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              Modern Data Stack
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-[300px_1fr] gap-5 items-stretch">
+
+            {/* Left , tabs */}
+            <div className="flex flex-col gap-[10px]">
+              {stackCategories.map((cat) => {
+                const isActive = activeStack === cat.id;
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => {
+                      setActiveStack(cat.id);
+                      setProgressKey((k) => k + 1);
+                      setResetKey((k) => k + 1);
+                    }}
+                    className="relative flex items-center gap-4 p-[5.5px] rounded-[22px] text-left transition-all duration-200 overflow-hidden"
+                  >
+                    {/* Background */}
+                    <div
+                      className="absolute inset-0 rounded-[22px] transition-all duration-200"
+                      style={{
+                        background: isActive ? "#3a3f4a" : "rgba(37,41,50,0.4)",
+                      }}
+                    />
+                    {/* Icon box */}
+                    <div
+                      className="relative z-10 flex-shrink-0 w-[52px] h-[52px] rounded-[14px] flex items-center justify-center"
+                      style={{
+                        background: isActive ? "#20232f" : "#323645",
+                        color: isActive ? "#3B82F6" : "rgba(255,255,255,0.35)",
+                      }}
+                    >
+                      {cat.tabIcon}
+                    </div>
+                    {/* Label */}
+                    <span
+                      className="relative z-10 text-[15px] font-medium text-white whitespace-nowrap"
+                      style={{ opacity: isActive ? 1 : 0.55 }}
+                    >
+                      {cat.label}
+                    </span>
+                    {/* Progress bar */}
+                    {isActive && !paused && (
+                      <span
+                        key={progressKey}
+                        className="absolute bottom-0 left-0 h-[3px] rounded-full bg-[#3B82F6]/50"
+                        style={{ animation: "stackProgress 3.5s linear forwards" }}
+                      />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Right , diagram */}
+            <div className="relative" style={{ minHeight: "380px" }}>
+              {/* Outer glass panel */}
+              <div
+                className="absolute inset-0 rounded-[32px] backdrop-blur-[3px]"
+                style={{ backgroundImage: "linear-gradient(136deg, rgba(16,21,36,0.63) 40%, rgba(51,52,61,0.63) 78%)" }}
+              />
+              {/* Inner glass panel */}
+              <div
+                className="absolute inset-[16px] rounded-[24px] backdrop-blur-[3px]"
+                style={{ backgroundImage: "linear-gradient(137deg, rgba(16,21,36,0.63) 40%, rgba(51,52,61,0.63) 78%)" }}
+              />
+
+              {/* Diagram canvas */}
+              <div className="relative w-full h-full" style={{ minHeight: "380px" }}>
+
+                {/* SVG arrows */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 600 380" preserveAspectRatio="xMidYMid meet">
+                  <defs>
+                    <marker id="ah" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                      <path d="M0,0 L0,6 L6,3 z" fill="rgba(255,255,255,0.35)" />
+                    </marker>
+                    <marker id="ah2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto-start-reverse">
+                      <path d="M0,0 L0,6 L6,3 z" fill="rgba(255,255,255,0.35)" />
+                    </marker>
+                  </defs>
+                  {/* top → center */}
+                  <line x1="300" y1="95"  x2="300" y2="158" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5" strokeDasharray="5 4" markerEnd="url(#ah)"/>
+                  {/* center → bottom */}
+                  <line x1="300" y1="222" x2="300" y2="285" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5" strokeDasharray="5 4" markerEnd="url(#ah)"/>
+                  {/* left → center */}
+                  <line x1="132" y1="190" x2="222" y2="190" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5" strokeDasharray="5 4" markerEnd="url(#ah)"/>
+                  {/* center → right */}
+                  <line x1="378" y1="190" x2="468" y2="190" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5" strokeDasharray="5 4" markerEnd="url(#ah)"/>
+                </svg>
+
+                {/* Tool icon cards */}
+                {activeCategory.tools.map((tool) => {
+                  const posStyle: React.CSSProperties =
+                    tool.pos === "top"    ? { top: "8%",   left: "50%", transform: "translate(-50%, 0)"   } :
+                    tool.pos === "bottom" ? { bottom: "8%",left: "50%", transform: "translate(-50%, 0)"   } :
+                    tool.pos === "left"   ? { left: "5%",  top: "50%",  transform: "translate(0, -50%)"   } :
+                                           { right: "5%",  top: "50%",  transform: "translate(0, -50%)"   };
+                  return (
+                    <div key={tool.name} className="absolute z-10 flex flex-col items-center gap-1.5" style={posStyle}>
+                      <div
+                        className="w-[50px] h-[47px] rounded-[11px] flex items-center justify-center backdrop-blur-[2px]"
+                        style={{
+                          backgroundImage: "linear-gradient(121deg, rgb(51,52,61) 41%, rgb(6,4,9) 110%)",
+                          border: "0.6px solid rgba(255,255,255,0.11)",
+                          boxShadow: "0px 0.6px 8.5px 0px rgba(255,255,255,0.10)",
+                        }}
+                      >
+                        <div className="flex items-center justify-center w-6 h-6">{tool.icon}</div>
+                      </div>
+                      <span className="text-white/40 text-[11px]">{tool.name}</span>
+                    </div>
+                  );
+                })}
+
+                {/* Center node */}
+                <div
+                  className="absolute z-10 flex items-center justify-center rounded-[24px]"
+                  style={{
+                    top: "50%", left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    width: "160px", height: "72px",
+                    background: "#2b303c",
+                  }}
+                >
+                  <span className="text-[#eeeff3] text-[15px] font-medium text-center leading-snug px-3">
+                    {activeCategory.center}
+                  </span>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      {/* DO YOU KNOW                                                        */}
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="relative overflow-hidden section-padding py-6">
+        <div className="mx-auto max-w-6xl grid md:grid-cols-2 min-h-[280px] rounded-2xl border border-white/[0.10] overflow-hidden">
+
+          {/* Left , text */}
+          <div className="flex flex-col justify-center px-8 py-16 md:px-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-1">
+              <span className="text-[#3B82F6]">Do you know</span>
+            </h2>
+            <h2 className="text-3xl md:text-4xl font-medium customHeading mb-4">
+              where your data-link is broken?
+            </h2>
+            <p className="text-white/45 text-sm leading-relaxed max-w-xs mb-8">
+              Broken dashboards are just a symptom. We find the root cause in your pipelines before it hits the bottom line.
+            </p>
+            <Link
+              href="/contact?type=data-analytics"
+              className="w-fit px-6 py-3 rounded-full btn-shimmer bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors"
+            >
+              Request a free data consultation
+            </Link>
+          </div>
+
+          {/* Right , particle visual */}
+          <div className="relative overflow-hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/data.gif"
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover object-center grayscale-[20%] opacity-50"
+            />
+            <div
+              className="absolute inset-y-0 left-0 w-24 pointer-events-none"
+              style={{ background: "linear-gradient(to right, #06080f, transparent)" }}
+            />
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      {/* PROCESS                                                            */}
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section id="how-it-works" className="relative section-padding py-28">
+        <div className="mx-auto max-w-3xl">
+          <div className="text-center mb-20">
+            <h2 className="text-3xl md:text-5xl font-medium customHeading mb-4">
+              From fragmented sources to a single source of truth.
+            </h2>
+            <p className="text-white/40">
+              Our four-step architectural approach to data maturity.
+            </p>
+          </div>
+
+          {/* Timeline */}
+                    <ScrollTimeline steps={steps} />
+        </div>
+      </section>
+
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      {/* WHAT WE BUILD                                                      */}
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="relative section-padding py-24">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse at 50% 40%, rgba(20,30,80,0.25) 0%, transparent 65%)" }}
+        />
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-4xl font-medium customHeading mb-4">Core Capabilities</h2>
+            <p className="text-white/40 max-w-xl mx-auto">
+              Data infrastructure built and run for you.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+            {serviceCards.map((card) => (
+              <div
+                key={card.title}
+                className="relative rounded-2xl overflow-hidden flex flex-col justify-between p-7 group"
+                style={{ minHeight: "220px" }}
+              >
+                {/* Wave texture background */}
+                <div className="absolute inset-0">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/wave-bg.png"
+                    alt=""
+                    className="w-full h-full object-cover object-center opacity-30"
+                  />
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(160deg, #13141f 0%, #0d0e18 60%, #0a0b14 100%)", opacity: 0.85 }} />
+                </div>
+
+                <h3 className="relative z-10 text-white font-semibold text-base leading-snug">
+                  {card.title}
+                </h3>
+
+                <ul className="relative z-10 space-y-2 mt-8">
+                  {card.items.map((item) => (
+                    <li key={item} className="flex items-center gap-2 text-sm text-white/45">
+                      <span className="text-white/30 text-base leading-none">·</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+  {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      {/* FLEXIBLE WAYS TO WORK TOGETHER                                     */}
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="section-padding py-24 border-t border-white/5">
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <h2
+              className="text-3xl md:text-[42px] font-semibold tracking-tight"
+              style={{
+                backgroundImage: "linear-gradient(162deg, rgb(230,242,255) 44%, rgb(175,175,175) 111%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              Flexible ways to work together.
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                badge: "Fixed-term / Discovery",
+                title: "Data audit & strategy",
+                desc: "A 4-week deep dive into your infrastructure to build a roadmap for the next 12 months.",
+              },
+              {
+                badge: "Project-based / Delivery",
+                title: "Foundation build",
+                desc: "Full-cycle implementation of your data warehouse, pipelines, and primary reporting layer.",
+              },
+              {
+                badge: "Retainer / Embedded",
+                title: "Ongoing data team",
+                desc: "Embedded analytics engineers to scale your capabilities and manage your data platform 24/7.",
+              },
+            ].map((card) => (
+              <div
+                key={card.title}
+                className="relative rounded-[28px] overflow-hidden flex flex-col justify-end"
+                style={{
+                  border: "1.4px solid rgba(204,215,255,0.18)",
+                  background: "linear-gradient(to bottom, #20272c, rgba(17,17,21,0))",
+                  minHeight: "360px",
+                }}
+              >
+                {/* Abstract grid background */}
+                <div className="absolute inset-0 overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="https://www.figma.com/api/mcp/asset/2c1752e2-a261-4eea-92a4-1384f1435faa"
+                    alt=""
+                    className="absolute w-full object-cover pointer-events-none"
+                    style={{ top: "-30%", opacity: 0.6 }}
+                  />
+                  {/* Bottom fade */}
+                  <div
+                    className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none"
+                    style={{ background: "linear-gradient(to bottom, rgba(0,2,17,0), #050914)" }}
+                  />
+                </div>
+
+                {/* Floating red badge */}
+                <div className="absolute top-8 left-8 z-10">
+                  <div
+                    className="px-4 py-2 rounded-full text-white text-xs font-medium whitespace-nowrap"
+                    style={{ background: "rgba(229,62,48,0.4)" }}
+                  >
+                    {card.badge}
+                  </div>
+                </div>
+
+                {/* Text content */}
+                <div className="relative z-10 p-8 pt-0">
+                  <h3 className="text-white text-xl font-semibold mb-2 leading-snug">
+                    {card.title}
+                  </h3>
+                  <p className="text-[#d6d8d8] text-sm leading-relaxed opacity-60">
+                    {card.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      {/* STATS                                                              */}
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="section-padding py-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr] grid-rows-[auto] md:grid-rows-[1fr_1fr] gap-3">
+
+            {/* LEFT , 3× (row span 2) */}
+            <div
+              className="md:row-span-2 relative rounded-2xl overflow-hidden flex flex-col justify-center items-center p-10 min-h-[200px] md:min-h-0"
+              style={{ background: "linear-gradient(135deg, #1c1d24 0%, #13141a 100%)" }}
+            >
+              <div className="absolute inset-0 opacity-[0.35]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M20 16v8M16 20h8' stroke='rgba(255,255,255,0.25)' stroke-width='0.8'/%3E%3C/svg%3E\")" }} />
+              <div className="relative z-10 text-center">
+                <p className="text-[clamp(56px,6vw,96px)] font-semibold leading-none tracking-[-2px] text-[#e6f2ff]">10x</p>
+                <p className="mt-3 text-[clamp(13px,1.2vw,18px)] text-white/50">Faster Query Speed</p>
+              </div>
+            </div>
+
+            {/* MIDDLE TOP , 80% */}
+            <div
+              className="relative rounded-2xl overflow-hidden flex flex-col justify-center items-center p-8 min-h-[180px]"
+              style={{ background: "linear-gradient(135deg, #1c1d24 0%, #13141a 100%)" }}
+            >
+              <div className="absolute inset-0 opacity-[0.35]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M20 16v8M16 20h8' stroke='rgba(255,255,255,0.25)' stroke-width='0.8'/%3E%3C/svg%3E\")" }} />
+              <div className="relative z-10 text-center">
+                <p className="text-[clamp(48px,5vw,80px)] font-semibold leading-none tracking-[-2px] text-[#e6f2ff]">99.8%</p>
+                <p className="mt-3 text-[clamp(13px,1.2vw,18px)] text-white/50">Uptime on Pipelines</p>
+              </div>
+            </div>
+
+            {/* RIGHT , 14 days (row span 2) */}
+            <div
+              className="md:row-span-2 relative rounded-2xl overflow-hidden flex flex-col justify-center items-center p-10 min-h-[200px] md:min-h-0"
+              style={{ background: "linear-gradient(135deg, #1c1d24 0%, #13141a 100%)" }}
+            >
+              <div className="absolute inset-0 opacity-[0.35]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M20 16v8M16 20h8' stroke='rgba(255,255,255,0.25)' stroke-width='0.8'/%3E%3C/svg%3E\")" }} />
+              <div className="relative z-10 text-center">
+                <p className="text-[clamp(56px,6vw,96px)] font-semibold leading-none tracking-[-2px] text-[#e6f2ff]">50+</p>
+                <p className="mt-3 text-[clamp(13px,1.2vw,18px)] text-white/50">Data Traps Fixed</p>
+              </div>
+            </div>
+
+            {/* MIDDLE BOTTOM , 99.9% */}
+            <div
+              className="relative rounded-2xl overflow-hidden flex flex-col justify-center items-center p-8 min-h-[180px]"
+              style={{ background: "linear-gradient(135deg, #1c1d24 0%, #13141a 100%)" }}
+            >
+              <div className="absolute inset-0 opacity-[0.35]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M20 16v8M16 20h8' stroke='rgba(255,255,255,0.25)' stroke-width='0.8'/%3E%3C/svg%3E\")" }} />
+              <div className="relative z-10 text-center">
+                <p className="text-[clamp(48px,5vw,80px)] font-semibold leading-none tracking-[-2px] text-[#e6f2ff]">3 Weeks</p>
+                <p className="mt-3 text-[clamp(13px,1.2vw,18px)] text-white/50">Avg Data Result</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    
+
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      {/* CASE STUDIES                                                       */}
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <CaseStudiesSection pageSlug="data-analytics" />
+      <InsightsSection pageSlug="data-analytics" />
+
+
+
+      {/* FINAL CTA                                                          */}
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="relative overflow-hidden py-24 px-6 text-center">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/footer_CTA.gif"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale-[20%] opacity-50"
+        />
         <div className="absolute inset-0 bg-[#06080f]/65 pointer-events-none" />
 
         <div className="relative z-10 mx-auto max-w-3xl">

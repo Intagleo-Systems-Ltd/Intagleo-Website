@@ -171,7 +171,233 @@ export default function TransportationPage() {
       {/* HERO */}
       <section className="relative min-h-screen flex flex-col overflow-hidden">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <video autoPlay loop muted playsInline aria-hidden="true" className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale-[20%] opacity-50"><source src="/footer_CTA.webm" type="video/webm" /><source src="/footer_CTA.mp4" type="video/mp4" /></video>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/hex-mesh-bg.png" alt="" className="absolute inset-0 w-full h-full object-cover object-center" style={{ opacity: 0.85 }} />
+          <div className="absolute inset-0" style={{ background: "rgba(10,10,10,0.55)" }} />
+          <div className="absolute top-0 left-0 right-0 h-40" style={{ background: "linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)" }} />
+          <div className="absolute bottom-0 left-0 right-0 h-72" style={{ background: "linear-gradient(to bottom, transparent, #0a0a0a)" }} />
+          <div className="absolute inset-y-0 left-0 w-24" style={{ background: "linear-gradient(to right, rgba(10,10,10,0.6), transparent)" }} />
+          <div className="absolute inset-y-0 right-0 w-24" style={{ background: "linear-gradient(to left, rgba(10,10,10,0.6), transparent)" }} />
+        </div>
+
+        {/* Centre content */}
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 pt-28 pb-10 text-center">
+          <div className="max-w-3xl mx-auto flex flex-col items-center gap-7">
+
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#3B82F6]/25 bg-[#3B82F6]/[0.07] text-[#3B82F6] text-xs font-medium tracking-wide">
+              <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5 flex-shrink-0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="1" y="7" width="10" height="6" rx="1" />
+                <path d="M11 10h2l2-2v-1h-4" />
+                <circle cx="4" cy="13" r="1" />
+                <circle cx="12" cy="13" r="1" />
+              </svg>
+              Transportation & Logistics
+            </div>
+
+            <h1 className="text-4xl md:text-5xl lg:text-[56px] font-medium customHeading leading-[1.07] tracking-tight">
+              Logistics that move.<br />
+              <span className="text-white/35">Software that keeps up.</span>
+            </h1>
+
+            <p className="text-white/50 text-base md:text-[17px] max-w-lg leading-relaxed">
+              From route optimisation to real-time fleet visibility, we build the platforms that
+              keep transportation networks moving efficiently, at any scale.
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <Link href="/contact?type=transportation" className="px-7 py-3.5 rounded-full btn-shimmer bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
+                Talk to a Logistics Engineer
+              </Link>
+              <a href="#process" className="px-7 py-3.5 rounded-full border border-white/[0.14] text-white/65 text-sm font-medium hover:text-white hover:border-white/30 transition-colors">
+                See How We Work
+              </a>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
+              {["Route Optimisation", "Real-Time Fleet Tracking", "Driver & Asset Management", "Last-Mile Delivery", "Supply Chain Integration"].map((feat) => (
+                <span key={feat} className="px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.07] text-white/40 text-[11px] font-medium">
+                  {feat}
+                </span>
+              ))}
+            </div>
+
+          </div>
+        </div>
+
+        {/* Stats strip */}
+        <div className="relative z-10 px-6 pb-12 section-padding">
+          <div className="mx-auto max-w-3xl">
+            <div className="border-t border-white/[0.07] pt-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              {[
+                { value: "30%",  label: "Cost Reduction" },
+                { value: "1M+",  label: "Routes Optimised" },
+                { value: "99.9%", label: "Tracking Accuracy" },
+                { value: "50+",  label: "Platforms Built" },
+              ].map((s) => (
+                <div key={s.label}>
+                  <div className="text-2xl md:text-3xl font-semibold text-white mb-1 customHeading">{s.value}</div>
+                  <div className="text-white/35 text-xs">{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      {/* TECH CAPABILITIES */}
+      <CapabilityCardSection caps={techCaps} sectionSubtitle="Built across the modern logistics stack" />
+
+      {/* ARCHITECTURE REVIEW */}
+      <section style={{ background: "#0a0a0a" }} className="section-padding py-24">
+        <div className="mx-auto max-w-6xl grid md:grid-cols-2 gap-16 items-center">
+          <div>
+            <p className="text-xs text-white/35 uppercase tracking-widest mb-4">Architecture Review</p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-5">
+              <span className="text-white">Are your logistics </span>
+              <span className="text-white/30">getting lost in transit?</span>
+            </h2>
+            <p className="text-white/45 leading-relaxed mb-8 max-w-sm">
+              We review your logistics platform end-to-end - from tracking latency to dispatch
+              bottlenecks - and deliver a roadmap to handle the complexity of a growing network.
+            </p>
+            <Link href="/contact?type=transport-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full btn-shimmer bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
+              Book a Logistics Review
+            </Link>
+          </div>
+
+          {/* Network map visual */}
+          <div className="relative rounded-2xl overflow-hidden bg-[#0a0c14] border border-white/[0.07]" style={{ height: "380px" }}>
+            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 500 320" fill="none">
+              {[
+                { x1: 80, y1: 80, x2: 200, y2: 160 },
+                { x1: 200, y1: 160, x2: 350, y2: 100 },
+                { x1: 200, y1: 160, x2: 320, y2: 240 },
+                { x1: 350, y1: 100, x2: 420, y2: 180 },
+                { x1: 320, y1: 240, x2: 420, y2: 180 },
+                { x1: 80, y1: 80, x2: 130, y2: 200 },
+                { x1: 130, y1: 200, x2: 200, y2: 160 },
+                { x1: 130, y1: 200, x2: 320, y2: 240 },
+              ].map((line, i) => (
+                <g key={i}>
+                  <line x1={line.x1} y1={line.y1} x2={line.x2} y2={line.y2} stroke="rgba(255,255,255,0.07)" strokeWidth="1.5" />
+                  <line x1={line.x1} y1={line.y1} x2={line.x2} y2={line.y2} stroke="rgba(99,102,241,0.5)" strokeWidth="1.5" strokeDasharray="8 20" strokeDashoffset={`${-(flowOffset * 2.8 + i * 14)}`} />
+                </g>
+              ))}
+              {[
+                { cx: 80, cy: 80, r: 10, label: "London", major: true },
+                { cx: 200, cy: 160, r: 14, label: "Frankfurt", major: true },
+                { cx: 350, cy: 100, r: 9, label: "Paris", major: false },
+                { cx: 320, cy: 240, r: 11, label: "Madrid", major: false },
+                { cx: 420, cy: 180, r: 8, label: "Milan", major: false },
+                { cx: 130, cy: 200, r: 7, label: "Lyon", major: false },
+              ].map((node) => (
+                <g key={node.label}>
+                  <circle cx={node.cx} cy={node.cy} r={node.r + 6} fill="rgba(99,102,241,0.06)" />
+                  <circle cx={node.cx} cy={node.cy} r={node.r} fill={node.major ? "#3B82F6" : "#1c1d24"} stroke={node.major ? "rgba(99,102,241,0.5)" : "rgba(255,255,255,0.2)"} strokeWidth="1.5" />
+                  <text x={node.cx} y={node.cy + node.r + 14} textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="9" fontFamily="monospace">{node.label}</text>
+                </g>
+              ))}
+            </svg>
+            <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 50% at 45% 55%, rgba(99,102,241,0.05) 0%, transparent 70%)" }} />
+          </div>
+        </div>
+      </section>
+
+      {/* PROCESS */}
+      <section id="process" className="section-padding py-24">
+        <div className="mx-auto max-w-3xl">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-medium customHeading mb-4 leading-tight">
+              From fragmented fleet data to a unified logistics intelligence platform
+            </h2>
+            <p className="text-white/40 text-base leading-relaxed">
+              We don&apos;t add features to broken systems. Every engagement starts with your network
+              topology and operational constraints.
+            </p>
+          </div>
+          <ScrollTimeline steps={[
+    { num: "01", title: "Network Audit", desc: "We map your fleet size, dispatch workflows, carrier integrations, and tracking gaps before any architecture decisions.", align: "left" },
+    { num: "02", title: "Platform Design", desc: "We define the real-time data pipelines, event-driven dispatch logic, and carrier API strategy built for your scale.", align: "right" },
+    { num: "03", title: "Build & Integrate", desc: "We develop with reliability as the baseline: sub-second tracking updates, fault-tolerant event processing, and automated alerting.", align: "left" },
+    { num: "04", title: "Go Live & Optimise", desc: "Phased migration from legacy systems with zero operational disruption, then ongoing performance tuning as your network grows.", align: "right" },
+  ]} />
+        </div>
+      </section>
+
+      {/* IMPACT */}
+      <section className="section-padding py-24">
+        <div className="mx-auto max-w-6xl grid md:grid-cols-2 gap-6 items-stretch">
+          <div className="relative rounded-2xl overflow-hidden" style={{ minHeight: "480px", background: "#13141a" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/hex-mesh-bg.png" alt="" className="absolute inset-0 w-full h-full object-cover object-center opacity-35" />
+            <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 70% at 40% 70%, rgba(99,102,241,0.09) 0%, transparent 65%)" }} />
+            <div className="absolute inset-0 flex flex-col justify-between p-10">
+              <div>
+                <p className="text-xs text-white/40 uppercase tracking-widest mb-5">Business Impact</p>
+                <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-4">
+                  The impact<br /><span className="text-white/50 font-normal">on your operations</span>
+                </h2>
+                <p className="text-white/60 text-sm leading-relaxed max-w-xs">
+                  Purpose-built logistics software eliminates the manual coordination that bleeds
+                  fleet efficiency. Here&apos;s what changes.
+                </p>
+              </div>
+              <Link href="/contact?type=transportation" className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full btn-shimmer bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors cursor-pointer">
+                See results in action
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </Link>
+            </div>
+          </div>
+          <div className="flex flex-col gap-3">
+            {[
+              { num: "01", title: "On-time Delivery", desc: "Real-time route optimisation and automated exception management improve delivery performance across the entire network." },
+              { num: "02", title: "Fleet Utilisation", desc: "Dynamic load assignment and capacity planning reduce empty miles and maximise asset use across every route." },
+              { num: "03", title: "Fuel Efficiency", desc: "Optimised routing, driver behaviour monitoring, and predictive maintenance reduce fuel costs at fleet scale." },
+              { num: "04", title: "Customer Visibility", desc: "Real-time tracking portals and proactive exception notifications reduce inbound enquiries and improve satisfaction." },
+            ].map((item) => (
+              <div key={item.title} className="flex-1 flex items-start gap-5 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-200">
+                <span className="text-xs font-mono text-[#3B82F6]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
+                <div>
+                  <h3 className="text-white font-semibold text-[15px] mb-1.5 leading-snug">{item.title}</h3>
+                  <p className="text-white/55 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CaseStudiesSection pageSlug="transportation" />
+
+      {/* STATS BENTO */}
+      <section className="section-padding py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr] md:grid-rows-[1fr_1fr] gap-3">
+            {[
+              { value: "50M+", label: "Shipments tracked", span: true },
+              { value: "99.8%", label: "Tracking uptime", span: false },
+              { value: "6", label: "Continents served", span: true },
+              { value: "<2s", label: "Location update latency", span: false },
+            ].map((stat, i) => (
+              <div key={stat.label} className={`${stat.span ? "md:row-span-2" : ""} relative rounded-2xl overflow-hidden flex flex-col justify-center items-center ${stat.span ? "p-10 min-h-[200px]" : "p-8 min-h-[180px]"} md:min-h-0`} style={{ background: "linear-gradient(135deg, #1c1d24 0%, #13141a 100%)" }}>
+                <div className="absolute inset-0 opacity-[0.35]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M20 16v8M16 20h8' stroke='rgba(255,255,255,0.25)' stroke-width='0.8'/%3E%3C/svg%3E\")" }} />
+                <div className="relative z-10 text-center">
+                  <p className={`font-semibold leading-none tracking-[-2px] text-[#e6f2ff] ${stat.span ? "text-[clamp(56px,6vw,96px)]" : "text-[clamp(48px,5vw,80px)]"}`}>{stat.value}</p>
+                  <p className="mt-3 text-[clamp(13px,1.2vw,18px)] text-white/50">{stat.label}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <InsightsSection pageSlug="transportation" />
+
+      {/* FINAL CTA */}
+      <section className="relative overflow-hidden py-24 px-6 text-center">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/footer_CTA.gif" alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale-[20%] opacity-50" />
         <div className="absolute inset-0 bg-[#0a0a0a]/65 pointer-events-none" />
         <div className="relative z-10 mx-auto max-w-3xl">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium customHeading leading-tight mb-5">

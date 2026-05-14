@@ -203,7 +203,252 @@ export default function HrRecruitmentPage() {
       {/* HERO */}
       <section className="relative min-h-screen flex flex-col overflow-hidden">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <video autoPlay loop muted playsInline aria-hidden="true" className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale-[20%] opacity-50"><source src="/footer_CTA.webm" type="video/webm" /><source src="/footer_CTA.mp4" type="video/mp4" /></video>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/hex-mesh-bg.png" alt="" className="absolute inset-0 w-full h-full object-cover object-center" style={{ opacity: 0.85 }} />
+          <div className="absolute inset-0" style={{ background: "rgba(10,10,10,0.55)" }} />
+          <div className="absolute top-0 left-0 right-0 h-40" style={{ background: "linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)" }} />
+          <div className="absolute bottom-0 left-0 right-0 h-72" style={{ background: "linear-gradient(to bottom, transparent, #0a0a0a)" }} />
+          <div className="absolute inset-y-0 left-0 w-24" style={{ background: "linear-gradient(to right, rgba(10,10,10,0.6), transparent)" }} />
+          <div className="absolute inset-y-0 right-0 w-24" style={{ background: "linear-gradient(to left, rgba(10,10,10,0.6), transparent)" }} />
+        </div>
+
+        {/* Centre content */}
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 pt-28 pb-10 text-center">
+          <div className="max-w-3xl mx-auto flex flex-col items-center gap-7">
+
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#3B82F6]/25 bg-[#3B82F6]/[0.07] text-[#3B82F6] text-xs font-medium tracking-wide">
+              <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5 flex-shrink-0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="8" cy="5" r="2.5" />
+                <path d="M2 14c0-3.31 2.69-6 6-6s6 2.69 6 6" />
+              </svg>
+              HR & Recruitment
+            </div>
+
+            <h1 className="text-4xl md:text-5xl lg:text-[56px] font-medium customHeading leading-[1.07] tracking-tight">
+              HR technology that finds<br />
+              <span className="text-white/35">and keeps the best people.</span>
+            </h1>
+
+            <p className="text-white/50 text-base md:text-[17px] max-w-lg leading-relaxed">
+              From AI-powered applicant tracking to full HRIS platforms and workforce analytics,
+              we build the people technology that turns hiring into a competitive advantage.
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <Link href="/contact?type=hr-recruitment" className="px-7 py-3.5 rounded-full btn-shimmer bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
+                Talk to an HR Tech Engineer
+              </Link>
+              <a href="#process" className="px-7 py-3.5 rounded-full border border-white/[0.14] text-white/65 text-sm font-medium hover:text-white hover:border-white/30 transition-colors">
+                See How We Work
+              </a>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
+              {["ATS Development", "AI Resume Screening", "HRIS Platforms", "Workforce Analytics", "Onboarding Automation"].map((feat) => (
+                <span key={feat} className="px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.07] text-white/40 text-[11px] font-medium">
+                  {feat}
+                </span>
+              ))}
+            </div>
+
+          </div>
+        </div>
+
+        {/* Stats strip */}
+        <div className="relative z-10 px-6 pb-12 section-padding">
+          <div className="mx-auto max-w-3xl">
+            <div className="border-t border-white/[0.07] pt-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              {[
+                { value: "5×",   label: "Faster Hiring Cycles" },
+                { value: "80%",  label: "Manual Work Reduced" },
+                { value: "50+",  label: "HR Platforms Built" },
+                { value: "1M+",  label: "Candidates Processed" },
+              ].map((s) => (
+                <div key={s.label}>
+                  <div className="text-2xl md:text-3xl font-semibold text-white mb-1 customHeading">{s.value}</div>
+                  <div className="text-white/35 text-xs">{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      {/* TECH CAPABILITIES */}
+      <CapabilityCardSection caps={techCaps} sectionSubtitle="Built across the modern HR technology stack" />
+
+      {/* ARCHITECTURE REVIEW */}
+      <section style={{ background: "#0a0a0a" }} className="section-padding py-24">
+        <div className="mx-auto max-w-6xl grid md:grid-cols-2 gap-16 items-center">
+          <div>
+            <p className="text-xs text-white/35 uppercase tracking-widest mb-4">Architecture Review</p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-5">
+              <span className="text-white">Is your hiring pipeline </span>
+              <span className="text-white/30">losing candidates at every stage?</span>
+            </h2>
+            <p className="text-white/45 leading-relaxed mb-8 max-w-sm">
+              We conduct deep-dive HR tech reviews - mapping your ATS configuration, HRIS integration
+              gaps, and the hiring workflow friction that&apos;s adding days to your time-to-offer.
+            </p>
+            <Link href="/contact?type=hr-review" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full btn-shimmer bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors">
+              Book an HR Tech Review
+            </Link>
+          </div>
+
+          {/* Kanban board */}
+          <div className="relative rounded-2xl overflow-hidden bg-[#0d0e18] border border-white/[0.07] p-4" style={{ height: "380px" }}>
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-[10px] text-white/30 uppercase tracking-widest font-mono">Hiring Pipeline</span>
+              <span className="text-[10px] text-[#3B82F6]/60 font-mono">{INITIAL_CARDS.length} candidates</span>
+            </div>
+            <div className="grid grid-cols-4 gap-2 h-[calc(100%-36px)]">
+              {STAGES.map((stage) => {
+                const stageCards = cards.filter((c) => c.stage === stage);
+                const totalForStage = INITIAL_CARDS.filter((c) => c.stage === stage).length;
+                return (
+                  <div key={stage} className="flex flex-col">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-[9px] font-mono text-white/35 uppercase tracking-wider">{stage}</span>
+                      <span className="text-[9px] font-mono text-white/20">{totalForStage}</span>
+                    </div>
+                    <div className="flex flex-col gap-1.5 flex-1">
+                      {stageCards.map((card) => {
+                        const origCard = INITIAL_CARDS.find((c) => c.id === card.id)!;
+                        const isMoving = activeCard === INITIAL_CARDS.indexOf(origCard) && card.stage !== origCard.stage;
+                        return (
+                          <div
+                            key={card.id}
+                            className={`rounded-lg border p-2 transition-all duration-500
+                              ${isMoving ? "border-[#3B82F6]/60 bg-[#3B82F6]/[0.08] scale-[1.02]" : "border-white/[0.07] bg-white/[0.02]"}`}
+                          >
+                            <p className="text-[10px] text-white/70 font-medium leading-snug">{card.name}</p>
+                            <p className="text-[8px] text-white/30 mt-0.5">{card.role}</p>
+                            {isMoving && (
+                              <div className="mt-1.5 h-0.5 bg-[#3B82F6]/40 rounded-full overflow-hidden">
+                                <div className="h-full btn-shimmer bg-[#3B82F6] rounded-full animate-pulse w-full" />
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PROCESS */}
+      <section id="process" className="section-padding py-24">
+        <div className="mx-auto max-w-3xl">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-medium customHeading mb-4 leading-tight">
+              From spreadsheet chaos to a people platform that scales with your business
+            </h2>
+            <p className="text-white/40 text-base leading-relaxed">
+              We don&apos;t configure off-the-shelf ATS tools. Every engagement starts with your
+              hiring process and the talent outcomes you need to achieve.
+            </p>
+          </div>
+          <ScrollTimeline steps={[
+    { num: "01", title: "HR Tech Audit", desc: "We map your current hiring pipeline, HRIS data model, integration gaps, and the manual steps adding weeks to your time-to-offer.", align: "left" },
+    { num: "02", title: "Platform Architecture", desc: "We design for hiring velocity: AI-assisted screening, automated scheduling, and a people data model that connects hiring to retention analytics.", align: "right" },
+    { num: "03", title: "Build & Integrate", desc: "We develop against your job boards, payroll systems, and SSO infrastructure with candidate experience and recruiter efficiency as primary metrics.", align: "left" },
+    { num: "04", title: "Roll Out & Iterate", desc: "Phased rollout to your recruiting team with change management support, then continuous optimisation driven by time-to-hire and quality-of-hire data.", align: "right" },
+  ]} />
+        </div>
+      </section>
+
+      {/* IMPACT */}
+      <section className="section-padding py-24">
+        <div className="mx-auto max-w-6xl grid md:grid-cols-2 gap-6 items-stretch">
+          <div className="relative rounded-2xl overflow-hidden" style={{ minHeight: "480px", background: "#13141a" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/hex-mesh-bg.png" alt="" className="absolute inset-0 w-full h-full object-cover object-center opacity-35" />
+            <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 70% at 40% 70%, rgba(99,102,241,0.09) 0%, transparent 65%)" }} />
+            <div className="absolute inset-0 flex flex-col justify-between p-10">
+              <div>
+                <p className="text-xs text-white/40 uppercase tracking-widest mb-5">HR Tech Impact</p>
+                <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-4">
+                  The impact<br /><span className="text-white/50 font-normal">on your talent operations</span>
+                </h2>
+                <p className="text-white/60 text-sm leading-relaxed max-w-xs">
+                  Purpose-built HR infrastructure removes the manual overhead and pipeline friction
+                  that costs you top candidates and keeps teams from scaling. Here&apos;s what changes.
+                </p>
+              </div>
+              <Link href="/contact?type=hr-recruitment" className="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full btn-shimmer bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB] transition-colors cursor-pointer">
+                See results in action
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </Link>
+            </div>
+          </div>
+          <div className="flex flex-col gap-3">
+            {[
+              { num: "01", title: "Hiring Velocity", desc: "Automated screening, AI-matched shortlisting, and one-click interview scheduling compress time-to-offer from weeks to days." },
+              { num: "02", title: "Candidate Quality", desc: "Skills-based matching and structured assessment workflows surface the candidates who perform, not just the ones who interview well." },
+              { num: "03", title: "Onboarding Efficiency", desc: "Automated document collection, access provisioning, and milestone tracking get new hires productive faster with less HR overhead." },
+              { num: "04", title: "Retention Intelligence", desc: "Continuous engagement signals and predictive retention modelling identify flight risk before high-performers start looking elsewhere." },
+            ].map((item) => (
+              <div key={item.title} className="flex-1 flex items-start gap-5 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-200">
+                <span className="text-xs font-mono text-[#3B82F6]/70 mt-0.5 flex-shrink-0 w-6">{item.num}</span>
+                <div>
+                  <h3 className="text-white font-semibold text-[15px] mb-1.5 leading-snug">{item.title}</h3>
+                  <p className="text-white/55 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CaseStudiesSection pageSlug="hr-recruitment" />
+
+      {/* STATS BENTO */}
+      <section className="section-padding py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr] md:grid-rows-[1fr_1fr] gap-3">
+            <div className="md:row-span-2 relative rounded-2xl overflow-hidden flex flex-col justify-center items-center p-10 min-h-[200px] md:min-h-0" style={{ background: "linear-gradient(135deg, #1c1d24 0%, #13141a 100%)" }}>
+              <div className="absolute inset-0 opacity-[0.35]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M20 16v8M16 20h8' stroke='rgba(255,255,255,0.25)' stroke-width='0.8'/%3E%3C/svg%3E\")" }} />
+              <div className="relative z-10 text-center">
+                <p className="text-[clamp(56px,6vw,96px)] font-semibold leading-none tracking-[-2px] text-[#e6f2ff]">2M+</p>
+                <p className="mt-3 text-[clamp(13px,1.2vw,18px)] text-white/50">Candidates processed annually</p>
+              </div>
+            </div>
+            <div className="relative rounded-2xl overflow-hidden flex flex-col justify-center items-center p-8 min-h-[180px]" style={{ background: "linear-gradient(135deg, #1c1d24 0%, #13141a 100%)" }}>
+              <div className="absolute inset-0 opacity-[0.35]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M20 16v8M16 20h8' stroke='rgba(255,255,255,0.25)' stroke-width='0.8'/%3E%3C/svg%3E\")" }} />
+              <div className="relative z-10 text-center">
+                <p className="text-[clamp(48px,5vw,80px)] font-semibold leading-none tracking-[-2px] text-[#e6f2ff]">55%</p>
+                <p className="mt-3 text-[clamp(13px,1.2vw,18px)] text-white/50">Reduction in time-to-hire</p>
+              </div>
+            </div>
+            <div className="md:row-span-2 relative rounded-2xl overflow-hidden flex flex-col justify-center items-center p-10 min-h-[200px] md:min-h-0" style={{ background: "linear-gradient(135deg, #1c1d24 0%, #13141a 100%)" }}>
+              <div className="absolute inset-0 opacity-[0.35]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M20 16v8M16 20h8' stroke='rgba(255,255,255,0.25)' stroke-width='0.8'/%3E%3C/svg%3E\")" }} />
+              <div className="relative z-10 text-center">
+                <p className="text-[clamp(56px,6vw,96px)] font-semibold leading-none tracking-[-2px] text-[#e6f2ff]">300K+</p>
+                <p className="mt-3 text-[clamp(13px,1.2vw,18px)] text-white/50">Employees on HRIS platforms built</p>
+              </div>
+            </div>
+            <div className="relative rounded-2xl overflow-hidden flex flex-col justify-center items-center p-8 min-h-[180px]" style={{ background: "linear-gradient(135deg, #1c1d24 0%, #13141a 100%)" }}>
+              <div className="absolute inset-0 opacity-[0.35]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M20 16v8M16 20h8' stroke='rgba(255,255,255,0.25)' stroke-width='0.8'/%3E%3C/svg%3E\")" }} />
+              <div className="relative z-10 text-center">
+                <p className="text-[clamp(48px,5vw,80px)] font-semibold leading-none tracking-[-2px] text-[#e6f2ff]">4.2x</p>
+                <p className="mt-3 text-[clamp(13px,1.2vw,18px)] text-white/50">Recruiter productivity improvement</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <InsightsSection pageSlug="hr-recruitment" />
+
+      {/* FINAL CTA */}
+      <section className="relative overflow-hidden py-24 px-6 text-center">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/footer_CTA.gif" alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale-[20%] opacity-50" />
         <div className="absolute inset-0 bg-[#0a0a0a]/65 pointer-events-none" />
         <div className="relative z-10 mx-auto max-w-3xl">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium customHeading leading-tight mb-5">
