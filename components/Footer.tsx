@@ -131,7 +131,7 @@ const offices = [
   {
     country: "Pakistan",
     address: "13-CCA, DHA Phase 8 – Ex Park View\nLahore, 54792",
-    phone: "+92 42 35708250",
+    phone: "+92 42 37255732",
     icon: (
       // Badshahi Mosque — two minarets, central onion dome, platform
       <svg viewBox="0 0 24 20" fill="none" className="w-6 h-auto text-white/60" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">

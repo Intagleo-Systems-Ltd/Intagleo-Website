@@ -102,6 +102,10 @@ export default function RootLayout({
           gtag('config', 'G-QZV44DCEJ1');
         `}
       </Script>
+      <Script
+        src="https://t.contentsquare.net/uxa/91ce61ee787bf.js"
+        strategy="afterInteractive"
+      />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
