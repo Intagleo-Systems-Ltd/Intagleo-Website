@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Script from "next/script";
 import "./globals.css";
 import MouseGlow from "@/components/MouseGlow";
 import CookieConsent from "@/components/CookieConsent";
@@ -89,6 +90,18 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-QZV44DCEJ1"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-QZV44DCEJ1');
+        `}
+      </Script>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
