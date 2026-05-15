@@ -70,7 +70,6 @@ const offices = [
   {
     country: "USA",
     address: "2670 S White Road Suite #125,\nSan Jose, CA 95148",
-    phone: "+1 949 400 1942",
     icon: (
       // Golden Gate Bridge — two towers, catenary cable, hangers, road
       <svg viewBox="0 0 24 16" fill="none" className="w-6 h-auto text-white/60" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
@@ -93,7 +92,6 @@ const offices = [
   {
     country: "United Kingdom",
     address: "268 Bath Road, Slough\nSL1 4DX",
-    phone: "+44 20 8123 8991",
     icon: (
       // Big Ben — spire, belfry, clock face, tower body, base
       <svg viewBox="0 0 14 22" fill="none" className="w-[18px] h-auto text-white/60" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
@@ -113,7 +111,6 @@ const offices = [
   {
     country: "United Arab Emirates",
     address: "IFZA Business Park,\nDDP",
-    phone: "+971 050 4369055",
     icon: (
       // Burj Khalifa — needle, stepped setbacks tapering to wide base
       <svg viewBox="0 0 14 24" fill="none" className="w-[16px] h-auto text-white/60" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
@@ -131,7 +128,6 @@ const offices = [
   {
     country: "Pakistan",
     address: "13-CCA, DHA Phase 8 – Ex Park View\nLahore, 54792",
-    phone: "+92 42 37255732",
     icon: (
       // Badshahi Mosque — two minarets, central onion dome, platform
       <svg viewBox="0 0 24 20" fill="none" className="w-6 h-auto text-white/60" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
@@ -322,15 +318,6 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
             <img src="/logo-nav.png" alt="Intagleo Systems" className="h-10 w-auto mb-5" />
             <div className="space-y-2.5 mb-5">
               <a
-                href="tel:+19494001942"
-                className={`${linkCls} flex items-center gap-2 text-sm`}
-              >
-                <svg className="w-4 h-4 flex-shrink-0 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-                </svg>
-                +1 949 400 1942
-              </a>
-              <a
                 href="mailto:sales@intagleo.com"
                 className={`${linkCls} flex items-center gap-2 text-sm`}
               >
@@ -446,11 +433,6 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
                 <div className="flex flex-col gap-1">
                   <p className="text-white/80 text-sm font-medium">{o.country}</p>
                   <p className="text-white/40 text-xs leading-relaxed whitespace-pre-line">{o.address}</p>
-                  {o.phone && (
-                    <a href={`tel:${o.phone.replace(/\s/g, "")}`} className="text-white/50 text-xs hover:text-white/75 transition-colors duration-200 mt-0.5 cursor-pointer">
-                      {o.phone}
-                    </a>
-                  )}
                 </div>
               </address>
             ))}
