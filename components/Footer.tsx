@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
+import AutoplayVideo from "@/components/AutoplayVideo";
 
 /* ─── Data ──────────────────────────────────────────────────── */
 
@@ -205,10 +206,13 @@ export default function Footer({ showCTA = true }: { showCTA?: boolean }) {
       {/* ── Optional CTA Banner ── */}
       {showCTA && (
         <div className="relative border-b border-white/[0.06] overflow-hidden">
-          <video autoPlay loop muted playsInline aria-hidden="true" className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale-[20%] opacity-50">
-            <source src="/footer_CTA.webm" type="video/webm" />
-            <source src="/footer_CTA.mp4" type="video/mp4" />
-          </video>
+          <AutoplayVideo
+            sources={[
+              { src: "/footer_CTA.webm", type: "video/webm" },
+              { src: "/footer_CTA.mp4", type: "video/mp4" },
+            ]}
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale-[20%] opacity-50"
+          />
           <div className="absolute inset-0 bg-[#080808]/70 pointer-events-none" aria-hidden="true" />
           <div className="relative z-10 section-padding py-24">
             <div className="mx-auto max-w-[1400px] text-center">

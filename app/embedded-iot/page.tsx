@@ -316,7 +316,7 @@ export default function EmbeddedIoTPage() {
       {/* FINAL CTA                                                          */}
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="relative overflow-hidden py-24 px-6 text-center">
-        <video autoPlay loop muted playsInline aria-hidden="true" className="absolute inset-0 w-full h-full object-cover pointer-events-none">
+        <video autoPlay loop muted playsInline preload="auto" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover pointer-events-none">
           <source src="/footer_CTA.webm" type="video/webm" />
           <source src="/footer_CTA.mp4" type="video/mp4" />
         </video>

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
+import AutoplayVideo from "@/components/AutoplayVideo";
 
 const stats = [
   { value: "100%", label: "On-Time Delivery" },
@@ -22,17 +23,13 @@ export default function HeroSection() {
 
       {/* GIF background - full cover */}
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          aria-hidden="true"
+        <AutoplayVideo
+          sources={[
+            { src: "/hero.webm", type: "video/webm" },
+            { src: "/hero.mp4", type: "video/mp4" },
+          ]}
           className={`w-full h-full object-cover object-center ${isLight ? "opacity-40 grayscale" : ""}`}
-        >
-          <source src="/hero.webm" type="video/webm" />
-          <source src="/hero.mp4" type="video/mp4" />
-        </video>
+        />
         {/* Overlay - fade at bottom to blend into page background */}
         <div
           className="absolute inset-0"

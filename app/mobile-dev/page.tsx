@@ -206,7 +206,7 @@ export default function MobileDevPage() {
             </Link>
           </div>
           <div className="relative overflow-hidden">
-            <video autoPlay loop muted playsInline aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-center grayscale-[20%] opacity-50">
+            <video autoPlay loop muted playsInline preload="auto" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-center grayscale-[20%] opacity-50">
               <source src="/hero.webm" type="video/webm" />
               <source src="/hero.mp4" type="video/mp4" />
             </video>
@@ -286,7 +286,7 @@ export default function MobileDevPage() {
 
       {/* FINAL CTA */}
       <section className="relative overflow-hidden py-24 px-6 text-center">
-        <video autoPlay loop muted playsInline aria-hidden="true" className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale-[20%] opacity-50">
+        <video autoPlay loop muted playsInline preload="auto" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale-[20%] opacity-50">
           <source src="/footer_CTA.webm" type="video/webm" />
           <source src="/footer_CTA.mp4" type="video/mp4" />
         </video>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import AutoplayVideo from "@/components/AutoplayVideo";
 
 interface CTABannerProps {
   accentText?: string;
@@ -42,10 +43,13 @@ export default function CTABanner({
 
           {/* Right , GIF at 60% */}
           <div className="relative min-h-[300px] lg:min-h-0 overflow-hidden">
-            <video autoPlay loop muted playsInline aria-hidden="true" className="absolute inset-0 w-full h-full object-cover grayscale-[20%] opacity-50">
-              <source src="/cta-bg.webm" type="video/webm" />
-              <source src="/cta-bg.mp4" type="video/mp4" />
-            </video>
+            <AutoplayVideo
+              sources={[
+                { src: "/cta-bg.webm", type: "video/webm" },
+                { src: "/cta-bg.mp4", type: "video/mp4" },
+              ]}
+              className="absolute inset-0 w-full h-full object-cover grayscale-[20%] opacity-50"
+            />
             {/* Fade blend into left panel */}
             <div className="absolute top-0 bottom-0 bg-gradient-to-r from-[#0E121D] to-transparent" style={{left: '0%', right: '0%'}} />
           </div>
