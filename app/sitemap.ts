@@ -2,8 +2,9 @@ import { MetadataRoute } from "next";
 import {
   getBlogSlugsAsync,
   getCaseStudySlugsAsync,
+  getSledCaseStudySlugsAsync,
 } from "@/lib/providers/sanity";
-import { getClient as sanityClient } from "@/lib/providers/sanity";
+import { sanityClient } from "@/lib/providers/sanity";
 
 const BASE = "https://intagleo.com";
 
@@ -22,6 +23,7 @@ const staticRoutes: MetadataRoute.Sitemap = [
 
   // Services
   { url: `${BASE}/custom-software`,      priority: 0.8, changeFrequency: "monthly" },
+  { url: `${BASE}/us-sled`,              priority: 0.8, changeFrequency: "monthly" },
   { url: `${BASE}/ai-transformation`,    priority: 0.8, changeFrequency: "monthly" },
   { url: `${BASE}/mobile-dev`,           priority: 0.8, changeFrequency: "monthly" },
   { url: `${BASE}/cloud-devops`,         priority: 0.8, changeFrequency: "monthly" },
@@ -72,10 +74,11 @@ async function getTestimonialSlugs(): Promise<string[]> {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [blogSlugs, caseSlugs, testimonialSlugs, vacancySlugs] =
+  const [blogSlugs, caseSlugs, sledSlugs, testimonialSlugs, vacancySlugs] =
     await Promise.all([
       getBlogSlugsAsync().catch(() => [] as string[]),
       getCaseStudySlugsAsync().catch(() => [] as string[]),
+      getSledCaseStudySlugsAsync().catch(() => [] as string[]),
       getTestimonialSlugs(),
       getVacancySlugs(),
     ]);
@@ -89,6 +92,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const caseRoutes: MetadataRoute.Sitemap = caseSlugs.map((slug) => ({
     url: `${BASE}/case-studies/${slug}`,
     priority: 0.75,
+    changeFrequency: "monthly",
+  }));
+
+  const sledRoutes: MetadataRoute.Sitemap = sledSlugs.map((slug) => ({
+    url: `${BASE}/us-sled/${slug}`,
+    priority: 0.6,
     changeFrequency: "monthly",
   }));
 
@@ -108,6 +117,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...staticRoutes,
     ...blogRoutes,
     ...caseRoutes,
+    ...sledRoutes,
     ...testimonialRoutes,
     ...vacancyRoutes,
   ];

@@ -141,6 +141,25 @@ export const contactConfigs: Record<string, ContactConfig> = {
       "Other",
     ],
   },
+  "us-sled": {
+    badge: "U.S. SLED Briefing",
+    heading: "Schedule a\nBriefing",
+    description:
+      "Briefings are 30 minutes, run by a delivery lead and a U.S.-based account director - not sales. Tell us about the pursuit and we'll respond within one business day.",
+    messagePlaceholder:
+      "Scope, incumbent system, timeline, and where you'd want us to fit...",
+    contextLabel: "Buyer Type",
+    contextFieldType: "select",
+    contextOptions: [
+      "State government",
+      "City / County",
+      "Higher education",
+      "K–12 district",
+      "Municipal utility",
+      "Prime integrator / teaming",
+      "Other",
+    ],
+  },
   "custom-software": {
     badge: "Custom Software",
     heading: "Build\nProduction-Ready\nSoftware",

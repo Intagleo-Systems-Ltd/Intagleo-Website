@@ -28,6 +28,7 @@ const TYPE_ENV_MAP: Record<string, string> = {
   "cloud-devops":          "CONTACT_CLOUD_DEVOPS_EMAILS",
   "ai-ml":                 "CONTACT_AI_ML_EMAILS",
   "custom-software":       "CONTACT_CUSTOM_SOFTWARE_EMAILS",
+  "us-sled":               "CONTACT_US_SLED_EMAILS",
 };
 
 function getNotifyEmails(type?: string): string[] {

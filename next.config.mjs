@@ -19,6 +19,15 @@ const nextConfig = {
     ],
     formats: ["image/avif", "image/webp"],
   },
+  async redirects() {
+    return [
+      {
+        source: "/ussled",
+        destination: "/us-sled",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

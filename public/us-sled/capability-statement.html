@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Capability Statement · Intagleo Systems U.S. Public Sector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#070b14; --bg-2:#0a1020; --panel:#0d1426; --panel-2:#101a30;
+    --line:rgba(255,255,255,.10); --line-2:rgba(255,255,255,.16);
+    --ink:#f4f7fc; --ink-2:#aeb9cf; --ink-3:#76829c;
+    --accent:#3457a6; --red:#B22234; --green:#3a9d63;
+  }
+  *{box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+  @page{ size:Letter; margin:0 }
+  html,body{margin:0;padding:0;background:#05080f}
+  body{font-family:"IBM Plex Sans",system-ui,sans-serif;color:var(--ink)}
+  h1,h2,h3{font-family:"Archivo",sans-serif;margin:0;letter-spacing:-.02em;font-weight:800;line-height:1.05}
+  p{margin:0}
+  .mono{font-family:"IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-3)}
+  .star{display:inline-block;width:8px;height:8px;background:var(--red);flex:0 0 8px;margin-top:4px;
+    clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+
+  .page{width:8.5in;min-height:11in;margin:0 auto;background:var(--bg);
+    background-image:radial-gradient(900px 380px at 88% -6%,rgba(28,58,143,.20),transparent 60%);
+    display:flex;flex-direction:column;padding:0.42in 0.5in 0.4in;position:relative}
+  .topstripe{position:absolute;top:0;left:0;right:0;height:5px;
+    background:linear-gradient(90deg,var(--red) 0 33%,#fff 33% 66%,var(--accent) 66% 100%)}
+
+  /* header */
+  .head{display:flex;justify-content:space-between;align-items:flex-start;
+    border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:14px}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand img{height:34px;width:auto;display:block}
+  .brand .div{width:1px;height:30px;background:var(--line-2)}
+  .brand .sub{font-family:"IBM Plex Mono";font-size:8.5px;line-height:1.4;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--ink-3)}
+  .head-right{text-align:right}
+  .head-right h1{font-size:21px;color:#fff}
+  .head-right .mono{font-size:9px;margin-top:5px;display:block}
+
+  .tagline{font-family:"Archivo";font-weight:700;font-size:15px;color:var(--ink);
+    line-height:1.3;letter-spacing:-.01em;margin-bottom:6px}
+  .tagline .hl{border-bottom:3px solid var(--red);padding-bottom:1px}
+  .lede{color:var(--ink-2);font-size:10px;line-height:1.55;margin-bottom:13px;max-width:7in}
+
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);border-radius:5px;overflow:hidden;margin-bottom:15px}
+  .stat{background:var(--bg);padding:11px 12px;position:relative}
+  .stat::before{content:"";position:absolute;left:0;top:0;width:3px;height:20px;background:var(--red)}
+  .stat b{font-family:"Archivo";font-size:24px;font-weight:900;display:block;line-height:1;letter-spacing:-.03em}
+  .stat span{color:var(--ink-2);font-size:8.5px;margin-top:5px;display:block;line-height:1.3}
+
+  /* two columns */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1}
+  .block{margin-bottom:14px}
+  .label{display:flex;align-items:center;gap:8px;font-family:"IBM Plex Mono";font-size:9px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);margin-bottom:9px}
+  .label::before{content:"";width:18px;height:2px;background:var(--red);border-radius:2px}
+
+  .comp{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+  .comp li{display:flex;gap:9px;font-size:10.5px;color:var(--ink);align-items:flex-start}
+  .comp li b{font-weight:600}
+
+  .diff{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+  .diff li{display:flex;gap:9px;font-size:9.5px;color:var(--ink-2);line-height:1.4}
+  .diff li b{color:#fff;font-weight:600}
+
+  .tags{display:flex;flex-wrap:wrap;gap:5px}
+  .tag{font-family:"IBM Plex Mono";font-size:9px;letter-spacing:.03em;color:var(--ink-2);
+    background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:5px;padding:4px 8px}
+  .tag.held{border-color:rgba(58,157,99,.4)}
+  .tag.held::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;
+    background:var(--green);margin-right:6px;vertical-align:middle}
+
+  .sectors{font-size:10px;color:var(--ink-2);line-height:1.7}
+  .sectors b{color:var(--ink)}
+
+  .cases{display:flex;flex-direction:column;gap:9px}
+  .case{background:var(--panel);border:1px solid var(--line);border-left:2px solid var(--red);
+    border-radius:5px;padding:11px 13px}
+  .case .ch{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px}
+  .case .ref{font-family:"IBM Plex Mono";font-size:8px;letter-spacing:.1em;color:var(--ink-3)}
+  .case h3{font-size:11.5px;color:#fff;margin-bottom:7px;line-height:1.2}
+  .case .m{display:flex;gap:14px}
+  .case .m div{display:flex;flex-direction:column}
+  .case .m b{font-family:"Archivo";font-size:14px;font-weight:800;color:#fff;line-height:1}
+  .case .m span{font-size:7.5px;color:var(--ink-3);margin-top:3px;text-transform:uppercase;letter-spacing:.05em}
+
+  .data{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:9.5px}
+  .data dt{font-family:"IBM Plex Mono";font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap}
+  .data dd{margin:0;color:var(--ink);font-family:"IBM Plex Mono";font-size:9.5px}
+
+  /* contact footer */
+  .contact{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:1px;background:var(--line);
+    border:1px solid var(--line-2);border-radius:5px;overflow:hidden;margin-top:auto}
+  .contact > div{background:var(--bg-2);padding:11px 14px}
+  .contact dt{font-family:"IBM Plex Mono";font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+  .contact dd{margin:0;font-size:10.5px;color:var(--ink)}
+  .contact dd.small{font-size:9.5px;color:var(--ink-2);line-height:1.45}
+  .footnote{display:flex;justify-content:space-between;align-items:center;margin-top:9px;
+    font-family:"IBM Plex Mono";font-size:8px;letter-spacing:.06em;color:var(--ink-3)}
+  .flag{width:24px;height:13px;border-radius:2px;overflow:hidden;display:block;object-fit:cover;
+    box-shadow:0 0 0 1px var(--line)}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topstripe"></div>
+
+  <div class="head">
+    <div class="brand">
+      <img src="/us-sled/intagleo-logo.png" alt="Intagleo Systems" />
+      <span class="div"></span>
+      <span class="sub">U.S. Public<br/>Sector Practice</span>
+    </div>
+    <div class="head-right">
+      <h1>Capability Statement</h1>
+      <span class="mono">State · Local · Education · 2026</span>
+    </div>
+  </div>
+
+  <p class="tagline">A senior engineering firm built to serve as a reliable sub on
+    <span class="hl">U.S. SLED prime contracts.</span></p>
+  <p class="lede">Intagleo Systems is a 22-year software engineering firm with a U.S. office in San Jose,
+    California. We modernize legacy systems, migrate state agencies to the cloud, and rebuild
+    citizen-facing services for state, local, and education buyers — bringing 200+ senior engineers
+    across four delivery centers and 150+ shipped government engagements to our prime partners.</p>
+
+  <div class="stats">
+    <div class="stat"><b>22+</b><span>Years Operating</span></div>
+    <div class="stat"><b>200+</b><span>Engineers on Bench</span></div>
+    <div class="stat"><b>150+</b><span>Engagements Shipped</span></div>
+    <div class="stat"><b>99%</b><span>On-Time Delivery</span></div>
+  </div>
+
+  <div class="cols">
+    <!-- LEFT -->
+    <div class="col">
+      <div class="block">
+        <div class="label">Core Competencies</div>
+        <ul class="comp">
+          <li><span class="star"></span><div><b>Legacy System Modernization</b> — mainframe, AS/400, and .NET monoliths into service-oriented architectures</div></li>
+          <li><span class="star"></span><div><b>Agency Cloud Migration</b> — StateRAMP-aligned moves to AWS GovCloud &amp; Azure Government</div></li>
+          <li><span class="star"></span><div><b>State IT Strategic Planning</b> — multi-year roadmaps and enterprise architecture</div></li>
+          <li><span class="star"></span><div><b>Government Customer Experience</b> — WCAG 2.1 AA citizen-facing portals &amp; benefits workflows</div></li>
+          <li><span class="star"></span><div><b>State Data Governance</b> — classification, MDM, and privacy controls</div></li>
+          <li><span class="star"></span><div><b>Capture &amp; Proposal Support</b> — past-performance write-ups and staffing plans</div></li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <div class="label">Sectors Served</div>
+        <p class="sectors"><b>State Government</b> · <b>Cities &amp; Counties</b> · <b>Higher Education</b> ·
+          <b>K–12 Districts</b> · <b>Municipal Utilities</b></p>
+      </div>
+
+      <div class="block">
+        <div class="label">Past Performance</div>
+        <div class="cases">
+          <div class="case">
+            <div class="ch"><span class="ref">CASE 001</span></div>
+            <h3>Citizen services portal rebuild — City of Englewood, Colorado</h3>
+            <div class="m">
+              <div><b>$300K</b><span>Engagement Value</span></div>
+              <div><b>90d</b><span>Parallel Run</span></div>
+              <div><b>41%</b><span>Ticket Reduction</span></div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="ch"><span class="ref">CASE 002</span></div>
+            <h3>State agency legacy decommission &amp; cloud lift</h3>
+            <div class="m">
+              <div><b>1.4M</b><span>Residents Served</span></div>
+              <div><b>18wk</b><span>Award → GA</span></div>
+              <div><b>0</b><span>Unplanned Outages</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="col">
+      <div class="block">
+        <div class="label">Differentiators</div>
+        <ul class="diff">
+          <li><span class="star"></span><div><b>Senior engineers stay on the work.</b> No bait-and-switch staffing; the proposal team is delivery-accountable.</div></li>
+          <li><span class="star"></span><div><b>Follow-the-sun delivery.</b> Four centers across three time zones own incidents around the clock.</div></li>
+          <li><span class="star"></span><div><b>Built to be sub-able.</b> Work-for-hire IP by default, fast NDA intake, capture artifacts on request.</div></li>
+          <li><span class="star"></span><div><b>Twenty-two years, three cycles.</b> Operational stability through 2008, COVID, and today.</div></li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <div class="label">Compliance &amp; Certifications</div>
+        <div class="tags">
+          <span class="tag held">ISO 27001</span>
+          <span class="tag held">SOC 2 Type II</span>
+          <span class="tag held">CMMI Level 3</span>
+          <span class="tag held">HIPAA</span>
+          <span class="tag held">WCAG 2.1 AA</span>
+          <span class="tag">StateRAMP-aligned</span>
+          <span class="tag">CMMC roadmap 2026</span>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="label">Company Data</div>
+        <dl class="data">
+          <dt>NAICS</dt><dd>541512 · 541511 · 541519</dd>
+          <dt>NIGP</dt><dd>918-24 · 918-00 · 918-46</dd>
+          <dt>Founded</dt><dd>2004 · San Jose, CA</dd>
+          <dt>Registration</dt><dd>SAM.gov registered</dd>
+          <dt>UEI / CAGE</dt><dd>Available on request</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact">
+    <div>
+      <dt>Practice Lead</dt>
+      <dd>Asad Ijaz</dd>
+      <dd class="small">Director, U.S. SLED</dd>
+    </div>
+    <div>
+      <dt>Email</dt>
+      <dd class="small">sled@intagleo.com</dd>
+      <dt style="margin-top:8px">Web</dt>
+      <dd class="small">intagleo.com/us-sled</dd>
+    </div>
+    <div>
+      <dt>U.S. Office</dt>
+      <dd class="small">2670 S White Rd, Ste 125<br/>San Jose, CA 95148</dd>
+    </div>
+  </div>
+
+  <div class="footnote">
+    <span>© 2026 Intagleo Systems, Inc. · Capability Statement · Verifiable on request.</span>
+    <img class="flag" src="/us-sled/us-flag.svg" alt="" />
+  </div>
+</div>
+</body>
+</html>
