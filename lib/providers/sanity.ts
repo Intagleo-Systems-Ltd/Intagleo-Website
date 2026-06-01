@@ -1,5 +1,5 @@
 import { createClient } from "@sanity/client";
-import type { BlogPost, CaseStudy, Testimonial, Vacancy } from "@/lib/content";
+import type { BlogPost, CaseStudy, SledCaseStudy, Testimonial, Vacancy } from "@/lib/content";
 import type { ContentProvider } from "./interface";
 
 let _client: ReturnType<typeof createClient> | null = null;
@@ -48,6 +48,14 @@ const testimonialFields = `
   name, title, company, quote,
   "photo": photo.asset->url,
   show_on_homepage
+`;
+
+const sledCaseStudyFields = `
+  "slug": slug.current,
+  title, contractType, customer, value,
+  "pdf_url": pdf.asset->url,
+  "pdf_name": pdf.asset->originalFilename,
+  seo_description, order
 `;
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -170,6 +178,29 @@ export async function getCaseStudyBySlugAsync(slug: string): Promise<CaseStudy |
 
 export async function getCaseStudySlugsAsync(): Promise<string[]> {
   const results = await getClient().fetch<{ slug: string }[]>(`*[_type == "caseStudy"] { "slug": slug.current }`);
+  return results.map((r) => r.slug);
+}
+
+// ── US SLED Case Studies ──────────────────────────────────────────────────────
+
+export async function getAllSledCaseStudiesAsync(): Promise<SledCaseStudy[]> {
+  return getClient().fetch<SledCaseStudy[]>(
+    `*[_type == "sledCaseStudy"] | order(order asc, _createdAt desc) { ${sledCaseStudyFields} }`
+  );
+}
+
+export async function getSledCaseStudyBySlugAsync(slug: string): Promise<SledCaseStudy | null> {
+  const result = await getClient().fetch<SledCaseStudy>(
+    `*[_type == "sledCaseStudy" && slug.current == $slug][0] { ${sledCaseStudyFields} }`,
+    { slug }
+  );
+  return result ?? null;
+}
+
+export async function getSledCaseStudySlugsAsync(): Promise<string[]> {
+  const results = await getClient().fetch<{ slug: string }[]>(
+    `*[_type == "sledCaseStudy" && defined(slug.current)] { "slug": slug.current }`
+  );
   return results.map((r) => r.slug);
 }
 

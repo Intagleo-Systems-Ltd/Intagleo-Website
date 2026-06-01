@@ -19,6 +19,7 @@ export default defineConfig({
             S.listItem().title("Blog Posts").schemaType("blogPost").child(S.documentTypeList("blogPost")),
             S.listItem().title("Case Studies").schemaType("caseStudy").child(S.documentTypeList("caseStudy")),
             S.listItem().title("Testimonials").schemaType("testimonial").child(S.documentTypeList("testimonial")),
+            S.listItem().title("US SLED Case Studies").schemaType("sledCaseStudy").child(S.documentTypeList("sledCaseStudy")),
           ]),
     }),
     markdownPlugin(),

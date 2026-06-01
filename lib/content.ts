@@ -37,6 +37,18 @@ export interface CaseStudy {
   body: PortableTextBlock[] | string;
 }
 
+export interface SledCaseStudy {
+  slug: string;
+  title: string;
+  contractType?: string;
+  customer?: string;
+  value?: string;
+  pdf_url?: string;
+  pdf_name?: string;
+  seo_description?: string;
+  order?: number;
+}
+
 export interface Testimonial {
   slug: string;
   name: string;
