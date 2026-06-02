@@ -155,10 +155,18 @@ export default function SledBriefingForm() {
       full?: boolean;
       type?: "select" | "textarea";
       inputType?: string;
+      autoComplete?: string;
     } = {}
   ) => {
     const id = "bf-" + k;
+    const errId = id + "-err";
     const invalid = !!err[k];
+    // Shared a11y wiring so screen readers announce required + error state.
+    const aria = {
+      "aria-required": opts.req || undefined,
+      "aria-invalid": invalid || undefined,
+      "aria-describedby": invalid ? errId : undefined,
+    } as const;
     return (
       <div className={"field" + (opts.full ? " field-full" : "")}>
         <label htmlFor={id} className="mono-label">
@@ -171,6 +179,8 @@ export default function SledBriefingForm() {
             className={"ipt ipt-select" + (invalid ? " ipt-invalid" : "")}
             value={f[k]}
             onChange={set(k)}
+            autoComplete={opts.autoComplete}
+            {...aria}
           >
             <option value="" disabled>
               Select…
@@ -189,6 +199,8 @@ export default function SledBriefingForm() {
             placeholder={opts.ph}
             value={f[k]}
             onChange={set(k)}
+            autoComplete={opts.autoComplete}
+            {...aria}
           />
         ) : (
           <input
@@ -198,9 +210,15 @@ export default function SledBriefingForm() {
             placeholder={opts.ph}
             value={f[k]}
             onChange={set(k)}
+            autoComplete={opts.autoComplete}
+            {...aria}
           />
         )}
-        {invalid && <span className="field-err">{err[k]}</span>}
+        {invalid && (
+          <span className="field-err" id={errId} role="alert">
+            {err[k]}
+          </span>
+        )}
       </div>
     );
   };
@@ -219,10 +237,22 @@ export default function SledBriefingForm() {
         </span>
       </div>
       <form className="form-grid" onSubmit={submit} noValidate>
-        {field("name", "Full name", { req: true, ph: "Jane Carter" })}
-        {field("email", "Work email", { req: true, inputType: "email", ph: "jcarter@state.gov" })}
-        {field("org", "Agency / Organization", { req: true, ph: "Dept. of Health & Human Services" })}
-        {field("role", "Role / Title", { ph: "Procurement Officer (optional)" })}
+        {field("name", "Full name", { req: true, ph: "Jane Carter", autoComplete: "name" })}
+        {field("email", "Work email", {
+          req: true,
+          inputType: "email",
+          ph: "jcarter@state.gov",
+          autoComplete: "email",
+        })}
+        {field("org", "Agency / Organization", {
+          req: true,
+          ph: "Dept. of Health & Human Services",
+          autoComplete: "organization",
+        })}
+        {field("role", "Role / Title", {
+          ph: "Procurement Officer (optional)",
+          autoComplete: "organization-title",
+        })}
         {field("sector", "Buyer type", { req: true, type: "select" })}
         {field("vehicle", "Vehicle / RFP #", { ph: "RFP 26-022 (optional)" })}
         {field("message", "What's the pursuit?", {
@@ -246,7 +276,9 @@ export default function SledBriefingForm() {
 
         {submitError && (
           <div className="field-full">
-            <span className="field-err">{submitError}</span>
+            <span className="field-err" role="alert">
+              {submitError}
+            </span>
           </div>
         )}
 

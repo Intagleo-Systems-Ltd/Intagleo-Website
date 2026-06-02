@@ -61,6 +61,14 @@ function Counter({ value, suffix }: { value: number; suffix?: string }) {
   const [n, setN] = useState(0);
   useEffect(() => {
     if (!seen) return;
+    // Respect reduced-motion: show the final value immediately, no count-up.
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      setN(value);
+      return;
+    }
     const dur = 1400;
     const t0 = performance.now();
     let raf = 0;
@@ -84,11 +92,21 @@ function Counter({ value, suffix }: { value: number; suffix?: string }) {
 /* ---- nav ---- */
 function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", on, { passive: true });
     return () => window.removeEventListener("scroll", on);
   }, []);
+  // Close the mobile menu on Escape for keyboard users.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
   const links: [string, string][] = [
     ["Services", "#services"],
     ["Sectors", "#sectors"],
@@ -98,6 +116,9 @@ function Nav() {
   ];
   return (
     <>
+      <a href="#main-content" className="sled-skip">
+        Skip to main content
+      </a>
       <div className="topbar">
         <div className="wrap topbar-in">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -125,7 +146,7 @@ function Nav() {
               Sector
             </span>
           </a>
-          <nav className="nav-links">
+          <nav className="nav-links" aria-label="Section navigation">
             {links.map(([t, h]) => (
               <a key={h} href={h}>
                 {t}
@@ -135,6 +156,34 @@ function Nav() {
           <a href="#contact" className="btn btn-primary nav-cta">
             Schedule a Briefing
           </a>
+          <button
+            type="button"
+            className={"nav-burger" + (menuOpen ? " is-open" : "")}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="sled-mobile-menu"
+            onClick={() => setMenuOpen((o) => !o)}
+          >
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+          </button>
+        </div>
+        <div id="sled-mobile-menu" className="nav-mobile" hidden={!menuOpen}>
+          <nav className="nav-mobile-links" aria-label="Section navigation">
+            {links.map(([t, h]) => (
+              <a key={h} href={h} onClick={() => setMenuOpen(false)}>
+                {t}
+              </a>
+            ))}
+            <a
+              href="#contact"
+              className="btn btn-primary nav-mobile-cta"
+              onClick={() => setMenuOpen(false)}
+            >
+              Schedule a Briefing →
+            </a>
+          </nav>
         </div>
       </header>
     </>
@@ -509,24 +558,35 @@ function Briefing() {
   );
 }
 
+type FooterItem = { label: string; href?: string; external?: boolean };
+
 function Footer() {
-  const cols = [
+  const cols: { h: string; items: FooterItem[] }[] = [
     {
       h: "Procurement Codes",
-      items: naics.map((n) => "NAICS " + n).concat(nigp.map((n) => "NIGP " + n)),
+      items: naics
+        .map((n) => ({ label: "NAICS " + n }))
+        .concat(nigp.map((n) => ({ label: "NIGP " + n }))),
     },
     {
       h: "SLED Practice",
-      items: ["Services", "SLED Sectors", "Past Performance", "Teaming", "Compliance", "Schedule a Briefing"],
+      items: [
+        { label: "Services", href: "#services" },
+        { label: "SLED Sectors", href: "#sectors" },
+        { label: "Past Performance", href: "#work" },
+        { label: "Teaming", href: "#teaming" },
+        { label: "Compliance", href: "#compliance" },
+        { label: "Schedule a Briefing", href: "#contact" },
+      ],
     },
     {
       h: "Intagleo Worldwide",
       items: [
-        "intagleo.com (Corporate)",
-        "London, United Kingdom",
-        "Dubai, United Arab Emirates",
-        "Lahore, Delivery Center",
-        "Careers",
+        { label: "intagleo.com (Corporate)", href: "https://www.intagleo.com/", external: true },
+        { label: "London, United Kingdom" },
+        { label: "Dubai, United Arab Emirates" },
+        { label: "Lahore, Delivery Center" },
+        { label: "Careers", href: "/join-us" },
       ],
     },
   ];
@@ -559,8 +619,19 @@ function Footer() {
               <h4>{col.h}</h4>
               <ul>
                 {col.items.map((it) => (
-                  <li key={it}>
-                    <a href="#">{it}</a>
+                  <li key={it.label}>
+                    {it.href ? (
+                      <a
+                        href={it.href}
+                        {...(it.external
+                          ? { target: "_blank", rel: "noopener noreferrer" }
+                          : {})}
+                      >
+                        {it.label}
+                      </a>
+                    ) : (
+                      <span className="footer-static">{it.label}</span>
+                    )}
                   </li>
                 ))}
               </ul>
