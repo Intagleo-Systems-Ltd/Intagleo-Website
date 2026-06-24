@@ -43,6 +43,8 @@ export interface SledCaseStudy {
   contractType?: string;
   customer?: string;
   value?: string;
+  cover_image?: string;
+  cover_alt?: string;
   pdf_url?: string;
   pdf_name?: string;
   seo_description?: string;

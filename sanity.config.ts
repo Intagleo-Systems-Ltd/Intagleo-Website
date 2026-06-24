@@ -10,8 +10,12 @@ export default defineConfig({
   title: "Intagleo CMS",
   basePath: "/studio",
 
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET ?? "production",
+  // `sanity dev`/`deploy` (Vite) only expose SANITY_STUDIO_* env — NEXT_PUBLIC_* is undefined there,
+  // so fall back to the committed project values (same as sanity.cli.ts) to keep the Studio bootable.
+  projectId:
+    process.env.SANITY_STUDIO_PROJECT_ID ?? process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? "212gkasf",
+  dataset:
+    process.env.SANITY_STUDIO_DATASET ?? process.env.NEXT_PUBLIC_SANITY_DATASET ?? "production",
 
   plugins: [
     structureTool({
