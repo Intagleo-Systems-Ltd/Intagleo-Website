@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import "../sled.css";
+import "../../us-sled2/sled2.css";
 import { sledFontClass } from "../fonts";
 import {
   getSledCaseStudyBySlugAsync,
@@ -123,11 +123,9 @@ export default async function SledCaseStudyDetail({ params }: Props) {
         </section>
       </main>
 
-      <footer className="footer">
-        <div className="footer-stripe" aria-hidden="true" />
+      <footer className="footer" style={{ padding: "48px 0 0" }}>
         <div className="wrap footer-bottom">
-          <span>© 2026 Intagleo Systems, Inc. · All rights reserved.</span>
-          <span className="footer-flag" aria-hidden="true" />
+          <span>© 2026 Intagleo Systems | All rights reserved.</span>
         </div>
       </footer>
     </div>

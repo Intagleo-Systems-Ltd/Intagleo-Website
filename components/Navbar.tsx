@@ -55,6 +55,18 @@ const serviceLinks = [
 
 const industryLinks: { label: string; href: string; desc: string; icon: React.ReactNode }[] = [
   {
+    label: "U.S. Public Sector",
+    href: "/us-sled",
+    desc: "Engineering partner for state, local, and education (SLED) agencies.",
+    icon: (
+      <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4 flex-shrink-0">
+        <path d="M10 2l7 4H3l7-4z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+        <path d="M5 6v8M8 6v8M12 6v8M15 6v8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        <path d="M2.5 17h15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      </svg>
+    ),
+  },
+  {
     label: "Digital Signage",
     href: "/digital-signage",
     desc: "High-performance software for signage networks at scale.",

@@ -53,6 +53,8 @@ const testimonialFields = `
 const sledCaseStudyFields = `
   "slug": slug.current,
   title, contractType, customer, value,
+  "cover_image": coverImage.asset->url,
+  "cover_alt": coverImage.alt,
   "pdf_url": pdf.asset->url,
   "pdf_name": pdf.asset->originalFilename,
   seo_description, order

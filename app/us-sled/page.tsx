@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import "./sled.css";
+import "../us-sled2/sled2.css";
 import { sledFontClass } from "./fonts";
-import SledPage from "@/components/us-sled/SledPage";
+import SledLanding from "@/components/us-sled2/SledLanding";
 import { getAllSledCaseStudiesAsync } from "@/lib/providers/sanity";
 import type { SledCaseStudy } from "@/lib/content";
 
@@ -24,7 +24,7 @@ export default async function UsSledPage() {
 
   return (
     <div className={`sled-root ${sledFontClass}`}>
-      <SledPage cases={cases} />
+      <SledLanding cases={cases} />
     </div>
   );
 }

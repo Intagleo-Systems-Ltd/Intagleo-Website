@@ -38,3 +38,11 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .gstack/
+
+# sanity studio dev cache + build output
+.sanity/
+/dist
+
+# python bytecode (skills)
+__pycache__/
+*.pyc

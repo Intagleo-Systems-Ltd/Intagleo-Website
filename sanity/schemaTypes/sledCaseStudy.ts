@@ -17,6 +17,21 @@ export const sledCaseStudy = defineType({
     defineField({ name: "customer", title: "Customer", type: "string" }),
     defineField({ name: "value", title: "Value", type: "string" }),
     defineField({
+      name: "coverImage",
+      title: "Cover Image",
+      type: "image",
+      description: "Card cover shown on the US SLED landing page.",
+      options: { hotspot: true },
+      fields: [
+        defineField({
+          name: "alt",
+          title: "Alt text",
+          type: "string",
+          description: "Describe the image for screen readers.",
+        }),
+      ],
+    }),
+    defineField({
       name: "pdf",
       title: "Attached PDF Document",
       type: "file",
@@ -32,6 +47,6 @@ export const sledCaseStudy = defineType({
     defineField({ name: "seo_description", title: "SEO Description", type: "text", rows: 2 }),
   ],
   preview: {
-    select: { title: "title", subtitle: "customer" },
+    select: { title: "title", subtitle: "customer", media: "coverImage" },
   },
 });

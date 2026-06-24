@@ -40,6 +40,7 @@ const serviceColumns = [
 ];
 
 const industryLinks = [
+  { label: "U.S. Public Sector", href: "/us-sled" },
   { label: "Digital Signage", href: "/digital-signage" },
   { label: "Facilities Management", href: "/facilities-management" },
   { label: "E-Commerce & Retail", href: "/ecommerce-retail" },

@@ -1,0 +1,28 @@
+/* Generated from Figma Variables. First mode = :root default. */
+:root {
+  --background-positive-secondary-hover: var(--green-300);
+  --color-cyan-50: rgb(2,232,255);
+  --color-grey-95-4: rgba(242,244,245,0.04);
+  --color-magenta-52: rgb(212,9,254);
+  --color-spring-green-51: rgb(47,212,141);
+  --gray-900: rgb(30,30,30);
+  --green-200: rgb(207,247,211);
+  --green-300: rgb(175,244,198);
+  --green-800: rgb(2,84,45);
+  --green-900: rgb(2,64,35);
+  --icon-default-default: var(--gray-900);
+  --icon-neutral-on-neutral: var(--slate-100);
+  --intagleo-blue: rgb(93,164,255);
+  --item-spacing-22-5: 22.5;
+  --slate-1000: rgb(36,36,36);
+  --slate-100: rgb(243,243,243);
+  --text-positive-default: var(--green-800);
+  --white-1000: rgb(255,255,255);
+}
+
+:root[data-theme="dark"], .dark {
+  --background-positive-secondary-hover: var(--green-900);
+  --icon-default-default: var(--white-1000);
+  --icon-neutral-on-neutral: var(--slate-1000);
+  --text-positive-default: var(--green-200);
+}
