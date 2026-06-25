@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node server.js",
     "lint": "next lint",
     "cms:migrate": "tsx scripts/migrate-to-sanity.ts",
     "cms:revert": "tsx scripts/revert-to-files.ts",
