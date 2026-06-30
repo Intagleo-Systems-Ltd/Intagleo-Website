@@ -7,6 +7,13 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
+    // Self-hosted (Hostinger/Passenger): the built-in Next image optimizer
+    // fetches + processes each remote image in-process, which is unreliable on
+    // shared hosting (timeouts / memory / upstream rate-limiting) and caused
+    // intermittently broken cover images. The remote sources (Unsplash, Sanity
+    // CDN) already serve optimized WebP/AVIF via their own `auto=format` CDNs,
+    // so we serve originals directly instead of re-optimizing on the server.
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
