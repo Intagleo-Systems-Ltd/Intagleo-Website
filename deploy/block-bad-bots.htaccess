@@ -1,0 +1,37 @@
+# =============================================================================
+# Server-level bad-bot blocklist  —  Hostinger (LiteSpeed / Apache .htaccess)
+# =============================================================================
+# robots.txt only deters POLITE crawlers. This returns 403 to abusive bots by
+# User-Agent at the web-server layer, so they never reach the Node process —
+# stopping the request volume that blew past Vercel's edge-request limit.
+#
+# HOW TO INSTALL (do NOT replace the Passenger file):
+#   1. Deploy the app via hPanel "Setup Node.js App" first — it auto-generates
+#      an .htaccess in your app root containing a "# Passenger" / PassengerApp
+#      block. Leave that block exactly as-is.
+#   2. APPEND the rules below to the BOTTOM of that generated .htaccess.
+#   3. Save. No restart needed — .htaccess is read per-request.
+#
+# To verify after install:
+#   curl -A "Bytespider" -I https://intagleo.com/      # expect: HTTP/.. 403
+#   curl -A "Mozilla/5.0" -I https://intagleo.com/      # expect: HTTP/.. 200
+# =============================================================================
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Abusive/high-volume scrapers + SEO crawlers (no referral value).
+  RewriteCond %{HTTP_USER_AGENT} (Bytespider|Amazonbot|Diffbot|CCBot|PetalBot|DataForSeoBot|AhrefsBot|SemrushBot|MJ12bot|DotBot|BLEXBot|MauiBot|Applebot-Extended|Google-Extended|meta-externalagent|ClaudeBot-Training|GPTBot) [NC]
+  RewriteRule .* - [F,L]
+
+  # Blank / generic script user-agents often used by scrapers.
+  RewriteCond %{HTTP_USER_AGENT} ^(python-requests|Scrapy|curl|Wget|Go-http-client|libwww-perl|Java/)  [NC]
+  RewriteRule .* - [F,L]
+</IfModule>
+
+# Notes:
+# - Keep this list in sync with public/robots.txt.
+# - GPTBot is included here as a heavy training crawler. If you want to KEEP it
+#   for AI-search visibility, remove "GPTBot" from the first RewriteCond.
+# - "curl" is blocked above; remove it from the second condition if you rely on
+#   curl-based uptime checks against the public site.
