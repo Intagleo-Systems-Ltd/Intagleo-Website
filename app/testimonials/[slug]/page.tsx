@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 export const revalidate = 60;
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 // ─── Static paths ──────────────────────────────────────────────────────────────
@@ -21,7 +21,8 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const testimonials = await getAllTestimonialsAsync();
-  const testimonial = testimonials.find((t) => t.slug === params.slug);
+  const { slug } = await params;
+  const testimonial = testimonials.find((t) => t.slug === slug);
   if (!testimonial) return {};
 
   return {
@@ -46,7 +47,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function TestimonialPage({ params }: Props) {
   const testimonials = await getAllTestimonialsAsync();
-  const testimonial = testimonials.find((t) => t.slug === params.slug);
+  const { slug } = await params;
+  const testimonial = testimonials.find((t) => t.slug === slug);
   if (!testimonial) notFound();
 
   return (

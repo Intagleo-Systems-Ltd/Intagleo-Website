@@ -50,12 +50,12 @@ const stats = [
   { value: "20+", label: "Years shipping" },
 ];
 
-export default function ContactPage({
+export default async function ContactPage({
   searchParams,
 }: {
-  searchParams: { type?: string };
+  searchParams: Promise<{ type?: string }>;
 }) {
-  const type = searchParams.type ?? "general";
+  const type = (await searchParams).type ?? "general";
   const config = getContactConfig(type);
   const headingLines = config.heading.split("\n");
 

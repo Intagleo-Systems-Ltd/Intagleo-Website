@@ -38,6 +38,18 @@ Cleared ~10 transitive advisories without touching next/react/sanity majors.
 
 ---
 
+## ✅ Tier 2 — Next.js 15 migration (DONE on branch `next15-upgrade`)
+**Outcome:** `next` 14.2.35 → **15.5.20**, `eslint-config-next` → 15. **React stayed
+on 18** — Next 15.5 accepts React 18 as a peer, so no React 19 churn and no
+`react-google-recaptcha` peer conflict. `params`/`searchParams` made async in the
+6 dynamic surfaces. Verified: build (123 pages, no warnings), driver 14/14, all
+dynamic routes (`/blog/[slug]`, `/testimonials/[slug]`, `/join-us/[slug]`,
+`/case-studies/[slug]`) + `/contact?type=` wired, screenshot visually identical.
+The `next` advisory dropped **high → moderate**. **Not yet merged to `main`** —
+deploy/merge is a deliberate step (test on Hostinger staging first).
+
+<details><summary>Original plan (for reference)</summary>
+
 ## Tier 2 — Next.js 15 migration (the main event, ~half day on a branch)
 **Why:** Next **14.2 is end-of-life** — 14.2.35 is the final 14.x release; security
 fixes now land only on 15.x+ (`backport` tag = 15.5.x). The *current* Next CVEs are
@@ -73,6 +85,8 @@ no embedded Studio). Plan:
 18.3 is workable for many App Router apps — spike it on the branch and decide.
 
 ---
+
+</details>
 
 ## Tier 3 — Accept & document (no action, revisit later)
 - **`sanity` v6 (moderate: prismjs/refractor/dompurify/@sanity/uuid).** Do **not**

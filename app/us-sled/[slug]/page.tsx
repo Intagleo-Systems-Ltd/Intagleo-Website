@@ -13,7 +13,7 @@ export const revalidate = 60;
 const LOGO = "/us-sled/intagleo-logo.png";
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -26,7 +26,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const study = await getSledCaseStudyBySlugAsync(params.slug);
+  const { slug } = await params;
+  const study = await getSledCaseStudyBySlugAsync(slug);
   if (!study) return {};
   const description =
     study.seo_description ||
@@ -39,7 +40,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function SledCaseStudyDetail({ params }: Props) {
-  const study = await getSledCaseStudyBySlugAsync(params.slug);
+  const { slug } = await params;
+  const study = await getSledCaseStudyBySlugAsync(slug);
   if (!study) notFound();
 
   const meta = [
