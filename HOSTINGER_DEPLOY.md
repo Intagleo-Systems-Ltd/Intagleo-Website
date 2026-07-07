@@ -96,6 +96,16 @@ Notes:
   ```bash
   NODE_OPTIONS=--max-old-space-size=2048 npm run build
   ```
+- **After building, shed build-only deps** so they aren't on the live server:
+  ```bash
+  npm prune --omit=dev
+  ```
+  The runtime (`node server.js`) needs only `dependencies`. This removes the
+  build toolchain (tailwind, typescript, eslint) **and the standalone Sanity
+  Studio SDK**, which drops the `@sanity/cli` → `decompress` **critical** off the
+  server. Verified: the site still serves every route after pruning. Runtime
+  audit afterwards is **0 critical / 0 high** (3 non-exploitable moderates).
+  Re-run `npm install` only when you next need to rebuild.
 
 ---
 

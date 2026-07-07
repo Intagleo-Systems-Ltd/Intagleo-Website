@@ -95,15 +95,16 @@ no embedded Studio). Plan:
   what's reachable. Revisit only if Sanity becomes the live CMS.
 - **`uuid` v14 (moderate).** CVE affects v3/v5/v6 when a `buf` arg is passed; this
   app uses only `uuid.v4()` with no buffer → **not exploitable**. Optional cosmetic bump.
-- **`@sanity/cli` / `decompress` (critical — Zip Slip).** Scary label, but
-  `decompress` only runs when the **Sanity CLI** extracts archives; it is never
-  in the website's runtime path (we deploy without invoking the CLI). Pulled in
-  transitively by the `sanity` package and fixable only by Sanity v6. **Future
-  optimization:** the website runtime needs only `@sanity/client` /
-  `@portabletext/react` / `@sanity/image-url` — dropping the full `sanity`
-  package from `dependencies` (it's only needed by the standalone `studio/` and
-  the not-yet-created embedded Studio route) would remove this whole critical
-  chain. Out of scope here; revisit deliberately.
+- ✅ **`@sanity/cli` / `decompress` (critical — Zip Slip) — ADDRESSED.**
+  Confirmed nothing in `app/`/`lib/`/`components/` imports the full `sanity`
+  package (runtime uses only `@sanity/client`), so `sanity` was moved from
+  `dependencies` → `devDependencies` (branch `next15-upgrade`). It's still there
+  for `npm run cms:studio` locally, but the **production deploy runs
+  `npm prune --omit=dev` after the build** (see HOSTINGER_DEPLOY.md), which
+  removes `sanity` → `@sanity/cli` → `decompress` from the server entirely.
+  **Verified:** driver 14/14 against the pruned tree; runtime audit
+  (`npm audit --omit=dev`) = **0 critical / 0 high**, 3 non-exploitable moderates
+  (`next` latest patch, `postcss` build-time, `uuid` v4).
 - **Dev-only tooling** (`esbuild`, `@architect/*`, `eslint`) — never runs in
   production. Bump opportunistically alongside Tier 2.
 
