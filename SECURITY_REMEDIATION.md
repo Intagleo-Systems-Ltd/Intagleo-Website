@@ -110,6 +110,23 @@ no embedded Studio). Plan:
 
 ---
 
+## ✅ Tier 4: Hostinger scan of 2026-11-24 (branch `fix/security-deps`)
+The full log is in [VULN_FIX_LOG.md](VULN_FIX_LOG.md).
+
+What changed:
+- next 15.5.29
+- nodemailer 10
+- sharp 0.35
+- uuid 11
+- **The root `sanity` package is removed** (the Studio is the separate `studio/` package). This supersedes the Tier 3 devDependency move above.
+- Same-major overrides for postcss, postcss-selector-parser and brace-expansion.
+- The Tier 1 cross-major `glob` override is removed.
+- Route-handler `params` are now awaited.
+
+Result: root `npm audit` **49 → 0**; runtime **10 → 0**; `studio/` **37 → 14**, with 0 critical. The 14 that remain need sanity 6 and are dev-only.
+
+The items that still need a decision (eslint 9, Node 22 on Hostinger, gray-matter's js-yaml 3) are listed at the end of the log.
+
 ## Sequencing
 1. Tier 1 now (fast, safe) → commit → redeploy.
 2. Tier 2 on a branch when there's a half-day → verify with the driver → merge → redeploy.

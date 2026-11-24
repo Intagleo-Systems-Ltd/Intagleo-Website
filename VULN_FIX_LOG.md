@@ -138,3 +138,54 @@ Method: a **targeted** `npm update <flagged packages>`, not a blanket `npm updat
 | minimatch → 11 | 3.1.5 via eslint@8 / eslint-plugin-* (dev); 11.0.9 ✅ | 10.2.6 (sanity CLI) | 3.1.5 is outside npm's advisory range (7.0.0–11.0.0), but Hostinger lists it. Clearing it needs **eslint 9** (flat config), which is your decision. |
 | glob → 14 | **7.2.3** (rimraf 3 → flat-cache → eslint 8; outside advisory range) | not flagged | ✅ for npm audit; disappears with eslint 9 |
 | eslint 8 → 9 | 8.57.1 (advisory **withdrawn**; npm audit does not flag it) | — | **Your decision.** Needs a flat-config migration (`eslint.config.mjs`). Not done. |
+
+---
+
+## Next 15: remaining breaking change fixed (route-handler `params`)
+
+The Tier 2 migration made `params` async in **pages**, but **7 route handlers** still read `params` synchronously:
+- `app/api/content/[type]/route.ts`: GET, POST
+- `app/api/content/[type]/[slug]/route.ts`: GET, PUT, DELETE
+- `app/api/auth/users/[id]/route.ts`: PUT, DELETE
+
+They worked only through Next 15's deprecated compatibility shim, which Next 16 removes. Each is now typed as `params: Promise<{…}>` and calls `await params`. There is no behaviour change.
+
+The new `admin-smoke.mjs` proved this with 20/20 passing both **before** the change (through the shim) and **after** it. It includes a check that would fail if `params.id` didn't resolve: a non-admin updating its own id gets 404 when it resolves, and 403 when it doesn't.
+
+---
+
+## Step 4: Final verification
+
+**Test suite** (committed under `.claude/skills/run-intagleo/`):
+
+| Script | What it proves |
+|---|---|
+| `driver.mjs` | 14 core checks |
+| `driver.mjs --all-routes --compare` | All 105 sitemap routes, 4 public APIs, 4 unauthenticated-admin 401 guards (including a check that no file gets written), and the immutable cache header. Diffed against the pre-change snapshot. |
+| `email-smoke.mjs --compare` | nodemailer contact (3 types) and apply (PDF attachment), each producing confirmation and notification messages with Reply-To; validation 400s; captcha rejection. Delivered to a local SMTP sink and diffed against the nodemailer 9 baseline. |
+| `admin-smoke.mjs` | Middleware and JWT (valid and forged tokens), login 400/401, me/users (no hash leak), `[id]` params, and content create/read/update/delete. Throwaway slug, real users untouched. |
+
+**Final results on the final tree (`npm ci` from the committed lockfile):**
+
+| Check | Result |
+|---|---|
+| lint / tsc | 12 / 7, **identical to the baseline** (pre-existing; none in files touched here) |
+| build | 123/123 pages, same warnings as the baseline |
+| route regression vs baseline (full tree / pruned prod / Node 20.20.2) | 114/114, **0 diffs** |
+| email smoke vs baseline | 21/21, **IDENTICAL** |
+| admin smoke | 20/20, with `data/users.json` byte-identical afterwards |
+| Studio `sanity build` | passes before and after |
+| `npm audit` root (full / runtime) | **0 / 0** (was 49 / 10) |
+| `npm audit` studio | **14** (was 37), 0 critical, all only fixable by sanity 6 |
+
+## Remaining findings and decisions for you
+
+| Item | Where | Runtime? | Recommendation |
+|---|---|---|---|
+| **eslint 8 → 9** (clears minimatch@3.1.5 and glob@7, which Hostinger may still list even though npm audit doesn't) | root devDeps | no | Do it as a separate small PR (flat-config migration). The advisory is withdrawn, so it's low priority. |
+| **js-yaml@3.15.2 via gray-matter**: CVE-2026-53550 is only fixed in js-yaml 4.2+ | root | **yes** (files CMS) | Accept. Input is trusted (repo plus authenticated admins). If Hostinger keeps listing it, replace gray-matter with a v4-compatible frontmatter parser in its own PR. |
+| **sanity 5 → 6** (adm-zip, uuid 3/10, minimatch 10, @oclif/*, @sanity/cli*) | `studio/` only | no (never deployed) | Upgrade the Studio to sanity 6 in its own PR when convenient, then run `npm --prefix studio run dev` to check the Studio. |
+| **Hostinger Node version** | server | yes | It must be ≥ 20.9. **Switch to Node 22 LTS**, since Node 20 is EOL. |
+| Next 16 | root | yes | Not needed: 15.5.29 is a supported, patched line, and npm audit reports 0. |
+
+Hostinger also lists a few packages by its own advisory database (minimatch@3, glob@7, js-yaml@3). Expect those to remain after the rescan until the eslint 9 and gray-matter decisions above are made.
