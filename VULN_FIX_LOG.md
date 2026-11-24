@@ -82,3 +82,59 @@ Package manager: **npm** (`package-lock.json`). Local Node 24.16 / npm 11.13. Al
 | route regression vs baseline (Node 24 / Node 20 / **pruned prod**) | 114/114, **0 diffs**, all three runs |
 | email smoke (nodemailer 10) vs baseline (nodemailer 9) | 21/21, output **IDENTICAL**, also on the pruned tree |
 | `npm audit --omit=dev` | 10 → **7** (0 critical / 4 high / 3 moderate). All remaining items are Phase 2 same-major patches. |
+
+---
+
+## Phase 2: Same-major patch bumps
+
+Method: a **targeted** `npm update <flagged packages>`, not a blanket `npm update`, so unrelated app dependencies such as framer-motion and gsap don't drift. After that, **same-major** `overrides` cover only what a parent pins.
+
+| Package | Before → After (every copy) | Method | Status |
+|---|---|---|---|
+| postcss | 8.4.31 (next exact pin) / 8.5.16 → **8.5.33** | direct devDep bump + override `"postcss": "$postcss"` | ✅ |
+| postcss-selector-parser | 6.0.10 (@tailwindcss/typography exact pin; still the pin in its latest release) / 6.1.2 → **6.1.6** | npm update + override `"postcss-selector-parser@6": "^6.1.6"` | ✅ |
+| brace-expansion | 1.1.14 → **1.1.22**; 2.1.x → 2.1.8 then gone; 5.0.6/5.0.7 → **5.1.0** | npm update + override `"brace-expansion@1": "^1.1.22"` | ✅ |
+| js-yaml | 3.15.0 → **3.15.2** (gray-matter, runtime); 4.3.0 → **4.3.2** (eslint) | npm update | ✅ (see Phase 3 for the 4.2-only advisory) |
+| nanoid | 3.3.15 → **3.3.20**; 5.1.15 → gone (sanity) | npm update | ✅ |
+| source-map-js | 1.2.1 → **1.2.4** | npm update | ✅ |
+| esbuild | 0.27.7 → **0.28.2** (tsx); 0.25.x → gone (sanity) | npm update (tsx range allows it) | ✅ |
+| @typescript-eslint/* | 8.x → **8.74.0** | npm update (within eslint-config-next's range) | ✅ |
+| browserslist, baseline-browser-mapping, vite, tar, moment | gone (sanity) | Phase 1 removal | ✅ |
+| **glob** | 10.5.0 (**forced by a Tier 1 cross-major override** onto rimraf@3, which expects glob@^7) → **7.2.3** | **removed** the `"glob": "10.5.0"` override. It broke rule 5, and the forced glob 10 was itself the flagged copy. glob 7 is outside the advisory range (9.0.0–14.0.1). | ✅ |
+| minimatch | 9.0.9 (under forced glob 10) → gone; 10.2.5 → **11.0.9** (typescript-estree update) | follows the two changes above | ✅ for 9/10; see Phase 3 for 3.1.5 |
+| prismjs override | removed (prismjs no longer in the tree) | cleanup | ✅ |
+
+**`studio/` (separate package, own lockfile, not deployed):**
+- Plain `npm audit fix` (never `--force`): sanity 5.21.0 → **5.31.2**, same major, lockfile only.
+- Override `"js-yaml@3": "^3.15.2"` (under @vercel/frameworks).
+- `sanity build` passes before and after.
+- Audit: **37 → 14** (1 critical → **0**). The remaining 14 are only fixed by **sanity 6** (major): adm-zip 0.5.18, uuid 3/10 (typeid-js), minimatch 10.2.6, @oclif/*, @sanity/cli*. See Phase 3.
+
+**Tooling fix:** `tsconfig.json` now excludes `studio/`. It's a separate package with its own toolchain, and without the exclude a clean clone with no `studio/node_modules` would fail root `tsc` on `import "sanity"`. The root sanity v3 used to hide this. The dead `sanity*` excludes are removed.
+
+**Phase 2 gate:**
+
+| Check | Result |
+|---|---|
+| clean `npm ci` | OK, 497 packages |
+| lint / tsc | 12 / 7, identical to the baseline |
+| build | 123/123, same warnings as the baseline |
+| route regression vs baseline (full tree and **pruned prod**) | 114/114, **0 diffs**. This covers every content page, so gray-matter on js-yaml 3.15.2 parses identically. |
+| email smoke vs baseline | 21/21, **IDENTICAL** |
+| `npm audit` (full root lockfile) | **49 → 0** |
+| `npm audit --omit=dev` | **10 → 0** |
+
+---
+
+## Phase 3: Major-version items (nothing force-overridden)
+
+| Package | Root | Studio | Decision |
+|---|---|---|---|
+| adm-zip → 0.6.1 | **gone** (was sanity v3) | 0.5.18 via @sanity/cli → @sanity/runtime-cli. It's part of the Sanity CLI dev tool, never part of the website runtime, and never handles the site's uploads (resume uploads go through `/api/apply` as an email attachment and are never unzipped). | Remaining in studio only. Fixed by **sanity 6**. Not runtime. |
+| zod → 4.x | **gone** | not flagged | ✅ |
+| uuid → 11.1.1 | **11.1.1** (direct, upgraded in Phase 1); 8.x gone | 10.0.0 / 3.0.3 via typeid-js / @sanity/* | Remaining in studio only (sanity 6). The advisory needs `buf` passed to v3/v5/v6, which this code never does. |
+| js-yaml 3 → 4.2+ (CVE-2026-53550) | 3.15.2 via **gray-matter 4.0.3** (latest; calls `safeLoad`, removed in v4). **Runtime.** | 3.15.2 | **Accept.** Input is trusted: repo markdown plus authenticated admin edits. A cross-major override would break gray-matter. `npm audit` no longer flags 3.15.2. Long-term option: replace gray-matter. |
+| esbuild → 0.28.1 | **0.28.2** ✅ | not flagged | ✅ |
+| minimatch → 11 | 3.1.5 via eslint@8 / eslint-plugin-* (dev); 11.0.9 ✅ | 10.2.6 (sanity CLI) | 3.1.5 is outside npm's advisory range (7.0.0–11.0.0), but Hostinger lists it. Clearing it needs **eslint 9** (flat config), which is your decision. |
+| glob → 14 | **7.2.3** (rimraf 3 → flat-cache → eslint 8; outside advisory range) | not flagged | ✅ for npm audit; disappears with eslint 9 |
+| eslint 8 → 9 | 8.57.1 (advisory **withdrawn**; npm audit does not flag it) | — | **Your decision.** Needs a flat-config migration (`eslint.config.mjs`). Not done. |
