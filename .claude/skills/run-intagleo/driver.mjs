@@ -12,10 +12,18 @@
 //   node .claude/skills/run-intagleo/driver.mjs --no-screenshot
 //   node .claude/skills/run-intagleo/driver.mjs --screenshot ./shot.png
 //
+// Regression mode (dependency upgrades, deploy verification):
+//   --all-routes          also GET every URL in the target's /sitemap.xml (asserting
+//                         200 + a <title> + no error page), the public API routes,
+//                         the admin API auth guards, and static-asset cache headers.
+//   --snapshot <file>     write {route: {status, title, location}} for every check.
+//   --compare <file>      diff this run against a snapshot; any status/title/location
+//                         change is a failure (body size drift >40% is a warning).
+//
 // Requires a production build first: `npm run build` (creates .next/).
 
 import { spawn } from "node:child_process";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 
@@ -32,6 +40,9 @@ const PORT = opt("--port", "3123");
 const BASE = externalUrl || `http://localhost:${PORT}`;
 const doShot = !flag("--no-screenshot");
 const shotPath = resolve(opt("--screenshot", join(tmpdir(), "intagleo-smoke.png")));
+const allRoutes = flag("--all-routes");
+const snapshotOut = opt("--snapshot", null);
+const compareIn = opt("--compare", null);
 
 // path, expected status, body substring that must be present (case-insensitive), redirect location
 const CHECKS = [
@@ -84,6 +95,110 @@ async function runChecks() {
   return fail === 0;
 }
 
+// ── Regression mode ─────────────────────────────────────────────────────────
+const titleOf = (html) => (html.match(/<title[^>]*>([^<]*)<\/title>/i)?.[1] ?? "").trim();
+const ERROR_MARKERS = ["application error: a server-side exception", "application error: a client-side exception", "internal server error"];
+
+async function probe(path, init = {}) {
+  const r = await fetch(BASE + path, { redirect: "manual", ...init });
+  const body = await r.text();
+  return { r, body, rec: { status: r.status, title: titleOf(body), location: r.headers.get("location"), bytes: body.length } };
+}
+
+async function sitemapPaths() {
+  const r = await fetch(BASE + "/sitemap.xml");
+  const xml = await r.text();
+  const locs = [...xml.matchAll(/<loc>\s*([^<\s]+)\s*<\/loc>/g)].map((m) => m[1]);
+  // Sitemap URLs carry the production host; test the same paths against BASE.
+  return [...new Set(locs.map((u) => { try { const p = new URL(u); return p.pathname + p.search; } catch { return null; } }).filter(Boolean))];
+}
+
+async function runRegression(snapshot) {
+  let pass = 0, fail = 0;
+  const report = (ok, label, detail = "") => {
+    if (!ok) console.log(`  FAIL  ${label.padEnd(52)} ${detail}`);
+    ok ? pass++ : fail++;
+  };
+
+  // 1. Every sitemap page renders.
+  const paths = await sitemapPaths();
+  console.log(`  REGRESSION  ${paths.length} sitemap routes + API/auth/header checks\n  ${"-".repeat(58)}`);
+  if (paths.length < 10) report(false, "/sitemap.xml", `only ${paths.length} <loc> entries`);
+  const queue = [...paths];
+  await Promise.all(Array.from({ length: 6 }, async () => {
+    while (queue.length) {
+      const path = queue.shift();
+      try {
+        const { body, rec } = await probe(path);
+        snapshot[path] = rec;
+        const low = body.toLowerCase();
+        const marker = ERROR_MARKERS.find((m) => low.includes(m));
+        if (rec.status !== 200) report(false, path, `status ${rec.status}`);
+        else if (!rec.title) report(false, path, "empty <title>");
+        else if (marker) report(false, path, `error page: "${marker}"`);
+        else report(true, path);
+      } catch (e) { snapshot[path] = { status: 0, title: "", location: null, bytes: 0 }; report(false, path, e.message); }
+    }
+  }));
+
+  // 2. Public API routes (these call Sanity; status is compared against the baseline).
+  for (const path of ["/api/case-studies", "/api/blog/featured", "/api/case-studies/featured", "/api/testimonials/featured"]) {
+    try {
+      const { r, body, rec } = await probe(path);
+      snapshot["API " + path] = { ...rec, title: "" };
+      let json = null; try { json = JSON.parse(body); } catch { /* not json */ }
+      report(json !== null && r.headers.get("content-type")?.includes("json"), "API " + path, `status ${r.status}, not JSON`);
+    } catch (e) { report(false, "API " + path, e.message); }
+  }
+
+  // 3. Admin API auth guards: unauthenticated requests must be rejected (401) and never write.
+  const guards = [
+    ["GET", "/api/content/blog"],
+    ["POST", "/api/content/blog", JSON.stringify({ slug: "driver-should-never-write" })],
+    ["GET", "/api/auth/me"],
+    ["GET", "/api/auth/users"],
+  ];
+  for (const [method, path, body] of guards) {
+    try {
+      const { rec } = await probe(path, { method, body, headers: body ? { "content-type": "application/json" } : {} });
+      snapshot[`AUTH ${method} ${path}`] = { ...rec, title: "", bytes: 0 };
+      report(rec.status === 401, `AUTH ${method} ${path}`, `status ${rec.status}≠401`);
+    } catch (e) { report(false, `AUTH ${method} ${path}`, e.message); }
+  }
+  if (existsSync(join(REPO, "content", "blog", "driver-should-never-write.md"))) report(false, "AUTH write guard", "unauthenticated POST created a file!");
+
+  // 4. Hashed static assets keep the immutable cache header.
+  try {
+    const home = await (await fetch(BASE + "/")).text();
+    const asset = home.match(/\/_next\/static\/[^"'\s)]+\.(?:js|css)/)?.[0];
+    if (!asset) report(false, "HEADER /_next/static", "no static asset found on /");
+    else {
+      const r = await fetch(BASE + asset);
+      const cc = r.headers.get("cache-control") || "";
+      report(r.status === 200 && cc.includes("immutable"), "HEADER /_next/static cache-control", `status ${r.status}, "${cc}"`);
+    }
+  } catch (e) { report(false, "HEADER /_next/static", e.message); }
+
+  console.log(`  ${"-".repeat(58)}\n  regression: ${pass} passed, ${fail} failed\n`);
+  return fail === 0;
+}
+
+function compareSnapshots(base, cur) {
+  let diffs = 0, warns = 0;
+  console.log(`  COMPARE vs ${compareIn}\n  ${"-".repeat(58)}`);
+  for (const key of new Set([...Object.keys(base), ...Object.keys(cur)])) {
+    const a = base[key], b = cur[key];
+    if (!a) { console.log(`  NEW   ${key}  (${b.status})`); continue; }      // new route: informational
+    if (!b) { console.log(`  DIFF  ${key}  missing from this run`); diffs++; continue; }
+    for (const f of ["status", "title", "location"]) {
+      if ((a[f] ?? null) !== (b[f] ?? null)) { console.log(`  DIFF  ${key}  ${f}: ${JSON.stringify(a[f])} → ${JSON.stringify(b[f])}`); diffs++; }
+    }
+    if (a.bytes > 2000 && Math.abs(b.bytes - a.bytes) / a.bytes > 0.4) { console.log(`  WARN  ${key}  body ${a.bytes} → ${b.bytes} bytes`); warns++; }
+  }
+  console.log(`  ${"-".repeat(58)}\n  compare: ${diffs} diffs, ${warns} warnings\n`);
+  return diffs === 0;
+}
+
 function findBrowser() {
   const candidates = [
     process.env.CHROME_BIN,
@@ -128,11 +243,20 @@ async function main() {
   const ready = await waitReady(BASE);
   if (!ready) { console.error(`server never became ready at ${BASE}`); if (server) server.kill(); process.exit(2); }
 
-  const routesOk = await runChecks();
+  let ok = await runChecks();
+
+  if (allRoutes || snapshotOut || compareIn) {
+    const snapshot = {};
+    ok = (await runRegression(snapshot)) && ok;
+    const sorted = Object.fromEntries(Object.keys(snapshot).sort().map((k) => [k, snapshot[k]]));
+    if (snapshotOut) { writeFileSync(resolve(snapshotOut), JSON.stringify(sorted, null, 2)); console.log(`  snapshot written: ${resolve(snapshotOut)}`); }
+    if (compareIn) ok = compareSnapshots(JSON.parse(readFileSync(resolve(compareIn), "utf8")), sorted) && ok;
+  }
+
   if (doShot) await screenshot(BASE + "/", shotPath);
 
   if (server) server.kill();
-  process.exit(routesOk ? 0 : 1);
+  process.exit(ok ? 0 : 1);
 }
 
 process.on("SIGINT", () => { if (server) server.kill(); process.exit(130); });
