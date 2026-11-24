@@ -178,6 +178,14 @@ The new `admin-smoke.mjs` proved this with 20/20 passing both **before** the cha
 | `npm audit` root (full / runtime) | **0 / 0** (was 49 / 10) |
 | `npm audit` studio | **14** (was 37), 0 critical, all only fixable by sanity 6 |
 
+**Code review** (`/code-review` on `main...fix/security-deps`) found no runtime issues. It made 6 test-script and hygiene findings, all fixed and re-verified:
+- admin-smoke refuses non-local `--url`.
+- email-smoke and admin-smoke refuse an already-occupied port (so test mail can never reach a server with real SMTP) and fail if the server exits early.
+- The driver's API checks require HTTP 200 with no `error`.
+- The driver's unauthenticated-write probe runs only against local targets.
+- The cms-toggle skill no longer documents embedding the Studio from the deleted root `sanity.config`.
+- `next` and `eslint-config-next` are pinned exactly to `15.5.29`, matching main's exact-pin convention.
+
 ## Remaining findings and decisions for you
 
 | Item | Where | Runtime? | Recommendation |

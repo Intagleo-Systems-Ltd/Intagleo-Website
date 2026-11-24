@@ -94,14 +94,21 @@ const summarize = (m) => ({
 // ── Server lifecycle ────────────────────────────────────────────────────────
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 async function launch(env) {
+  // Safety: if something already answers on PORT it may be a server with REAL SMTP
+  // settings — never send test submissions to a server this script didn't start.
+  let busy = false;
+  try { await fetch(BASE + "/robots.txt"); busy = true; } catch { /* port free */ }
+  if (busy) throw new Error(`port ${PORT} is already in use — refusing to send test mail to a server this script didn't start (use --port)`);
   const srv = spawn("node", ["server.js"], { cwd: REPO, env: { ...process.env, ...env, PORT }, stdio: ["ignore", "ignore", "pipe"] });
-  let stderr = ""; srv.stderr.on("data", (d) => { stderr += d; });
-  srv.getStderr = () => stderr;
-  for (let i = 0; i < 120; i++) {
-    try { const r = await fetch(BASE + "/robots.txt"); if (r.status > 0) return srv; } catch { /* not up */ }
+  let stderr = "", exited = false;
+  srv.stderr.on("data", (d) => { stderr += d; });
+  srv.on("exit", () => { exited = true; });
+  for (let i = 0; i < 120 && !exited; i++) {
+    try { const r = await fetch(BASE + "/robots.txt"); if (r.status > 0 && !exited) return srv; } catch { /* not up */ }
     await sleep(500);
   }
-  srv.kill(); throw new Error(`server never became ready on ${BASE}`);
+  srv.kill();
+  throw new Error(`server on ${BASE} ${exited ? "exited early" : "never became ready"}${stderr ? ":\n" + stderr.slice(-800) : ""}`);
 }
 const stop = (srv) => new Promise((r) => { srv.on("exit", r); srv.kill(); setTimeout(r, 3000); });
 

@@ -147,14 +147,18 @@ async function runRegression(snapshot) {
       const { r, body, rec } = await probe(path);
       snapshot["API " + path] = { ...rec, title: "" };
       let json = null; try { json = JSON.parse(body); } catch { /* not json */ }
-      report(json !== null && r.headers.get("content-type")?.includes("json"), "API " + path, `status ${r.status}, not JSON`);
+      const ok = r.status === 200 && json !== null && !json.error && r.headers.get("content-type")?.includes("json");
+      report(ok, "API " + path, `status ${r.status}${json === null ? ", not JSON" : json.error ? `, error: ${json.error}` : ""}`);
     } catch (e) { report(false, "API " + path, e.message); }
   }
 
-  // 3. Admin API auth guards: unauthenticated requests must be rejected (401) and never write.
+  // 3. Admin API auth guards: unauthenticated requests must be rejected (401).
+  //    The unauthenticated-write probe (and its on-disk check) only runs against a
+  //    local server — never send a write attempt to a remote/production target.
+  const isLocal = /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?/i.test(BASE);
   const guards = [
     ["GET", "/api/content/blog"],
-    ["POST", "/api/content/blog", JSON.stringify({ slug: "driver-should-never-write" })],
+    ...(isLocal ? [["POST", "/api/content/blog", JSON.stringify({ slug: "driver-should-never-write" })]] : []),
     ["GET", "/api/auth/me"],
     ["GET", "/api/auth/users"],
   ];
@@ -165,7 +169,7 @@ async function runRegression(snapshot) {
       report(rec.status === 401, `AUTH ${method} ${path}`, `status ${rec.status}≠401`);
     } catch (e) { report(false, `AUTH ${method} ${path}`, e.message); }
   }
-  if (existsSync(join(REPO, "content", "blog", "driver-should-never-write.md"))) report(false, "AUTH write guard", "unauthenticated POST created a file!");
+  if (isLocal && existsSync(join(REPO, "content", "blog", "driver-should-never-write.md"))) report(false, "AUTH write guard", "unauthenticated POST created a file!");
 
   // 4. Hashed static assets keep the immutable cache header.
   try {

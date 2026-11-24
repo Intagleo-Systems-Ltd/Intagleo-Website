@@ -13,6 +13,9 @@
 //
 // Usage (from repo root, after `npm run build`):
 //   node .claude/skills/run-intagleo/admin-smoke.mjs [--port 3126] [--url http://localhost:3000]
+//
+// LOCAL ONLY: it writes (and removes) a content file and checks it on this
+// machine's disk, so --url must be localhost/127.0.0.1. Never point it at production.
 
 import { spawn } from "node:child_process";
 import { createRequire } from "node:module";
@@ -51,11 +54,20 @@ async function main() {
   const forged = jwt.sign({ id: admin.id, email: admin.email, role: "admin" }, "not-the-secret", { expiresIn: "10m" });
   const auth = { cookie: `admin_token=${token}` };
 
+  if (external && !/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?\/?$/i.test(external)) {
+    console.error(`Refusing --url ${external}: admin-smoke writes content and verifies it on local disk. Use it only against a local server.`);
+    process.exit(2);
+  }
+
   let server = null;
   if (!external) {
     if (!existsSync(join(REPO, ".next", "BUILD_ID"))) { console.error("No production build. Run: npm run build"); process.exit(2); }
+    try { await fetch(BASE + "/robots.txt"); console.error(`Port ${PORT} is already in use — refusing to test a server this script didn't start. Use --port.`); process.exit(2); } catch { /* free: good */ }
     server = spawn("node", ["server.js"], { cwd: REPO, env: { ...process.env, PORT }, stdio: "ignore" });
-    for (let i = 0; i < 120; i++) { try { if ((await fetch(BASE + "/robots.txt")).status > 0) break; } catch { /* not up */ } await sleep(500); }
+    let exited = false; server.on("exit", () => { exited = true; });
+    let ready = false;
+    for (let i = 0; i < 120 && !exited; i++) { try { if ((await fetch(BASE + "/robots.txt")).status > 0) { ready = true; break; } } catch { /* not up */ } await sleep(500); }
+    if (!ready || exited) { console.error(`server on ${BASE} ${exited ? "exited early" : "never became ready"}`); server.kill(); process.exit(2); }
   }
 
   const slug = `zz-admin-smoke-${Date.now()}`;
