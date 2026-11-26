@@ -12,18 +12,23 @@ npm run lint         # next lint
 
 npm run cms:migrate  # Push all content/**/*.md files → Sanity dataset (tsx scripts/migrate-to-sanity.ts)
 npm run cms:revert   # Pull Sanity → local .md files (tsx scripts/revert-to-files.ts)
-npm run cms:studio   # Run Sanity Studio standalone on :3333
+npm run cms:studio   # Run Sanity Studio (separate package in studio/, needs `npm ci --prefix studio` once) on :3333
 
 node scripts/init-users.js   # (Re)create default admin + 5 editor accounts in data/users.json
 ```
 
-There is no test suite. Note `next.config.mjs` sets `eslint.ignoreDuringBuilds` and `typescript.ignoreBuildErrors` to `true` — **the build will not fail on type or lint errors**, so run `npm run lint` and check types manually; CI/build won't catch them.
+There is no unit test suite. Regression testing uses the smoke scripts in [.claude/skills/run-intagleo/](.claude/skills/run-intagleo/SKILL.md), which run after `npm run build`:
+- `driver.mjs --all-routes` checks every sitemap route, the APIs, the auth guards and the cache headers. Add `--snapshot`/`--compare` to diff two runs.
+- `email-smoke.mjs` sends contact and apply emails through a local SMTP sink.
+- `admin-smoke.mjs` covers admin auth plus content and user CRUD.
+
+Note `next.config.mjs` sets `eslint.ignoreDuringBuilds` and `typescript.ignoreBuildErrors` to `true` — **the build will not fail on type or lint errors**, so run `npm run lint` and check types manually; CI/build won't catch them.
 
 On Windows, `npm` is only available through PowerShell, not the bundled bash shell.
 
 ## Architecture
 
-This is a **Next.js 14 App Router** marketing site for Intagleo (a software consultancy), with a file-based CMS that can optionally be backed by Sanity, plus a custom JWT-auth admin area. Dark theme by default (`bg-[#0a0a0a]`), heavy use of `framer-motion`/`gsap` animation and many bespoke section components.
+This is a **Next.js 15 App Router** marketing site (React 18) for Intagleo (a software consultancy), with a file-based CMS that can optionally be backed by Sanity, plus a custom JWT-auth admin area. Dark theme by default (`bg-[#0a0a0a]`), heavy use of `framer-motion`/`gsap` animation and many bespoke section components.
 
 ### Content layer — the central abstraction
 
@@ -72,7 +77,7 @@ Two distinct admin surfaces, both gated by a JWT stored in the `admin_token` coo
 
 ### Sanity (optional CMS)
 
-`sanity/` holds the embedded CMS config: [sanity/sanity.config.ts](sanity/sanity.config.ts) and schema types in `sanity/schemaTypes/` (`blogPost`, `caseStudy`, `testimonial`, `vacancy`). `app/api/revalidate/route.ts` is a webhook (guarded by `SANITY_REVALIDATE_SECRET`) that calls `revalidatePath("/", "layout")` so Sanity edits propagate.
+The Studio is a **separate package** in `studio/` (sanity v5, React 19, own `package.json`/lockfile, never deployed with the site): [studio/sanity.config.ts](studio/sanity.config.ts) and schema types in `studio/schemaTypes/` (`blogPost`, `caseStudy`, `testimonial`, `vacancy`, `sledCaseStudy`). The site itself only uses `@sanity/client`; don't add the `sanity` package to the root. `app/api/revalidate/route.ts` is a webhook (guarded by `SANITY_REVALIDATE_SECRET`) that calls `revalidatePath("/", "layout")` so Sanity edits propagate.
 
 ## Key environment variables
 
@@ -88,5 +93,7 @@ Set in `.env.local`:
 ## Conventions
 
 - Path alias `@/*` maps to the repo root (`tsconfig.json`).
+- Next 15: `params`/`searchParams` are Promises in pages **and** route handlers, so type them as `Promise<{…}>` and `await` them.
+- Dependency security: `package.json` `overrides` are **same-major only**. Never force a cross-major override. See [VULN_FIX_LOG.md](VULN_FIX_LOG.md).
 - Industry/service pages and most interactive sections are Client Components (`"use client"`); content listing/detail pages are Server Components.
 - Media is heavily optimised — GIFs are converted to WebM/MP4 (`components/AutoplayVideo.tsx`, `scripts/fix-gifs.mjs`) and images to WebP/AVIF; `next.config.mjs` sets long immutable cache headers for `_next/static` and public media. Prefer video over GIF for new motion assets.

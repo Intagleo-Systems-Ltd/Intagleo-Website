@@ -8,7 +8,7 @@ import PortableTextBody from "@/components/PortableTextBody";
 export const revalidate = 60;
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 // ─── Static paths ──────────────────────────────────────────────────────────────
@@ -21,7 +21,8 @@ export async function generateStaticParams() {
 // ─── SEO metadata ──────────────────────────────────────────────────────────────
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const study = await getCaseStudyBySlugAsync(params.slug);
+  const { slug } = await params;
+  const study = await getCaseStudyBySlugAsync(slug);
   if (!study) return {};
 
   const description =
@@ -48,7 +49,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default async function CaseStudyPage({ params }: Props) {
-  const study = await getCaseStudyBySlugAsync(params.slug);
+  const { slug } = await params;
+  const study = await getCaseStudyBySlugAsync(slug);
   if (!study) notFound();
 
   return (

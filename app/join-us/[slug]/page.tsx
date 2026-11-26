@@ -18,8 +18,9 @@ async function getVacancy(slug: string): Promise<Vacancy | null> {
   }
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const vacancy = await getVacancy(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const vacancy = await getVacancy(slug);
   if (!vacancy) return { title: "Role Not Found | Intagleo" };
   return {
     title: `${vacancy.title} | Careers at Intagleo`,
@@ -42,8 +43,9 @@ function deptStyle(dept?: string) {
   return deptColors[dept ?? ""] ?? { bg: "rgba(99,102,241,0.12)", text: "#a5b4fc" };
 }
 
-export default async function VacancyPage({ params }: { params: { slug: string } }) {
-  const vacancy = await getVacancy(params.slug);
+export default async function VacancyPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const vacancy = await getVacancy(slug);
   if (!vacancy || !vacancy.isOpen) notFound();
 
   const ds = deptStyle(vacancy.department);

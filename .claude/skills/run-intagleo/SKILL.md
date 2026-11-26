@@ -5,7 +5,7 @@ description: Build, launch, smoke-test, and screenshot the Intagleo Next.js mark
 
 # Run Intagleo (Next.js site)
 
-Intagleo is a **Next.js 14 App Router** marketing site served in production by a
+Intagleo is a **Next.js 15 App Router** marketing site served in production by a
 custom Node server ([server.js](../../../server.js), for Phusion Passenger).
 There is no test suite. The way to drive it is the committed smoke driver
 [.claude/skills/run-intagleo/driver.mjs](driver.mjs): it launches the production
@@ -71,6 +71,41 @@ node .claude/skills/run-intagleo/driver.mjs --url http://localhost:3200 --no-scr
 - `--port <n>` — launch port (default 3123).
 - `--screenshot <path>` — where to write the PNG (default: OS temp).
 - `--no-screenshot` — skip the browser step.
+
+## Regression testing (dependency upgrades, deploy verification)
+
+Run all three scripts after `npm run build`. Each one exits 0 on pass and 1 on any failure.
+
+```powershell
+# 1. Every page in /sitemap.xml returns 200 with a <title> and no error page.
+#    Also checks: public APIs return JSON, unauthenticated admin APIs return 401
+#    (and the write guard never creates a file), and /_next/static is served
+#    with immutable cache-control.
+node .claude/skills/run-intagleo/driver.mjs --all-routes --snapshot before.json   # baseline, before a change
+node .claude/skills/run-intagleo/driver.mjs --all-routes --compare before.json    # after the change: any status/title/redirect diff fails
+
+# 2. Contact and careers email through nodemailer, delivered to an in-process SMTP
+#    sink. All SMTP_*/CONTACT_*/CAREERS_* env vars are overridden, so no real mail
+#    is sent. Covers 3 contact types, apply with a PDF attachment, validation
+#    400s, and captcha rejection.
+node .claude/skills/run-intagleo/email-smoke.mjs --out email-before.json
+node .claude/skills/run-intagleo/email-smoke.mjs --compare email-before.json
+
+# 3. Admin: middleware and JWT verification (valid and forged tokens), the
+#    login route's 400/401, /api/auth/me and /api/auth/users (checks no hashes
+#    leak), [id] params, and content CRUD on a throwaway slug. The slug is
+#    always deleted, and real users are never modified. It mints its own JWT
+#    from JWT_SECRET in env or .env.local, so no password is needed.
+node .claude/skills/run-intagleo/admin-smoke.mjs
+```
+
+Against production, after a deploy, use `driver.mjs --url https://intagleo.com --all-routes --no-screenshot`.
+Sitemap URLs are re-pointed at `--url`. Don't run `email-smoke` or `admin-smoke`
+against production. Test those flows there by hand (see HOSTINGER_DEPLOY.md).
+
+Notes:
+- The `/api/case-studies`, `/api/*/featured` routes call Sanity live. Their status is compared against the baseline snapshot rather than hard-coded.
+- `--compare` warns (but doesn't fail) when a page body changes size by more than 40%.
 
 ## Run (human path)
 

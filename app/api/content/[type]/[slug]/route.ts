@@ -10,12 +10,12 @@ const VALID_TYPES = ["blog", "case-studies", "testimonials"];
 // GET /api/content/[type]/[slug]
 export async function GET(
   request: NextRequest,
-  { params }: { params: { type: string; slug: string } }
+  { params }: { params: Promise<{ type: string; slug: string }> }
 ) {
   const user = verifyAuthCookie(request);
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const { type, slug } = params;
+  const { type, slug } = await params;
   if (!VALID_TYPES.includes(type))
     return NextResponse.json({ error: "Invalid content type" }, { status: 400 });
 
@@ -32,12 +32,12 @@ export async function GET(
 // PUT /api/content/[type]/[slug] - update
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { type: string; slug: string } }
+  { params }: { params: Promise<{ type: string; slug: string }> }
 ) {
   const user = verifyAuthCookie(request);
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const { type, slug } = params;
+  const { type, slug } = await params;
   if (!VALID_TYPES.includes(type))
     return NextResponse.json({ error: "Invalid content type" }, { status: 400 });
 
@@ -57,12 +57,12 @@ export async function PUT(
 // DELETE /api/content/[type]/[slug]
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { type: string; slug: string } }
+  { params }: { params: Promise<{ type: string; slug: string }> }
 ) {
   const user = verifyAuthCookie(request);
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const { type, slug } = params;
+  const { type, slug } = await params;
   if (!VALID_TYPES.includes(type))
     return NextResponse.json({ error: "Invalid content type" }, { status: 400 });
 

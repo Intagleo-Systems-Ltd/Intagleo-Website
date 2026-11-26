@@ -14,11 +14,12 @@ function saveUsers(users: any) {
   fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
 }
 
-export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const decoded = verifyAuthCookie(request);
   if (!decoded) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  if (decoded.role !== "admin" && decoded.id !== params.id) {
+  const { id } = await params;
+  if (decoded.role !== "admin" && decoded.id !== id) {
     return NextResponse.json({ error: "You can only update your own password" }, { status: 403 });
   }
 
@@ -29,7 +30,7 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
     }
 
     const users = getUsers();
-    const idx = users.findIndex((u: any) => u.id === params.id);
+    const idx = users.findIndex((u: any) => u.id === id);
     if (idx === -1) return NextResponse.json({ error: "User not found" }, { status: 404 });
 
     if (password) users[idx].password = await hash(password, 10);
@@ -45,14 +46,15 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
   }
 }
 
-export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const decoded = verifyAuthCookie(request);
   if (!decoded) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   if (decoded.role !== "admin") return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
+  const { id } = await params;
   try {
     const users = getUsers();
-    const idx = users.findIndex((u: any) => u.id === params.id);
+    const idx = users.findIndex((u: any) => u.id === id);
     if (idx === -1) return NextResponse.json({ error: "User not found" }, { status: 404 });
 
     if (users[idx].role === "admin" && users.filter((u: any) => u.role === "admin").length === 1) {

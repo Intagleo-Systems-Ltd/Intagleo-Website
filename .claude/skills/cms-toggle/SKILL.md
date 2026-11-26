@@ -102,7 +102,7 @@ Add `export const revalidate = 60` to all updated pages and routes.
 
 Tell the user:
 > "Done. Provider is now Sanity. Restart your dev server: `npm run dev`"
-> "Sanity Studio is embedded at /studio once you add the Studio route."
+> "Edit content in Sanity Studio: `npm run cms:studio` (local, :3333) or the hosted Studio at https://intagleo.sanity.studio."
 
 ---
 
@@ -161,13 +161,14 @@ Tell the user:
 
 ## Sanity Studio
 
-To embed Sanity Studio at `/studio`, create `app/studio/[[...tool]]/page.tsx`:
-```tsx
-"use client";
-import { NextStudio } from "next-sanity/studio";
-import config from "@/sanity.config";
-export default function StudioPage() {
-  return <NextStudio config={config} />;
-}
-```
-Add `/studio` to middleware matcher exclusions in `middleware.ts`.
+The Studio is a **separate package in `studio/`** (sanity v5 + React 19, own lockfile). It
+is **not** embedded in the Next app. The site runs React 18, and the root deliberately
+doesn't depend on `sanity` or `next-sanity`, so don't create an `app/studio` route.
+
+| Task | Command |
+|------|---------|
+| First-time install | `npm ci --prefix studio` |
+| Run locally (:3333) | `npm run cms:studio` |
+| Deploy hosted Studio (https://intagleo.sanity.studio) | `npm --prefix studio run deploy` (needs a Sanity CLI login) |
+
+Schema types live in `studio/schemaTypes/`. Redeploy the hosted Studio after schema changes.

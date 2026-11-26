@@ -38,6 +38,18 @@ Cleared ~10 transitive advisories without touching next/react/sanity majors.
 
 ---
 
+## ✅ Tier 2 — Next.js 15 migration (DONE on branch `next15-upgrade`)
+**Outcome:** `next` 14.2.35 → **15.5.20**, `eslint-config-next` → 15. **React stayed
+on 18** — Next 15.5 accepts React 18 as a peer, so no React 19 churn and no
+`react-google-recaptcha` peer conflict. `params`/`searchParams` made async in the
+6 dynamic surfaces. Verified: build (123 pages, no warnings), driver 14/14, all
+dynamic routes (`/blog/[slug]`, `/testimonials/[slug]`, `/join-us/[slug]`,
+`/case-studies/[slug]`) + `/contact?type=` wired, screenshot visually identical.
+The `next` advisory dropped **high → moderate**. **Not yet merged to `main`** —
+deploy/merge is a deliberate step (test on Hostinger staging first).
+
+<details><summary>Original plan (for reference)</summary>
+
 ## Tier 2 — Next.js 15 migration (the main event, ~half day on a branch)
 **Why:** Next **14.2 is end-of-life** — 14.2.35 is the final 14.x release; security
 fixes now land only on 15.x+ (`backport` tag = 15.5.x). The *current* Next CVEs are
@@ -74,6 +86,8 @@ no embedded Studio). Plan:
 
 ---
 
+</details>
+
 ## Tier 3 — Accept & document (no action, revisit later)
 - **`sanity` v6 (moderate: prismjs/refractor/dompurify/@sanity/uuid).** Do **not**
   upgrade — pinned to v3 for React 18 compatibility, and it's **dormant** (files
@@ -81,19 +95,37 @@ no embedded Studio). Plan:
   what's reachable. Revisit only if Sanity becomes the live CMS.
 - **`uuid` v14 (moderate).** CVE affects v3/v5/v6 when a `buf` arg is passed; this
   app uses only `uuid.v4()` with no buffer → **not exploitable**. Optional cosmetic bump.
-- **`@sanity/cli` / `decompress` (critical — Zip Slip).** Scary label, but
-  `decompress` only runs when the **Sanity CLI** extracts archives; it is never
-  in the website's runtime path (we deploy without invoking the CLI). Pulled in
-  transitively by the `sanity` package and fixable only by Sanity v6. **Future
-  optimization:** the website runtime needs only `@sanity/client` /
-  `@portabletext/react` / `@sanity/image-url` — dropping the full `sanity`
-  package from `dependencies` (it's only needed by the standalone `studio/` and
-  the not-yet-created embedded Studio route) would remove this whole critical
-  chain. Out of scope here; revisit deliberately.
+- ✅ **`@sanity/cli` / `decompress` (critical — Zip Slip) — ADDRESSED.**
+  Confirmed nothing in `app/`/`lib/`/`components/` imports the full `sanity`
+  package (runtime uses only `@sanity/client`), so `sanity` was moved from
+  `dependencies` → `devDependencies` (branch `next15-upgrade`). It's still there
+  for `npm run cms:studio` locally, but the **production deploy runs
+  `npm prune --omit=dev` after the build** (see HOSTINGER_DEPLOY.md), which
+  removes `sanity` → `@sanity/cli` → `decompress` from the server entirely.
+  **Verified:** driver 14/14 against the pruned tree; runtime audit
+  (`npm audit --omit=dev`) = **0 critical / 0 high**, 3 non-exploitable moderates
+  (`next` latest patch, `postcss` build-time, `uuid` v4).
 - **Dev-only tooling** (`esbuild`, `@architect/*`, `eslint`) — never runs in
   production. Bump opportunistically alongside Tier 2.
 
 ---
+
+## ✅ Tier 4: Hostinger scan of 2026-11-24 (branch `fix/security-deps`)
+The full log is in [VULN_FIX_LOG.md](VULN_FIX_LOG.md).
+
+What changed:
+- next 15.5.29
+- nodemailer 10
+- sharp 0.35
+- uuid 11
+- **The root `sanity` package is removed** (the Studio is the separate `studio/` package). This supersedes the Tier 3 devDependency move above.
+- Same-major overrides for postcss, postcss-selector-parser and brace-expansion.
+- The Tier 1 cross-major `glob` override is removed.
+- Route-handler `params` are now awaited.
+
+Result: root `npm audit` **49 → 0**; runtime **10 → 0**; `studio/` **37 → 14**, with 0 critical. The 14 that remain need sanity 6 and are dev-only.
+
+The items that still need a decision (eslint 9, Node 22 on Hostinger, gray-matter's js-yaml 3) are listed at the end of the log.
 
 ## Sequencing
 1. Tier 1 now (fast, safe) → commit → redeploy.

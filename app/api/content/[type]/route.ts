@@ -10,12 +10,12 @@ const VALID_TYPES = ["blog", "case-studies", "testimonials"];
 // GET /api/content/[type] - list all items
 export async function GET(
   request: NextRequest,
-  { params }: { params: { type: string } }
+  { params }: { params: Promise<{ type: string }> }
 ) {
   const user = verifyAuthCookie(request);
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const { type } = params;
+  const { type } = await params;
   if (!VALID_TYPES.includes(type))
     return NextResponse.json({ error: "Invalid content type" }, { status: 400 });
 
@@ -36,12 +36,12 @@ export async function GET(
 // POST /api/content/[type] - create new item
 export async function POST(
   request: NextRequest,
-  { params }: { params: { type: string } }
+  { params }: { params: Promise<{ type: string }> }
 ) {
   const user = verifyAuthCookie(request);
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const { type } = params;
+  const { type } = await params;
   if (!VALID_TYPES.includes(type))
     return NextResponse.json({ error: "Invalid content type" }, { status: 400 });
 

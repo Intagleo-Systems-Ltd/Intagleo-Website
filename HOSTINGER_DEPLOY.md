@@ -1,6 +1,6 @@
 # Deploying Intagleo to Hostinger (Node.js / Passenger)
 
-This app is a **Next.js 14** site running as a long-lived Node process via
+This app is a **Next.js 15** site running as a long-lived Node process via
 [server.js](server.js) under **Phusion Passenger** (Hostinger hPanel
 "Setup Node.js App"). This guide moves it off Vercel.
 
@@ -40,7 +40,7 @@ hPanel → Advanced → **Node.js** → **Create application**:
 
 | Field | Value |
 |---|---|
-| Node.js version | **20.x** (18.18+ minimum) |
+| Node.js version | **22.x LTS** recommended. **20.9+ is the hard minimum** (sharp 0.35 and nodemailer 10). Node 20 itself reached end-of-life in April 2026. |
 | Application mode | **Production** |
 | Application root | path you uploaded to, e.g. `domains/intagleo.com/app` |
 | Application URL | `intagleo.com` |
@@ -75,11 +75,16 @@ Open the app's terminal (the Node.js panel shows the exact `source ...activate`
 command to enter the right environment), then in the app root:
 
 ```bash
-npm install
+npm ci
 ```
 
-`sharp` (native image optimizer, used by `next/image`) compiles here — this is
-why it's now an explicit dependency.
+Use `npm ci`, not `npm install`. It installs exactly what `package-lock.json`
+pins, and that lockfile is what the hPanel vulnerability scanner checks. `npm install` may
+resolve different versions on the server.
+
+`sharp` (native image library, an optional peer of `next`) installs its
+prebuilt binary here, which is why it's an explicit dependency. The Next image
+optimizer itself is off (`images.unoptimized`).
 
 ---
 
@@ -96,6 +101,15 @@ Notes:
   ```bash
   NODE_OPTIONS=--max-old-space-size=2048 npm run build
   ```
+- **After building, shed build-only deps** so they aren't on the live server:
+  ```bash
+  npm prune --omit=dev
+  ```
+  The runtime (`node server.js`) needs only `dependencies`, so this removes the
+  build toolchain (tailwind, typescript, eslint). The Sanity Studio is its own
+  package in `studio/` and is never installed on the server. Verified: the site
+  serves every route after pruning, and `npm audit --omit=dev` reports **0**
+  vulnerabilities. Re-run `npm ci` only when you next need to rebuild.
 
 ---
 
@@ -141,12 +155,52 @@ serves correctly, then decommission the Vercel project.
 
 ---
 
+## Updating an existing deploy (e.g. dependency/security upgrades)
+
+There's no staging, so every update goes straight to production. Follow this
+runbook in order.
+
+**Before:**
+1. Tag what's live, so you can roll back to it:
+   `git tag pre-<change> <live-sha> && git push origin pre-<change>`
+2. On the server, **back up `data/` and `content/`**. Admin edits live there and
+   aren't in git, so a pull could conflict with them:
+   `tar czf ~/backup-$(date +%F-%H%M).tgz data content`
+3. Check `node -v`. It must be ≥ 20.9 (22 LTS recommended). If you change it in
+   hPanel, re-enter the app's `source …/activate` environment before continuing.
+
+**Deploy:**
+```bash
+git pull                 # or hPanel → Git → Deploy
+npm ci
+npm run build
+npm prune --omit=dev
+```
+Then hPanel → Node.js → **Restart**.
+
+**Verify (from your own machine, against production):**
+```bash
+node .claude/skills/run-intagleo/driver.mjs --url https://intagleo.com --all-routes --no-screenshot
+```
+This expects every sitemap route to return 200, `/admin` to redirect with 307,
+robots.txt and the sitemap to be correct, and static assets to be served with
+`immutable`. It must exit 0. Then by hand:
+- Submit the contact form **once** and a careers application **once** (with
+  reCAPTCHA live) to an internal address, and confirm both emails arrive.
+- Log in to `/admin`, make one edit, restart the app, confirm the edit
+  persisted, then revert it.
+- hPanel → Security → **Vulnerabilities** → re-scan.
+
+**Roll back** if anything fails: `git checkout pre-<change>`, restore the
+`data/`/`content/` backup if needed, then run `npm ci && npm run build && npm prune --omit=dev`
+and Restart.
+
 ## Post-migration checklist
 
 - [ ] Contact + careers forms send mail (SMTP env vars correct).
 - [ ] reCAPTCHA passes (site key built in, secret key set).
 - [ ] Admin login works and content edits persist after a restart.
-- [ ] `next/image` thumbnails render (sharp installed OK).
+- [ ] Cover images and thumbnails render.
 - [ ] `robots.txt` and `sitemap.xml` resolve.
 - [ ] Set up a cron or hPanel job to **back up `data/`** (holds users + any
       file-CMS edits — not in git).
